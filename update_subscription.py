@@ -109,11 +109,7 @@ def extract_host_port(config_str):
 
 
 def convert_github_url(url):
-    """
-    Если url ведёт на github.com/.../blob/..., преобразует его в raw.
-    Иначе возвращает без изменений.
-    """
-    # Пример: https://github.com/user/repo/blob/branch/path/to/file
+    """Преобразует github.com/.../blob/... в raw.githubusercontent.com/..."""
     match = re.match(r'https://github\.com/([^/]+)/([^/]+)/blob/([^/]+)/(.*)', url)
     if match:
         user, repo, branch, path = match.groups()
@@ -231,7 +227,10 @@ def process_tg_source(source_file, output_file, datetime_str):
 def process_tor_source(source_file, output_file, date_str):
     """
     Универсальный сборщик Tor-мостов.
-    Понимает оба формата: с заголовками # VANILLA TOR BRIDGES и без них.
+    Автоматически определяет формат:
+      - с заголовками секций (# VANILLA TOR BRIDGES:)
+      - с префиксами в строках (vanilla, obfs4, webtunnel)
+      - без префиксов и заголовков, просто IP:порт и fingerprint
     """
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
@@ -246,7 +245,7 @@ def process_tor_source(source_file, output_file, date_str):
         'webtunnel': set()
     }
 
-    # Шаблоны заголовков секций для Формата 1
+    # Шаблоны заголовков секций (Формат 2)
     section_patterns = {
         'vanilla': re.compile(r'# *VANILLA.*BRIDGES', re.IGNORECASE),
         'obfs4': re.compile(r'# *(OBFS4|OBFSPROXY).*BRIDGES', re.IGNORECASE),
@@ -258,26 +257,29 @@ def process_tor_source(source_file, output_file, date_str):
             lines = fetch_subscription(url)
             print(f"[{source_file}] Загружено {len(lines)} строк из {url}")
 
-            # --- Определяем формат: есть ли заголовки секций? ---
+            # --- Определяем формат ---
+            prefix_count = 0
             has_sections = False
             for line in lines:
+                stripped = line.strip()
+                if not stripped or stripped.startswith('#'):
+                    continue
                 for pattern in section_patterns.values():
-                    if pattern.search(line):
+                    if pattern.search(stripped):
                         has_sections = True
                         break
                 if has_sections:
                     break
+                if re.match(r'^(obfs4|vanilla|webtunnel)\b', stripped, re.IGNORECASE):
+                    prefix_count += 1
 
-            # --- Парсинг в зависимости от формата ---
             if has_sections:
-                print(f" -> Обнаружен формат с заголовками")
+                print(f" -> Формат: с заголовками секций")
                 current_type = None
                 for line in lines:
                     stripped = line.strip()
                     if not stripped:
                         continue
-
-                    # Проверяем, не начало ли это новой секции
                     found_section = False
                     for btype, pattern in section_patterns.items():
                         if pattern.search(stripped):
@@ -286,36 +288,46 @@ def process_tor_source(source_file, output_file, date_str):
                             break
                     if found_section:
                         continue
-
-                    # Пропускаем строки с # (комментарии, заголовки)
                     if stripped.startswith('#') or stripped.startswith('//'):
                         continue
-
-                    # Если мы внутри секции
                     if current_type:
-                        # Убираем возможный префикс (на случай, если он есть)
                         for prefix in ['obfs4', 'vanilla', 'webtunnel']:
                             if stripped.lower().startswith(prefix):
                                 stripped = stripped[len(prefix):].strip()
                                 break
                         bridges_by_type[current_type].add(stripped)
-            else:
-                print(f" -> Обнаружен формат с префиксами")
-                # Ищем строки, начинающиеся с префикса
-                bridge_pattern = re.compile(r'^(obfs4|vanilla|webtunnel)\b', re.IGNORECASE)
+
+            elif prefix_count > 0:
+                print(f" -> Формат: префиксы в строках")
                 for line in lines:
                     stripped = line.strip()
-                    match = bridge_pattern.match(stripped)
+                    match = re.match(r'^(obfs4|vanilla|webtunnel)\b', stripped, re.IGNORECASE)
                     if match:
                         btype = match.group(1).lower()
-                        # Убираем префикс, чтобы сохранить единообразие
                         content = stripped[len(btype):].strip()
                         bridges_by_type[btype].add(content)
+
+            else:
+                # Формат без префиксов и заголовков
+                print(f" -> Формат: без префиксов/заголовков, определение по содержимому")
+                for line in lines:
+                    stripped = line.strip()
+                    if not stripped or stripped.startswith('#'):
+                        continue
+                    parts = stripped.split()
+                    if len(parts) >= 2:
+                        # Определяем тип по ключевым словам
+                        if 'webtunnel' in stripped.lower():
+                            btype = 'webtunnel'
+                        elif 'cert=' in stripped:
+                            btype = 'obfs4'
+                        else:
+                            btype = 'vanilla'
+                        bridges_by_type[btype].add(stripped)
 
         except Exception as e:
             print(f"[{source_file}] Ошибка загрузки {url}: {e}")
 
-    # Подсчёт
     types = ['obfs4', 'webtunnel', 'vanilla']
     counts = {t: len(bridges_by_type[t]) for t in types}
     total = sum(counts.values())
