@@ -1,5 +1,5 @@
 // --- TG PROXY STATISTICS ---
-// Updated      : 2026-05-02 21:18:41
+// Updated      : 2026-05-02 21:20:09
 // Working (verified): 82
 tg://proxy?server=tg.tgtesla.click&port=443&secret=7k2Ycfkhv5UX8GgSlT2CtpZtYXgucnU
 tg://proxy?server=proxy.vopnbot.org&port=443&secret=7iOHaedClDVkM5ncIRadj_5jbG91ZC5ydQ
