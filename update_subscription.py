@@ -2,7 +2,7 @@ import base64
 import re
 import os
 from datetime import datetime
-from urllib.parse import urlparse
+from urllib.parse import urlparse, unquote, quote
 import requests
 
 # ---- Шаблоны заголовков ----
@@ -44,7 +44,7 @@ def remove_ignored_words(name, ignore_words):
 def extract_host_port(config_str):
     """
     Извлекает адрес и порт из строки ключа.
-    Поддерживает vmess:// (json в base64), vless://, trojan://, ss://, ssr://, 
+    Поддерживает vmess:// (json в base64), vless://, trojan://, ss://, ssr://,
     hysteria2:// и другие протоколы.
     Возвращает строку "host:port" или None.
     """
@@ -120,7 +120,7 @@ def process_source(source_file, output_file, header_template, ignore_words, date
     Обрабатывает файл со списком URL подписок:
     - скачивает все ключи,
     - удаляет дубли по host:port,
-    - вырезает запрещённые слова из названий,
+    - вырезает запрещённые слова из названий (с учётом URL-кодирования),
     - оставляет только валидные ключи (начинающиеся с протокола),
     - записывает результат в output_file с заданным заголовком.
     """
@@ -151,13 +151,22 @@ def process_source(source_file, output_file, header_template, ignore_words, date
             if hp:
                 seen_hostports.add(hp)
 
-    # Очистка названий от запрещённых слов
+    # Очистка названий от запрещённых слов с учётом URL-кодирования
     cleaned_keys = []
     for key in unique_keys:
         if '#' in key:
             base_part, name = key.split('#', 1)
-            new_name = remove_ignored_words(name, ignore_words)
-            cleaned_keys.append(f"{base_part}#{new_name}" if new_name else base_part)
+            # Декодируем URL-кодировку, чтобы получить читаемое имя
+            decoded_name = unquote(name)
+            # Удаляем запрещённые слова
+            new_name = remove_ignored_words(decoded_name, ignore_words)
+            if new_name:
+                # Кодируем обратно, чтобы ключ остался валидным
+                encoded_name = quote(new_name, safe='')
+                cleaned_keys.append(f"{base_part}#{encoded_name}")
+            else:
+                # Если имя полностью удалилось, оставляем ключ без названия
+                cleaned_keys.append(base_part)
         else:
             cleaned_keys.append(key)
 
