@@ -9,3 +9,5 @@ https://raw.githubusercontent.com/SoliSpirit/mtproto/master/all_proxies.txt
 # Grim1313
 https://raw.githubusercontent.com/Grim1313/mtproto-for-telegram/refs/heads/master/all_proxies.txt
 
+# ALIILAPRO
+https://raw.githubusercontent.com/ALIILAPRO/MTProtoProxy/refs/heads/main/mtproto.txt
