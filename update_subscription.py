@@ -108,8 +108,22 @@ def extract_host_port(config_str):
     return None
 
 
+def convert_github_url(url):
+    """
+    Если url ведёт на github.com/.../blob/..., преобразует его в raw.
+    Иначе возвращает без изменений.
+    """
+    # Пример: https://github.com/user/repo/blob/branch/path/to/file
+    match = re.match(r'https://github\.com/([^/]+)/([^/]+)/blob/([^/]+)/(.*)', url)
+    if match:
+        user, repo, branch, path = match.groups()
+        return f"https://raw.githubusercontent.com/{user}/{repo}/{branch}/{path}"
+    return url
+
+
 def fetch_subscription(url):
-    resp = requests.get(url, timeout=30)
+    raw_url = convert_github_url(url)
+    resp = requests.get(raw_url, timeout=30)
     content = resp.text.strip()
     try:
         missing = len(content) % 4
