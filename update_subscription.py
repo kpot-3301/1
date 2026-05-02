@@ -51,7 +51,7 @@ VALID_PROTOCOLS = re.compile(
 
 
 def load_ignore_words():
-    """Читает список игнорируемых слов из IGNOR-name.txt, каждое слово с новой строки."""
+    """Читает список игнорируемых слов из IGNOR-name.txt (каждое слово с новой строки)."""
     if not os.path.exists(IGNOR_FILE):
         print(f"⚠️  Файл {IGNOR_FILE} не найден, фильтрация отключена.")
         return []
@@ -146,15 +146,12 @@ def clean_name_in_key(key, ignore_words):
     Удаляет игнорируемые слова из имени ключа.
     Возвращает ключ с ЧИТАЕМЫМ именем (НЕ ЗАКОДИРОВАННЫМ).
     """
-    # 1. Ключи с '#'
+    # 1. Ключи с '#' — отделяем имя по ПЕРВОМУ символу '#'
     if '#' in key:
-        base_part, encoded_name = key.rsplit('#', 1)
-        # Декодируем %XX → обычные символы
+        base_part, encoded_name = key.split('#', 1)    # ← ГЛАВНОЕ ИСПРАВЛЕНИЕ
         decoded_name = unquote(encoded_name)
-        # Удаляем игнорируемые слова
         new_name = remove_ignored_words(decoded_name, ignore_words)
         if new_name:
-            # 🟢 ВОТ ЭТО ИСПРАВЛЕНИЕ: не кодируем имя обратно
             return f"{base_part}#{new_name}"
         else:
             return base_part
@@ -249,7 +246,6 @@ def process_source(source_file, output_file, header_template, ignore_words, date
     header = header_template.format(count=len(final_keys), datetime=datetime_str)
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(header)
-        # Убираем лишний перенос строки в конце
         f.write('\n'.join(final_keys))
 
     print(f"✅ Создан файл {output_file} с {len(final_keys)} ключами.")
