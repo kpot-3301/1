@@ -185,6 +185,7 @@ def process_source(source_file, output_file, header_template, ignore_words, date
 
 
 def process_tg_source(source_file, output_file, datetime_str):
+    """Сбор Telegram-прокси (tg://proxy и https://t.me/proxy)."""
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
@@ -196,7 +197,10 @@ def process_tg_source(source_file, output_file, datetime_str):
     for url in urls:
         try:
             lines = fetch_subscription(url)
-            tg_lines = [l for l in lines if l.startswith('tg://proxy')]
+            tg_lines = [
+                l for l in lines
+                if l.startswith('tg://proxy') or (l.startswith('https://') and 'proxy' in l)
+            ]
             all_proxies.extend(tg_lines)
             print(f"[{source_file}] Загружено {len(tg_lines)} прокси из {url}")
         except Exception as e:
@@ -225,13 +229,7 @@ def process_tg_source(source_file, output_file, datetime_str):
 
 
 def process_tor_source(source_file, output_file, date_str):
-    """
-    Универсальный сборщик Tor-мостов.
-    Автоматически определяет формат:
-      - с заголовками секций (# VANILLA TOR BRIDGES:)
-      - с префиксами в строках (vanilla, obfs4, webtunnel)
-      - без префиксов и заголовков, просто IP:порт и fingerprint
-    """
+    """Универсальный сборщик Tor-мостов (3 формата)."""
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
@@ -245,7 +243,6 @@ def process_tor_source(source_file, output_file, date_str):
         'webtunnel': set()
     }
 
-    # Шаблоны заголовков секций (Формат 2)
     section_patterns = {
         'vanilla': re.compile(r'# *VANILLA.*BRIDGES', re.IGNORECASE),
         'obfs4': re.compile(r'# *(OBFS4|OBFSPROXY).*BRIDGES', re.IGNORECASE),
@@ -257,7 +254,7 @@ def process_tor_source(source_file, output_file, date_str):
             lines = fetch_subscription(url)
             print(f"[{source_file}] Загружено {len(lines)} строк из {url}")
 
-            # --- Определяем формат ---
+            # Определяем формат
             prefix_count = 0
             has_sections = False
             for line in lines:
@@ -308,7 +305,6 @@ def process_tor_source(source_file, output_file, date_str):
                         bridges_by_type[btype].add(content)
 
             else:
-                # Формат без префиксов и заголовков
                 print(f" -> Формат: без префиксов/заголовков, определение по содержимому")
                 for line in lines:
                     stripped = line.strip()
@@ -316,7 +312,6 @@ def process_tor_source(source_file, output_file, date_str):
                         continue
                     parts = stripped.split()
                     if len(parts) >= 2:
-                        # Определяем тип по ключевым словам
                         if 'webtunnel' in stripped.lower():
                             btype = 'webtunnel'
                         elif 'cert=' in stripped:
