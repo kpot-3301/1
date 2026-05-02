@@ -1,7 +1,7 @@
 // --- TG PROXY STATISTICS ---
-// Updated      : 2026-05-02 19:39:30
-// Working (verified): 73
-tg://proxy?server=109.120.189.84&port=443&secret=eedcaae509a2455bbfc6165f1708fd5c586d61782e7275
+// Updated      : 2026-05-02 19:40:52
+// Working (verified): 74
+tg://proxy?server=tg.tgtesla.click&port=443&secret=7k2Ycfkhv5UX8GgSlT2CtpZtYXgucnUhttps://t.me/proxy?server=proxy.vopnbot.org&port=443&secret=7iOHaedClDVkM5ncIRadj_5jbG91ZC5ydQhttps://t.me/proxy?server=proxy.monalisgame.com&port=443&secret=bd5d182c66f93eced64e53dcb5c17003https://t.me/proxy?server=one.nxrhub.run&port=443&secret=7nKHvkdpk6ZxkNvL6UYWezxwaWsucnUhttps://t.me/proxy?server=fastnetgo.ru&port=8443&secret=7qlKUMPbK55kA1GDHovUK7p3d3cuZ29vZ2xlLmNvbQhttps://t.me/proxy?server=nya-nya.top&port=853&secret=7lTOMw5GkMwpfSsDH_PyiLBtdC5ha2VuYWkuY2xpY2shttps://t.me/proxy?server=2.26.53.156&port=443&secret=7l5I8CXHJjXGlqsWamOLzEd5YS5ydQhttps://t.me/proxy?server=prom.sma-it.ru&port=443&secret=7hS-JeFHjFJT7fN5jK6DuUdtYXgucnUhttps://t.me/proxy?server=158.160.253.241&port=8443&secret=734ee77915c1d90f976a82d000052ad5https://t.me/proxy?server=185.130.113.188&port=444&secret=7ukyMzNNCZ86kzlyMa0mcLV5ZWlza21lZGljaW5lLnJ1https://t.me/proxy?server=2.26.78.200&port=853&secret=7gX-R3XRputJ0tP_AbY5l-JtdC5rYW55ZS13ZXN0LnRvcAhttps://t.me/proxy?server=50.7.196.42&port=443&secret=7ttVazDorvw0Q5Vvmpcb3Ox0ZWxlZ3JhbS5jcm9jbmV0LnJ1tg://proxy?server=109.120.189.84&port=443&secret=eedcaae509a2455bbfc6165f1708fd5c586d61782e7275
 tg://proxy?server=84.201.130.131&port=443&secret=eede232b782405cbcdec53508eb349480d6d61782e7275
 tg://proxy?server=158.160.13.181&port=443&secret=ee1c8e6ef721ba2faecf6a09649b275627706574726f766963682e7275
 tg://proxy?server=5.188.143.66&port=443&secret=eedcaae509a2455bbfc6165f1708fd5c586d61782e7275
@@ -22,6 +22,7 @@ tg://proxy?server=84.201.135.111&port=8443&secret=eea1b2c3d4e5f6a7b8c9d0e1f2a3b4
 tg://proxy?server=158.160.188.98&port=8443&secret=dd73675b09ac6690ff559bffa7b39a94c8
 tg://proxy?server=84.201.168.161&port=8443&secret=ddf7d43a5e2ca0a8fa4cec27829869cb6b
 tg://proxy?server=84.201.128.79&port=8443&secret=dd9641066cd9fbf8f4764dcf97cbddfb33
+tg://proxy?server=109.120.189.84&port=443&secret=dddcaae509a2455bbfc6165f1708fd5c58
 tg://proxy?server=5.188.143.247&port=443&secret=ddabe0b41b37a8f24a07a62a1b84be2325
 tg://proxy?server=84.201.171.226&port=8443&secret=922568c9b87927d638c75bb2716c77bb
 tg://proxy?server=158.160.253.241&port=8443&secret=734ee77915c1d90f976a82d000052ad5
