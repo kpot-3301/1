@@ -1,0 +1,2 @@
+# РКП
+https://raw.githubusercontent.com/RKPchannel/RKP_bypass_configs/refs/heads/main/configs/url_work.txt
