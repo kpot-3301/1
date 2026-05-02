@@ -55,11 +55,15 @@ def load_ignore_words():
     if not os.path.exists(IGNOR_FILE):
         print(f"⚠️  Файл {IGNOR_FILE} не найден, фильтрация отключена.")
         return []
-    with open(IGNOR_FILE, 'r', encoding='utf-8') as f:
-        words = [line.strip() for line in f if line.strip()]
+    with open(IGNOR_FILE, 'r', encoding='utf-8-sig') as f:  # utf-8-sig убирает BOM
+        words = []
+        for line in f:
+            line = line.strip()
+            if line:
+                words.append(line)
     print(f"📝 Загружено {len(words)} игнорируемых слов:")
     for w in words:
-        print(f"   -> {repr(w)}")      # показывает точное содержимое, видно пробелы и спецсимволы
+        print(f"   -> {repr(w)}")
     return words
 
 
@@ -68,13 +72,10 @@ def remove_ignored_words(name, ignore_words):
     Удаляет все вхождения каждого слова из ignore_words из строки name.
     Слова удаляются как есть, с учётом регистра и любых символов.
     """
-    original = name
     for word in ignore_words:
+        # Используем регулярное выражение для точного совпадения слова
         name = re.sub(re.escape(word), '', name)
-    cleaned = name.strip()
-    if original != cleaned:
-        print(f"   🧹 Удалено: '{original}' -> '{cleaned}'")
-    return cleaned
+    return name.strip()
 
 
 def extract_host_port(config_str):
@@ -157,20 +158,15 @@ def clean_name_in_key(key, ignore_words):
     # 1. Ключи с '#'
     if '#' in key:
         base_part, encoded_name = key.split('#', 1)
+        # Удаляем возможные хвостовые символы '=' (padding base64)
+        encoded_name = encoded_name.rstrip('=')
         decoded_name = unquote(encoded_name)
-
-        print(f"\n🔍 Ключ: ...{key[-90:]}")
-        print(f"   Закодированное имя : {encoded_name}")
-        print(f"   Декодированное имя  : {decoded_name}")
 
         new_name = remove_ignored_words(decoded_name, ignore_words)
 
         if new_name:
-            result = f"{base_part}#{new_name}"
-            print(f"   ✅ Результат: ...{result[-90:]}")
-            return result
+            return f"{base_part}#{new_name}"
         else:
-            print(f"   ⚠️ Имя полностью удалено")
             return base_part
 
     # 2. vmess:// без '#' — обрабатываем поле 'ps'
