@@ -185,7 +185,10 @@ def process_source(source_file, output_file, header_template, ignore_words, date
 
 
 def process_tg_source(source_file, output_file, datetime_str):
-    """Сбор Telegram-прокси (tg://proxy и https://t.me/proxy)."""
+    """
+    Сбор Telegram-прокси (tg://proxy и https://t.me/proxy).
+    Все https:// ссылки преобразуются в tg://proxy?...
+    """
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
@@ -197,15 +200,21 @@ def process_tg_source(source_file, output_file, datetime_str):
     for url in urls:
         try:
             lines = fetch_subscription(url)
-            tg_lines = [
-                l for l in lines
-                if l.startswith('tg://proxy') or (l.startswith('https://') and 'proxy' in l)
-            ]
-            all_proxies.extend(tg_lines)
-            print(f"[{source_file}] Загружено {len(tg_lines)} прокси из {url}")
+            for line in lines:
+                stripped = line.strip()
+                # Приводим к единому формату
+                if stripped.startswith('https://t.me/proxy?'):
+                    # Меняем только схему и хост, оставляя параметры
+                    converted = re.sub(r'^https://t\.me/proxy\?', 'tg://proxy?', stripped)
+                    all_proxies.append(converted)
+                elif stripped.startswith('tg://proxy'):
+                    all_proxies.append(stripped)
+                # Остальные строки игнорируем
+            print(f"[{source_file}] Загружено {len(all_proxies)} прокси из {url}")
         except Exception as e:
             print(f"[{source_file}] Ошибка загрузки {url}: {e}")
 
+    # Удаление дубликатов по server:port
     seen_hostports = set()
     unique_proxies = []
     for proxy in all_proxies:
@@ -254,7 +263,6 @@ def process_tor_source(source_file, output_file, date_str):
             lines = fetch_subscription(url)
             print(f"[{source_file}] Загружено {len(lines)} строк из {url}")
 
-            # Определяем формат
             prefix_count = 0
             has_sections = False
             for line in lines:
