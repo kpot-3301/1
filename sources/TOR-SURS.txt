@@ -2,4 +2,4 @@
 https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/TOR-BRIDGES/TOR_BRIDGES_ALL.txt
 
 # Delta-Kronecker
-https://github.com/Delta-Kronecker/Tor-Bridges-Collector/blob/main/bridge/vanilla_tested.txt
+https://raw.githubusercontent.com/Delta-Kronecker/Tor-Bridges-Collector/refs/heads/main/bridge/vanilla.txt
