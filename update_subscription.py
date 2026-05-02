@@ -5,6 +5,7 @@ import re
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from urllib.parse import urlparse, unquote, quote
+from collections import OrderedDict
 import requests
 
 # ===== НАСТРОЙКИ ПУТЕЙ =====
@@ -14,11 +15,13 @@ OUTPUT_DIR = "subscriptions"
 SURS_FILE = os.path.join(SOURCES_DIR, "SURS.txt")
 SURS_WHITE_FILE = os.path.join(SOURCES_DIR, "SURS-WHITE.txt")
 TG_SURS_FILE = os.path.join(SOURCES_DIR, "TG-SURS.txt")
+TOR_SURS_FILE = os.path.join(SOURCES_DIR, "TOR-SURS.txt")
 IGNOR_FILE = os.path.join(SOURCES_DIR, "IGNOR-name.txt")
 
 OUTPUT_SURS = os.path.join(OUTPUT_DIR, "🥷КРОТовые ТОННЕЛИ🥷.txt")
 OUTPUT_WHITE = os.path.join(OUTPUT_DIR, "📡КРОТовые ТОННЕЛИ📡.txt")
 OUTPUT_TG = os.path.join(OUTPUT_DIR, "TGproxy.txt")
+OUTPUT_TOR = os.path.join(OUTPUT_DIR, "TOR.txt")
 
 # ===== ШАБЛОНЫ ЗАГОЛОВКОВ =====
 HEADER_SURS = """#profile-title:🥷КРОТовые ТОННЕЛИ🥷
@@ -38,6 +41,11 @@ HEADER_TG = """// --- TG PROXY STATISTICS ---
 // Working (verified): {count}
 """
 
+HEADER_TOR = """=== TOR BRIDGES REPORT ({date}) ===
+Total: {total} | obfs4: {obfs4} | webtunnel: {webtunnel} | vanilla: {vanilla}
+========================================
+"""
+
 # Допустимые протоколы для VPN-ключей
 VALID_PROTOCOLS = re.compile(
     r'^(vmess|vless|trojan|ss|ssr|hysteria2|hysteria|tuic|socks5|http|https)://'
@@ -45,7 +53,6 @@ VALID_PROTOCOLS = re.compile(
 
 
 def load_ignore_words():
-    """Читает файл со словами для вырезания, возвращает список."""
     if not os.path.exists(IGNOR_FILE):
         return []
     with open(IGNOR_FILE, 'r', encoding='utf-8') as f:
@@ -53,24 +60,17 @@ def load_ignore_words():
 
 
 def remove_ignored_words(name, ignore_words):
-    """Удаляет все вхождения запрещённых слов из строки (без учёта регистра)."""
     for word in ignore_words:
         name = re.sub(re.escape(word), '', name, flags=re.IGNORECASE)
     return name.strip()
 
 
 def extract_host_port(config_str):
-    """
-    Извлекает хост и порт из VPN-ключа.
-    Поддерживает vmess://, vless://, trojan://, ss://, ssr://, hysteria2:// и другие.
-    Возвращает 'host:port' или None.
-    """
     if config_str.startswith('vmess://'):
         try:
             b64_part = config_str[8:]
             if '#' in b64_part:
                 b64_part = b64_part.split('#')[0]
-            # Добавляем padding при необходимости
             missing_padding = len(b64_part) % 4
             if missing_padding:
                 b64_part += '=' * (4 - missing_padding)
@@ -95,7 +95,6 @@ def extract_host_port(config_str):
                 port = parsed.port
                 if host and port:
                     return f"{host}:{port}"
-                # Особый случай ss://
                 if proto == 'ss://':
                     match = re.search(r'@([^:]+):(\d+)', main_part)
                     if match:
@@ -103,7 +102,6 @@ def extract_host_port(config_str):
             except Exception:
                 pass
 
-    # Резервный поиск по @хост:порт
     match = re.search(r'@([^:\[\]]+):(\d+)', config_str.split('#')[0])
     if match:
         return f"{match.group(1)}:{match.group(2)}"
@@ -111,20 +109,13 @@ def extract_host_port(config_str):
 
 
 def fetch_subscription(url):
-    """
-    Скачивает подписку по URL.
-    При необходимости декодирует из base64.
-    Возвращает список непустых строк.
-    """
     resp = requests.get(url, timeout=30)
     content = resp.text.strip()
-    # Попытка base64-декодирования
     try:
         missing = len(content) % 4
         if missing:
             content += '=' * (4 - missing)
         decoded = base64.b64decode(content).decode('utf-8')
-        # Если есть типичные протоколы, считаем, что расшифровали
         if any(p in decoded for p in ['vmess://', 'vless://', 'trojan://', 'ss://', 'ssr://', 'tg://proxy']):
             content = decoded
     except Exception:
@@ -133,12 +124,6 @@ def fetch_subscription(url):
 
 
 def process_source(source_file, output_file, header_template, ignore_words, datetime_str):
-    """
-    Обрабатывает источники VPN-ключей (SURS.txt / SURS-WHITE.txt):
-    - скачивает, удаляет дубликаты, чистит названия,
-    - оставляет только строки с валидными протоколами,
-    - записывает результат с заданным заголовком.
-    """
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
@@ -155,7 +140,6 @@ def process_source(source_file, output_file, header_template, ignore_words, date
         except Exception as e:
             print(f"[{source_file}] Ошибка загрузки {url}: {e}")
 
-    # Удаление дубликатов по host:port
     seen_hostports = set()
     unique_keys = []
     for key in all_keys:
@@ -165,7 +149,6 @@ def process_source(source_file, output_file, header_template, ignore_words, date
             if hp:
                 seen_hostports.add(hp)
 
-    # Очистка названий от запрещённых слов (с учётом URL-кодирования)
     cleaned_keys = []
     for key in unique_keys:
         if '#' in key:
@@ -180,10 +163,8 @@ def process_source(source_file, output_file, header_template, ignore_words, date
         else:
             cleaned_keys.append(key)
 
-    # Оставляем только ключи с разрешёнными протоколами
     final_keys = [k for k in cleaned_keys if VALID_PROTOCOLS.match(k)]
 
-    # Гарантируем существование выходной папки
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
     header = header_template.format(count=len(final_keys), datetime=datetime_str)
     with open(output_file, 'w', encoding='utf-8') as f:
@@ -194,12 +175,6 @@ def process_source(source_file, output_file, header_template, ignore_words, date
 
 
 def process_tg_source(source_file, output_file, datetime_str):
-    """
-    Обрабатывает источники Telegram-прокси (TG-SURS.txt):
-    - скачивает, оставляет только строки tg://proxy,
-    - удаляет дубликаты по server:port,
-    - записывает результат с нужным заголовком.
-    """
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
@@ -217,7 +192,6 @@ def process_tg_source(source_file, output_file, datetime_str):
         except Exception as e:
             print(f"[{source_file}] Ошибка загрузки {url}: {e}")
 
-    # Удаление дубликатов по server:port
     seen_hostports = set()
     unique_proxies = []
     for proxy in all_proxies:
@@ -229,7 +203,6 @@ def process_tg_source(source_file, output_file, datetime_str):
                 seen_hostports.add(hp)
                 unique_proxies.append(proxy)
         else:
-            # Если не удалось извлечь, всё равно сохраняем
             unique_proxies.append(proxy)
 
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
@@ -241,38 +214,78 @@ def process_tg_source(source_file, output_file, datetime_str):
     print(f"✅ Создан файл {output_file} с {len(unique_proxies)} прокси.")
 
 
+def process_tor_source(source_file, output_file, date_str):
+    """Сбор и сохранение мостов Tor."""
+    if not os.path.exists(source_file):
+        print(f"⚠️ Файл {source_file} не найден, пропускаю.")
+        return
+
+    with open(source_file, 'r', encoding='utf-8') as f:
+        urls = [line.strip() for line in f if line.strip()]
+
+    all_bridges = []
+    for url in urls:
+        try:
+            lines = fetch_subscription(url)
+            # Оставляем только строки, начинающиеся с типов мостов
+            bridge_lines = [
+                l for l in lines
+                if re.match(r'^(obfs4|webtunnel|vanilla)\s+', l)
+            ]
+            all_bridges.extend(bridge_lines)
+            print(f"[{source_file}] Загружено {len(bridge_lines)} мостов из {url}")
+        except Exception as e:
+            print(f"[{source_file}] Ошибка загрузки {url}: {e}")
+
+    # Удаление точных дубликатов
+    unique_bridges = list(OrderedDict.fromkeys(all_bridges))
+
+    # Подсчёт по типам и группировка
+    types = ['obfs4', 'webtunnel', 'vanilla']
+    counts = {t: 0 for t in types}
+    grouped = {t: [] for t in types}
+
+    for bridge in unique_bridges:
+        # Извлекаем тип (первое слово до пробела)
+        bridge_type = bridge.split()[0]
+        if bridge_type in counts:
+            counts[bridge_type] += 1
+            grouped[bridge_type].append(bridge)
+
+    # Формируем файл
+    os.makedirs(os.path.dirname(output_file), exist_ok=True)
+    header = HEADER_TOR.format(
+        date=date_str,
+        total=len(unique_bridges),
+        obfs4=counts['obfs4'],
+        webtunnel=counts['webtunnel'],
+        vanilla=counts['vanilla']
+    )
+
+    with open(output_file, 'w', encoding='utf-8') as f:
+        f.write(header)
+        # Выводим группы, если в них есть мосты
+        for t in types:
+            if grouped[t]:
+                f.write(f"\n#{t}\n")
+                f.write('\n'.join(grouped[t]))
+                f.write('\n')
+
+    print(f"✅ Создан файл {output_file} с {len(unique_bridges)} мостами.")
+
+
 def main():
     ignore_words = load_ignore_words()
 
-    # Время по Екатеринбургу
     now_ekb = datetime.now(ZoneInfo("Asia/Yekaterinburg"))
-    datetime_str_main = now_ekb.strftime("%d-%m-%Y %H:%M")      # для VPN-файлов
-    datetime_str_tg = now_ekb.strftime("%Y-%m-%d %H:%M:%S")    # для TGproxy
+    datetime_str_main = now_ekb.strftime("%d-%m-%Y %H:%M")
+    datetime_str_tg = now_ekb.strftime("%Y-%m-%d %H:%M:%S")
+    date_str_tor = now_ekb.strftime("%Y-%m-%d")   # только дата
 
-    # Обработка основного источника
-    process_source(
-        source_file=SURS_FILE,
-        output_file=OUTPUT_SURS,
-        header_template=HEADER_SURS,
-        ignore_words=ignore_words,
-        datetime_str=datetime_str_main
-    )
-
-    # Обработка дополнительного источника
-    process_source(
-        source_file=SURS_WHITE_FILE,
-        output_file=OUTPUT_WHITE,
-        header_template=HEADER_WHITE,
-        ignore_words=ignore_words,
-        datetime_str=datetime_str_main
-    )
-
-    # Обработка Telegram-прокси
-    process_tg_source(
-        source_file=TG_SURS_FILE,
-        output_file=OUTPUT_TG,
-        datetime_str=datetime_str_tg
-    )
+    process_source(SURS_FILE, OUTPUT_SURS, HEADER_SURS, ignore_words, datetime_str_main)
+    process_source(SURS_WHITE_FILE, OUTPUT_WHITE, HEADER_WHITE, ignore_words, datetime_str_main)
+    process_tg_source(TG_SURS_FILE, OUTPUT_TG, datetime_str_tg)
+    process_tor_source(TOR_SURS_FILE, OUTPUT_TOR, date_str_tor)
 
 
 if __name__ == "__main__":
