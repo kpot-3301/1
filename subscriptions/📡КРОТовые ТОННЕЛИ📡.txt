@@ -1,7 +1,7 @@
 #profile-title:📡КРОТовые ТОННЕЛИ📡
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 433 | 📅 02-05-2026 19:33
+#announce:ТОННЕЛЕЙ: 433 | 📅 02-05-2026 19:34
 vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@89.208.231.81:993?alpn=http/1.1&encryption=none&flow=xtls-rprx-vision&fp=chrome&headerType=none":&pbk=mAu8QDi3pbmMCFg9kKC-ZBIHdtnXeCuZt3VnAw6vlH4&security=reality&sid=ad7dab462a323acb&sni=max.ru&type=tcp#SNI%3A%20max.ru%20%5B%23%D0%A0%D0%9A%D0%9F%5D
 vless://75807638-6f19-1f40-ae08-38492ee85c88@178.72.181.25:52006?encryption=none&flow=xtls-rprx-vision-udp443&security=tls&sni=cluster-europe-1.firstvideocdn.ru&fp=chrome&insecure=1&allowInsecure=1&type=tcp&headerType=none#SNI%3A%20cluster-europe-1.firstvideocdn.ru%20%5B%23%D0%A0%D0%9A%D0%9F%5D
 vless://75807638-6f19-01f4-ae08-38492ee85c88@cl-de-2.edgeflux.ru:52006?encryption=none&flow=xtls-rprx-vision&security=tls&sni=cl-de-2.edgeflux.ru&fp=chrome&insecure=1&allowInsecure=1&type=tcp&headerType=none#SNI%3A%20cl-de-2.edgeflux.ru%20%5B%23%D0%A0%D0%9A%D0%9F%5D
