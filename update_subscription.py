@@ -2,6 +2,7 @@ import base64
 import re
 import os
 from datetime import datetime
+from zoneinfo import ZoneInfo          # для часового пояса
 from urllib.parse import urlparse, unquote, quote
 import requests
 
@@ -184,7 +185,8 @@ def process_source(source_file, output_file, header_template, ignore_words, date
 
 def main():
     ignore_words = load_ignore_words()
-    now = datetime.now()
+    # Время по Екатеринбургу (UTC+5)
+    now = datetime.now(ZoneInfo("Asia/Yekaterinburg"))
     datetime_str = now.strftime("%d-%m-%Y %H:%M")
 
     # Основной источник → 🥷КРОТовые ТОННЕЛИ🥷.txt
