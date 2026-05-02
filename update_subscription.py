@@ -20,6 +20,11 @@ HEADER_WHITE = """#profile-title:📡КРОТовые ТОННЕЛИ📡
 
 IGNOR_FILE = "IGNOR-name.txt"
 
+# Допустимые протоколы
+VALID_PROTOCOLS = re.compile(
+    r'^(vmess|vless|trojan|ss|ssr|hysteria2|hysteria|tuic|socks5|http|https)://'
+)
+
 
 def load_ignore_words():
     """Читает файл со словами для вырезания, возвращает список."""
@@ -38,8 +43,9 @@ def remove_ignored_words(name, ignore_words):
 
 def extract_host_port(config_str):
     """
-    Пытается извлечь адрес (или IP) и порт из строки конфигурации.
-    Поддерживает vmess://, vless://, trojan://, ss://, ssr://, hysteria2:// и т.д.
+    Извлекает адрес и порт из строки ключа.
+    Поддерживает vmess:// (json в base64), vless://, trojan://, ss://, ssr://, 
+    hysteria2:// и другие протоколы.
     Возвращает строку "host:port" или None.
     """
     if config_str.startswith('vmess://'):
@@ -61,8 +67,9 @@ def extract_host_port(config_str):
             pass
         return None
 
-    for proto in ['vless://','trojan://','ss://','ssr://','hysteria2://','hysteria://','tuic://',
-                  'socks5://','http://','https://']:
+    for proto in ['vless://', 'trojan://', 'ss://', 'ssr://',
+                  'hysteria2://', 'hysteria://', 'tuic://',
+                  'socks5://', 'http://', 'https://']:
         if config_str.startswith(proto):
             try:
                 main_part = config_str.split('#')[0]
@@ -71,6 +78,7 @@ def extract_host_port(config_str):
                 port = parsed.port
                 if host and port:
                     return f"{host}:{port}"
+                # Особый случай ss://
                 if proto == 'ss://':
                     match = re.search(r'@([^:]+):(\d+)', main_part)
                     if match:
@@ -78,6 +86,7 @@ def extract_host_port(config_str):
             except:
                 pass
 
+    # Резервный поиск через @
     match = re.search(r'@([^:\[\]]+):(\d+)', config_str.split('#')[0])
     if match:
         return f"{match.group(1)}:{match.group(2)}"
@@ -85,39 +94,44 @@ def extract_host_port(config_str):
 
 
 def fetch_subscription(url):
-    """Скачивает подписку по URL, при необходимости декодирует base64,
-    возвращает список строк-ключей."""
+    """
+    Скачивает подписку по URL.
+    Пытается декодировать из base64, если содержимое закодировано.
+    Возвращает список строк (ключи + возможные комментарии).
+    """
     resp = requests.get(url, timeout=30)
     content = resp.text.strip()
+    # Попытка base64-декодирования
     try:
         missing = len(content) % 4
         if missing:
             content += '=' * (4 - missing)
         decoded = base64.b64decode(content).decode('utf-8')
-        if any(proto in decoded for proto in ['vmess://','vless://','trojan://','ss://','ssr://']):
+        # Проверяем, что в результате есть ключи
+        if any(proto in decoded for proto in ['vmess://', 'vless://', 'trojan://', 'ss://', 'ssr://']):
             content = decoded
     except:
         pass
-    lines = [line.strip() for line in content.splitlines() if line.strip()]
-    return lines
+    return [line.strip() for line in content.splitlines() if line.strip()]
 
 
 def process_source(source_file, output_file, header_template, ignore_words, datetime_str):
     """
-    source_file – имя файла со списком URL (например, SURS.txt)
-    output_file – имя выходного файла
-    header_template – строка с плейсхолдерами {count} и {datetime}
-    datetime_str – готовая строка даты/времени
+    Обрабатывает файл со списком URL подписок:
+    - скачивает все ключи,
+    - удаляет дубли по host:port,
+    - вырезает запрещённые слова из названий,
+    - оставляет только валидные ключи (начинающиеся с протокола),
+    - записывает результат в output_file с заданным заголовком.
     """
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
 
-    # Читаем URL
+    # Читаем список URL
     with open(source_file, 'r', encoding='utf-8') as f:
         urls = [line.strip() for line in f if line.strip()]
 
-    # Скачиваем все ключи
     all_keys = []
     for url in urls:
         try:
@@ -127,7 +141,7 @@ def process_source(source_file, output_file, header_template, ignore_words, date
         except Exception as e:
             print(f"[{source_file}] Ошибка загрузки {url}: {e}")
 
-    # Удаляем дубликаты по хост:порт
+    # Удаление дубликатов по хост:порт
     seen_hostports = set()
     unique_keys = []
     for key in all_keys:
@@ -137,18 +151,20 @@ def process_source(source_file, output_file, header_template, ignore_words, date
             if hp:
                 seen_hostports.add(hp)
 
-    # Очищаем названия
-    final_keys = []
+    # Очистка названий от запрещённых слов
+    cleaned_keys = []
     for key in unique_keys:
         if '#' in key:
             base_part, name = key.split('#', 1)
-            cleaned_name = remove_ignored_words(name, ignore_words)
-            new_key = f"{base_part}#{cleaned_name}" if cleaned_name else base_part
-            final_keys.append(new_key)
+            new_name = remove_ignored_words(name, ignore_words)
+            cleaned_keys.append(f"{base_part}#{new_name}" if new_name else base_part)
         else:
-            final_keys.append(key)
+            cleaned_keys.append(key)
 
-    # Записываем файл
+    # Фильтр: оставляем только строки, начинающиеся с протокола
+    final_keys = [k for k in cleaned_keys if VALID_PROTOCOLS.match(k)]
+
+    # Запись в файл
     header = header_template.format(count=len(final_keys), datetime=datetime_str)
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(header)
@@ -162,7 +178,7 @@ def main():
     now = datetime.now()
     datetime_str = now.strftime("%d-%m-%Y %H:%M")
 
-    # Обработка основного источника
+    # Основной источник → 🥷КРОТовые ТОННЕЛИ🥷.txt
     process_source(
         source_file="SURS.txt",
         output_file="🥷КРОТовые ТОННЕЛИ🥷.txt",
@@ -171,7 +187,7 @@ def main():
         datetime_str=datetime_str
     )
 
-    # Обработка дополнительного источника (WHITE)
+    # Дополнительный источник → 📡КРОТовые ТОННЕЛИ📡.txt
     process_source(
         source_file="SURS-WHITE.txt",
         output_file="📡КРОТовые ТОННЕЛИ📡.txt",
