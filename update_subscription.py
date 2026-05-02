@@ -51,17 +51,19 @@ VALID_PROTOCOLS = re.compile(
 
 
 def load_ignore_words():
-    """Читает список игнорируемых слов из IGNOR-name.txt (по одному на строку)."""
+    """Читает список игнорируемых слов из IGNOR-name.txt, каждое слово с новой строки."""
     if not os.path.exists(IGNOR_FILE):
+        print(f"⚠️  Файл {IGNOR_FILE} не найден, фильтрация отключена.")
         return []
     with open(IGNOR_FILE, 'r', encoding='utf-8') as f:
-        return [line.strip() for line in f if line.strip()]
+        words = [line.strip() for line in f if line.strip()]
+    print(f"📝 Загружено игнорируемых слов: {len(words)}")
+    return words
 
 
 def remove_ignored_words(name, ignore_words):
-    """Удаляет все вхождения игнорируемых слов из имени (с учётом регистра)."""
+    """Удаляет все точные вхождения игнорируемых слов из строки (с учётом регистра)."""
     for word in ignore_words:
-        # re.escape() чтобы корректно обрабатывались скобки, звёзды и т.п.
         name = re.sub(re.escape(word), '', name)
     return name.strip()
 
@@ -111,7 +113,7 @@ def extract_host_port(config_str):
 
 
 def convert_github_url(url):
-    """Превращает github.com/blob/ в raw.githubusercontent.com."""
+    """Преобразует github.com/blob/ в raw.githubusercontent.com."""
     match = re.match(r'https://github\.com/([^/]+)/([^/]+)/blob/([^/]+)/(.*)', url)
     if match:
         user, repo, branch, path = match.groups()
@@ -122,7 +124,9 @@ def convert_github_url(url):
 def fetch_subscription(url):
     """Скачивает подписку, при необходимости декодирует base64."""
     raw_url = convert_github_url(url)
+    print(f"  Загрузка: {raw_url}")
     resp = requests.get(raw_url, timeout=30)
+    resp.encoding = 'utf-8'
     content = resp.text.strip()
     try:
         missing = len(content) % 4
@@ -132,25 +136,30 @@ def fetch_subscription(url):
         content = decoded
     except Exception:
         pass
-    return [line.strip() for line in content.splitlines() if line.strip()]
+    lines = [line.strip() for line in content.splitlines() if line.strip()]
+    return lines
 
 
 def clean_name_in_key(key, ignore_words):
     """
-    Очищает имя ключа от игнорируемых слов.
-    Результат – с читаемым (НЕ ЗАКОДИРОВАННЫМ) именем.
+    Удаляет игнорируемые слова из имени ключа.
+    Возвращает ключ с читаемым (НЕ ЗАКОДИРОВАННЫМ) именем.
     """
-    # 1. Ключи с '#' – берём последний фрагмент и делаем его читаемым
+    # 1. Ключи с '#'
     if '#' in key:
         base_part, encoded_name = key.rsplit('#', 1)
-        decoded_name = unquote(encoded_name)          # превращаем %XX в символы
+        # Декодируем %XX → обычные символы
+        decoded_name = unquote(encoded_name)
+        # Удаляем игнорируемые слова
         new_name = remove_ignored_words(decoded_name, ignore_words)
         if new_name:
-            return f"{base_part}#{new_name}"          # без повторного кодирования!
+            # Собираем обратно БЕЗ повторного кодирования
+            return f"{base_part}#{new_name}"
         else:
-            return base_part                          # имя полностью удалено
+            # Если имя полностью удалено, возвращаем ключ без имени
+            return base_part
 
-    # 2. vmess:// без '#' – обрабатываем внутреннее поле "ps"
+    # 2. vmess:// без '#', работаем с полем 'ps'
     if key.startswith('vmess://'):
         try:
             b64_part = key[8:]
@@ -163,7 +172,7 @@ def clean_name_in_key(key, ignore_words):
             vmess = json.loads(decoded)
             ps = vmess.get('ps', '')
             if ps:
-                decoded_ps = unquote(ps)               # на случай, если ps тоже закодирован
+                decoded_ps = unquote(ps)  # на случай, если ps тоже закодирован
                 new_ps = remove_ignored_words(decoded_ps, ignore_words)
                 if new_ps != ps:
                     vmess['ps'] = new_ps
@@ -179,7 +188,7 @@ def clean_name_in_key(key, ignore_words):
 
 
 def classify_bridge(line: str):
-    """Определяет тип Tor-моста по строке."""
+    """Определяет тип Tor-моста."""
     stripped = line.strip()
     if not stripped:
         return None
@@ -211,9 +220,9 @@ def process_source(source_file, output_file, header_template, ignore_words, date
         try:
             keys = fetch_subscription(url)
             all_keys.extend(keys)
-            print(f"[{os.path.basename(source_file)}] Загружено {len(keys)} ключей из {url}")
+            print(f"  ✅ Получено {len(keys)} ключей")
         except Exception as e:
-            print(f"[{os.path.basename(source_file)}] Ошибка загрузки {url}: {e}")
+            print(f"  ❌ Ошибка загрузки {url}: {e}")
 
     # Удаление дубликатов по host:port
     seen_hostports = set()
@@ -225,12 +234,17 @@ def process_source(source_file, output_file, header_template, ignore_words, date
             if hp:
                 seen_hostports.add(hp)
 
-    # Очистка имён – теперь результат всегда с читаемыми именами
-    cleaned_keys = [clean_name_in_key(k, ignore_words) for k in unique_keys]
+    # Очистка имён (с декодированием и удалением игнорируемых слов)
+    cleaned_keys = []
+    for k in unique_keys:
+        cleaned = clean_name_in_key(k, ignore_words)
+        cleaned_keys.append(cleaned)
 
     # Фильтрация по допустимым протоколам
-    final_keys = [k for k in cleaned_keys if VALID_PROTOCOLS.match(k.split('#')[0])]
+    final_keys = [k for k in cleaned_keys if VALID_PROTOCOLS.match(k)]
+    print(f"  🧹 После фильтрации: {len(final_keys)} ключей")
 
+    # Запись результата
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
     header = header_template.format(count=len(final_keys), datetime=datetime_str)
     with open(output_file, 'w', encoding='utf-8') as f:
@@ -260,9 +274,9 @@ def process_tg_source(source_file, output_file, datetime_str):
                     all_proxies.append(converted)
                 elif stripped.startswith('tg://proxy'):
                     all_proxies.append(stripped)
-            print(f"[TG] Загружено {len(all_proxies)} прокси из {url}")
+            print(f"  ✅ Получено {len(lines)} строк")
         except Exception as e:
-            print(f"[TG] Ошибка загрузки {url}: {e}")
+            print(f"  ❌ Ошибка загрузки {url}: {e}")
 
     # Дедупликация по server:port
     seen_hostports = set()
@@ -300,7 +314,7 @@ def process_tor_source(source_file, output_file, date_str):
     for url in urls:
         try:
             lines = fetch_subscription(url)
-            print(f"[TOR] Загружено {len(lines)} строк из {url}")
+            print(f"  ✅ Получено {len(lines)} строк")
             for line in lines:
                 stripped = line.strip()
                 if not stripped or stripped.startswith('#') or stripped.startswith('//'):
@@ -311,7 +325,7 @@ def process_tor_source(source_file, output_file, date_str):
                 elif re.match(r'^\d+\.\d+\.\d+\.\d+:\d+$', stripped):
                     bridges_by_type['vanilla'].add(stripped)
         except Exception as e:
-            print(f"[TOR] Ошибка загрузки {url}: {e}")
+            print(f"  ❌ Ошибка загрузки {url}: {e}")
 
     types = ['obfs4', 'webtunnel', 'vanilla']
     counts = {t: len(bridges_by_type[t]) for t in types}
@@ -345,10 +359,19 @@ def main():
     datetime_str_tg = now_ekb.strftime("%Y-%m-%d %H:%M:%S")
     date_str_tor = now_ekb.strftime("%Y-%m-%d")
 
+    print("\n===== 🥷 SURS ===================================")
     process_source(SURS_FILE, OUTPUT_SURS, HEADER_SURS, ignore_words, datetime_str_main)
+
+    print("\n===== 📡 SURS-WHITE ===============================")
     process_source(SURS_WHITE_FILE, OUTPUT_WHITE, HEADER_WHITE, ignore_words, datetime_str_main)
+
+    print("\n===== ✈️ TG PROXY =================================")
     process_tg_source(TG_SURS_FILE, OUTPUT_TG, datetime_str_tg)
+
+    print("\n===== 🧅 TOR BRIDGES =============================")
     process_tor_source(TOR_SURS_FILE, OUTPUT_TOR, date_str_tor)
+
+    print("\n🎉 Все подписки обновлены!")
 
 
 if __name__ == "__main__":
