@@ -1,7 +1,7 @@
 #profile-title:📡КРОТовые ТОННЕЛИ📡
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 522 | 📅 02-05-2026 21:25
+#announce:ТОННЕЛЕЙ: 522 | 📅 02-05-2026 21:29
 vless://75807638-6f19-1f40-ae08-38492ee85c88@178.72.181.25:52006?encryption=none&flow=xtls-rprx-vision-udp443&security=tls&sni=cluster-europe-1.firstvideocdn.ru&fp=chrome&insecure=1&allowInsecure=1&type=tcp&headerType=none#SNI: cluster-europe-1.firstvideocdn.ru [#РКП]
 vless://75807638-6f19-01f4-ae08-38492ee85c88@cl-de-2.edgeflux.ru:52006?encryption=none&flow=xtls-rprx-vision&security=tls&sni=cl-de-2.edgeflux.ru&fp=chrome&insecure=1&allowInsecure=1&type=tcp&headerType=none#SNI: cl-de-2.edgeflux.ru [#РКП]
 vless://322ffd77-9adc-4e10-8302-a8bcc14555a0@130.193.51.160.muslimtr.ru:40002?encryption=none&flow=xtls-rprx-vision&type=tcp&security=reality&sni=max.ru&fp=qq&pbk=U-esiG1FGjonT2tMw600SwQj5DkeP29i4oRU-t0ZLVY&sid=c6118379#SNI: max.ru [#РКП]
@@ -523,4 +523,4 @@ vless://37bcd084-a17c-44da-9868-ad5c4632cf8c@176.114.124.24:4356?type=tcp&securi
 vless://7e7452f2-1004-45ed-a55a-f9d474e152c7@176.114.122.24:4436?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&sni=hh.ru#TCP, HH [#РКП]
 vless://fc835978-8121-414f-b3dd-2dc2ec56b8f7@185.31.113.54:4355?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&sni=ads.x5.ru#TCP, Пятёрочка [#РКП]
 vless://37bcd084-a17c-44da-9868-ad5c4632cf8c@176.114.122.2:4359?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&sni=max.ru#TCP, Max [#РКП]
-vless://7e7452f2-1004-45ed-a55a-f9d474e152c7@176.114.124.6:4424?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&sni=api.maps-yandex.ru#TCP, Яндекс Карты [#РКП]==
+vless://7e7452f2-1004-45ed-a55a-f9d474e152c7@176.114.124.6:4424?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&sni=api.maps-yandex.ru#TCP, Яндекс Карты [#РКП]
