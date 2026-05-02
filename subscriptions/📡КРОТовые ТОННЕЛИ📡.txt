@@ -1,7 +1,7 @@
 #profile-title:📡КРОТовые ТОННЕЛИ📡
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 277 | 📅 02-05-2026 16:48
+#announce:ТОННЕЛЕЙ: 277 | 📅 02-05-2026 16:49
 vless://75807638-6f19-01f4-ae08-38492ee85c88@cl-de-2.edgeflux.ru:52006?encryption=none&flow=xtls-rprx-vision&security=tls&sni=cl-de-2.edgeflux.ru&fp=chrome&insecure=1&allowInsecure=1&type=tcp&headerType=none#SNI%3A%20cl-de-2.edgeflux.ru%20%5B%23%D0%A0%D0%9A%D0%9F%5D
 vless://e77535c8-f896-4f69-acd0-91484e94957f@nt2.kavkaz-market.tech:443?type=tcp&security=reality&flow=xtls-rprx-vision&fp=chrome&pbk=rh2IgXc0vtXZ3euLtMP8RUlnmBc_4ftYBuL5Z0udk2A&sni=max.ru&alpn=http/1.1&headerType=none,#SNI%3A%20max.ru%20%5B%23%D0%A0%D0%9A%D0%9F%5D
 vless://8ef19221-6d5e-4bce-baa1-7c043eae3309@157.22.178.212:443?flow=xtls-rprx-vision&fp=chrome&headerType=none&host=stats.vk-portal.net&path=/&pbk=6eN2NciEaZis5J4muRRqpfLQ1OglI3A8lNSTmAGo6Do&security=reality&sid=3c6fc84d&sni=stats.vk-portal.net&type=tcp#SNI%3A%20stats.vk-portal.net%20%5B%23%D0%A0%D0%9A%D0%9F%5D
