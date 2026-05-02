@@ -215,7 +215,7 @@ def process_tg_source(source_file, output_file, datetime_str):
 
 
 def process_tor_source(source_file, output_file, date_str):
-    """Сбор и сохранение мостов Tor."""
+    """Поиск мостов Tor по прямым префиксам obfs4, vanilla, webtunnel (без заголовков секций)."""
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
@@ -223,40 +223,40 @@ def process_tor_source(source_file, output_file, date_str):
     with open(source_file, 'r', encoding='utf-8') as f:
         urls = [line.strip() for line in f if line.strip()]
 
-    all_bridges = []
+    # Собираем мосты по типам, используем set для автоматического удаления дубликатов
+    bridges_by_type = {
+        'obfs4': set(),
+        'vanilla': set(),
+        'webtunnel': set()
+    }
+
+    # Регулярка для поиска строк, начинающихся с типа моста (регистронезависимо)
+    bridge_pattern = re.compile(r'^(obfs4|vanilla|webtunnel)\b', re.IGNORECASE)
+
     for url in urls:
         try:
             lines = fetch_subscription(url)
-            # Оставляем только строки, начинающиеся с типов мостов
-            bridge_lines = [
-                l for l in lines
-                if re.match(r'^(obfs4|webtunnel|vanilla)\s+', l)
-            ]
-            all_bridges.extend(bridge_lines)
-            print(f"[{source_file}] Загружено {len(bridge_lines)} мостов из {url}")
+            print(f"[{source_file}] Загружено {len(lines)} строк из {url}")
+            for line in lines:
+                stripped = line.strip()
+                match = bridge_pattern.match(stripped)
+                if match:
+                    btype = match.group(1).lower()   # obfs4, vanilla или webtunnel
+                    # Можно сохранять строку как есть, либо убирать префикс, если он уже есть,
+                    # чтобы записать потом единообразно. Оставим как есть — в выходном файле тоже будут префиксы.
+                    bridges_by_type[btype].add(stripped)
         except Exception as e:
             print(f"[{source_file}] Ошибка загрузки {url}: {e}")
 
-    # Удаление точных дубликатов
-    unique_bridges = list(OrderedDict.fromkeys(all_bridges))
-
-    # Подсчёт по типам и группировка
+    # Подсчёт
     types = ['obfs4', 'webtunnel', 'vanilla']
-    counts = {t: 0 for t in types}
-    grouped = {t: [] for t in types}
+    counts = {t: len(bridges_by_type[t]) for t in types}
+    total = sum(counts.values())
 
-    for bridge in unique_bridges:
-        # Извлекаем тип (первое слово до пробела)
-        bridge_type = bridge.split()[0]
-        if bridge_type in counts:
-            counts[bridge_type] += 1
-            grouped[bridge_type].append(bridge)
-
-    # Формируем файл
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
     header = HEADER_TOR.format(
         date=date_str,
-        total=len(unique_bridges),
+        total=total,
         obfs4=counts['obfs4'],
         webtunnel=counts['webtunnel'],
         vanilla=counts['vanilla']
@@ -264,14 +264,13 @@ def process_tor_source(source_file, output_file, date_str):
 
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(header)
-        # Выводим группы, если в них есть мосты
         for t in types:
-            if grouped[t]:
+            if bridges_by_type[t]:
                 f.write(f"\n#{t}\n")
-                f.write('\n'.join(grouped[t]))
+                f.write('\n'.join(sorted(bridges_by_type[t])))
                 f.write('\n')
 
-    print(f"✅ Создан файл {output_file} с {len(unique_bridges)} мостами.")
+    print(f"✅ Создан файл {output_file} с {total} мостами.")
 
 
 def main():
@@ -280,7 +279,7 @@ def main():
     now_ekb = datetime.now(ZoneInfo("Asia/Yekaterinburg"))
     datetime_str_main = now_ekb.strftime("%d-%m-%Y %H:%M")
     datetime_str_tg = now_ekb.strftime("%Y-%m-%d %H:%M:%S")
-    date_str_tor = now_ekb.strftime("%Y-%m-%d")   # только дата
+    date_str_tor = now_ekb.strftime("%Y-%m-%d")
 
     process_source(SURS_FILE, OUTPUT_SURS, HEADER_SURS, ignore_words, datetime_str_main)
     process_source(SURS_WHITE_FILE, OUTPUT_WHITE, HEADER_WHITE, ignore_words, datetime_str_main)
