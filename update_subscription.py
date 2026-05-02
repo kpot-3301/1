@@ -62,7 +62,6 @@ def load_ignore_words():
 def remove_ignored_words(name, ignore_words):
     """Удаляет все вхождения игнорируемых слов из строки (с учётом регистра)."""
     for word in ignore_words:
-        # re.escape(word) чтобы спецсимволы не ломали регулярку
         name = re.sub(re.escape(word), '', name)
     return name.strip()
 
@@ -138,23 +137,31 @@ def fetch_subscription(url):
 
 def clean_name_in_key(key, ignore_words):
     """
-    Универсальная очистка имени ключа:
-    - Если есть фрагмент '#', имя декодируется (unquote) и чистится.
-    - Для vmess:// без '#' обрабатывается поле 'ps' в JSON.
-    - Для остальных протоколов без '#' возвращается без изменений.
+    Гарантированно очищает имя ключа от игнорируемых слов.
+    Обрабатывает:
+      - явный '#' (даже если внутри имени есть закодированный '%23')
+      - vmess:// без '#' (поле 'ps')
+      - любые другие протоколы с '#'
     """
-    # Случай 1: есть '#'
+    # Случай 1: есть '#' – пытаемся отделить последний фрагмент как имя
     if '#' in key:
-        base_part, name = key.split('#', 1)
-        decoded_name = unquote(name)          # декодируем %XX
+        try:
+            # Разделяем по последнему символу '#' — это гарантирует, что мы не
+            # споткнёмся о возможные '#' внутри закодированного имени.
+            base_part, encoded_name = key.rsplit('#', 1)
+        except ValueError:
+            return key  # не должно происходить, но на всякий случай
+
+        # Декодируем %XX, в т.ч. %23 → #
+        decoded_name = unquote(encoded_name)
         new_name = remove_ignored_words(decoded_name, ignore_words)
         if new_name:
-            encoded_name = quote(new_name, safe='')
-            return f"{base_part}#{encoded_name}"
+            # Кодируем обратно (new_name может быть пустым после удаления)
+            return f"{base_part}#{quote(new_name, safe='')}"
         else:
             return base_part
 
-    # Случай 2: vmess:// без '#', работаем с полем 'ps'
+    # Случай 2: vmess:// без '#' – обрабатываем поле 'ps' в JSON
     if key.startswith('vmess://'):
         try:
             b64_part = key[8:]
@@ -167,8 +174,9 @@ def clean_name_in_key(key, ignore_words):
             vmess = json.loads(decoded)
             ps = vmess.get('ps', '')
             if ps:
-                # декодируем ps (вдруг там тоже %XX) и чистим
-                new_ps = remove_ignored_words(unquote(ps), ignore_words)
+                # Декодируем на случай, если ps само закодировано
+                decoded_ps = unquote(ps)
+                new_ps = remove_ignored_words(decoded_ps, ignore_words)
                 if new_ps != ps:
                     vmess['ps'] = new_ps
                     new_json = json.dumps(vmess, separators=(',', ':'), ensure_ascii=False)
@@ -178,7 +186,7 @@ def clean_name_in_key(key, ignore_words):
         except Exception:
             return key
 
-    # Случай 3: все остальные ключи без имени
+    # Случай 3: любые другие ключи без имени – не трогаем
     return key
 
 
@@ -192,21 +200,19 @@ def classify_bridge(line: str):
         return None
 
     lower = stripped.lower()
-
     if 'webtunnel' in lower:
         return 'webtunnel'
-
     if 'cert=' in lower:
         return 'obfs4'
 
     parts = stripped.split()
-    if len(parts) >= 1:
-        if ':' in parts[0]:
-            if len(parts) >= 2 and len(parts[1]) >= 20:
-                return 'vanilla'
-            elif len(parts) == 1:
-                return 'vanilla'
-
+    if parts and ':' in parts[0]:
+        # Если есть второй элемент и он длинный (хеш) — vanilla с фингерпринтом
+        if len(parts) >= 2 and len(parts[1]) >= 20:
+            return 'vanilla'
+        # Только IP:порт — тоже vanilla (старый формат)
+        elif len(parts) == 1:
+            return 'vanilla'
     return None
 
 
@@ -224,9 +230,9 @@ def process_source(source_file, output_file, header_template, ignore_words, date
         try:
             keys = fetch_subscription(url)
             all_keys.extend(keys)
-            print(f"[{source_file}] Загружено {len(keys)} ключей из {url}")
+            print(f"[{os.path.basename(source_file)}] Загружено {len(keys)} ключей из {url}")
         except Exception as e:
-            print(f"[{source_file}] Ошибка загрузки {url}: {e}")
+            print(f"[{os.path.basename(source_file)}] Ошибка загрузки {url}: {e}")
 
     # Удаление дубликатов по host:port
     seen_hostports = set()
@@ -276,9 +282,9 @@ def process_tg_source(source_file, output_file, datetime_str):
                     all_proxies.append(converted)
                 elif stripped.startswith('tg://proxy'):
                     all_proxies.append(stripped)
-            print(f"[{source_file}] Загружено {len(all_proxies)} прокси из {url}")
+            print(f"[TG] Загружено {len(all_proxies)} прокси из {url}")
         except Exception as e:
-            print(f"[{source_file}] Ошибка загрузки {url}: {e}")
+            print(f"[TG] Ошибка загрузки {url}: {e}")
 
     # Удаление дубликатов по server:port
     seen_hostports = set()
@@ -324,21 +330,18 @@ def process_tor_source(source_file, output_file, date_str):
     for url in urls:
         try:
             lines = fetch_subscription(url)
-            print(f"[{source_file}] Загружено {len(lines)} строк из {url}")
-
+            print(f"[TOR] Загружено {len(lines)} строк из {url}")
             for line in lines:
                 stripped = line.strip()
                 if not stripped or stripped.startswith('#') or stripped.startswith('//'):
                     continue
-
                 bridge_type = classify_bridge(stripped)
                 if bridge_type:
                     bridges_by_type[bridge_type].add(stripped)
-                else:
-                    if re.match(r'^\d+\.\d+\.\d+\.\d+:\d+$', stripped):
-                        bridges_by_type['vanilla'].add(stripped)
+                elif re.match(r'^\d+\.\d+\.\d+\.\d+:\d+$', stripped):
+                    bridges_by_type['vanilla'].add(stripped)
         except Exception as e:
-            print(f"[{source_file}] Ошибка загрузки {url}: {e}")
+            print(f"[TOR] Ошибка загрузки {url}: {e}")
 
     types = ['obfs4', 'webtunnel', 'vanilla']
     counts = {t: len(bridges_by_type[t]) for t in types}
@@ -359,10 +362,8 @@ def process_tor_source(source_file, output_file, date_str):
             if bridges_by_type[t]:
                 f.write(f"\n#{t}\n")
                 for bridge in sorted(bridges_by_type[t]):
-                    if t == 'vanilla':
-                        f.write(f"{bridge}\n")
-                    else:
-                        f.write(f"{t} {bridge}\n")
+                    prefix = f"{t} " if t != 'vanilla' else ""
+                    f.write(f"{prefix}{bridge}\n")
 
     print(f"✅ Создан файл {output_file} с {total} мостами.")
 
