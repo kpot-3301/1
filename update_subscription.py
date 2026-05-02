@@ -2,7 +2,7 @@ import base64
 import re
 import os
 from datetime import datetime
-from zoneinfo import ZoneInfo          # для часового пояса
+from zoneinfo import ZoneInfo
 from urllib.parse import urlparse, unquote, quote
 import requests
 
@@ -19,9 +19,14 @@ HEADER_WHITE = """#profile-title:📡КРОТовые ТОННЕЛИ📡
 #announce:ТОННЕЛЕЙ: {count} | 📅 {datetime}
 """
 
+HEADER_TG = """// --- TG PROXY STATISTICS ---
+// Updated      : {datetime}
+// Working (verified): {count}
+"""
+
 IGNOR_FILE = "IGNOR-name.txt"
 
-# Допустимые протоколы
+# Допустимые протоколы для VPN-ключей
 VALID_PROTOCOLS = re.compile(
     r'^(vmess|vless|trojan|ss|ssr|hysteria2|hysteria|tuic|socks5|http|https)://'
 )
@@ -44,9 +49,8 @@ def remove_ignored_words(name, ignore_words):
 
 def extract_host_port(config_str):
     """
-    Извлекает адрес и порт из строки ключа.
-    Поддерживает vmess:// (json в base64), vless://, trojan://, ss://, ssr://,
-    hysteria2:// и другие протоколы.
+    Извлекает адрес и порт из строки VPN-ключа.
+    Поддерживает vmess, vless, trojan, ss, ssr, hysteria2 и др.
     Возвращает строку "host:port" или None.
     """
     if config_str.startswith('vmess://'):
@@ -79,7 +83,6 @@ def extract_host_port(config_str):
                 port = parsed.port
                 if host and port:
                     return f"{host}:{port}"
-                # Особый случай ss://
                 if proto == 'ss://':
                     match = re.search(r'@([^:]+):(\d+)', main_part)
                     if match:
@@ -87,7 +90,6 @@ def extract_host_port(config_str):
             except:
                 pass
 
-    # Резервный поиск через @
     match = re.search(r'@([^:\[\]]+):(\d+)', config_str.split('#')[0])
     if match:
         return f"{match.group(1)}:{match.group(2)}"
@@ -98,18 +100,17 @@ def fetch_subscription(url):
     """
     Скачивает подписку по URL.
     Пытается декодировать из base64, если содержимое закодировано.
-    Возвращает список строк (ключи + возможные комментарии).
+    Возвращает список непустых строк.
     """
     resp = requests.get(url, timeout=30)
     content = resp.text.strip()
-    # Попытка base64-декодирования
     try:
         missing = len(content) % 4
         if missing:
             content += '=' * (4 - missing)
         decoded = base64.b64decode(content).decode('utf-8')
-        # Проверяем, что в результате есть ключи
-        if any(proto in decoded for proto in ['vmess://', 'vless://', 'trojan://', 'ss://', 'ssr://']):
+        # Если в декодированной строке есть типичные протоколы, используем её
+        if any(p in decoded for p in ['vmess://', 'vless://', 'trojan://', 'ss://', 'ssr://', 'tg://proxy']):
             content = decoded
     except:
         pass
@@ -117,19 +118,11 @@ def fetch_subscription(url):
 
 
 def process_source(source_file, output_file, header_template, ignore_words, datetime_str):
-    """
-    Обрабатывает файл со списком URL подписок:
-    - скачивает все ключи,
-    - удаляет дубли по host:port,
-    - вырезает запрещённые слова из названий (с учётом URL-кодирования),
-    - оставляет только валидные ключи (начинающиеся с протокола),
-    - записывает результат в output_file с заданным заголовком.
-    """
+    """Обрабатывает VPN-источники (SURS.txt / SURS-WHITE.txt)."""
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
 
-    # Читаем список URL
     with open(source_file, 'r', encoding='utf-8') as f:
         urls = [line.strip() for line in f if line.strip()]
 
@@ -152,29 +145,24 @@ def process_source(source_file, output_file, header_template, ignore_words, date
             if hp:
                 seen_hostports.add(hp)
 
-    # Очистка названий от запрещённых слов с учётом URL-кодирования
+    # Очистка названий от запрещённых слов
     cleaned_keys = []
     for key in unique_keys:
         if '#' in key:
             base_part, name = key.split('#', 1)
-            # Декодируем URL-кодировку, чтобы получить читаемое имя
             decoded_name = unquote(name)
-            # Удаляем запрещённые слова
             new_name = remove_ignored_words(decoded_name, ignore_words)
             if new_name:
-                # Кодируем обратно, чтобы ключ остался валидным
                 encoded_name = quote(new_name, safe='')
                 cleaned_keys.append(f"{base_part}#{encoded_name}")
             else:
-                # Если имя полностью удалилось, оставляем ключ без названия
                 cleaned_keys.append(base_part)
         else:
             cleaned_keys.append(key)
 
-    # Фильтр: оставляем только строки, начинающиеся с протокола
+    # Фильтр: оставляем только валидные протоколы
     final_keys = [k for k in cleaned_keys if VALID_PROTOCOLS.match(k)]
 
-    # Запись в файл
     header = header_template.format(count=len(final_keys), datetime=datetime_str)
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(header)
@@ -183,11 +171,56 @@ def process_source(source_file, output_file, header_template, ignore_words, date
     print(f"✅ Создан файл {output_file} с {len(final_keys)} ключами.")
 
 
+def process_tg_source(source_file, output_file, datetime_str):
+    """Обрабатывает источники Telegram-прокси (TG-SURS.txt)."""
+    if not os.path.exists(source_file):
+        print(f"⚠️ Файл {source_file} не найден, пропускаю.")
+        return
+
+    with open(source_file, 'r', encoding='utf-8') as f:
+        urls = [line.strip() for line in f if line.strip()]
+
+    all_proxies = []
+    for url in urls:
+        try:
+            lines = fetch_subscription(url)
+            # Оставляем только строки с tg://proxy
+            tg_lines = [l for l in lines if l.startswith('tg://proxy')]
+            all_proxies.extend(tg_lines)
+            print(f"[{source_file}] Загружено {len(tg_lines)} прокси из {url}")
+        except Exception as e:
+            print(f"[{source_file}] Ошибка загрузки {url}: {e}")
+
+    # Удаление дубликатов по server:port
+    seen_hostports = set()
+    unique_proxies = []
+    for proxy in all_proxies:
+        match_server = re.search(r'\bserver=([^&]+)', proxy)
+        match_port = re.search(r'\bport=(\d+)', proxy)
+        if match_server and match_port:
+            hp = f"{match_server.group(1)}:{match_port.group(1)}"
+            if hp not in seen_hostports:
+                seen_hostports.add(hp)
+                unique_proxies.append(proxy)
+        else:
+            # Если не можем определить сервер и порт, всё равно сохраняем
+            unique_proxies.append(proxy)
+
+    header = HEADER_TG.format(count=len(unique_proxies), datetime=datetime_str)
+    with open(output_file, 'w', encoding='utf-8') as f:
+        f.write(header)
+        f.write('\n'.join(unique_proxies))
+
+    print(f"✅ Создан файл {output_file} с {len(unique_proxies)} прокси.")
+
+
 def main():
     ignore_words = load_ignore_words()
-    # Время по Екатеринбургу (UTC+5)
-    now = datetime.now(ZoneInfo("Asia/Yekaterinburg"))
-    datetime_str = now.strftime("%d-%m-%Y %H:%M")
+
+    # Время по Екатеринбургу
+    now_ekb = datetime.now(ZoneInfo("Asia/Yekaterinburg"))
+    datetime_str_main = now_ekb.strftime("%d-%m-%Y %H:%M")
+    datetime_str_tg = now_ekb.strftime("%Y-%m-%d %H:%M:%S")
 
     # Основной источник → 🥷КРОТовые ТОННЕЛИ🥷.txt
     process_source(
@@ -195,7 +228,7 @@ def main():
         output_file="🥷КРОТовые ТОННЕЛИ🥷.txt",
         header_template=HEADER_SURS,
         ignore_words=ignore_words,
-        datetime_str=datetime_str
+        datetime_str=datetime_str_main
     )
 
     # Дополнительный источник → 📡КРОТовые ТОННЕЛИ📡.txt
@@ -204,7 +237,14 @@ def main():
         output_file="📡КРОТовые ТОННЕЛИ📡.txt",
         header_template=HEADER_WHITE,
         ignore_words=ignore_words,
-        datetime_str=datetime_str
+        datetime_str=datetime_str_main
+    )
+
+    # Telegram-прокси → TGproxy.txt
+    process_tg_source(
+        source_file="TG-SURS.txt",
+        output_file="TGproxy.txt",
+        datetime_str=datetime_str_tg
     )
 
 
