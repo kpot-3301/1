@@ -5,7 +5,6 @@ import re
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from urllib.parse import urlparse, unquote, quote
-from collections import OrderedDict
 import requests
 
 # ===== НАСТРОЙКИ ПУТЕЙ =====
@@ -53,6 +52,7 @@ VALID_PROTOCOLS = re.compile(
 
 
 def load_ignore_words():
+    """Читает список игнорируемых слов из файла IGNOR-name.txt"""
     if not os.path.exists(IGNOR_FILE):
         return []
     with open(IGNOR_FILE, 'r', encoding='utf-8') as f:
@@ -60,12 +60,15 @@ def load_ignore_words():
 
 
 def remove_ignored_words(name, ignore_words):
+    """Удаляет все вхождения игнорируемых слов из строки (с учётом регистра)."""
     for word in ignore_words:
-        name = re.sub(re.escape(word), '', name, flags=re.IGNORECASE)
+        # re.escape(word) чтобы спецсимволы не ломали регулярку
+        name = re.sub(re.escape(word), '', name)
     return name.strip()
 
 
 def extract_host_port(config_str):
+    """Извлекает host:port из конфигурационной строки (для дедупликации)."""
     if config_str.startswith('vmess://'):
         try:
             b64_part = config_str[8:]
@@ -118,6 +121,7 @@ def convert_github_url(url):
 
 
 def fetch_subscription(url):
+    """Загружает подписку, декодирует base64 если нужно, возвращает список строк."""
     raw_url = convert_github_url(url)
     resp = requests.get(raw_url, timeout=30)
     content = resp.text.strip()
@@ -126,17 +130,62 @@ def fetch_subscription(url):
         if missing:
             content += '=' * (4 - missing)
         decoded = base64.b64decode(content).decode('utf-8')
-        # Если декодирование base64 прошло успешно, используем расшифрованный текст
         content = decoded
     except Exception:
         pass
     return [line.strip() for line in content.splitlines() if line.strip()]
 
 
+def clean_name_in_key(key, ignore_words):
+    """
+    Универсальная очистка имени ключа:
+    - Если есть фрагмент '#', имя декодируется (unquote) и чистится.
+    - Для vmess:// без '#' обрабатывается поле 'ps' в JSON.
+    - Для остальных протоколов без '#' возвращается без изменений.
+    """
+    # Случай 1: есть '#'
+    if '#' in key:
+        base_part, name = key.split('#', 1)
+        decoded_name = unquote(name)          # декодируем %XX
+        new_name = remove_ignored_words(decoded_name, ignore_words)
+        if new_name:
+            encoded_name = quote(new_name, safe='')
+            return f"{base_part}#{encoded_name}"
+        else:
+            return base_part
+
+    # Случай 2: vmess:// без '#', работаем с полем 'ps'
+    if key.startswith('vmess://'):
+        try:
+            b64_part = key[8:]
+            if '?' in b64_part:
+                b64_part = b64_part.split('?')[0]
+            missing_padding = len(b64_part) % 4
+            if missing_padding:
+                b64_part += '=' * (4 - missing_padding)
+            decoded = base64.b64decode(b64_part).decode('utf-8')
+            vmess = json.loads(decoded)
+            ps = vmess.get('ps', '')
+            if ps:
+                # декодируем ps (вдруг там тоже %XX) и чистим
+                new_ps = remove_ignored_words(unquote(ps), ignore_words)
+                if new_ps != ps:
+                    vmess['ps'] = new_ps
+                    new_json = json.dumps(vmess, separators=(',', ':'), ensure_ascii=False)
+                    new_b64 = base64.b64encode(new_json.encode()).decode().rstrip('=')
+                    return f"vmess://{new_b64}"
+            return key
+        except Exception:
+            return key
+
+    # Случай 3: все остальные ключи без имени
+    return key
+
+
 def classify_bridge(line: str):
     """
     Возвращает тип моста: 'obfs4', 'webtunnel', 'vanilla' или None.
-    Определяет по характерным признакам в строке, без заголовков секций.
+    Определяет по характерным признакам в строке.
     """
     stripped = line.strip()
     if not stripped:
@@ -144,29 +193,25 @@ def classify_bridge(line: str):
 
     lower = stripped.lower()
 
-    # 1. webtunnel — если в строке есть слово webtunnel
     if 'webtunnel' in lower:
         return 'webtunnel'
 
-    # 2. obfs4 — всегда содержит cert=
     if 'cert=' in lower:
         return 'obfs4'
 
-    # 3. vanilla — строка без спецмаркеров, должна содержать IP:порт и хэш
-    #    либо просто IP:порт (старые мосты без фингерпринта)
     parts = stripped.split()
     if len(parts) >= 1:
-        # Первая часть: ip:port
         if ':' in parts[0]:
             if len(parts) >= 2 and len(parts[1]) >= 20:
-                return 'vanilla'       # современный формат с фингерпринтом
+                return 'vanilla'
             elif len(parts) == 1:
-                return 'vanilla'       # только ip:port без фингерпринта
-    # Ничего не подошло
+                return 'vanilla'
+
     return None
 
 
 def process_source(source_file, output_file, header_template, ignore_words, datetime_str):
+    """Обрабатывает файл с URL-ами подписок (SURS.txt и SURS-WHITE.txt)."""
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
@@ -183,6 +228,7 @@ def process_source(source_file, output_file, header_template, ignore_words, date
         except Exception as e:
             print(f"[{source_file}] Ошибка загрузки {url}: {e}")
 
+    # Удаление дубликатов по host:port
     seen_hostports = set()
     unique_keys = []
     for key in all_keys:
@@ -192,20 +238,10 @@ def process_source(source_file, output_file, header_template, ignore_words, date
             if hp:
                 seen_hostports.add(hp)
 
-    cleaned_keys = []
-    for key in unique_keys:
-        if '#' in key:
-            base_part, name = key.split('#', 1)
-            decoded_name = unquote(name)
-            new_name = remove_ignored_words(decoded_name, ignore_words)
-            if new_name:
-                encoded_name = quote(new_name, safe='')
-                cleaned_keys.append(f"{base_part}#{encoded_name}")
-            else:
-                cleaned_keys.append(base_part)
-        else:
-            cleaned_keys.append(key)
+    # Очистка имён (с декодированием и фильтрацией игнор-слов)
+    cleaned_keys = [clean_name_in_key(k, ignore_words) for k in unique_keys]
 
+    # Оставляем только корректные протоколы
     final_keys = [k for k in cleaned_keys if VALID_PROTOCOLS.match(k)]
 
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
@@ -235,13 +271,11 @@ def process_tg_source(source_file, output_file, datetime_str):
             lines = fetch_subscription(url)
             for line in lines:
                 stripped = line.strip()
-                # Приводим к единому формату
                 if stripped.startswith('https://t.me/proxy?'):
                     converted = re.sub(r'^https://t\.me/proxy\?', 'tg://proxy?', stripped)
                     all_proxies.append(converted)
                 elif stripped.startswith('tg://proxy'):
                     all_proxies.append(stripped)
-                # Остальные строки игнорируем
             print(f"[{source_file}] Загружено {len(all_proxies)} прокси из {url}")
         except Exception as e:
             print(f"[{source_file}] Ошибка загрузки {url}: {e}")
@@ -271,7 +305,7 @@ def process_tg_source(source_file, output_file, datetime_str):
 
 def process_tor_source(source_file, output_file, date_str):
     """
-    Универсальный сборщик Tor-мостов без привязки к заголовкам секций.
+    Универсальный сборщик Tor-мостов без привязки к заголовкам.
     Тип моста определяется по содержимому строки (classify_bridge).
     """
     if not os.path.exists(source_file):
@@ -294,20 +328,15 @@ def process_tor_source(source_file, output_file, date_str):
 
             for line in lines:
                 stripped = line.strip()
-                # Пропускаем пустые строки и комментарии
                 if not stripped or stripped.startswith('#') or stripped.startswith('//'):
                     continue
 
-                # Определяем тип моста
                 bridge_type = classify_bridge(stripped)
-
                 if bridge_type:
                     bridges_by_type[bridge_type].add(stripped)
                 else:
-                    # fallback: строго IP:порт (без фингерпринта) – также считаем vanilla
                     if re.match(r'^\d+\.\d+\.\d+\.\d+:\d+$', stripped):
                         bridges_by_type['vanilla'].add(stripped)
-
         except Exception as e:
             print(f"[{source_file}] Ошибка загрузки {url}: {e}")
 
