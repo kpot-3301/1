@@ -215,7 +215,10 @@ def process_tg_source(source_file, output_file, datetime_str):
 
 
 def process_tor_source(source_file, output_file, date_str):
-    """Поиск мостов Tor по прямым префиксам obfs4, vanilla, webtunnel (без заголовков секций)."""
+    """
+    Универсальный сборщик Tor-мостов.
+    Понимает оба формата: с заголовками # VANILLA TOR BRIDGES и без них.
+    """
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
@@ -223,28 +226,78 @@ def process_tor_source(source_file, output_file, date_str):
     with open(source_file, 'r', encoding='utf-8') as f:
         urls = [line.strip() for line in f if line.strip()]
 
-    # Собираем мосты по типам, используем set для автоматического удаления дубликатов
     bridges_by_type = {
         'obfs4': set(),
         'vanilla': set(),
         'webtunnel': set()
     }
 
-    # Регулярка для поиска строк, начинающихся с типа моста (регистронезависимо)
-    bridge_pattern = re.compile(r'^(obfs4|vanilla|webtunnel)\b', re.IGNORECASE)
+    # Шаблоны заголовков секций для Формата 1
+    section_patterns = {
+        'vanilla': re.compile(r'# *VANILLA.*BRIDGES', re.IGNORECASE),
+        'obfs4': re.compile(r'# *(OBFS4|OBFSPROXY).*BRIDGES', re.IGNORECASE),
+        'webtunnel': re.compile(r'# *WEBTUNNEL.*BRIDGES', re.IGNORECASE),
+    }
 
     for url in urls:
         try:
             lines = fetch_subscription(url)
             print(f"[{source_file}] Загружено {len(lines)} строк из {url}")
+
+            # --- Определяем формат: есть ли заголовки секций? ---
+            has_sections = False
             for line in lines:
-                stripped = line.strip()
-                match = bridge_pattern.match(stripped)
-                if match:
-                    btype = match.group(1).lower()   # obfs4, vanilla или webtunnel
-                    # Можно сохранять строку как есть, либо убирать префикс, если он уже есть,
-                    # чтобы записать потом единообразно. Оставим как есть — в выходном файле тоже будут префиксы.
-                    bridges_by_type[btype].add(stripped)
+                for pattern in section_patterns.values():
+                    if pattern.search(line):
+                        has_sections = True
+                        break
+                if has_sections:
+                    break
+
+            # --- Парсинг в зависимости от формата ---
+            if has_sections:
+                print(f" -> Обнаружен формат с заголовками")
+                current_type = None
+                for line in lines:
+                    stripped = line.strip()
+                    if not stripped:
+                        continue
+
+                    # Проверяем, не начало ли это новой секции
+                    found_section = False
+                    for btype, pattern in section_patterns.items():
+                        if pattern.search(stripped):
+                            current_type = btype
+                            found_section = True
+                            break
+                    if found_section:
+                        continue
+
+                    # Пропускаем строки с # (комментарии, заголовки)
+                    if stripped.startswith('#') or stripped.startswith('//'):
+                        continue
+
+                    # Если мы внутри секции
+                    if current_type:
+                        # Убираем возможный префикс (на случай, если он есть)
+                        for prefix in ['obfs4', 'vanilla', 'webtunnel']:
+                            if stripped.lower().startswith(prefix):
+                                stripped = stripped[len(prefix):].strip()
+                                break
+                        bridges_by_type[current_type].add(stripped)
+            else:
+                print(f" -> Обнаружен формат с префиксами")
+                # Ищем строки, начинающиеся с префикса
+                bridge_pattern = re.compile(r'^(obfs4|vanilla|webtunnel)\b', re.IGNORECASE)
+                for line in lines:
+                    stripped = line.strip()
+                    match = bridge_pattern.match(stripped)
+                    if match:
+                        btype = match.group(1).lower()
+                        # Убираем префикс, чтобы сохранить единообразие
+                        content = stripped[len(btype):].strip()
+                        bridges_by_type[btype].add(content)
+
         except Exception as e:
             print(f"[{source_file}] Ошибка загрузки {url}: {e}")
 
@@ -267,8 +320,11 @@ def process_tor_source(source_file, output_file, date_str):
         for t in types:
             if bridges_by_type[t]:
                 f.write(f"\n#{t}\n")
-                f.write('\n'.join(sorted(bridges_by_type[t])))
-                f.write('\n')
+                for bridge in sorted(bridges_by_type[t]):
+                    if t == 'vanilla':
+                        f.write(f"{bridge}\n")
+                    else:
+                        f.write(f"{t} {bridge}\n")
 
     print(f"✅ Создан файл {output_file} с {total} мостами.")
 
