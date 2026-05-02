@@ -126,11 +126,44 @@ def fetch_subscription(url):
         if missing:
             content += '=' * (4 - missing)
         decoded = base64.b64decode(content).decode('utf-8')
-        if any(p in decoded for p in ['vmess://', 'vless://', 'trojan://', 'ss://', 'ssr://', 'tg://proxy']):
-            content = decoded
+        # Если декодирование base64 прошло успешно, используем расшифрованный текст
+        content = decoded
     except Exception:
         pass
     return [line.strip() for line in content.splitlines() if line.strip()]
+
+
+def classify_bridge(line: str):
+    """
+    Возвращает тип моста: 'obfs4', 'webtunnel', 'vanilla' или None.
+    Определяет по характерным признакам в строке, без заголовков секций.
+    """
+    stripped = line.strip()
+    if not stripped:
+        return None
+
+    lower = stripped.lower()
+
+    # 1. webtunnel — если в строке есть слово webtunnel
+    if 'webtunnel' in lower:
+        return 'webtunnel'
+
+    # 2. obfs4 — всегда содержит cert=
+    if 'cert=' in lower:
+        return 'obfs4'
+
+    # 3. vanilla — строка без спецмаркеров, должна содержать IP:порт и хэш
+    #    либо просто IP:порт (старые мосты без фингерпринта)
+    parts = stripped.split()
+    if len(parts) >= 1:
+        # Первая часть: ip:port
+        if ':' in parts[0]:
+            if len(parts) >= 2 and len(parts[1]) >= 20:
+                return 'vanilla'       # современный формат с фингерпринтом
+            elif len(parts) == 1:
+                return 'vanilla'       # только ip:port без фингерпринта
+    # Ничего не подошло
+    return None
 
 
 def process_source(source_file, output_file, header_template, ignore_words, datetime_str):
@@ -204,7 +237,6 @@ def process_tg_source(source_file, output_file, datetime_str):
                 stripped = line.strip()
                 # Приводим к единому формату
                 if stripped.startswith('https://t.me/proxy?'):
-                    # Меняем только схему и хост, оставляя параметры
                     converted = re.sub(r'^https://t\.me/proxy\?', 'tg://proxy?', stripped)
                     all_proxies.append(converted)
                 elif stripped.startswith('tg://proxy'):
@@ -238,7 +270,10 @@ def process_tg_source(source_file, output_file, datetime_str):
 
 
 def process_tor_source(source_file, output_file, date_str):
-    """Универсальный сборщик Tor-мостов (3 формата)."""
+    """
+    Универсальный сборщик Tor-мостов без привязки к заголовкам секций.
+    Тип моста определяется по содержимому строки (classify_bridge).
+    """
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
@@ -252,81 +287,26 @@ def process_tor_source(source_file, output_file, date_str):
         'webtunnel': set()
     }
 
-    section_patterns = {
-        'vanilla': re.compile(r'# *VANILLA.*BRIDGES', re.IGNORECASE),
-        'obfs4': re.compile(r'# *(OBFS4|OBFSPROXY).*BRIDGES', re.IGNORECASE),
-        'webtunnel': re.compile(r'# *WEBTUNNEL.*BRIDGES', re.IGNORECASE),
-    }
-
     for url in urls:
         try:
             lines = fetch_subscription(url)
             print(f"[{source_file}] Загружено {len(lines)} строк из {url}")
 
-            prefix_count = 0
-            has_sections = False
             for line in lines:
                 stripped = line.strip()
-                if not stripped or stripped.startswith('#'):
+                # Пропускаем пустые строки и комментарии
+                if not stripped or stripped.startswith('#') or stripped.startswith('//'):
                     continue
-                for pattern in section_patterns.values():
-                    if pattern.search(stripped):
-                        has_sections = True
-                        break
-                if has_sections:
-                    break
-                if re.match(r'^(obfs4|vanilla|webtunnel)\b', stripped, re.IGNORECASE):
-                    prefix_count += 1
 
-            if has_sections:
-                print(f" -> Формат: с заголовками секций")
-                current_type = None
-                for line in lines:
-                    stripped = line.strip()
-                    if not stripped:
-                        continue
-                    found_section = False
-                    for btype, pattern in section_patterns.items():
-                        if pattern.search(stripped):
-                            current_type = btype
-                            found_section = True
-                            break
-                    if found_section:
-                        continue
-                    if stripped.startswith('#') or stripped.startswith('//'):
-                        continue
-                    if current_type:
-                        for prefix in ['obfs4', 'vanilla', 'webtunnel']:
-                            if stripped.lower().startswith(prefix):
-                                stripped = stripped[len(prefix):].strip()
-                                break
-                        bridges_by_type[current_type].add(stripped)
+                # Определяем тип моста
+                bridge_type = classify_bridge(stripped)
 
-            elif prefix_count > 0:
-                print(f" -> Формат: префиксы в строках")
-                for line in lines:
-                    stripped = line.strip()
-                    match = re.match(r'^(obfs4|vanilla|webtunnel)\b', stripped, re.IGNORECASE)
-                    if match:
-                        btype = match.group(1).lower()
-                        content = stripped[len(btype):].strip()
-                        bridges_by_type[btype].add(content)
-
-            else:
-                print(f" -> Формат: без префиксов/заголовков, определение по содержимому")
-                for line in lines:
-                    stripped = line.strip()
-                    if not stripped or stripped.startswith('#'):
-                        continue
-                    parts = stripped.split()
-                    if len(parts) >= 2:
-                        if 'webtunnel' in stripped.lower():
-                            btype = 'webtunnel'
-                        elif 'cert=' in stripped:
-                            btype = 'obfs4'
-                        else:
-                            btype = 'vanilla'
-                        bridges_by_type[btype].add(stripped)
+                if bridge_type:
+                    bridges_by_type[bridge_type].add(stripped)
+                else:
+                    # fallback: строго IP:порт (без фингерпринта) – также считаем vanilla
+                    if re.match(r'^\d+\.\d+\.\d+\.\d+:\d+$', stripped):
+                        bridges_by_type['vanilla'].add(stripped)
 
         except Exception as e:
             print(f"[{source_file}] Ошибка загрузки {url}: {e}")
