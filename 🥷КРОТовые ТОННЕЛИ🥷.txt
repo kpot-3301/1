@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 222 | 📅 02-05-2026 10:21
+#announce:ТОННЕЛЕЙ: 222 | 📅 02-05-2026 15:28
 vless://e7d88c6a-c253-4d16-b0cb-e293b2856c6e@195.209.210.87:11174?fm=null&fp=chrome&mode=gun&pbk=zActfG7j1iIjclCzN1Eid1jR85-_U9-ZR2nedr142Hk&security=reality&serviceName=grpc&sid=a8ac91fd6a3c63ca&sni=m.vk.com&type=grpc#%F0%9F%87%AB%F0%9F%87%AE%20%D0%A4%D0%B8%D0%BD%D0%BB%D1%8F%D0%BD%D0%B4%D0%B8%D1%8F%201
 vless://e7d88c6a-c253-4d16-b0cb-e293b2856c6e@195.209.210.87:33606?fm=null&fp=chrome&pbk=zActfG7j1iIjclCzN1Eid1jR85-_U9-ZR2nedr142Hk&security=reality&sid=255f084ed8658410&sni=sso.passport.yandex.ru&type=tcp#%F0%9F%87%AB%F0%9F%87%AE%20%D0%A4%D0%B8%D0%BD%D0%BB%D1%8F%D0%BD%D0%B4%D0%B8%D1%8F%202
 vless://e7d88c6a-c253-4d16-b0cb-e293b2856c6e@195.209.210.87:10041?fm=null&fp=chrome&host=sso.passport.yandex.ru&mode=auto&path=/&pbk=zActfG7j1iIjclCzN1Eid1jR85-_U9-ZR2nedr142Hk&security=reality&sid=4d3e26cb4c6cc637&sni=sso.passport.yandex.ru&type=xhttp#%F0%9F%87%AB%F0%9F%87%AE%20%D0%A4%D0%B8%D0%BD%D0%BB%D1%8F%D0%BD%D0%B4%D0%B8%D1%8F%203
