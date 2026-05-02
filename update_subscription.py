@@ -64,6 +64,7 @@ def load_ignore_words():
 def remove_ignored_words(name, ignore_words):
     """Удаляет все точные вхождения игнорируемых слов из строки (с учётом регистра)."""
     for word in ignore_words:
+        # re.escape(word) корректно экранирует спецсимволы [ ] и др.
         name = re.sub(re.escape(word), '', name)
     return name.strip()
 
@@ -143,7 +144,7 @@ def fetch_subscription(url):
 def clean_name_in_key(key, ignore_words):
     """
     Удаляет игнорируемые слова из имени ключа.
-    Возвращает ключ с читаемым (НЕ ЗАКОДИРОВАННЫМ) именем.
+    Возвращает ключ с ЧИТАЕМЫМ именем (НЕ ЗАКОДИРОВАННЫМ).
     """
     # 1. Ключи с '#'
     if '#' in key:
@@ -153,13 +154,12 @@ def clean_name_in_key(key, ignore_words):
         # Удаляем игнорируемые слова
         new_name = remove_ignored_words(decoded_name, ignore_words)
         if new_name:
-            # Собираем обратно БЕЗ повторного кодирования
+            # 🟢 ВОТ ЭТО ИСПРАВЛЕНИЕ: не кодируем имя обратно
             return f"{base_part}#{new_name}"
         else:
-            # Если имя полностью удалено, возвращаем ключ без имени
             return base_part
 
-    # 2. vmess:// без '#', работаем с полем 'ps'
+    # 2. vmess:// без '#' — обрабатываем поле 'ps' внутри JSON
     if key.startswith('vmess://'):
         try:
             b64_part = key[8:]
@@ -172,7 +172,7 @@ def clean_name_in_key(key, ignore_words):
             vmess = json.loads(decoded)
             ps = vmess.get('ps', '')
             if ps:
-                decoded_ps = unquote(ps)  # на случай, если ps тоже закодирован
+                decoded_ps = unquote(ps)
                 new_ps = remove_ignored_words(decoded_ps, ignore_words)
                 if new_ps != ps:
                     vmess['ps'] = new_ps
@@ -234,7 +234,7 @@ def process_source(source_file, output_file, header_template, ignore_words, date
             if hp:
                 seen_hostports.add(hp)
 
-    # Очистка имён (с декодированием и удалением игнорируемых слов)
+    # Применяем очистку имён (декодирование + удаление игнорируемых слов)
     cleaned_keys = []
     for k in unique_keys:
         cleaned = clean_name_in_key(k, ignore_words)
@@ -249,6 +249,7 @@ def process_source(source_file, output_file, header_template, ignore_words, date
     header = header_template.format(count=len(final_keys), datetime=datetime_str)
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(header)
+        # Убираем лишний перенос строки в конце
         f.write('\n'.join(final_keys))
 
     print(f"✅ Создан файл {output_file} с {len(final_keys)} ключами.")
