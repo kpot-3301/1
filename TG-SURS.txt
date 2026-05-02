@@ -1,1 +1,2 @@
-
+# kort0881
+https://raw.githubusercontent.com/kort0881/telegram-proxy-collector/refs/heads/main/proxy_all.txt
