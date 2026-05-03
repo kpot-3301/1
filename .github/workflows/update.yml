@@ -5,7 +5,7 @@ permissions:
 
 on:
   schedule:
-    - cron: '0 * * * *'   # каждый час (в начале каждого часа UTC)
+    - cron: '0 * * * *'   # каждый час (начало каждого часа по UTC)
   workflow_dispatch:
   push:
     branches: [ main ]
@@ -25,13 +25,14 @@ jobs:
       - name: Checkout репозитория
         uses: actions/checkout@v4
 
-      - name: Установка Python
+      - name: Установка Python и кеширование pip
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+          cache: 'pip'          # кеш зависимостей по requirements.txt
 
       - name: Установка зависимостей
-        run: pip install requests
+        run: pip install -r requirements.txt
 
       - name: Запуск скрипта обновления
         run: python update_subscription.py
