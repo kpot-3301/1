@@ -5,7 +5,7 @@ permissions:
 
 on:
   schedule:
-    - cron: '0 */2 * * *'   # каждые 2 часа
+    - cron: '0 * * * *'   # каждый час (в начале каждого часа UTC)
   workflow_dispatch:
   push:
     branches: [ main ]
