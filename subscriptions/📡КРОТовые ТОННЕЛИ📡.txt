@@ -1,7 +1,7 @@
 #profile-title:📡КРОТовые ТОННЕЛИ📡
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 602 | 📅 03-05-2026 11:24
+#announce:ТОННЕЛЕЙ: 602 | 📅 03-05-2026 11:33
 vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@89.208.231.81:993?alpn=http/1.1&encryption=none&flow=xtls-rprx-vision&fp=chrome&headerType=none":&pbk=mAu8QDi3pbmMCFg9kKC-ZBIHdtnXeCuZt3VnAw6vlH4&security=reality&sid=ad7dab462a323acb&sni=max.ru&type=tcp#SNI: max.ru
 vless://99c62382-07d7-4b21-a59c-c105e97363c6@158.160.96.139:443/?type=tcp&encryption=none&flow=&sni=max.ru&fp=qq&security=reality&pbk=le5SgND4rMm095e5ee4lk4xkNGdoCnKbgMcorNfSfg0&sid=92560ccffb9c8f&packetEncoding=xudp#SNI: max.ru
 vless://e9d198de-371d-489a-9dc7-4a9d78ef04c4@serv18.strettenvpn.com:443?encryption=none&type=tcp&flow=xtls-rprx-vision&security=reality&pbk=yhUfTGgu5PYRlFqMnRZkxffH_aU05AFUToGI8_EKF28&sid=8248954896&sni=eh.vk.com&fp=chrome&alpn=http%252F1.1&headerType=none#SNI: eh.vk.com
