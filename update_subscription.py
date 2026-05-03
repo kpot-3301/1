@@ -246,7 +246,7 @@ def process_source(source_file, output_file, header_template, ignore_words, date
 
 
 def process_tg_source(source_file, output_file, datetime_str):
-    """Собирает Telegram‑прокси (только tg://proxy)."""
+    """Собирает Telegram‑прокси (tg://proxy, tg://socks, https://t.me/proxy)."""
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
@@ -259,19 +259,24 @@ def process_tg_source(source_file, output_file, datetime_str):
         try:
             lines = fetch_subscription(url)
 
-            # Ищем исключительно tg://proxy... внутри строки (всё остальное — мусор)
-            proxy_re = re.compile(r'tg://proxy\S+')
+            # Ищем три типа прокси внутри строки (игнорируя мусор вокруг)
+            proxy_re = re.compile(
+                r'(tg://proxy\S+|tg://socks\S+|https://t\.me/proxy\S+)'
+            )
             for line in lines:
                 match = proxy_re.search(line)
                 if match:
-                    # извлекаем чистую прокси-ссылку
-                    all_proxies.append(match.group(0))
+                    raw = match.group(0)
+                    # https-ссылку превращаем в tg://proxy
+                    if raw.startswith('https://t.me/proxy'):
+                        raw = re.sub(r'^https://t\.me/proxy', 'tg://proxy', raw)
+                    all_proxies.append(raw)
 
             print(f"  ✅ Получено {len(lines)} строк из {url}")
         except Exception as e:
             print(f"  ❌ Ошибка загрузки {url}: {e}")
 
-    # Дедупликация по server:port
+    # Дедупликация по server + port
     seen_hostports = set()
     unique_proxies = []
     for proxy in all_proxies:
