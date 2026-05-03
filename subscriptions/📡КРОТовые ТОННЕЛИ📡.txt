@@ -1,7 +1,7 @@
 #profile-title:📡КРОТовые ТОННЕЛИ📡
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 602 | 📅 03-05-2026 11:00
+#announce:ТОННЕЛЕЙ: 602 | 📅 03-05-2026 11:05
 vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@89.208.231.81:993?alpn=http/1.1&encryption=none&flow=xtls-rprx-vision&fp=chrome&headerType=none":&pbk=mAu8QDi3pbmMCFg9kKC-ZBIHdtnXeCuZt3VnAw6vlH4&security=reality&sid=ad7dab462a323acb&sni=max.ru&type=tcp#SNI: max.ru
 vless://99c62382-07d7-4b21-a59c-c105e97363c6@158.160.96.139:443/?type=tcp&encryption=none&flow=&sni=max.ru&fp=qq&security=reality&pbk=le5SgND4rMm095e5ee4lk4xkNGdoCnKbgMcorNfSfg0&sid=92560ccffb9c8f&packetEncoding=xudp#SNI: max.ru
 vless://e9d198de-371d-489a-9dc7-4a9d78ef04c4@serv18.strettenvpn.com:443?encryption=none&type=tcp&flow=xtls-rprx-vision&security=reality&pbk=yhUfTGgu5PYRlFqMnRZkxffH_aU05AFUToGI8_EKF28&sid=8248954896&sni=eh.vk.com&fp=chrome&alpn=http%252F1.1&headerType=none#SNI: eh.vk.com
@@ -588,19 +588,19 @@ vless://fc835978-8121-414f-b3dd-2dc2ec56b8f7@185.31.113.54:4355?type=tcp&securit
 vless://37bcd084-a17c-44da-9868-ad5c4632cf8c@176.114.122.2:4359?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&sni=max.ru#TCP, Max
 vless://7e7452f2-1004-45ed-a55a-f9d474e152c7@176.114.124.6:4424?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&sni=api.maps-yandex.ru#TCP, Яндекс Карты
 vless://ab8d4756-c60b-484c-affd-1207a03de9d2@ya-2.statham-guard.com:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=PjrgcrzYBq-aa3g1gC03_uKfLVgVosXzHsyUfbJbBw4&security=reality&sid=8d51999a&sni=sun-6-22.userapi.com&type=tcp#256. VLESS | SNI: sun-6-22.userapi.com |  | Thanks: @YoutubeUnBlockRu
-vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@89.208.231.81:443?alpn=h2&encryption=none&security=tls&serviceName=grpc-tunnel&sni=fileroute.cc&type=grpc#🇨🇦 ОБХОД БЕЛЫХ СПИСКОВ | CA t.me/rjsxrd
-vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@109.120.191.171:443?alpn=h2&encryption=none&security=tls&serviceName=grpc-tunnel&sni=api-no-cache.dropmefile.net&type=grpc#[326ms Россия RU 🇷🇺 @vlesstrojan] t.me/rjsxrd
-vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@5.188.143.70:443?alpn=h2&encryption=none&security=tls&serviceName=grpc-tunnel&sni=api2.dropmefile.net&type=grpc#Шкатулка запретов — 🇷🇺RU t.me/rjsxrd (30)
-vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@5.188.140.166:443?encryption=none&security=tls&serviceName=grpc-tunnel&sni=api1.dropmefile.net&type=grpc#🇵🇱 Poland — #1013 t.me/rjsxrd
-vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@109.120.191.5:443?alpn=h2&encryption=none&security=tls&serviceName=grpc-tunnel&sni=api-staging.dropmefile.net&type=grpc#[308ms Россия RU 🇷🇺 @vlesstrojan] t.me/rjsxrd
-vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@89.208.231.52:443?alpn=h2&encryption=none&security=tls&serviceName=grpc-tunnel&sni=filegrid.cc&type=grpc#[309ms Россия RU 🇷🇺 @vlesstrojan] t.me/rjsxrd (4)
-vless://ab8d4756-c60b-484c-affd-1207a03de9d2@158.160.180.65:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=PjrgcrzYBq-aa3g1gC03_uKfLVgVosXzHsyUfbJbBw4&security=reality&sid=8d51999a&sni=sun-6-22.userapi.com&type=tcp#🇷🇺 [VL] Россия #6991 | РосТуннель t.me/rjsxrd
+vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@89.208.231.81:443?alpn=h2&encryption=none&security=tls&serviceName=grpc-tunnel&sni=fileroute.cc&type=grpc#🇨🇦 ОБХОД БЕЛЫХ СПИСКОВ | CA
+vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@109.120.191.171:443?alpn=h2&encryption=none&security=tls&serviceName=grpc-tunnel&sni=api-no-cache.dropmefile.net&type=grpc#[326ms Россия RU 🇷🇺 ]
+vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@5.188.143.70:443?alpn=h2&encryption=none&security=tls&serviceName=grpc-tunnel&sni=api2.dropmefile.net&type=grpc#Шкатулка запретов — 🇷🇺RU  (30)
+vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@5.188.140.166:443?encryption=none&security=tls&serviceName=grpc-tunnel&sni=api1.dropmefile.net&type=grpc#🇵🇱 Poland — #1013
+vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@109.120.191.5:443?alpn=h2&encryption=none&security=tls&serviceName=grpc-tunnel&sni=api-staging.dropmefile.net&type=grpc#[308ms Россия RU 🇷🇺 ]
+vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@89.208.231.52:443?alpn=h2&encryption=none&security=tls&serviceName=grpc-tunnel&sni=filegrid.cc&type=grpc#[309ms Россия RU 🇷🇺 ]  (4)
+vless://ab8d4756-c60b-484c-affd-1207a03de9d2@158.160.180.65:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=PjrgcrzYBq-aa3g1gC03_uKfLVgVosXzHsyUfbJbBw4&security=reality&sid=8d51999a&sni=sun-6-22.userapi.com&type=tcp#🇷🇺 [VL] Россия #6991 |
 vless://22f65fc9-4dee-456c-a213-2a025389af31@109.120.189.213:58652?encryption=none&fp=chrome&pbk=VZq5atMvE_1AW0nXcn4opuxZdrSu3zy3kP7YTdGj6EQ&security=reality&sid=28&sni=www.apple.com&type=tcp#🇷🇺 VK — #1
 vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@109.120.188.50:443?alpn=h2&encryption=none&security=tls&serviceName=grpc-tunnel&sni=api3.dropmefile.net&type=grpc#🇵🇱 Poland — #1043
-vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@api-no-cache.dropmefile.net:443?alpn=h2&encryption=none&security=tls&serviceName=grpc-tunnel&sni=api-no-cache.dropmefile.net&type=grpc#🇫🇮 Gh0st_WhiteList #1706
-vless://d9bc66bc-77ce-466a-ad6e-da63a21bffda@45.11.26.203:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=pgG2grngQEtOFJImLfz0AEm-O2IodM2jCY4aMCYQI1U&security=reality&sid=b2a6e3d42f05c3d1&sni=m.vk.com&type=tcp#🇬🇧 Gh0st_WhiteList #1795
+vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@api-no-cache.dropmefile.net:443?alpn=h2&encryption=none&security=tls&serviceName=grpc-tunnel&sni=api-no-cache.dropmefile.net&type=grpc#🇫🇮  #1706
+vless://d9bc66bc-77ce-466a-ad6e-da63a21bffda@45.11.26.203:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=pgG2grngQEtOFJImLfz0AEm-O2IodM2jCY4aMCYQI1U&security=reality&sid=b2a6e3d42f05c3d1&sni=m.vk.com&type=tcp#🇬🇧  #1795
 vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@fileroute.cc:443?alpn=h2&encryption=none&security=tls&serviceName=grpc-tunnel&sni=fileroute.cc&type=grpc#81 | GRPC+TLS | SNI: fileroute.cc | IN: RU OUT: FI | RATING: 6/10
-vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@api-staging.dropmefile.net:443?encryption=none&security=tls&serviceName=grpc-tunnel&type=grpc#0012 | 🌐 Unknown | TG + Bypass | WL | Premium TG: @kfwlrus
-vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@api2.dropmefile.net:443?encryption=none&security=tls&serviceName=grpc-tunnel&type=grpc#0013 | 🌐 Unknown | TG + Bypass | WL | Premium TG: @kfwlrus
-vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@api1.dropmefile.net:443?encryption=none&security=tls&serviceName=grpc-tunnel&type=grpc#0016 | 🇲🇪 Черногория | TG + Bypass | WL | Premium TG: @kfwlrus
+vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@api-staging.dropmefile.net:443?encryption=none&security=tls&serviceName=grpc-tunnel&type=grpc#0012 | 🌐 Unknown | TG + Bypass | WL | Premium TG:
+vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@api2.dropmefile.net:443?encryption=none&security=tls&serviceName=grpc-tunnel&type=grpc#0013 | 🌐 Unknown | TG + Bypass | WL | Premium TG:
+vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@api1.dropmefile.net:443?encryption=none&security=tls&serviceName=grpc-tunnel&type=grpc#0016 | 🇲🇪 Черногория | TG + Bypass | WL | Premium TG:
 vless://7c71bca8-1f80-435a-bb2d-0ad130d6d4f7@ru-w-t1.hotservice.icu:443?encryption=none&host=ru-w-t1.hotservice.icu&path=%2Fwspath%2F&security=tls&sni=ru-w-t1.hotservice.icu&type=ws#[ (2)

@@ -1,7 +1,6 @@
 // --- TG PROXY STATISTICS ---
-// Updated      : 2026-05-03 11:00:09
-// Working (verified): 138
-tg://proxy?server=rulist07.erronchikvps.online&port=8443&secret=10dc7a567776b33f20b0f8fb7d167d0f
+// Updated      : 2026-05-03 11:05:00
+// Working (verified): 112
 tg://proxy?server=5.188.143.193&port=443&secret=59ecc03bfbc542556d7ea2919d688663
 tg://proxy?server=5.188.143.183&port=443&secret=59ecc03bfbc542556d7ea2919d688663
 tg://proxy?server=5.188.140.22&port=443&secret=59ecc03bfbc542556d7ea2919d688663
@@ -44,10 +43,6 @@ tg://proxy?server=proxy-lte.wwwinternet.ru&port=444&secret=eee93233334d099f3a933
 tg://proxy?server=love.kosmojoy.ru&port=443&secret=eead9639a82579888625e98a72876ab52531632e7275
 tg://proxy?server=51.250.111.16&port=443&secret=eec3a80805cd5ee5d245ccea60ff27a3576d61696c2e79616e6465782e7275
 tg://proxy?server=132.243.214.236&port=443&secret=ee3f20b3758015038e7f6b4bc6438b7a2c6d6963726f736f66742e636f6d
-tg://proxy?server=158.160.44.226&port=8081&secret=ee04370edfb79e9bd8def2d2e88c1b87c86d61782e7275
-tg://proxy?server=195.209.208.192&port=443&secret=ee06a543d4af6d33ac0db20713714ec4b777622e7275
-tg://proxy?server=89.104.117.200&port=443&secret=eee4dbce2827884c03517d02457cf0a1cd77622e7275
-tg://proxy?server=free-proxy-07.duckdns.org&port=443&secret=ee1e9f0922c16672cdfab85116f4818a157777772e676f6f676c652e636f6d
 tg://proxy?server=pro.sosproxy.space&port=443&secret=ee9d4772354ab76b3d16bc0423b6f44a2b70726f2e736f7370726f78792e7370616365
 tg://proxy?server=s24.sosproxy.space&port=443&secret=ee8a673d5fbe8440b21ae4ea04d302a8c964726976652e676f6f676c652e636f6d
 tg://proxy?server=s25.sosproxy.space&port=443&secret=ee6bce98eb3e97600bfbde28d07139ccc864726976652e676f6f676c652e636f6d
@@ -60,27 +55,6 @@ tg://proxy?server=murzik.myrka.digital&port=444&secret=ee88814487666614484422833
 tg://proxy?server=mt1.angald.ru&port=443&secret=eeb4fe77bb5189f98dd2670fd97f93f85e6d61696c2e616e67616c642e7275
 tg://proxy?server=87.228.118.152&port=443&secret=eedb556b30e8aefc3443956f9a971bdcec74656c656772616d2e63726f636e65742e7275
 tg://proxy?server=82.22.41.177&port=8443&secret=ee6cee1d27f1b2dbeae61942bd165f7f666c6c6d2e6e696b6974612d646576656c6f706d656e742e7275
-tg://proxy?server=telegram.crocnet.ru&port=443&secret=eedb556b30e8aefc3443956f9a971bdcec74656c656772616d2e63726f636e65742e7275
-tg://proxy?server=ru.telegram.crocnet.ru&port=443&secret=eedb556b30e8aefc3443956f9a971bdcec74656c656772616d2e63726f636e65742e7275
-tg://proxy?server=s17.sosproxy.space&port=443&secret=ee012b708ceea371d59b4968ceb506462664726976652e676f6f676c652e636f6d
-tg://proxy?server=132.243.228.115&port=443&secret=ee3caf4d06bf6b23313068e4b3e743f91e79616e6465782e7275
-tg://proxy?server=188.137.234.21&port=443&secret=ee03391d9e585b20ee18f588274347c2ff7777772e676f6f676c652e636f6d
-tg://proxy?server=proxytg.live&port=443&secret=ee347358dc309fbf96304b28460ef7cd7a70726f787974672e6c697665
-tg://proxy?server=live2.nocto.online&port=443&secret=ee9baefa3df18536326fec0818c04aa43179612e7275
-tg://proxy?server=go2.nocto.online&port=8443&secret=ee340df1f13d99bbee2651e79692e0901079612e7275
-tg://proxy?server=217.60.25.63&port=443&secret=ee56fe38876789d254a7d331aa998e8554746f7069632e7275
-tg://proxy?server=77.239.103.154&port=443&secret=ee8f854637578452a15a3bf7925894915f746f7069632e7275
-tg://proxy?server=tg.tgtesla.click&port=443&secret=7k2Ycfkhv5UX8GgSlT2CtpZtYXgucnU
-tg://proxy?server=proxy.vopnbot.org&port=443&secret=7iOHaedClDVkM5ncIRadj_5jbG91ZC5ydQ
-tg://proxy?server=proxy.monalisgame.com&port=443&secret=bd5d182c66f93eced64e53dcb5c17003
-tg://proxy?server=one.nxrhub.run&port=443&secret=7nKHvkdpk6ZxkNvL6UYWezxwaWsucnU
-tg://proxy?server=fastnetgo.ru&port=8443&secret=7qlKUMPbK55kA1GDHovUK7p3d3cuZ29vZ2xlLmNvbQ
-tg://proxy?server=nya-nya.top&port=853&secret=7lTOMw5GkMwpfSsDH_PyiLBtdC5ha2VuYWkuY2xpY2s
-tg://proxy?server=2.26.53.156&port=443&secret=7l5I8CXHJjXGlqsWamOLzEd5YS5ydQ
-tg://proxy?server=prom.sma-it.ru&port=443&secret=7hS-JeFHjFJT7fN5jK6DuUdtYXgucnU
-tg://proxy?server=185.130.113.188&port=444&secret=7ukyMzNNCZ86kzlyMa0mcLV5ZWlza21lZGljaW5lLnJ1
-tg://proxy?server=2.26.78.200&port=853&secret=7gX-R3XRputJ0tP_AbY5l-JtdC5rYW55ZS13ZXN0LnRvcA
-tg://proxy?server=50.7.196.42&port=443&secret=7ttVazDorvw0Q5Vvmpcb3Ox0ZWxlZ3JhbS5jcm9jbmV0LnJ1
 tg://proxy?server=misanthrop.duckdns.org&port=443&secret=eed2d3dc7b80b3b9e824457f30b3403c1b676f6f676c652e636f6d
 tg://proxy?server=152.53.247.3&port=443&secret=ee143b7981eb4bf546520ba3f29dcf59ca7370656564746573742e72742e7275
 tg://proxy?server=64.188.64.79&port=8443&secret=ee17fdfa167f6babdb3f893586ac3784977375623372656c61792e6475636b646e732e6f7267
@@ -90,10 +64,10 @@ tg://proxy?server=2.27.59.225&port=443&secret=eebe232d8569992025370b3fd21684a957
 tg://proxy?server=94.159.106.120&port=443&secret=ee094c74b28fa0195c624b646de6a9f04f7777772e636c6f7564666c6172652e636f6d
 tg://proxy?server=mt.aeroplanvpn.ru&port=443&secret=eedbc854c4ddba6ca395a7a6025661b779646e732e6165726f706c616e76706e2e7275
 tg://proxy?server=promo.begemot.cc&port=2083&secret=ee373d9145c48187996ee15a0ca68959e27275737369616e2d616e696d616c732e7275
+tg://proxy?server=217.60.25.63&port=443&secret=ee56fe38876789d254a7d331aa998e8554746f7069632e7275
 tg://proxy?server=predator-artist.top&port=853&secret=ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b
 tg://proxy?server=2.26.252.106&port=444&secret=ee888144876666144844228333222212226d75727a696b2e6d79726b612e6469676974616c
-tg://proxy?server=barsik.myrka.digital&port=444&secret=7hER9-gaEfp4gR_-z7aL_HRiYXJzaWsubXlya2EuZGlnaXRhbA
-tg://proxy?server=146.185.242.30&port=443&secret=4648390578ec022dc0e7503af77d957d
+tg://proxy?server=ru.telegram.crocnet.ru&port=443&secret=eedb556b30e8aefc3443956f9a971bdcec74656c656772616d2e63726f636e65742e7275
 tg://proxy?server=vinyl.callsmeee.xyz&port=8443&secret=7j_bCyXJvCtOESsYh2397ZV2aW55bC5jYWxsc21lZWUueHl6
 tg://proxy?server=172.65.117.172&port=22&secret=dd79e344818749bd7ac519130220c25d09
 tg://proxy?server=172.65.102.115&port=22&secret=dd79e344818749bd7ac519130220c25d09
