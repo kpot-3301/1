@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 540 | 📅 03-05-2026 10:59
+#announce:ТОННЕЛЕЙ: 540 | 📅 03-05-2026 11:00
 vless://45e55198-a5ad-4f19-bb39-236822141d25@188.72.103.3:443?allowInsecure=1&fp=chrome&host=cdn.lovecrafty.link&path=/stream/updates/b66b78d7/019dec05-0ebf-2b31-706d-ae327d92bc77&security=tls&sni=cdn.tracker.yandex.net&type=ws#🇳🇱 Нидерланды 1
 vless://7fbeb76f-2fa1-4a5a-9f99-4dbfaafb4da2@212.108.82.32:443?flow=xtls-rprx-vision&fp=chrome&pbk=4v_4RSmE8ztHfQ4EV8Ym6J-6C8ACtYiznTHcdWJw6WA&security=reality&sid=aabbccdd&sni=www.google.com&type=tcp#🇳🇱 Нидерланды 6
 vless://7fbeb76f-2fa1-4a5a-9f99-4dbfaafb4da2@89.127.206.169:443?flow=xtls-rprx-vision&fp=chrome&pbk=4v_4RSmE8ztHfQ4EV8Ym6J-6C8ACtYiznTHcdWJw6WA&security=reality&sid=aabbccdd&sni=www.google.com&type=tcp#🇳🇱 Нидерланды 7
