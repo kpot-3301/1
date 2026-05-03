@@ -318,10 +318,15 @@ def process_tor_source(source_file, output_file, date_str):
                 if not stripped or stripped.startswith('#') or stripped.startswith('//'):
                     continue
                 bt = classify_bridge(stripped)
+                # vanilla иногда определяется только по формату IP:port
+                if not bt and re.match(r'^\d+\.\d+\.\d+\.\d+:\d+$', stripped):
+                    bt = 'vanilla'
                 if bt:
+                    # Убираем ведущий префикс типа (obfs4 или webtunnel), если он уже есть в строке.
+                    # Это предотвращает двойное указание типа в итоговом файле.
+                    if bt in ('obfs4', 'webtunnel'):
+                        stripped = re.sub(rf'^{bt}\s+', '', stripped, flags=re.IGNORECASE)
                     bridges_by_type[bt].add(stripped)
-                elif re.match(r'^\d+\.\d+\.\d+\.\d+:\d+$', stripped):
-                    bridges_by_type['vanilla'].add(stripped)
         except Exception as e:
             print(f"  ❌ Ошибка загрузки {url}: {e}")
 
