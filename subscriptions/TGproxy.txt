@@ -1,5 +1,5 @@
 // --- TG PROXY STATISTICS ---
-// Updated      : 2026-05-04 07:37:03
+// Updated      : 2026-05-04 07:38:37
 // Working (verified): 166
 tg://proxy?server=rulist07.erronchikvps.online&port=8443&secret=10dc7a567776b33f20b0f8fb7d167d0f
 tg://proxy?server=rulist006.erronchikvps.online&port=8443&secret=10dc7a567776b33f20b0f8fb7d167d0f
