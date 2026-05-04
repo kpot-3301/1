@@ -3,3 +3,6 @@ https://raw.githubusercontent.com/RKPchannel/RKP_bypass_configs/refs/heads/main/
 
 # Destroy
 https://gist.githubusercontent.com/DestroyST6767/50af50221ca1858ba2084efc0f524fbc/raw
+
+# Catlerok_glasha
+https://gitverse.ru/api/repos/Catlerok_glasha/catwhiteMIRROR/raw/branch/master/configs.txt
