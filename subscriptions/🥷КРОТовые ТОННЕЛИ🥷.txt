@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 538 | 📅 04-05-2026 07:39
+#announce:ТОННЕЛЕЙ: 538 | 📅 04-05-2026 07:40
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpMaW1lVlBORlJFRQ@sub.limevpn.lol:8443
 vless://320f370f-2302-475d-8bb3-379ee7a9a9b3@fi19.skytunnel.pw:8443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=bunny.net&fp=qq&security=reality&pbk=QGlJtT7TdXFaIctNpsvykWqAgTR3VCq3Z0H94-QKHDc&sid=#🇫🇮 Финляндия
 vless://320f370f-2302-475d-8bb3-379ee7a9a9b3@ru.skytunnel.pw:8443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=ads.x5.ru&fp=qq&security=reality&pbk=92bt1gYq9EAz3SSOtKDrmqnbetNcaStEDicwrFg0_Rc&sid=#🇷🇺 Россия
