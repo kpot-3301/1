@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 538 | 📅 05-05-2026 08:00
+#announce:ТОННЕЛЕЙ: 538 | 📅 05-05-2026 08:01
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpMaW1lVlBORlJFRQ@sub.limevpn.lol:8443
 vless://6c364976-715e-4454-a2e4-0ff6db9c522d@fl-4-direct.djarbnet.ru:443/?type=ws&encryption=none&flow=&host=fl-4-direct.djarbnet.ru&path=%2Fgetupdates&security=tls&sni=fl-4-direct.djarbnet.ru#🇫🇮 Финляндия
 vless://cf8cc192-6120-4a60-945f-5ce91aee4175@144.31.220.136:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=hcaptcha.com&fp=chrome&security=reality&pbk=n00VSaVEImUfNI-8882Ecum-Er2KIHLg32Y-MWQGeh8&sid=#🇩🇪 Германия
