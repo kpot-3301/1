@@ -306,12 +306,28 @@ def process_tg_source(source_file, output_file, datetime_str):
 
     all_proxies = []
     for url in urls:
-        lines = fetch_subscription(url)
+        raw_url = convert_github_url(url)
+        print(f"   📥 Загрузка: {raw_url}")
+        session = _create_session()
+        try:
+            resp = session.get(raw_url, timeout=45)
+            resp.raise_for_status()
+        except Exception as e:
+            print(f"   ❌ Ошибка запроса: {e}")
+            continue
+
+        # Парсим как обычный текст, без проверки на VPN‑протоколы
+        lines = resp.text.strip().splitlines()
         proxy_re = re.compile(r'(tg://proxy\S+|tg://socks\S+|https://t\.me/proxy\S+)')
         for line in lines:
+            line = line.strip()
+            if not line:
+                continue
             match = proxy_re.search(line)
             if match:
                 raw = match.group(0)
+                # Удаляем невидимые спецсимволы (неразрывные пробелы, невидимые разделители и т.п.)
+                raw = re.sub(r'[\u200b-\u200f\u2028-\u202f\u2060-\u206f\ufeff]', '', raw)
                 if raw.startswith('https://t.me/proxy'):
                     raw = re.sub(r'^https://t\.me/proxy', 'tg://proxy', raw)
                 all_proxies.append(raw)
