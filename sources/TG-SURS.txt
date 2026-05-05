@@ -2,7 +2,7 @@
 https://www.dropbox.com/scl/fi/eza4d57tsvsls2crc5vts/TGproxy.txt?rlkey=7mxn5h3yw30seqs16layneatm&st=flenfpqy&raw=1
 
 # kort0881
-# https://raw.githubusercontent.com/kort0881/telegram-proxy-collector/refs/heads/main/proxy_all.txt
-# https://raw.githubusercontent.com/kort0881/telegram-proxy-collector/refs/heads/main/proxy_eu.txt
-# https://raw.githubusercontent.com/kort0881/telegram-proxy-collector/refs/heads/main/proxy_ru.txt
+https://raw.githubusercontent.com/kort0881/telegram-proxy-collector/refs/heads/main/proxy_all.txt
+https://raw.githubusercontent.com/kort0881/telegram-proxy-collector/refs/heads/main/proxy_eu.txt
+https://raw.githubusercontent.com/kort0881/telegram-proxy-collector/refs/heads/main/proxy_ru.txt
 
