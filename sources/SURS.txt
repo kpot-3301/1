@@ -1,11 +1,11 @@
-# КРАСИВЫЕ СТРАНЫ #https://raw.githubusercontent.com/theakres/VPN/main/all
+# КРАСИВЫЕ СТРАНЫ https://raw.githubusercontent.com/theakres/VPN/main/all
 
 
 # LimeHi
 https://raw.githubusercontent.com/LimeHi/LimeVPN/refs/heads/main/LimeVPN.txt?v=1
 
-# Destroy
-https://gist.githubusercontent.com/DestroyST6767/f00837ad379aa3272183fdaabcfd50da/raw
+# Destroy https://gist.githubusercontent.com/DestroyST6767/f00837ad379aa3272183fdaabcfd50da/raw
+
 
 # mifa
 https://mifa.world/fast
