@@ -1,3 +1,4 @@
+import sys
 import base64
 import json
 import os
@@ -7,6 +8,9 @@ from zoneinfo import ZoneInfo
 from urllib.parse import urlparse, unquote
 
 import requests
+
+# Перенаправляем stdout в stderr, чтобы логи были видны в GitHub Actions
+sys.stdout = sys.stderr
 
 try:
     import cloudscraper
