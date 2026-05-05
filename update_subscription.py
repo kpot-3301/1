@@ -59,25 +59,20 @@ VALID_PROTOCOLS = re.compile(
 
 # ===== Вспомогательные функции =====
 def load_ignore_words():
-    """Читает игнорируемые слова из IGNOR-name.txt."""
     if not os.path.exists(IGNOR_FILE):
         print(f"⚠️  Файл {IGNOR_FILE} не найден, фильтрация отключена.")
         return []
     with open(IGNOR_FILE, 'r', encoding='utf-8-sig') as f:
         words = [line.strip() for line in f if line.strip()]
-    print(f"📝 Загружено {len(words)} игнорируемых слов:")
-    for w in words:
-        print(f"   -> {repr(w)}")
+    print(f"📝 Загружено {len(words)} игнорируемых слов")
     return words
 
 def remove_ignored_words(name, ignore_words):
-    """Удаляет все вхождения каждого слова из ignore_words из строки name."""
     for word in ignore_words:
         name = re.sub(re.escape(word), '', name)
     return name.strip()
 
 def extract_host_port(config_str):
-    """Извлекает host:port для дедупликации."""
     if config_str.startswith('vmess://'):
         try:
             b64_part = config_str[8:]
@@ -120,16 +115,13 @@ def extract_host_port(config_str):
     return None
 
 def convert_github_url(url):
-    """Преобразует github.com/blob/ в raw.githubusercontent.com."""
     match = re.match(r'https://github\.com/([^/]+)/([^/]+)/blob/([^/]+)/(.*)', url)
     if match:
         user, repo, branch, path = match.groups()
         return f"https://raw.githubusercontent.com/{user}/{repo}/{branch}/{path}"
     return url
 
-# ===== Универсальная загрузка с обходом Cloudflare =====
 def _create_session():
-    """Создаёт HTTP-сессию с браузерным User-Agent и возможностью cloudscraper."""
     if CLOUDSCRAPER_AVAILABLE:
         return cloudscraper.create_scraper()
     else:
@@ -138,12 +130,10 @@ def _create_session():
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
             "Accept-Language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
-            "Accept-Encoding": "gzip, deflate, br",
         })
         return session
 
 def fetch_subscription(url):
-    """Скачивает подписку, обрабатывает base64 и HTML, извлекает ключи."""
     raw_url = convert_github_url(url)
     print(f"   📥 Загрузка: {raw_url}")
     session = _create_session()
@@ -167,10 +157,9 @@ def fetch_subscription(url):
         except Exception:
             pass
 
-    # Разбивка на строки
     lines = [line.strip() for line in content.splitlines() if line.strip()]
 
-    # Если после разделения нет ни одного протокола – возможно, HTML со ссылками
+    # Если нет ни одного протокола – возможно, HTML со ссылками
     if not any(VALID_PROTOCOLS.match(line) for line in lines):
         found = re.findall(r'(vmess|vless|trojan|ss|ssr|hysteria2?|tuic|socks5)://[^\s\"\'<>]+', content)
         if found:
@@ -185,7 +174,6 @@ def fetch_subscription(url):
 
 # ===== Очистка имён ключей =====
 def clean_name_in_key(key, ignore_words):
-    """Удаляет игнорируемые слова из имени ключа."""
     if '#' in key:
         base_part, encoded_name = key.split('#', 1)
         encoded_name = encoded_name.rstrip('=')
@@ -221,33 +209,30 @@ def clean_name_in_key(key, ignore_words):
 
     return key
 
-# ===== Классификация Tor-мостов (исправленная) =====
-def classify_bridge(line):
-    """Определяет тип Tor-моста."""
+# ===== Классификация Tor-мостов (с отладкой) =====
+def classify_bridge(line, debug=False):
     stripped = line.strip()
     if not stripped:
         return None
     lower = stripped.lower()
-    # webtunnel проверяется первым, т.к. может содержать 'cert=' в другом контексте
+
+    # webtunnel
     if 'webtunnel' in lower:
         return 'webtunnel'
-    # obfs4 обычно содержит 'cert=' (регистронезависимо)
+    # obfs4 (по наличию cert=)
     if 'cert=' in lower:
         return 'obfs4'
-    # vanilla: просто IP:port, возможно с fingerprint (длинная строка после порта)
+    # vanilla (IP:port)
     if re.match(r'^\d+\.\d+\.\d+\.\d+:\d+$', stripped):
         return 'vanilla'
+    # vanilla с fingerprint
     parts = stripped.split()
-    if parts and ':' in parts[0]:
-        if len(parts) >= 2 and len(parts[1]) >= 20:
-            return 'vanilla'
-        elif len(parts) == 1:
-            return 'vanilla'
+    if parts and ':' in parts[0] and re.match(r'^\d+\.\d+\.\d+\.\d+:\d+$', parts[0]):
+        return 'vanilla'
     return None
 
-# ===== Обработчики каждого типа подписок =====
+# ===== Обработчики подписок =====
 def process_source(source_file, output_file, header_template, ignore_words, datetime_str):
-    """Собирает и очищает VPN‑подписки."""
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
@@ -263,7 +248,6 @@ def process_source(source_file, output_file, header_template, ignore_words, date
         except Exception as e:
             print(f"   ❌ Ошибка обработки {url}: {e}")
 
-    # Дедупликация по host:port
     seen_hostports = set()
     unique_keys = []
     for key in all_keys:
@@ -273,10 +257,7 @@ def process_source(source_file, output_file, header_template, ignore_words, date
             if hp:
                 seen_hostports.add(hp)
 
-    # Очистка имён
     cleaned_keys = [clean_name_in_key(k, ignore_words) for k in unique_keys]
-
-    # Фильтрация по допустимым протоколам
     final_keys = [k for k in cleaned_keys if VALID_PROTOCOLS.match(k)]
     print(f"   🧹 Итоговых ключей: {len(final_keys)}")
 
@@ -289,7 +270,6 @@ def process_source(source_file, output_file, header_template, ignore_words, date
     print(f"✅ Создан файл {output_file}")
 
 def process_tg_source(source_file, output_file, datetime_str):
-    """Собирает Telegram‑прокси."""
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
@@ -301,7 +281,6 @@ def process_tg_source(source_file, output_file, datetime_str):
     for url in urls:
         try:
             lines = fetch_subscription(url)
-
             proxy_re = re.compile(r'(tg://proxy\S+|tg://socks\S+|https://t\.me/proxy\S+)')
             for line in lines:
                 match = proxy_re.search(line)
@@ -313,7 +292,6 @@ def process_tg_source(source_file, output_file, datetime_str):
         except Exception as e:
             print(f"   ❌ Ошибка загрузки {url}: {e}")
 
-    # Дедупликация по server + port
     seen_hostports = set()
     unique_proxies = []
     for proxy in all_proxies:
@@ -336,7 +314,6 @@ def process_tg_source(source_file, output_file, datetime_str):
     print(f"✅ Создан файл {output_file} с {len(unique_proxies)} прокси.")
 
 def process_tor_source(source_file, output_file, date_str):
-    """Собирает Tor‑мосты (исправленная версия)."""
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
@@ -348,25 +325,37 @@ def process_tor_source(source_file, output_file, date_str):
     for url in urls:
         try:
             lines = fetch_subscription(url)
-            print(f"  ✅ Получено {len(lines)} строк из {url}")
+            if not lines:
+                print("   ⚠️ Нет строк для обработки.")
+                continue
+
+            # Отладка: показываем первые 5 строк
+            sample = lines[:5]
+            print(f"   🔎 Примеры строк из источника:")
+            for s in sample:
+                print(f"      -> {s[:120]}")
+
             for line in lines:
                 stripped = line.strip()
                 if not stripped or stripped.startswith('#') or stripped.startswith('//'):
                     continue
 
-                # Сначала определяем тип моста по содержимому
                 bt = classify_bridge(stripped)
 
-                # Если не удалось классифицировать, но это чистый IP:port -> vanilla
+                # vanilla по IP:port, если не определилось
                 if not bt and re.match(r'^\d+\.\d+\.\d+\.\d+:\d+$', stripped):
                     bt = 'vanilla'
 
                 if bt:
-                    # Убираем возможный префикс типа моста в начале строки (с пробелами или без)
+                    # Убираем возможный префикс типа в любом регистре и с пробелами
                     stripped = re.sub(r'^\s*(obfs4|webtunnel)\s+', '', stripped, flags=re.IGNORECASE)
                     bridges_by_type[bt].add(stripped)
+                else:
+                    # Для отладки: выводим строки, которые не классифицированы
+                    if re.match(r'^\d+\.\d+\.\d+\.\d+:\d+', stripped) or 'obfs' in stripped.lower():
+                        print(f"   ❓ Не удалось классифицировать: {stripped[:100]}")
         except Exception as e:
-            print(f"  ❌ Ошибка загрузки {url}: {e}")
+            print(f"   ❌ Ошибка загрузки {url}: {e}")
 
     types = ['obfs4', 'webtunnel', 'vanilla']
     counts = {t: len(bridges_by_type[t]) for t in types}
@@ -402,9 +391,9 @@ def main():
     date_str_tor = now_ekb.strftime("%Y-%m-%d")
 
     if CLOUDSCRAPER_AVAILABLE:
-        print("🌩  Cloudscraper найден – защита Cloudflare будет обходиться.")
+        print("🌩  Cloudscraper активирован.")
     else:
-        print("ℹ️  Cloudscraper не установлен. Используется обычный requests с браузерным User-Agent.")
+        print("ℹ️  Cloudscraper не установлен. Используем обычный requests.")
 
     print("\n===== 🥷 SURS ===================================")
     process_source(SURS_FILE, OUTPUT_SURS, HEADER_SURS, ignore_words, datetime_str_main)
