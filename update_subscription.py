@@ -2,7 +2,6 @@ import base64
 import json
 import os
 import re
-import sys
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from urllib.parse import urlparse, unquote
@@ -222,17 +221,22 @@ def clean_name_in_key(key, ignore_words):
 
     return key
 
-# ===== Классификация Tor-мостов =====
+# ===== Классификация Tor-мостов (исправленная) =====
 def classify_bridge(line):
     """Определяет тип Tor-моста."""
     stripped = line.strip()
     if not stripped:
         return None
     lower = stripped.lower()
+    # webtunnel проверяется первым, т.к. может содержать 'cert=' в другом контексте
     if 'webtunnel' in lower:
         return 'webtunnel'
+    # obfs4 обычно содержит 'cert=' (регистронезависимо)
     if 'cert=' in lower:
         return 'obfs4'
+    # vanilla: просто IP:port, возможно с fingerprint (длинная строка после порта)
+    if re.match(r'^\d+\.\d+\.\d+\.\d+:\d+$', stripped):
+        return 'vanilla'
     parts = stripped.split()
     if parts and ':' in parts[0]:
         if len(parts) >= 2 and len(parts[1]) >= 20:
@@ -332,7 +336,7 @@ def process_tg_source(source_file, output_file, datetime_str):
     print(f"✅ Создан файл {output_file} с {len(unique_proxies)} прокси.")
 
 def process_tor_source(source_file, output_file, date_str):
-    """Собирает Tor‑мосты."""
+    """Собирает Tor‑мосты (исправленная версия)."""
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
@@ -344,19 +348,25 @@ def process_tor_source(source_file, output_file, date_str):
     for url in urls:
         try:
             lines = fetch_subscription(url)
+            print(f"  ✅ Получено {len(lines)} строк из {url}")
             for line in lines:
                 stripped = line.strip()
                 if not stripped or stripped.startswith('#') or stripped.startswith('//'):
                     continue
+
+                # Сначала определяем тип моста по содержимому
                 bt = classify_bridge(stripped)
+
+                # Если не удалось классифицировать, но это чистый IP:port -> vanilla
                 if not bt and re.match(r'^\d+\.\d+\.\d+\.\d+:\d+$', stripped):
                     bt = 'vanilla'
+
                 if bt:
-                    if bt in ('obfs4', 'webtunnel'):
-                        stripped = re.sub(rf'^{bt}\s+', '', stripped, flags=re.IGNORECASE)
+                    # Убираем возможный префикс типа моста в начале строки (с пробелами или без)
+                    stripped = re.sub(r'^\s*(obfs4|webtunnel)\s+', '', stripped, flags=re.IGNORECASE)
                     bridges_by_type[bt].add(stripped)
         except Exception as e:
-            print(f"   ❌ Ошибка загрузки {url}: {e}")
+            print(f"  ❌ Ошибка загрузки {url}: {e}")
 
     types = ['obfs4', 'webtunnel', 'vanilla']
     counts = {t: len(bridges_by_type[t]) for t in types}
