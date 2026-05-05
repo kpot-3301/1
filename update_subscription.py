@@ -8,7 +8,6 @@ from urllib.parse import urlparse, unquote
 
 import requests
 
-# Попытка импорта cloudscraper (обход Cloudflare)
 try:
     import cloudscraper
     CLOUDSCRAPER_AVAILABLE = True
@@ -30,7 +29,6 @@ OUTPUT_WHITE = os.path.join(OUTPUT_DIR, "📡КРОТовые ТОННЕЛИ📡
 OUTPUT_TG = os.path.join(OUTPUT_DIR, "TGproxy.txt")
 OUTPUT_TOR = os.path.join(OUTPUT_DIR, "TOR.txt")
 
-# ===== ШАБЛОНЫ ЗАГОЛОВКОВ =====
 HEADER_SURS = """#profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
@@ -57,7 +55,6 @@ VALID_PROTOCOLS = re.compile(
     r'^(vmess|vless|trojan|ss|ssr|hysteria2|hysteria|tuic|socks5|http|https)://'
 )
 
-# ===== Вспомогательные функции =====
 def load_ignore_words():
     if not os.path.exists(IGNOR_FILE):
         print(f"⚠️  Файл {IGNOR_FILE} не найден, фильтрация отключена.")
@@ -134,6 +131,7 @@ def _create_session():
         return session
 
 def fetch_subscription(url):
+    """Скачивает подписку VPN (требуются vmess:// и т.п.)"""
     raw_url = convert_github_url(url)
     print(f"   📥 Загрузка: {raw_url}")
     session = _create_session()
@@ -145,8 +143,6 @@ def fetch_subscription(url):
         return []
 
     content = resp.text.strip()
-
-    # Попытка декодировать Base64 (если ответ не-HTML)
     if not re.search(r'<!DOCTYPE|<html', content, re.IGNORECASE):
         try:
             missing_padding = len(content) % 4
@@ -159,20 +155,35 @@ def fetch_subscription(url):
 
     lines = [line.strip() for line in content.splitlines() if line.strip()]
 
-    # Если нет ни одного протокола – возможно, HTML со ссылками
     if not any(VALID_PROTOCOLS.match(line) for line in lines):
         found = re.findall(r'(vmess|vless|trojan|ss|ssr|hysteria2?|tuic|socks5)://[^\s\"\'<>]+', content)
         if found:
             lines = found
-            print(f"   🔎 Найдено {len(found)} ссылок внутри HTML")
+            print(f"   🔎 Найдено {len(found)} ссылок в HTML")
         else:
-            print(f"   ⚠️ Ключи не найдены. Первые 200 символов ответа: {content[:200]}")
+            print(f"   ⚠️ Ключи не найдены. Показываю первые 200 символов:\n{content[:200]}")
             return []
 
     print(f"   ✅ Получено {len(lines)} строк")
     return lines
 
-# ===== Очистка имён ключей =====
+def fetch_tor_source(url):
+    """Скачивает список Tor-мостов (любой текст, без проверки протоколов)"""
+    raw_url = convert_github_url(url)
+    print(f"   📥 Загрузка: {raw_url}")
+    session = _create_session()
+    try:
+        resp = session.get(raw_url, timeout=45)
+        resp.raise_for_status()
+    except Exception as e:
+        print(f"   ❌ Ошибка запроса: {e}")
+        return []
+
+    content = resp.text.strip()
+    lines = [line.strip() for line in content.splitlines() if line.strip()]
+    print(f"   ✅ Получено {len(lines)} строк")
+    return lines
+
 def clean_name_in_key(key, ignore_words):
     if '#' in key:
         base_part, encoded_name = key.split('#', 1)
@@ -206,47 +217,64 @@ def clean_name_in_key(key, ignore_words):
             return key
         except Exception:
             return key
-
     return key
 
-# ===== Классификация Tor-мостов (с отладкой) =====
-def classify_bridge(line, debug=False):
+def classify_bridge(line):
     stripped = line.strip()
     if not stripped:
         return None
     lower = stripped.lower()
-
-    # webtunnel
     if 'webtunnel' in lower:
         return 'webtunnel'
-    # obfs4 (по наличию cert=)
     if 'cert=' in lower:
         return 'obfs4'
-    # vanilla (IP:port)
     if re.match(r'^\d+\.\d+\.\d+\.\d+:\d+$', stripped):
         return 'vanilla'
-    # vanilla с fingerprint
     parts = stripped.split()
     if parts and ':' in parts[0] and re.match(r'^\d+\.\d+\.\d+\.\d+:\d+$', parts[0]):
         return 'vanilla'
     return None
 
-# ===== Обработчики подписок =====
+def extract_url_from_line(line):
+    """Извлекает URL из строки вида '# Комментарий https://...' или просто https://..."""
+    # Ищем последний URL в строке
+    urls = re.findall(r'https?://\S+', line)
+    if urls:
+        return urls[-1]  # Берём последний (на случай нескольких)
+    return line.strip()
+
+def read_urls_from_file(filepath):
+    """Читает файл, игнорирует строки, начинающиеся с # (чистые комментарии),
+    и извлекает URL из строк с комментариями."""
+    if not os.path.exists(filepath):
+        return []
+    urls = []
+    with open(filepath, 'r', encoding='utf-8') as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith('#'):
+                continue
+            # Если строка содержит комментарий и URL, извлекаем URL
+            if '#' in line:
+                url = extract_url_from_line(line)
+                if url and url.startswith('http'):
+                    urls.append(url)
+            else:
+                urls.append(line)
+    return urls
+
 def process_source(source_file, output_file, header_template, ignore_words, datetime_str):
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
 
-    with open(source_file, 'r', encoding='utf-8') as f:
-        urls = [line.strip() for line in f if line.strip()]
+    urls = read_urls_from_file(source_file)
+    print(f"   🔗 Найдено {len(urls)} URL в {source_file}")
 
     all_keys = []
     for url in urls:
-        try:
-            keys = fetch_subscription(url)
-            all_keys.extend(keys)
-        except Exception as e:
-            print(f"   ❌ Ошибка обработки {url}: {e}")
+        keys = fetch_subscription(url)
+        all_keys.extend(keys)
 
     seen_hostports = set()
     unique_keys = []
@@ -266,7 +294,6 @@ def process_source(source_file, output_file, header_template, ignore_words, date
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(header)
         f.write('\n'.join(final_keys))
-
     print(f"✅ Создан файл {output_file}")
 
 def process_tg_source(source_file, output_file, datetime_str):
@@ -274,23 +301,20 @@ def process_tg_source(source_file, output_file, datetime_str):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
 
-    with open(source_file, 'r', encoding='utf-8') as f:
-        urls = [line.strip() for line in f if line.strip()]
+    urls = read_urls_from_file(source_file)
+    print(f"   🔗 Найдено {len(urls)} URL в {source_file}")
 
     all_proxies = []
     for url in urls:
-        try:
-            lines = fetch_subscription(url)
-            proxy_re = re.compile(r'(tg://proxy\S+|tg://socks\S+|https://t\.me/proxy\S+)')
-            for line in lines:
-                match = proxy_re.search(line)
-                if match:
-                    raw = match.group(0)
-                    if raw.startswith('https://t.me/proxy'):
-                        raw = re.sub(r'^https://t\.me/proxy', 'tg://proxy', raw)
-                    all_proxies.append(raw)
-        except Exception as e:
-            print(f"   ❌ Ошибка загрузки {url}: {e}")
+        lines = fetch_subscription(url)
+        proxy_re = re.compile(r'(tg://proxy\S+|tg://socks\S+|https://t\.me/proxy\S+)')
+        for line in lines:
+            match = proxy_re.search(line)
+            if match:
+                raw = match.group(0)
+                if raw.startswith('https://t.me/proxy'):
+                    raw = re.sub(r'^https://t\.me/proxy', 'tg://proxy', raw)
+                all_proxies.append(raw)
 
     seen_hostports = set()
     unique_proxies = []
@@ -310,7 +334,6 @@ def process_tg_source(source_file, output_file, datetime_str):
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(header)
         f.write('\n'.join(unique_proxies))
-
     print(f"✅ Создан файл {output_file} с {len(unique_proxies)} прокси.")
 
 def process_tor_source(source_file, output_file, date_str):
@@ -318,44 +341,32 @@ def process_tor_source(source_file, output_file, date_str):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
 
-    with open(source_file, 'r', encoding='utf-8') as f:
-        urls = [line.strip() for line in f if line.strip()]
+    urls = read_urls_from_file(source_file)
+    print(f"   🔗 Найдено {len(urls)} URL в {source_file}")
 
     bridges_by_type = {'obfs4': set(), 'vanilla': set(), 'webtunnel': set()}
     for url in urls:
-        try:
-            lines = fetch_subscription(url)
-            if not lines:
-                print("   ⚠️ Нет строк для обработки.")
+        lines = fetch_tor_source(url)  # используем специальную функцию без проверки протоколов
+        if not lines:
+            continue
+
+        sample = lines[:5]
+        print(f"   🔎 Примеры строк:")
+        for s in sample:
+            print(f"      -> {s[:120]}")
+
+        for line in lines:
+            stripped = line.strip()
+            if not stripped or stripped.startswith('#') or stripped.startswith('//'):
                 continue
 
-            # Отладка: показываем первые 5 строк
-            sample = lines[:5]
-            print(f"   🔎 Примеры строк из источника:")
-            for s in sample:
-                print(f"      -> {s[:120]}")
+            bt = classify_bridge(stripped)
+            if not bt and re.match(r'^\d+\.\d+\.\d+\.\d+:\d+$', stripped):
+                bt = 'vanilla'
 
-            for line in lines:
-                stripped = line.strip()
-                if not stripped or stripped.startswith('#') or stripped.startswith('//'):
-                    continue
-
-                bt = classify_bridge(stripped)
-
-                # vanilla по IP:port, если не определилось
-                if not bt and re.match(r'^\d+\.\d+\.\d+\.\d+:\d+$', stripped):
-                    bt = 'vanilla'
-
-                if bt:
-                    # Убираем возможный префикс типа в любом регистре и с пробелами
-                    stripped = re.sub(r'^\s*(obfs4|webtunnel)\s+', '', stripped, flags=re.IGNORECASE)
-                    bridges_by_type[bt].add(stripped)
-                else:
-                    # Для отладки: выводим строки, которые не классифицированы
-                    if re.match(r'^\d+\.\d+\.\d+\.\d+:\d+', stripped) or 'obfs' in stripped.lower():
-                        print(f"   ❓ Не удалось классифицировать: {stripped[:100]}")
-        except Exception as e:
-            print(f"   ❌ Ошибка загрузки {url}: {e}")
+            if bt:
+                stripped = re.sub(r'^\s*(obfs4|webtunnel)\s+', '', stripped, flags=re.IGNORECASE)
+                bridges_by_type[bt].add(stripped)
 
     types = ['obfs4', 'webtunnel', 'vanilla']
     counts = {t: len(bridges_by_type[t]) for t in types}
@@ -380,7 +391,6 @@ def process_tor_source(source_file, output_file, date_str):
 
     print(f"✅ Создан файл {output_file} с {total} мостами.")
 
-# ===== Главная функция =====
 def main():
     print("🔍 Загрузка игнорируемых слов...")
     ignore_words = load_ignore_words()
