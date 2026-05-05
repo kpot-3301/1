@@ -1,11 +1,11 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 538 | 📅 05-05-2026 05:11
+#announce:ТОННЕЛЕЙ: 538 | 📅 05-05-2026 08:00
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpMaW1lVlBORlJFRQ@sub.limevpn.lol:8443
-vless://7426ed23-5f80-4791-85db-0ac8b9b6a5b5@fi.vz-or.com:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=sun9-36.userapi.com&fp=qq&security=reality&pbk=RJETAkoZ6lowmwc5f0HtPy00c3dfojqQuypriLExXRE&sid=abbcd128#🇳🇱 Нидерланды
-vless://7426ed23-5f80-4791-85db-0ac8b9b6a5b5@de.internal-servers-subscription.net:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=ads.x5.ru&fp=qq&security=reality&pbk=RJETAkoZ6lowmwc5f0HtPy00c3dfojqQuypriLExXRE&sid=abbcd128#🇩🇪 Германия
-vless://7426ed23-5f80-4791-85db-0ac8b9b6a5b5@ru.vz-or.com:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=sun9-38.userapi.com&security=reality&pbk=RJETAkoZ6lowmwc5f0HtPy00c3dfojqQuypriLExXRE&sid=abbcd128#🇷🇺 Россия
+vless://6c364976-715e-4454-a2e4-0ff6db9c522d@fl-4-direct.djarbnet.ru:443/?type=ws&encryption=none&flow=&host=fl-4-direct.djarbnet.ru&path=%2Fgetupdates&security=tls&sni=fl-4-direct.djarbnet.ru#🇫🇮 Финляндия
+vless://cf8cc192-6120-4a60-945f-5ce91aee4175@144.31.220.136:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=hcaptcha.com&fp=chrome&security=reality&pbk=n00VSaVEImUfNI-8882Ecum-Er2KIHLg32Y-MWQGeh8&sid=#🇩🇪 Германия
+vless://7b13eaac-882d-43a0-b19e-6d2e867d624e@nl.cdnjst.org:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=hcaptcha.com&fp=chrome&security=reality&pbk=s7STQtGCpR_y3PeQK0XOLUKEj689oKDy9v9iuxwzRzk&sid=8ac90e6b636226f7#🇳🇱 Нидерланды
 vless://bafc879b-eeef-00fa-ac47-8ec6c23335e9@72.56.246.128:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=IBvNLerjNLpF4OpUX-wGJp8YDZrnKoh-gEItUDNT_Bg&security=reality&sni=cdn.trahodrom.fun&type=tcp#1. 🇫🇷 France
 vless://bafc879b-eeef-00fa-ac47-8ec6c23335e9@95.182.110.147:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=IBvNLerjNLpF4OpUX-wGJp8YDZrnKoh-gEItUDNT_Bg&security=reality&sni=cdn.trahodrom.fun&type=tcp#4. 🇫🇷 France
 vless://bafc879b-eeef-00fa-ac47-8ec6c23335e9@95.182.110.30:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=IBvNLerjNLpF4OpUX-wGJp8YDZrnKoh-gEItUDNT_Bg&security=reality&sni=cdn.trahodrom.fun&type=tcp#5. 🇫🇷 France
