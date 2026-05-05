@@ -121,9 +121,7 @@ def convert_github_url(url):
 def convert_dropbox_url(url):
     """Преобразует ссылки Dropbox для прямой выдачи файла (raw)."""
     if 'dropbox.com' in url and 'raw=1' not in url:
-        # Убираем dl=0 или dl=1
         url = re.sub(r'[?&]dl=[01]', '', url)
-        # Добавляем raw=1
         if '?' in url:
             url += '&raw=1'
         else:
@@ -316,7 +314,6 @@ def process_tg_source(source_file, output_file, datetime_str):
 
     all_proxies = []
     for url in urls:
-        # Применяем и github-конвертацию, и dropbox-конвертацию
         url = convert_dropbox_url(convert_github_url(url))
         print(f"   📥 Загрузка: {url}")
         session = _create_session()
@@ -327,7 +324,6 @@ def process_tg_source(source_file, output_file, datetime_str):
             print(f"   ❌ Ошибка запроса: {e}")
             continue
 
-        # Парсим как обычный текст
         lines = resp.text.strip().splitlines()
         proxy_re = re.compile(r'(tg://proxy\S+|tg://socks\S+|https://t\.me/proxy\S+)')
         for line in lines:
@@ -337,21 +333,24 @@ def process_tg_source(source_file, output_file, datetime_str):
             match = proxy_re.search(line)
             if match:
                 raw = match.group(0)
-                # Удаляем невидимые спецсимволы
                 raw = re.sub(r'[\u200b-\u200f\u2028-\u202f\u2060-\u206f\ufeff]', '', raw)
                 if raw.startswith('https://t.me/proxy'):
                     raw = re.sub(r'^https://t\.me/proxy', 'tg://proxy', raw)
                 all_proxies.append(raw)
 
-    seen_hostports = set()
+    print(f"   📊 Всего прокси до фильтрации: {len(all_proxies)}")
+
+    # Уникальность по server:port:secret
+    seen = set()
     unique_proxies = []
     for proxy in all_proxies:
         match_server = re.search(r'\bserver=([^&]+)', proxy)
         match_port = re.search(r'\bport=(\d+)', proxy)
-        if match_server and match_port:
-            hp = f"{match_server.group(1)}:{match_port.group(1)}"
-            if hp not in seen_hostports:
-                seen_hostports.add(hp)
+        match_secret = re.search(r'\bsecret=([^&]+)', proxy)
+        if match_server and match_port and match_secret:
+            key = f"{match_server.group(1)}:{match_port.group(1)}:{match_secret.group(1)}"
+            if key not in seen:
+                seen.add(key)
                 unique_proxies.append(proxy)
         else:
             unique_proxies.append(proxy)
