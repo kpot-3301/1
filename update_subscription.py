@@ -118,6 +118,18 @@ def convert_github_url(url):
         return f"https://raw.githubusercontent.com/{user}/{repo}/{branch}/{path}"
     return url
 
+def convert_dropbox_url(url):
+    """Преобразует ссылки Dropbox для прямой выдачи файла (raw)."""
+    if 'dropbox.com' in url and 'raw=1' not in url:
+        # Убираем dl=0 или dl=1
+        url = re.sub(r'[?&]dl=[01]', '', url)
+        # Добавляем raw=1
+        if '?' in url:
+            url += '&raw=1'
+        else:
+            url += '?raw=1'
+    return url
+
 def _create_session():
     if CLOUDSCRAPER_AVAILABLE:
         return cloudscraper.create_scraper()
@@ -237,10 +249,9 @@ def classify_bridge(line):
 
 def extract_url_from_line(line):
     """Извлекает URL из строки вида '# Комментарий https://...' или просто https://..."""
-    # Ищем последний URL в строке
     urls = re.findall(r'https?://\S+', line)
     if urls:
-        return urls[-1]  # Берём последний (на случай нескольких)
+        return urls[-1]
     return line.strip()
 
 def read_urls_from_file(filepath):
@@ -254,7 +265,6 @@ def read_urls_from_file(filepath):
             line = line.strip()
             if not line or line.startswith('#'):
                 continue
-            # Если строка содержит комментарий и URL, извлекаем URL
             if '#' in line:
                 url = extract_url_from_line(line)
                 if url and url.startswith('http'):
@@ -306,17 +316,18 @@ def process_tg_source(source_file, output_file, datetime_str):
 
     all_proxies = []
     for url in urls:
-        raw_url = convert_github_url(url)
-        print(f"   📥 Загрузка: {raw_url}")
+        # Применяем и github-конвертацию, и dropbox-конвертацию
+        url = convert_dropbox_url(convert_github_url(url))
+        print(f"   📥 Загрузка: {url}")
         session = _create_session()
         try:
-            resp = session.get(raw_url, timeout=45)
+            resp = session.get(url, timeout=45)
             resp.raise_for_status()
         except Exception as e:
             print(f"   ❌ Ошибка запроса: {e}")
             continue
 
-        # Парсим как обычный текст, без проверки на VPN‑протоколы
+        # Парсим как обычный текст
         lines = resp.text.strip().splitlines()
         proxy_re = re.compile(r'(tg://proxy\S+|tg://socks\S+|https://t\.me/proxy\S+)')
         for line in lines:
@@ -326,7 +337,7 @@ def process_tg_source(source_file, output_file, datetime_str):
             match = proxy_re.search(line)
             if match:
                 raw = match.group(0)
-                # Удаляем невидимые спецсимволы (неразрывные пробелы, невидимые разделители и т.п.)
+                # Удаляем невидимые спецсимволы
                 raw = re.sub(r'[\u200b-\u200f\u2028-\u202f\u2060-\u206f\ufeff]', '', raw)
                 if raw.startswith('https://t.me/proxy'):
                     raw = re.sub(r'^https://t\.me/proxy', 'tg://proxy', raw)
@@ -362,7 +373,7 @@ def process_tor_source(source_file, output_file, date_str):
 
     bridges_by_type = {'obfs4': set(), 'vanilla': set(), 'webtunnel': set()}
     for url in urls:
-        lines = fetch_tor_source(url)  # используем специальную функцию без проверки протоколов
+        lines = fetch_tor_source(url)
         if not lines:
             continue
 
