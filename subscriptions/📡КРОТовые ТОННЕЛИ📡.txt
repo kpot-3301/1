@@ -1,7 +1,7 @@
 #profile-title:📡КРОТовые ТОННЕЛИ📡
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 700 | 📅 05-05-2026 08:13
+#announce:ТОННЕЛЕЙ: 700 | 📅 05-05-2026 08:14
 vless://75807638-6f19-07d0-ae08-38492ee85c88@178.72.182.38:52006?allowInsecure=1&flow=xtls-rprx-vision&host=cl-ru-1.edgeflux.ru&path=%2F&security=tls&sni=cl-ru-1.edgeflux.ru&type=tcp#SNI: cl-ru-1.edgeflux.ru
 vless://50b95deb-6394-46c5-b88a-583e5b3ca7ee@fastcon-tgg.harknmav.fun:443?encryption=none&type=tcp&flow=xtls-rprx-vision&security=reality&pbk=PGccrEdFmBaB1rQFJqM-a9jJ1pFsxhUP2sD9KTw5Oz4&sid=f69d7af2d5fc5e0c&sni=max.ru&fp=chrome&alpn=http%2525252F1.1&headerType=none#SNI: max.ru
 vless://69a2af58-d74a-44ca-864a-e09b493f4274@141.98.191.78:443?type=xhttp&security=reality&fp=chrome&pbk=wpLAX1ax15YI3H8kmmE8PH6S4vCjAwE2gYw6hG6QIh4&sid=a0&sni=login.vk.ru&packet_mode=auto%2525252525255C%2525252525252C%2525252525253A#SNI: login.vk.ru
