@@ -24,3 +24,4 @@ MIFA
 🇷🇺 💎 AETRISVPN | Beta
  Aetris
 @xex_vpn
+Telegram Bot: @AirLinkVPNBot
