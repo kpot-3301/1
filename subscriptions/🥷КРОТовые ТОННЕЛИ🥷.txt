@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 260 | 📅 07-05-2026 19:11
+#announce:ТОННЕЛЕЙ: 260 | 📅 07-05-2026 19:17
 ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTpMaW1lVlBORlJFRQ@sub.limevpn.lol:8443
 vless://f0b0e142-0768-458b-b481-671ed2018741@auto-5.barryvpn.com:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=ru-streaming.barryvpn.com&fp=random&security=reality&pbk=u1QltI2SnUX48F-cqulaVojcSLadC9I1Vt8gOqnFTB4&sid=#🇪🇺 Европа 1
 vless://f0b0e142-0768-458b-b481-671ed2018741@auto-5.barryvpn.com:8443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=5post-gate-test.x5.ru&fp=qq&security=reality&pbk=u1QltI2SnUX48F-cqulaVojcSLadC9I1Vt8gOqnFTB4&sid=0123456789abcdef#🇪🇺 Европа 2

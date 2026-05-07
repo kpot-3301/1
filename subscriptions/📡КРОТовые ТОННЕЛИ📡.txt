@@ -1,8 +1,8 @@
 #profile-title:📡КРОТовые ТОННЕЛИ📡
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 500 | 📅 07-05-2026 19:11
-vless://c3ef0f28-7123-4dd5-aa69-6a99b13fa65f@111.111.111.111:111?security=reality&encryption=none&pbk=xCkhIFxIBMXZg9ntzegRA5P9XkOdy3znkJELXcsmsVg&headerType=none&fp=qq&allowinsecure=0&type=tcp&flow=xtls-rprx-vision&sni=google.com&sid=e9772810b66e5b51#🇦🇱+Telegram Bot: @AirLinkVPNBot
+#announce:ТОННЕЛЕЙ: 500 | 📅 07-05-2026 19:17
+vless://c3ef0f28-7123-4dd5-aa69-6a99b13fa65f@111.111.111.111:111?security=reality&encryption=none&pbk=xCkhIFxIBMXZg9ntzegRA5P9XkOdy3znkJELXcsmsVg&headerType=none&fp=qq&allowinsecure=0&type=tcp&flow=xtls-rprx-vision&sni=google.com&sid=e9772810b66e5b51#🇦🇱+
 vless://735f24ba-65e2-4244-b2d5-420af6ff28de@146.185.243.104:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=chrome&sni=eh.vk.com&pbk=0t6b8m_PBAG3rF2HPOEL4yiyb-2JglciiANPKvyb2Ho#🇷🇺Обходы -  |0004|
 vless://22f65fc9-4dee-456c-a213-2a025389af31@109.120.189.213:58652?encryption=none&type=tcp&security=reality&fp=chrome&sni=www.apple.com&pbk=VZq5atMvE_1AW0nXcn4opuxZdrSu3zy3kP7YTdGj6EQ&sid=28000000#🇷🇺Обходы -  |0005|
 vless://769d6219-be8b-400d-9dd7-bbec4cca3593@95.163.215.131:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=firefox&sni=api-maps.yandex.ru&pbk=Cb0_DJDHGB9GXjk1ue1GOWnXfXoQlkvaSpLX81687BI&sid=8d&spx=%2F#🇷🇺Обходы -  |0009|
@@ -457,7 +457,7 @@ vless://63b4536b-e8ea-461b-82fe-d2a2ed330642@195.66.24.31:443?mode=stream-one&pa
 vless://77ca3f42-befc-4d40-95f5-da00f80b48b6@171.22.133.58:443?security=reality&encryption=none&pbk=BfQBWkqiYIaT-v-jO6FFaGMPsBFOtfFxKOh3HJZXK3c&headerType=none&fp=firefox&spx=%2F&type=tcp&flow=xtls-rprx-vision&sni=api-maps.yandex.ru&sid=3de90e3535433409#🇳🇱  | Белые списки Нидерланды (Maps)
 vless://5b6a67cc-684e-448d-a93d-3335a61be810@pl-free-2.amnesia.pw:443?security=reality&encryption=none&pbk=TGiarWayhvAmTy5Z26bfEtnmHtRS4YVn03VdRxtm1Es&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=www.ozon.ru#🇬🇧  | Белые списки Великобритания
 vless://21efa503-7247-462e-98c9-56f9a1319e91@v3.filesdownloader.ru:6784?mode=auto&path=%2F&security=reality&encryption=none&pbk=LRAFOiJmqIVMJu9pr1LG4WnaWHJHDtT-vnTHL9iFT3M&host=vk.com&fp=firefox&spx=%2F&type=xhttp&sni=vk.com&sid=578fe8#🇩🇪  | Белые списки Германия (VK)
-vless://00000000-0000-0000-0000-000000000000@0.0.0.0:1?encryption=none&type=tcp&headerType=none#💎Оформи VIP
+vless://00000000-0000-0000-0000-000000000000@0.0.0.0:1?encryption=none&type=tcp&headerType=none
 vless://3d243df5-9cda-4aac-89d5-354de77d79e2@2.27.57.88:443?type=tcp&security=reality&flow=xtls-rprx-vision&fp=chrome&pbk=IarU4xicX8qiVO5nqzeHc6MK9A_Vw9YaAtnPHB4DswU&sid=916a&sni=mirror.yandex.ru#🇪🇺 📶LTE| #1
 vless://1a380e3d-b336-425c-938b-bac548f67ab9@51.250.14.57:443?flow=xtls-rprx-vision&fp=chrome&pbk=5IH4GxRn58hemmfY2nr_cETdTXwFC1PHngCLY2OiWz8&security=reality&sid=4a7b2e8f1c5d9036&sni=ads.x5.ru&type=tcp#🇸🇴 📶LTE| #2
 vless://6202b230-417c-4d8e-b624-0f71afa9c75d@154.81.141.138:2096?encryption=none&host=sni.111000.indevs.in&path=/&security=tls&sni=sni.111000.indevs.in&type=ws#🇸🇬 📶LTE| #6
