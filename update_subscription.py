@@ -33,6 +33,14 @@ OUTPUT_WHITE = os.path.join(OUTPUT_DIR, "📡КРОТовые ТОННЕЛИ📡
 OUTPUT_TG = os.path.join(OUTPUT_DIR, "TGproxy.txt")
 OUTPUT_TOR = os.path.join(OUTPUT_DIR, "TOR.txt")
 
+# --- BANNED HOSTS FILTER -----------------
+BANNED_HOSTS = [
+    '111.111.111.111',
+    '0.0.0.0',
+    'sub.limevpn.lol'
+]
+# -----------------------------------------
+
 HEADER_SURS = """#profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
@@ -114,6 +122,15 @@ def extract_host_port(config_str):
     if match:
         return f"{match.group(1)}:{match.group(2)}"
     return None
+
+# --- BANNED HOSTS: извлечение хоста из ключа ---
+def extract_host_from_key(key):
+    hp = extract_host_port(key)
+    if hp:
+        # host:port -> берём часть до последнего двоеточия
+        return hp.rsplit(':', 1)[0]
+    return None
+# ----------------------------------------------
 
 def convert_github_url(url):
     match = re.match(r'https://github\.com/([^/]+)/([^/]+)/blob/([^/]+)/(.*)', url)
@@ -298,7 +315,17 @@ def process_source(source_file, output_file, header_template, ignore_words, date
                 seen_hostports.add(hp)
 
     cleaned_keys = [clean_name_in_key(k, ignore_words) for k in unique_keys]
-    final_keys = [k for k in cleaned_keys if VALID_PROTOCOLS.match(k)]
+    # --- BANNED HOSTS FILTER: удаляем ключи с запрещёнными хостами ---
+    final_keys = []
+    for k in cleaned_keys:
+        if not VALID_PROTOCOLS.match(k):
+            continue
+        host = extract_host_from_key(k)
+        if host and host in BANNED_HOSTS:
+            print(f"   🚫 Удалён ключ с запрещённым хостом: {host}")
+            continue
+        final_keys.append(k)
+    # ----------------------------------------------------------------
     print(f"   🧹 Итоговых ключей: {len(final_keys)}")
 
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
@@ -344,7 +371,7 @@ def process_tg_source(source_file, output_file, datetime_str):
 
     print(f"   📊 Всего прокси до фильтрации: {len(all_proxies)}")
 
-    # Уникальность по server:port:secret
+    # Уникальность по server:port:secret, также отбрасываем запрещённые хосты
     seen = set()
     unique_proxies = []
     for proxy in all_proxies:
@@ -352,12 +379,20 @@ def process_tg_source(source_file, output_file, datetime_str):
         match_port = re.search(r'\bport=(\d+)', proxy)
         match_secret = re.search(r'\bsecret=([^&]+)', proxy)
         if match_server and match_port and match_secret:
-            key = f"{match_server.group(1)}:{match_port.group(1)}:{match_secret.group(1)}"
+            server = match_server.group(1)
+            # --- BANNED HOSTS FILTER для TG ---
+            if server in BANNED_HOSTS:
+                print(f"   🚫 Удалён TG-прокси с запрещённым сервером: {server}")
+                continue
+            # ---------------------------------
+            key = f"{server}:{match_port.group(1)}:{match_secret.group(1)}"
             if key not in seen:
                 seen.add(key)
                 unique_proxies.append(proxy)
         else:
-            unique_proxies.append(proxy)
+            # если не можем извлечь сервер — на всякий случай тоже проверим весь URL
+            if not any(banned in proxy for banned in BANNED_HOSTS):
+                unique_proxies.append(proxy)
 
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
     header = HEADER_TG.format(count=len(unique_proxies), datetime=datetime_str)
