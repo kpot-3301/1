@@ -10,6 +10,8 @@
 
 # Temnuk https://raw.githubusercontent.com/Temnuk/naabuzil/refs/heads/main/whitelist
 
-# zieng2 
-https://raw.githubusercontent.com/zieng2/wl/main/vless_universal.txt
-https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
+# zieng2  https://raw.githubusercontent.com/zieng2/wl/main/vless_universal.txt
+# zieng2  https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
+
+# AirLinkVPN
+https://raw.githubusercontent.com/AirLinkVPN1/AirLinkVPN/refs/heads/main/rkn_white_list
