@@ -1,5 +1,5 @@
 // --- TG PROXY STATISTICS ---
-// Updated      : 2026-05-07 19:06:44
+// Updated      : 2026-05-07 19:11:47
 // Working (verified): 90
 tg://proxy?server=5.188.143.247&port=443&secret=ddabe0b41b37a8f24a07a62a1b84be2325
 tg://proxy?server=murzik.myrka.digital&port=444&secret=ee888144876666144844228333222212226d75727a696b2e6d79726b612e6469676974616c
