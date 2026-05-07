@@ -1,7 +1,7 @@
 #profile-title:📡КРОТовые ТОННЕЛИ📡
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 486 | 📅 07-05-2026 18:39
+#announce:ТОННЕЛЕЙ: 486 | 📅 07-05-2026 18:51
 vless://22f65fc9-4dee-456c-a213-2a025389af31@109.120.189.213:58652?encryption=none&type=tcp&security=reality&fp=chrome&sni=www.apple.com&pbk=VZq5atMvE_1AW0nXcn4opuxZdrSu3zy3kP7YTdGj6EQ&sid=28000000&spx=%2FGWZCgGnbVzCEVS8#🇷🇺 VK — #1
 vless://735f24ba-65e2-4244-b2d5-420af6ff28de@146.185.243.104:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=chrome&sni=avito.ru&pbk=0t6b8m_PBAG3rF2HPOEL4yiyb-2JglciiANPKvyb2Ho#🇷🇺 VK — #3
 vless://769d6219-be8b-400d-9dd7-bbec4cca3593@95.163.215.131:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=firefox&sni=api-maps.yandex.ru&pbk=Cb0_DJDHGB9GXjk1ue1GOWnXfXoQlkvaSpLX81687BI&sid=8d&spx=%2F#🇷🇺 VK — #7
