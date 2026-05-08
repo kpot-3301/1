@@ -1,17 +1,16 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 97 | 📅 08-05-2026 17:15
-vless://f0b0e142-0768-458b-b481-671ed2018741@auto-5.barryvpn.com:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=ru-streaming.barryvpn.com&fp=random&security=reality&pbk=u1QltI2SnUX48F-cqulaVojcSLadC9I1Vt8gOqnFTB4&sid=#🇪🇺 Европа 1
+#announce:ТОННЕЛЕЙ: 97 | 📅 08-05-2026 19:59
+vless://b54d36d1-43c3-4b8f-a5f8-cf6504db0562@144.31.233.236:9443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=apple.com&fp=firefox&security=reality&pbk=MbYR2O0XBSeG74gGYpFIofXsILcf5lG2gc36GyURBXQ&sid=0199436dd359351b#🇳🇱 Нидерланды
 vless://45e55198-a5ad-4f19-bb39-236822141d25@188.72.103.3:443?type=ws&headerType=none&security=tls&encryption=none&sni=cdn.tracker.yandex.net&fp=chrome&path=%2Fstream%2Fupdates%2F130cdea4%2F019dee35-0199-dd7e-7323-a62ad725bba07&host=cdn.lovecrafty.link&insecure=0#🇦🇪  United Arab Emirates  [01]
 vless://75807638-6f19-1f40-ae08-38492ee85c88@178.72.181.34:52006?security=tls&encryption=none&headerType=none&fp=chrome&allowinsecure=1&type=tcp&flow=xtls-rprx-vision-udp443&sni=cluster-europe-1.firstvideocdn.ru##🇳🇱1 Нидерланды 🚀
-vless://f0b0e142-0768-458b-b481-671ed2018741@auto-5.barryvpn.com:8443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=5post-gate-test.x5.ru&fp=qq&security=reality&pbk=u1QltI2SnUX48F-cqulaVojcSLadC9I1Vt8gOqnFTB4&sid=0123456789abcdef#🇪🇺 Европа 2
+vless://30143e07-b734-4bd6-867c-7daf4782cccb@45.140.204.119:443/?type=tcp&encryption=none&flow=&sni=yahoo.com&fp=chrome&security=reality&pbk=vl5WQd9UDA3DvLxPPS1yF9ivUipxkxoxhaBRHpnyLho&sid=67fb#🇵🇱 Польша
 vless://4b481152-ba7f-4445-8cc0-d33d58546e23@138.124.32.76:443?type=tcp&headerType=none&security=reality&encryption=none&sni=tradingview.com&pbk=-tePObR3oZwGAUOb5kqTYkNWl6rtUKl0RFuzuu06wgw&sid=50&flow=xtls-rprx-vision#🇨🇭  Switzerland  [01]
 vless://75807638-6f19-07d0-ae08-38492ee85c88@178.72.181.41:52006?security=tls&encryption=none&headerType=none&fp=chrome&allowinsecure=1&type=tcp&flow=xtls-rprx-vision##🇷🇺2 Россия — YouTube 🎬
-vless://b74cac0d-3981-4344-af5c-6be7f201cd78@de2.c2horizon.app:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=de2.c2horizon.app&fp=qq&security=reality&pbk=IuvAXlAWBpeXehmEk0P-FIGTctUhny2H3UilbWWfJC0&sid=122218f4c1f172e4#🇩🇪 Германия
+vless://4350fd8e-9f5d-47e7-a5f6-6161e0f7db9b@77.239.126.152:7443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=chat.deepseek.com&fp=chrome&security=reality&pbk=5QAO98ot2U7TcGs_f6EEaQjCzNOJLNHqPf6smYsdFVI&sid=be0ce047#🇪🇪 Эстония
 vless://4b481152-ba7f-4445-8cc0-d33d58546e23@7qqrbome80g.country-27.de-nfast.com:443?type=tcp&headerType=none&security=reality&encryption=none&sni=tradingview.com&fp=chrome&pbk=-tePObR3oZwGAUOb5kqTYkNWl6rtUKl0RFuzuu06wgw&sid=50&flow=xtls-rprx-vision#🇨🇭  Switzerland  [02]
 vless://5a29d804-c01b-4007-a7c6-5e6fca2f3ea9@46.149.71.230:443?mode=auto&path=%2Fapi%2Fv3%2Ff29479507adb&security=reality&encryption=none&pbk=AhQkw1Ydp_ZkXnE7UbIZvwHk9KE_Bf5_TkojYZZUuGs&host=ads.x5.ru&fp=chrome&allowinsecure=0&type=xhttp&sni=ads.x5.ru&sid=2da46294d6a521B2##🇺🇸3 США 🚀
-vless://b54d36d1-43c3-4b8f-a5f8-cf6504db0562@144.31.233.236:9443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=apple.com&fp=firefox&security=reality&pbk=MbYR2O0XBSeG74gGYpFIofXsILcf5lG2gc36GyURBXQ&sid=0199436dd359351b#🇳🇱 Нидерланды
 vless://4b481152-ba7f-4445-8cc0-d33d58546e23@138.124.32.73:443?type=tcp&headerType=none&security=reality&encryption=none&sni=tradingview.com&pbk=-tePObR3oZwGAUOb5kqTYkNWl6rtUKl0RFuzuu06wgw&sid=50&flow=xtls-rprx-vision#🇨🇭  Switzerland  [04]
 vless://3e7f67de-648e-4871-b51a-a225214d41ee@47.80.13.96:443?security=reality&encryption=none&pbk=TRP10HqKUXEQ3O-cfsq93DycfBmbJe9KM36yvSa8Mmw&headerType=none&fp=chrome&allowinsecure=0&type=tcp&sni=api.company-target.com##🇰🇷5 Южная Корея 🚀
 vless://4b481152-ba7f-4445-8cc0-d33d58546e23@138.124.32.75:443?type=tcp&headerType=none&security=reality&encryption=none&sni=tradingview.com&fp=chrome&pbk=-tePObR3oZwGAUOb5kqTYkNWl6rtUKl0RFuzuu06wgw&sid=50&flow=xtls-rprx-vision#🇨🇭  Switzerland  [06]
@@ -68,6 +67,7 @@ vless://0e656143-c341-4800-a8ab-2c32c30f27ed@144.31.4.110:443?type=xhttp&headerT
 vless://76cf5162-dfda-4a40-abfc-869b9cd9bf03@plmw.verymad.net:28737?type=tcp&headerType=none&security=reality&encryption=none&sni=www.vk.com&fp=firefox&pbk=Q8yB9j_8uP7SgGdVZdQQBzcnB7IROViEbnGtedncSVo&sid=3e0d00586701e3b3&spx=%2F6z28pBMuX4s0xRR#🇵🇱  Poland  [11]
 vless://75807638-6f19-07d0-ae08-38492ee85c88@cl-ru-1.edgeflux.ru:52006?type=tcp&headerType=none%22%2C%22%2C&security=tls&encryption=none&sni=cl-ru-1.edgeflux.ru&flow=xtls-rprx-vision&insecure=1#🇷🇺  Russia  [01]
 vless://75807638-6f19-01f4-ae08-38492ee85c88@cl-de-2.edgeflux.ru:52006?type=tcp&headerType=none%22%2C&security=tls&encryption=none&sni=cl-de-2.edgeflux.ru&fp=chrome&flow=xtls-rprx-vision&insecure=1#🇷🇺  Russia  [02]
+vless://f0b0e142-0768-458b-b481-671ed2018741@auto-5.barryvpn.com:443?type=tcp&headerType=none&security=reality&encryption=none&sni=ru-streaming.barryvpn.com&fp=random&pbk=u1QltI2SnUX48F-cqulaVojcSLadC9I1Vt8gOqnFTB4&flow=xtls-rprx-vision#🇷🇺  Russia  [03]
 vless://75807638-6f19-07d0-ae08-38492ee85c88@cluster-russia-1.firstvideocdn.ru:52006?type=tcp&headerType=none&security=tls&encryption=none&sni=cluster-russia-1.firstvideocdn.ru&flow=xtls-rprx-vision&insecure=1#🇷🇺  Russia  [04]
 vless://75807638-6f19-07d0-ae08-38492ee85c88@82.202.197.3:52006?type=tcp&headerType=none&security=tls&encryption=none&sni=cluster-russia-1.firstvideocdn.ru&flow=xtls-rprx-vision-udp443&insecure=0#🇷🇺  Russia  [06]
 vless://75356919-6ece-455c-ba7a-9f042a60d2c5@st.xbs54as9c6.ru:443?type=ws&headerType=none&security=none&encryption=none&path=%2Fstream&host=rbc.ru#🇷🇺  Russia  [07]
