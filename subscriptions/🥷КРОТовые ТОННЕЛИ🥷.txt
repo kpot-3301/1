@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 73 | 📅 08-05-2026 09:12
+#announce:ТОННЕЛЕЙ: 74 | 📅 08-05-2026 09:19
 vless://f0b0e142-0768-458b-b481-671ed2018741@auto-5.barryvpn.com:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=ru-streaming.barryvpn.com&fp=random&security=reality&pbk=u1QltI2SnUX48F-cqulaVojcSLadC9I1Vt8gOqnFTB4&sid=#🇪🇺 Европа 1
 vless://f0b0e142-0768-458b-b481-671ed2018741@auto-5.barryvpn.com:8443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=5post-gate-test.x5.ru&fp=qq&security=reality&pbk=u1QltI2SnUX48F-cqulaVojcSLadC9I1Vt8gOqnFTB4&sid=0123456789abcdef#🇪🇺 Европа 2
 vless://b74cac0d-3981-4344-af5c-6be7f201cd78@de2.c2horizon.app:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=de2.c2horizon.app&fp=qq&security=reality&pbk=IuvAXlAWBpeXehmEk0P-FIGTctUhny2H3UilbWWfJC0&sid=122218f4c1f172e4#🇩🇪 Германия
@@ -31,6 +31,7 @@ vless://1f1a6ea7-b2d5-4fd4-be5f-0d8b1317d6b5@62.60.153.179:6444?type=xhttp&heade
 vless://37253a6a-2a9b-42bb-992c-b5f1b1ef1791@84.32.209.6:443?type=tcp&headerType=none&security=reality&encryption=none&sni=vltch.mostserv.xyz&fp=chrome&pbk=3WzSgL8uXA3vE3IHrfdBpJmOO4MYrsWpczDSY_jJRjI&sid=226509f017e4c36d&flow=xtls-rprx-vision#🇱🇹  Lithuania  [01]
 vless://63f26629-a4a4-4550-bffc-afabb3b5b3c3@188.253.17.104:443?type=tcp&headerType=none&security=reality&encryption=none&sni=yahoo.com&fp=random&pbk=rwZxMeKJhN-LkKkP-u6qXYFzSlbuyqxYzloqaOpFLUM&sid=e98e89a0&host=yahoo.com&flow=xtls-rprx-vision#🇱🇻  Latvia  [01]
 vless://b931b922-6129-42bb-9c1c-d51371d18980@lav1.pineappled.org:443?type=tcp&headerType=none&security=reality&encryption=none&sni=www.apple.com&fp=chrome&pbk=V6FabatADtcX7aO9KMjGCadJC4LuQ_5nRViab-z-nFQ&sid=23&spx=%2F&flow=xtls-rprx-vision#🇱🇻  Latvia  [03]
+vless://d09a86da-9f26-4b03-b518-bb375a865cd5@94.131.101.161:443?type=tcp&headerType=none&security=reality&encryption=none&sni=speed.cloudflare.com&fp=chrome&pbk=hb18ZK8-pDV9MuiJ2gIrjT7QeOj0ZpZNA8YDVeis_js&sid=9ec46c298e29&flow=xtls-rprx-vision#🇲🇩  Moldova, Republic of  [01]
 vless://449fdbaa-2958-4dcc-9e6b-7cc4c45e8734@45.94.31.212:8443?type=tcp&headerType=none&security=reality&encryption=none&sni=eh.vk.com&fp=ios&pbk=GzQr6fDhigtRAr0n2Y7Nk3snhdytYyOvaYo9zYe1Xn4&sid=b3a1cc510a2001c6&flow=xtls-rprx-vision#🇳🇱  Netherlands  [01]
 vless://501a2da5-cb22-4a3f-915e-e3b821d1d62d@nl3.wireguardvpnbotik.com:443?type=tcp&headerType=none&security=reality&encryption=none&sni=avito.audi-media.ru&fp=qq&pbk=-nM75h7hxtz4EXzU5S8xgTtfP6TL_RXSPLZRNcPFmSg&sid=274818eb8bb02d92&flow=xtls-rprx-vision#🇳🇱  Netherlands  [02]
 vless://449fdbaa-2958-4dcc-9e6b-7cc4c45e8734@150.251.138.52:8443?type=tcp&headerType=none&security=reality&encryption=none&sni=eh.vk.com&fp=ios&pbk=GzQr6fDhigtRAr0n2Y7Nk3snhdytYyOvaYo9zYe1Xn4&sid=b3a1cc510a2001c6&flow=xtls-rprx-vision#🇳🇱  Netherlands  [03]
