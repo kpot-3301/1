@@ -8,3 +8,6 @@ https://raw.githubusercontent.com/LimeHi/LimeVPN/refs/heads/main/LimeVPN.txt?v=1
 # mifa
 https://mifa.world/fast
 https://mifa.world/turbo
+
+# KomaryServers
+https://raw.githubusercontent.com/kama55726/KomaryServers/refs/heads/main/KomaryServ
