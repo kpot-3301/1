@@ -11,3 +11,6 @@ https://mifa.world/fast
 
 # KomaryServers
 https://raw.githubusercontent.com/kama55726/KomaryServers/refs/heads/main/KomaryServ
+
+# vpn.zotus
+https:/vpn.zotus.ru//sub.php
