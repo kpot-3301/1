@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 97 | 📅 08-05-2026 16:05
+#announce:ТОННЕЛЕЙ: 97 | 📅 08-05-2026 16:11
 vless://f0b0e142-0768-458b-b481-671ed2018741@auto-5.barryvpn.com:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=ru-streaming.barryvpn.com&fp=random&security=reality&pbk=u1QltI2SnUX48F-cqulaVojcSLadC9I1Vt8gOqnFTB4&sid=#🇪🇺 Европа 1
 vless://f0b0e142-0768-458b-b481-671ed2018741@auto-5.barryvpn.com:8443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=5post-gate-test.x5.ru&fp=qq&security=reality&pbk=u1QltI2SnUX48F-cqulaVojcSLadC9I1Vt8gOqnFTB4&sid=0123456789abcdef#🇪🇺 Европа 2
 vless://b74cac0d-3981-4344-af5c-6be7f201cd78@de2.c2horizon.app:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=de2.c2horizon.app&fp=qq&security=reality&pbk=IuvAXlAWBpeXehmEk0P-FIGTctUhny2H3UilbWWfJC0&sid=122218f4c1f172e4#🇩🇪 Германия
