@@ -292,6 +292,7 @@ def read_urls_from_file(filepath):
                 urls.append(line)
     return urls
 
+# ========== ОСНОВНАЯ ЛОГИКА С ЧЕРЕДОВАНИЕМ ==========
 def process_source(source_file, output_file, header_template, ignore_words, datetime_str):
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
@@ -300,32 +301,57 @@ def process_source(source_file, output_file, header_template, ignore_words, date
     urls = read_urls_from_file(source_file)
     print(f"   🔗 Найдено {len(urls)} URL в {source_file}")
 
-    all_keys = []
+    # Собираем сырые ключи по источникам
+    source_raw = []
     for url in urls:
         keys = fetch_subscription(url)
-        all_keys.extend(keys)
+        source_raw.append(keys)
 
-    seen_hostports = set()
-    unique_keys = []
-    for key in all_keys:
-        hp = extract_host_port(key)
-        if hp is None or hp not in seen_hostports:
-            unique_keys.append(key)
+    # Глобальные структуры для уникальности
+    used_hostports = set()        # host:port
+    used_hosts_for_banned = set() # host (для banned)
+
+    # Обрабатываем каждый источник, отбрасывая дубликаты глобально
+    processed_sources = []
+    for keys in source_raw:
+        cleaned = []
+        for key in keys:
+            # 1. Протокол
+            if not VALID_PROTOCOLS.match(key):
+                continue
+            # 2. Запрещённый хост
+            host = extract_host_from_key(key)
+            if host and host in BANNED_HOSTS:
+                print(f"   🚫 Удалён ключ с запрещённым хостом: {host}")
+                continue
+            # 3. Уникальность по host:port
+            hp = extract_host_port(key)
+            if hp and hp in used_hostports:
+                continue
+            # 4. Очистка имени
+            cleaned_key = clean_name_in_key(key, ignore_words)
+            # Фиксируем как использованный
             if hp:
-                seen_hostports.add(hp)
+                used_hostports.add(hp)
+            if host:
+                used_hosts_for_banned.add(host)
+            cleaned.append(cleaned_key)
+        processed_sources.append(cleaned)
 
-    cleaned_keys = [clean_name_in_key(k, ignore_words) for k in unique_keys]
-    # --- BANNED HOSTS FILTER: удаляем ключи с запрещёнными хостами ---
+    # Чередование: берём по одному ключу из каждого источника по кругу
     final_keys = []
-    for k in cleaned_keys:
-        if not VALID_PROTOCOLS.match(k):
-            continue
-        host = extract_host_from_key(k)
-        if host and host in BANNED_HOSTS:
-            print(f"   🚫 Удалён ключ с запрещённым хостом: {host}")
-            continue
-        final_keys.append(k)
-    # ----------------------------------------------------------------
+    iterators = [iter(lst) for lst in processed_sources]
+    active = True
+    while active:
+        active = False
+        for it in iterators:
+            try:
+                key = next(it)
+                final_keys.append(key)
+                active = True
+            except StopIteration:
+                pass
+
     print(f"   🧹 Итоговых ключей: {len(final_keys)}")
 
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
@@ -334,6 +360,8 @@ def process_source(source_file, output_file, header_template, ignore_words, date
         f.write(header)
         f.write('\n'.join(final_keys))
     print(f"✅ Создан файл {output_file}")
+
+# =====================================================
 
 def process_tg_source(source_file, output_file, datetime_str):
     if not os.path.exists(source_file):
