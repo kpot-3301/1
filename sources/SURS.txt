@@ -11,3 +11,6 @@ https://mifa.world/fast
 
 # KomaryServers
 https://raw.githubusercontent.com/kama55726/KomaryServers/refs/heads/main/KomaryServ
+
+# Hem1ks
+https://gist.githubusercontent.com/Hem1ks/57428d826e518a97de8c878af82fc941/raw/c77bdae23fe8b542308ed517bf20a974ae9ef104/Hem1ksVPN
