@@ -1,7 +1,7 @@
 #profile-title:📡КРОТовые ТОННЕЛИ📡
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 500 | 📅 12-05-2026 20:44
+#announce:ТОННЕЛЕЙ: 500 | 📅 12-05-2026 20:46
 vless://c4f2a295-a64d-459e-b30f-b0c1fdf81427@158.160.32.103:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=random&sni=max.ru&pbk=Ew5a5rNW0ZLY9s4xnI3iZHbNLw2I21bp_kwa5poLcDU&sid=b2a6e3d42f05c3d1&spx=%2F#🇷🇺Обходы -  |0004|
 vless://6202b230-417c-4d8e-b624-0f71afa9c75d@172.64.149.54:2053?encryption=none&host=sni.111000.indevs.in&path=%2F&security=tls&sni=sni.111000.indevs.in&type=ws#🇪🇺 📶LTE| #2
 vless://6d916d55-fead-4ff3-a3a9-83e175ea8ad7@ee18.mechvpn.online:443?flow=xtls-rprx-vision&fp=chrome&security=tls&sni=ee18.mechvpn.online&type=tcp#🇪🇪 Эстония [🏳️LTE] |
