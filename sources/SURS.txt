@@ -15,8 +15,5 @@ https://raw.githubusercontent.com/kama55726/KomaryServers/refs/heads/main/Komary
 # Hem1ks
 https://gist.githubusercontent.com/Hem1ks/57428d826e518a97de8c878af82fc941/raw/c77bdae23fe8b542308ed517bf20a974ae9ef104/Hem1ksVPN
 
-# Happi VPN
-https://yax.nenadoblokirowatgnidda.ru/exec?url=http%3A%2F%2F77.110.104.181%3A5002%2Fsub%2FNGtvU2lHLDE3Nzg3NTQxOTQypE8zQxyW5
-
 # HalyavusVPNUS
 https://gist.githubusercontent.com/HalyavusVPNUS/812f93b19567f4ef33e610cb3fd12cdb/raw/7996c3a6500bd5e2fe89bb60774f08d8270a1a0d/%25D0%25B2%25D0%25BF%25D0%25BD
