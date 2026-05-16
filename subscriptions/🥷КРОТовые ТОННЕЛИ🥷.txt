@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 70 | 📅 16-05-2026 18:25
+#announce:ТОННЕЛЕЙ: 70 | 📅 16-05-2026 18:50
 vless://26e4d8b5-ee98-4a8d-88c9-7f81b7be3379@194.58.41.60:8443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=eh.vk.com&fp=ios&security=reality&pbk=GzQr6fDhigtRAr0n2Y7Nk3snhdytYyOvaYo9zYe1Xn4&sid=b3a1cc510a2001c6#🇩🇪 Германия 1
 vless://45e55198-a5ad-4f19-bb39-236822141d25@188.72.103.3:443?type=ws&headerType=none&security=tls&encryption=none&sni=cdn.tracker.yandex.net&fp=chrome&path=%2Fstream%2Fupdates%2Fb66b78d7%2F019dfd7f-0777-6283-7287-911777c3720f4&host=cdn.lovecrafty.link&insecure=0#🇦🇪  United Arab Emirates  [01]
 vless://85b5cb2e-2617-4930-b6a4-4aeaf3b7b9aa@yt-noads.sbrf-cdn342.ru:443?security=tls&encryption=none&alpn=http/1.1&headerType=none&fp=qq&allowinsecure=0&type=tcp&flow=xtls-rprx-vision&sni=sub.sbrf-cdn342.ru##🇷🇺2 Россия — YouTube 🎬
@@ -55,20 +55,20 @@ vless://85b5cb2e-2617-4930-b6a4-4aeaf3b7b9aa@at.sbrf-cdn342.ru:443?encryption=no
 vless://c561e048-6274-4c28-ba93-66c1a2915070@158.160.224.52:40443?mode=gun&security=reality&encryption=none&authority=max.ru&pbk=qsqnCjigfD1_V7th-DKRtIrHuhyjN7kSnd85PBH5b2U&fp=chrome&spx=%2F&allowinsecure=0&type=grpc&serviceName=max-ru%2Fd0fda5e9&sni=max.ru&sid=22c70831c63f4abe#🇷🇺+RU+(Для+белых+списков)
 vless://3c81c716-4fd5-11f1-8a2c-525400a7149e@194.87.161.198:443?type=tcp&headerType=none&security=reality&encryption=none&sni=ads.x5.ru&fp=randomized&pbk=2IAFC23dkBm2ZRPTcxSWZ5YkpVxJufIIZn3-aSPRH10&spx=%2Fad%2F8611949&flow=xtls-rprx-vision#🇷🇺  Russia  [01]
 vless://85b5cb2e-2617-4930-b6a4-4aeaf3b7b9aa@nl-tx.sbrf-cdn342.ru:443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=sub.sbrf-cdn342.ru&type=tcp&headerType=none#🇦🇷 Лайнер с Хантовирусом #2
-vless://5b2fc182-a497-4fbe-aeb8-1841dae99022@80.90.188.250:443?type=tcp&headerType=none&security=reality&encryption=none&sni=eh.vk.com&fp=chrome&pbk=FSq5DVYJ8UaKArP3FtCmlZKqOQ08dKkqB2fefjRkA0M&flow=xtls-rprx-vision#🇷🇺  Russia  [02]
+vless://75807638-6f19-07d0-ae08-38492ee85c88@cl-ru-tw.fastaichat.ru:52006?type=tcp&headerType=none&security=tls&encryption=none&sni=cl-ru-tw.fastaichat.ru&fp=chrome&flow=xtls-rprx-vision-udp443&insecure=1#🇷🇺  Russia  [02]
 vless://85b5cb2e-2617-4930-b6a4-4aeaf3b7b9aa@de.sbrf-cdn342.ru:443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=sub.sbrf-cdn342.ru&type=tcp&headerType=none#🇷🇺 Черный Дельфин #1
-vless://75807638-6f19-2710-ae08-38492ee85c88@de.active-engine.ru:52006?type=tcp&headerType=none&security=tls&encryption=none&sni=de.active-engine.ru&flow=xtls-rprx-vision&insecure=1#🇷🇺  Russia  [03]
+vless://5b2fc182-a497-4fbe-aeb8-1841dae99022@80.90.188.250:443?type=tcp&headerType=none&security=reality&encryption=none&sni=eh.vk.com&fp=chrome&pbk=FSq5DVYJ8UaKArP3FtCmlZKqOQ08dKkqB2fefjRkA0M&flow=xtls-rprx-vision#🇷🇺  Russia  [04]
 vless://85b5cb2e-2617-4930-b6a4-4aeaf3b7b9aa@kz.sbrf-cdn342.ru:443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=sub.sbrf-cdn342.ru&type=tcp&headerType=none#🇷🇺 Черный Дельфин #2
-vless://75807638-6f19-01f4-ae08-38492ee85c88@cl-de-2.edgeflux.ru:52006?type=tcp&headerType=none%5C%5C%5C%22%2C%5C%5C%5C%22%2C&security=tls&encryption=none&sni=cl-de-2.edgeflux.ru&fp=chrome&flow=xtls-rprx-vision&insecure=1#🇷🇺  Russia  [04]
-vless://75807638-6f19-0fa0-ae08-38492ee85c88@eu.active-engine.ru:52006?type=tcp&headerType=none&security=tls&encryption=none&sni=eu.active-engine.ru&flow=xtls-rprx-vision&insecure=1#🇷🇺  Russia  [06]
-vless://d0510c6d-0322-fade-b0f2-53eb6895d86b@195.209.88.216:443?type=ws&headerType=none&security=tls&encryption=none&sni=s28233.cdn.ngenix.net&fp=qq&alpn=h2%2Chttp%2F1.1&path=%2F&host=s28233.cdn.ngenix.net&insecure=0#🇷🇺  Russia  [07]
-vless://25f1947f-63a8-2040-8f3b-b101eed550e7@w2ws.listwhite.cc:443?type=ws&headerType=none&security=tls&encryption=none&sni=w2ws.listwhite.cc&fp=chrome&path=%2Fupload%2Fsession&host=s2.ws.listwhite.cc&insecure=0#🇷🇺  Russia  [08]
-vless://73ea81a4-6cd5-fade-b3e6-bf4dd74256fc@195.209.82.149:443?type=ws&headerType=none&security=tls&encryption=none&sni=s28233.cdn.ngenix.net&fp=qq&alpn=h2%2Chttp%2F1.1&path=%2F&host=s28233.cdn.ngenix.net&insecure=0#🇷🇺  Russia  [09]
-vless://25f1947f-63a8-2040-8f3b-b101eed550e7@146.185.243.233:443?type=ws&headerType=none&security=tls&encryption=none&sni=s3.listwhite.cc&fp=chrome&path=%2Fupload%2Fsession&insecure=0#🇷🇺  Russia  [10]
-vless://2075f8d7-0f7a-Fade-9de5-e77632611a13@195.209.88.180:443?type=ws&headerType=none&security=tls&encryption=none&sni=s28233.cdn.ngenix.net&fp=qq&alpn=h2%2Chttp%2F1.1&path=%2F&host=s28233.cdn.ngenix.net&insecure=0#🇷🇺  Russia  [11]
+vless://75807638-6f19-2710-ae08-38492ee85c88@de.active-engine.ru:52006?type=tcp&headerType=none&security=tls&encryption=none&sni=de.active-engine.ru&flow=xtls-rprx-vision&insecure=1#🇷🇺  Russia  [05]
+vless://75807638-6f19-01f4-ae08-38492ee85c88@cl-de-2.edgeflux.ru:52006?type=tcp&headerType=none%5C%5C%5C%22%2C%5C%5C%5C%22%2C&security=tls&encryption=none&sni=cl-de-2.edgeflux.ru&fp=chrome&flow=xtls-rprx-vision&insecure=1#🇷🇺  Russia  [06]
+vless://75807638-6f19-0fa0-ae08-38492ee85c88@eu.active-engine.ru:52006?type=tcp&headerType=none&security=tls&encryption=none&sni=eu.active-engine.ru&flow=xtls-rprx-vision&insecure=1#🇷🇺  Russia  [08]
+vless://d0510c6d-0322-fade-b0f2-53eb6895d86b@195.209.88.216:443?type=ws&headerType=none&security=tls&encryption=none&sni=s28233.cdn.ngenix.net&fp=qq&alpn=h2%2Chttp%2F1.1&path=%2F&host=s28233.cdn.ngenix.net&insecure=0#🇷🇺  Russia  [09]
+vless://25f1947f-63a8-2040-8f3b-b101eed550e7@w2ws.listwhite.cc:443?type=ws&headerType=none&security=tls&encryption=none&sni=w2ws.listwhite.cc&fp=chrome&path=%2Fupload%2Fsession&host=s2.ws.listwhite.cc&insecure=0#🇷🇺  Russia  [10]
+vless://73ea81a4-6cd5-fade-b3e6-bf4dd74256fc@195.209.82.149:443?type=ws&headerType=none&security=tls&encryption=none&sni=s28233.cdn.ngenix.net&fp=qq&alpn=h2%2Chttp%2F1.1&path=%2F&host=s28233.cdn.ngenix.net&insecure=0#🇷🇺  Russia  [11]
+vless://25f1947f-63a8-2040-8f3b-b101eed550e7@146.185.243.233:443?type=ws&headerType=none&security=tls&encryption=none&sni=s3.listwhite.cc&fp=chrome&path=%2Fupload%2Fsession&insecure=0#🇷🇺  Russia  [12]
+vless://2075f8d7-0f7a-Fade-9de5-e77632611a13@195.209.88.180:443?type=ws&headerType=none&security=tls&encryption=none&sni=s28233.cdn.ngenix.net&fp=qq&alpn=h2%2Chttp%2F1.1&path=%2F&host=s28233.cdn.ngenix.net&insecure=0#🇷🇺  Russia  [13]
 vless://7c9b551d-fa95-465d-b30e-945a048c9725@138.124.110.159:443?type=tcp&headerType=none&security=reality&encryption=none&sni=www.amd.com&fp=chrome&pbk=Ji53Zkce4a-YPiE_B0ejsqe-czSzdw5b6ZvLqI41LiM&sid=b3&flow=xtls-rprx-vision#🇸🇪  Sweden  [01]
 vless://d61b605c-e186-483e-ae53-7deaf7c56098@vpn-1.usp-vpn.store:443?type=tcp&headerType=none&security=reality&encryption=none&sni=vpn-1.usp-vpn.store&fp=chrome&pbk=8C7evg_SSrJbxMTaUqJoylqB9HSNsmBvmUlgs_c5EiU&sid=90cfb50d12729375&flow=xtls-rprx-vision#🇸🇮  Slovenia  [01]
-vless://75807638-6f19-07d0-ae08-38492ee85c88@cl-ru-tw.fastaichat.ru:52006?type=tcp&headerType=none&security=tls&encryption=none&sni=cl-ru-tw.fastaichat.ru&fp=chrome&flow=xtls-rprx-vision-udp443&insecure=1#🇺🇸  USA  [01]
-vless://5b2fc182-a497-4fbe-aeb8-1841dae99022@72.56.96.93:443?type=tcp&headerType=none&security=reality&encryption=none&sni=eh.vk.com&fp=chrome&pbk=FSq5DVYJ8UaKArP3FtCmlZKqOQ08dKkqB2fefjRkA0M&flow=xtls-rprx-vision#🇺🇸  USA  [03]
-vless://fac62eac-1eec-4260-a991-0cac2f8745a3@partner.zoom.us:80?type=ws&headerType=none&security=none&encryption=none&sni=partner.zoom.us&fp=chrome&path=%2F%40Tech_Sonic&host=free-server.techsonic.ggff.net#🇺🇸  USA  [04]
-vless://5b2fc182-a497-4fbe-aeb8-1841dae99022@72.56.247.198:443?type=tcp&headerType=none&security=reality&encryption=none&sni=eh.vk.com&fp=qq&pbk=FSq5DVYJ8UaKArP3FtCmlZKqOQ08dKkqB2fefjRkA0M&flow=xtls-rprx-vision#🇺🇸  USA  [05]
+vless://5b2fc182-a497-4fbe-aeb8-1841dae99022@72.56.96.93:443?type=tcp&headerType=none&security=reality&encryption=none&sni=eh.vk.com&fp=chrome&pbk=FSq5DVYJ8UaKArP3FtCmlZKqOQ08dKkqB2fefjRkA0M&flow=xtls-rprx-vision#🇺🇸  USA  [01]
+vless://fac62eac-1eec-4260-a991-0cac2f8745a3@partner.zoom.us:80?type=ws&headerType=none&security=none&encryption=none&sni=partner.zoom.us&fp=chrome&path=%2F%40Tech_Sonic&host=free-server.techsonic.ggff.net#🇺🇸  USA  [02]
+vless://5b2fc182-a497-4fbe-aeb8-1841dae99022@72.56.247.198:443?type=tcp&headerType=none&security=reality&encryption=none&sni=eh.vk.com&fp=qq&pbk=FSq5DVYJ8UaKArP3FtCmlZKqOQ08dKkqB2fefjRkA0M&flow=xtls-rprx-vision#🇺🇸  USA  [03]
