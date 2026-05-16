@@ -8,7 +8,8 @@
 # Catlerok_glasha https://gitverse.ru/api/repos/Catlerok_glasha/catwhiteMIRROR/raw/branch/master/configs.txt
 
 # zieng2  #https://raw.githubusercontent.com/zieng2/wl/main/vless_universal.txt
-# zieng2  #https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
+https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
+#https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
 
 # AETRISVPN #https://gist.githubusercontent.com/flaafix/c79a81037d15163360571c7a7331b153/raw/AetrisVPN.txt
 
@@ -24,4 +25,4 @@
 # kizyak-vpn
 #https://raw.githubusercontent.com/Maskkost93/kizyak-vpn-4.0/refs/heads/main/kizyakbeta6.txt
 
-https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
+
