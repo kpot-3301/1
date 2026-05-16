@@ -7,7 +7,8 @@
 
 # Catlerok_glasha https://gitverse.ru/api/repos/Catlerok_glasha/catwhiteMIRROR/raw/branch/master/configs.txt
 
-# zieng2  #https://raw.githubusercontent.com/zieng2/wl/main/vless_universal.txt
+# zieng2  
+#https://raw.githubusercontent.com/zieng2/wl/main/vless_universal.txt
 https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
 #https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
 
