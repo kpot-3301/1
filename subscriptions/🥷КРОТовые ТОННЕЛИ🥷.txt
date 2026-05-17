@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 57 | 📅 17-05-2026 03:00
+#announce:ТОННЕЛЕЙ: 57 | 📅 17-05-2026 05:00
 vless://4a2bf92b-b25a-48a1-8656-43ef38414523@ru.pool-b.vodkacore.pro:44003/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=netcenter-cdn.com&fp=qq&security=reality&pbk=mCtDwMr9u9MdztUGzCGADj-nfHv6CQpAf_ywbyKl8ww&sid=68fc781cf8#🇩🇪 Германия 1
 vless://5234854d-106b-41ee-8fc7-4acc6a1158a2@de1.persik.host:443?type=tcp&headerType=none&security=reality&encryption=none&sni=de1.persik.host&fp=random&pbk=Wussb3Mki1IqtlASsx19TawQ9P2qHZL6M8sVxps6xx4&sid=3f6a3ab281699a9d&flow=xtls-rprx-vision#🇩🇪  Germany  [01]
 vless://75807638-6f19-01f4-ae08-38492ee85c88@cl-de-2.edgeflux.ru:52006?security=tls&encryption=none&headerType=none&fp=chrome&allowinsecure=1&type=tcp&flow=xtls-rprx-vision##🇩🇪1 Германия 🚀
