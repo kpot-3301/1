@@ -1,7 +1,7 @@
 #profile-title:📡КРОТовые ТОННЕЛИ📡
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 52 | 📅 17-05-2026 05:00
+#announce:ТОННЕЛЕЙ: 52 | 📅 17-05-2026 05:37
 vless://0e3a9376-1bf0-4b9e-a328-f28083bf6c34@51.250.47.0:8443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=random&sni=ads.x5.ru&pbk=4iuR2mv0RnnPZbwvQuZ4L07Bois8hMUczEbMeDF0iRc&sid=fb38c1c83009e1&spx=%2F#🇷🇺 Yandex — #1
 vless://b4186875-7023-4f20-88b2-125a04943b2b@46.243.235.105:443?encryption=none&type=xhttp&security=reality&host=storage.yandexcloud.net&path=%2Ftopschool.backet%2Fpublic%2Fcourse_cover%2Fe20b56b6-8679-4123-89c4-963142e1bb7c.png&mode=auto&extra=null&fp=random&sni=max.ru&pbk=n5P9loBH9eKY7Lj6uVi2CMh7vZcAclKWYjbSOWG0mkU&sid=54c7c13b52eea5f3#🇷🇺 CDNvideo — #3
 vless://a8ebcce6-3260-49a4-9be0-cea2fa479753@82.202.140.8:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=ios&sni=vk.com&pbk=zlmNRlSzdn2zegjL4nFXmOmlBe_2_Wm0mKhD2aeJ9BE&sid=b3#🇷🇺 cloud.ru — #4
