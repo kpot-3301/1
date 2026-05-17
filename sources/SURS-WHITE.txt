@@ -26,4 +26,5 @@ https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
 # kizyak-vpn
 #https://raw.githubusercontent.com/Maskkost93/kizyak-vpn-4.0/refs/heads/main/kizyakbeta6.txt
 
-
+# LizardVPN
+https://tinyurl.com/LizardVPN
