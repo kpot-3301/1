@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 170 | 📅 19-05-2026 19:56
+#announce:ТОННЕЛЕЙ: 170 | 📅 19-05-2026 19:58
 vless://64d5917f-fa9f-4a4d-8b29-fc597feb3b0f@195.123.220.58:443?flow=xtls-rprx-vision&fp=chrome&pbk=f0xn7ZDC2ygdmySJeWecHsHR7Q6hB4_PyMU_TCefPh8&security=reality&sid=&sni=yandex.ru&type=tcp#🇳🇱 Нидерланды, Амстердам
 vless://9f2da640-93a5-4dbd-a163-3f10e6751dde@151.101.97.137:443?security=tls&type=xhttp&headerType=&path=%2F&host=ov1.global.ssl.fastly.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+%221000000%22%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=127.0.0&fp=chrome&alpn=h3&allowInsecure=1#🇫🇮 HappVPN
 vless://a4eaa9bf-078c-4541-a7c8-238430ca7a8e@46.232.248.67:443?security=reality&encryption=none&pbk=2cdGHEGP5A3WdXhrCSZEdNtMe80thM6o2mhzre3sMhY&headerType=none&fp=chrome&allowinsecure=0&type=tcp&flow=xtls-rprx-vision&sni=apple.com&sid=94d59abc6f#🇪🇺Автовыбор
