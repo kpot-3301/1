@@ -1,5 +1,5 @@
 // --- TG PROXY STATISTICS ---
-// Updated      : 2026-05-19 19:40:41
+// Updated      : 2026-05-19 19:56:45
 // Working (verified): 41
 tg://proxy?server=proxy.chunkycorp.shop&port=443&secret=ee3a3365be03d6bc13518d65e70a3146c2706574726f766963682e7275
 tg://proxy?server=144.31.221.15&port=443&secret=1d704dc7fbf37924bc72f016a8f91b0d
