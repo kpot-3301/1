@@ -1,7 +1,7 @@
 #profile-title:📡КРОТовые ТОННЕЛИ📡
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 243 | 📅 19-05-2026 19:36
+#announce:ТОННЕЛЕЙ: 243 | 📅 19-05-2026 19:40
 vless://63b61a29-aa8b-4b67-82e6-1c565c09055a@217.16.31.184:8443?encryption=none&type=tcp&security=reality&fp=chrome&sni=max.ru&pbk=dTCO8DDc5hDmIpJGutWPvUgrFIPQm4za7JkUmnlmuTM&sid=bf612d77933beace&spx=%2F#🇷🇺 VK — #1
 vless://b6ce8a51-19b9-4979-91ba-b4298c26d5fc@89.208.231.52:443?encryption=none&type=tcp&flow=xtls-rprx-vision&security=reality&sni=max.ru&pbk=mAu8QDi3pbmMCFg9kKC-ZBIHdtnXeCuZt3VnAw6vlH4&sid=ad7dab462a323acb&fp=chrome&alpn=http%2F1.1&headerType=none#⚡  LTE #2
 vless://7b921ecd-fc42-4110-b7bf-20f1bd2649b7@84.201.174.10:51191?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=qq&sni=ads.x5.ru&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&sid=b3bd6f5b168c4d61#🇷🇺 Yandex — #3
