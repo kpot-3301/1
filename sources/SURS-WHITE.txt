@@ -6,6 +6,7 @@ https://gist.githubusercontent.com/DestroyST6767/50af50221ca1858ba2084efc0f524fb
 https://raw.githubusercontent.com/zieng2/wl/main/vless_universal.txt
 https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
 https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
+https://raw.githubusercontent.com/zieng2/wl/refs/heads/main/vless_universal.txt
 
 # AETRISVPN
 https://gist.githubusercontent.com/flaafix/c79a81037d15163360571c7a7331b153/raw/AetrisVPN.txt
