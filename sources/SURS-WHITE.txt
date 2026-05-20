@@ -2,26 +2,26 @@
 # Destroy
 https://gist.githubusercontent.com/DestroyST6767/50af50221ca1858ba2084efc0f524fbc/raw
 
-# Catlerok_glasha #https://gitverse.ru/api/repos/Catlerok_glasha/catwhiteMIRROR/raw/branch/master/configs.txt
+# Catlerok_glasha https://gitverse.ru/api/repos/Catlerok_glasha/catwhiteMIRROR/raw/branch/master/configs.txt
 
 # zieng2  
-#https://raw.githubusercontent.com/zieng2/wl/main/vless_universal.txt
-#https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
-#https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
+https://raw.githubusercontent.com/zieng2/wl/main/vless_universal.txt
+https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
+https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
 
-# AETRISVPN #https://gist.githubusercontent.com/flaafix/c79a81037d15163360571c7a7331b153/raw/AetrisVPN.txt
+# AETRISVPN https://gist.githubusercontent.com/flaafix/c79a81037d15163360571c7a7331b153/raw/AetrisVPN.txt
 
 # AirLinkVPN
-#https://raw.githubusercontent.com/AirLinkVPN1/AirLinkVPN/refs/heads/main/rkn_white_list
+https://raw.githubusercontent.com/AirLinkVPN1/AirLinkVPN/refs/heads/main/rkn_white_list
 
 # Temnuk 
 #https://raw.githubusercontent.com/Temnuk/naabuzil/refs/heads/main/whitelist
 
 # igareck
-#https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/Vless-Reality-White-Lists-Rus-Mobile.txt#%F0%9F%8F%B3%EF%B8%8F%20%D0%91%D0%95%D0%9B%D0%AB%D0%95%20%D0%A1%D0%9F%D0%98%D0%A1%D0%9A%D0%98%20%F0%9F%8F%B3%EF%B8%8F%20WHITE%20LISTS%20%7C%20CIDR%20%7C%20Mobile-150-(1)
+https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/Vless-Reality-White-Lists-Rus-Mobile.txt#%F0%9F%8F%B3%EF%B8%8F%20%D0%91%D0%95%D0%9B%D0%AB%D0%95%20%D0%A1%D0%9F%D0%98%D0%A1%D0%9A%D0%98%20%F0%9F%8F%B3%EF%B8%8F%20WHITE%20LISTS%20%7C%20CIDR%20%7C%20Mobile-150-(1)
 
 # kizyak-vpn
-#https://raw.githubusercontent.com/Maskkost93/kizyak-vpn-4.0/refs/heads/main/kizyakbeta6.txt
+https://raw.githubusercontent.com/Maskkost93/kizyak-vpn-4.0/refs/heads/main/kizyakbeta6.txt
 
 # LizardVPN
-#https://tinyurl.com/LizardVPN
+https://tinyurl.com/LizardVPN
