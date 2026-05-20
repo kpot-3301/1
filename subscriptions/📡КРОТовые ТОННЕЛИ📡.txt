@@ -1,4 +1,4 @@
 #profile-title:📡КРОТовые ТОННЕЛИ📡
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 0 | 📅 20-05-2026 07:38
+#announce:ТОННЕЛЕЙ: 0 | 📅 20-05-2026 08:31
