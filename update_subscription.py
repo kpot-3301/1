@@ -319,6 +319,10 @@ def process_source(source_file, output_file, header_template, ignore_words, date
             # 1. Протокол
             if not VALID_PROTOCOLS.match(key):
                 continue
+            # --- ИГНОРИРУЕМ ВСЕ SHADOWSOCKS КЛЮЧИ ---
+            if key.startswith('ss://'):
+                continue
+            # -----------------------------------------
             # 2. Запрещённый хост
             host = extract_host_from_key(key)
             if host and host in BANNED_HOSTS:
