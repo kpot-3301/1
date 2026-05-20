@@ -10,7 +10,8 @@ https://raw.githubusercontent.com/zieng2/wl/main/vless_universal.txt
 https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
 https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
 
-# AETRISVPN https://gist.githubusercontent.com/flaafix/c79a81037d15163360571c7a7331b153/raw/AetrisVPN.txt
+# AETRISVPN
+https://gist.githubusercontent.com/flaafix/c79a81037d15163360571c7a7331b153/raw/AetrisVPN.txt
 
 # AirLinkVPN
 https://raw.githubusercontent.com/AirLinkVPN1/AirLinkVPN/refs/heads/main/rkn_white_list
