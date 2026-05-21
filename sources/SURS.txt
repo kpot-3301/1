@@ -41,3 +41,4 @@ https://gist.githubusercontent.com/flaafix/c79a81037d15163360571c7a7331b153/raw/
 
 # cved
 https://gist.githubusercontent.com/pidarasuebisov-afk/e220b44264242d1a97c0908aba091edd/raw/ec4bba15f49f68f9c09215fbe25b2474ba5a39b0/PKN%2520cocnyL
+https://gist.githubusercontent.com/pidarasuebisov-afk/e220b44264242d1a97c0908aba091edd/raw/ec4bba15f49f68f9c09215fbe25b2474ba5a39b0/PKN%2520cocnyL
