@@ -1,5 +1,5 @@
 // --- TG PROXY STATISTICS ---
-// Updated      : 2026-05-23 05:12:58
+// Updated      : 2026-05-23 06:49:10
 // Working (verified): 29
 tg://proxy?server=5.181.0.202&port=443&secret=eec11798ab008831b474066c9e1ebf5c96617669746f2e7275
 tg://proxy?server=2.27.20.169&port=8443&secret=9f60a844dffc0498423716281fad33a5

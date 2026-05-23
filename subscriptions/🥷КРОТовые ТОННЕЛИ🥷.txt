@@ -1,12 +1,13 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 123 | 📅 23-05-2026 05:12
+#announce:ТОННЕЛЕЙ: 126 | 📅 23-05-2026 06:49
 vless://64d5917f-fa9f-4a4d-8b29-fc597feb3b0f@195.123.220.58:443?flow=xtls-rprx-vision&fp=chrome&pbk=f0xn7ZDC2ygdmySJeWecHsHR7Q6hB4_PyMU_TCefPh8&security=reality&sid=&sni=yandex.ru&type=tcp#🇳🇱 Нидерланды, Амстердам
 vless://a4eaa9bf-078c-4541-a7c8-238430ca7a8e@46.232.248.67:443?security=reality&encryption=none&pbk=2cdGHEGP5A3WdXhrCSZEdNtMe80thM6o2mhzre3sMhY&headerType=none&fp=chrome&allowinsecure=0&type=tcp&flow=xtls-rprx-vision&sni=apple.com&sid=94d59abc6f#🇪🇺Автовыбор
 vless://a2372b3e-04ea-4c7b-ae6d-5226d1adea71@89.106.86.9:443?flow=xtls-rprx-vision&fp=qq&pbk=RJETAkoZ6lowmwc5f0HtPy00c3dfojqQuypriLExXRE&security=reality&sid=abbcd128&sni=ads.x5.ru&type=tcp#🇳🇱 Нидерланды #1
 vless://2001daf3-5c56-4bef-8ea6-8dd0493c5a4c@2.27.23.139:9443/?flow=xtls-rprx-vision&type=tcp&headerType=none&security=reality&fp=chrome&sni=rutube.ru&pbk=ZHEMPjSWslk6_qD2JNQzd5enUPz8nY9mYRRuM6NkZmU#🇸🇪Швеция #3 |
 vless://5381a1bb-479a-412a-9d99-08ccbc008828@av02.myxasecure.space:443?security=reality&encryption=none&pbk=OCLtjVdRxsou3429LRfjkDYgiAPs24TSgSeFZpChCEw&headerType=none&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=av02.myxasecure.space&sid=d67ec5a8fc40ebea#🇦🇹 Австрия #1
+vless://dcc931db-74c0-4bc7-a804-db764310273a@dns.astrokolchick.com:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=smartcaptcha.yandexcloud.net&fp=random&pbk=iRbc5G3wZbluYutzDvrJlc356yJsEnhV1T4tvE-tCnM&sid=27e53bbcab7593d7&type=tcp#🇪🇺 4-1. LTE | Все операторы
 hysteria2://rstnnl%3AhrQVPjgUr9HTgKyTj0oFCr6j4EpRzXTQ@reddeadfan.rd-team.ru:2026?security=tls&obfs=salamander&obfs-password=FxZylbqClUqVqAs2nezW9kPyFb2edZ2&insecure=1&sni=reddeadfan.rd-team.ru#| 🇧🇬 Bulgaria
 vless://9fa77e0f-c9b3-48a2-aea8-884e298ecd44@109.172.86.211:443?security=reality&encryption=none&pbk=RmudYhllzbEDhECFZu71W6vFI-o4OguIkCbkfa_14Es&headerType=none&fp=random&type=tcp&flow=xtls-rprx-vision&sni=eh.vk.com&sid=8e14bfb9#🇷🇺 Россия (Для клиентов ВНЕ РФ) ⭐
 vless://64d5917f-fa9f-4a4d-8b29-fc597feb3b0f@138.124.32.20:443?flow=xtls-rprx-vision&fp=chrome&pbk=bxPYWyNpyzUuc5nA4a83-pLnyNDoIg42Q7MGCVdcqR4&security=reality&sid=42317ad6e30b0883&sni=rbc.ru&type=tcp#🇩🇪 Германия, Франкфурт
@@ -14,6 +15,7 @@ vless://30dab345-4de9-4b70-ad9f-8ebd5c66686f@node3.boomvpn.ru:8443?security=real
 vless://6b2a232c-e1cf-4513-a0af-019a03dc124e@81.90.25.255:443?flow=xtls-rprx-vision&fp=chrome&pbk=CWGfbuuzEV6_SOecdsIqgrvl1RjcRcemRdHjxWap1wc&security=reality&sid=71d6a884d0a5&sni=www.icloud.com&spx=/&type=tcp#🇩🇪 Германия #1
 vless://3c81c716-4fd5-11f1-8a2c-525400a7149e@78.40.116.151:443/?flow=xtls-rprx-vision&type=tcp&headerType=none&security=reality&fp=randomized&sni=www.blocket.se&pbk=Drg3RJ1fsmdl-mHJg2XAz8sBri58W_xGSA-3ewWcfBU&spx=/recommerce#🇸🇪Швеция #5 |
 vless://6d1b6391-c4ba-431e-9c3a-148a8f392c8b@31.14.17.188:443?security=tls&alpn=h3%2Ch2%2Chttp%2F1.1&encryption=none&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&flow=xtls-rprx-vision&sni=at188.mechvpn.online#🇦🇹 Австрия #2
+vless://dcc931db-74c0-4bc7-a804-db764310273a@wiki.astrokolchick.com:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=max.ru&fp=random&pbk=BjG7XoEMR2uxHbBk_rtkR7P_S_luG2VcvQlvZ4YHzH8&sid=27e53bbcab7593d7&type=tcp#🇪🇺 0-3. LTE | Все операторы
 vless://6784aee2-0dfe-474f-8446-480259ff9918@wl4.safepass.click:443?mode=auto&security=reality&encryption=none&extra=%7B&pbk=ELp9PUvVnkoFJYiscWrbnPXRnsYdELSCbIz9wNmMRRw&fp=chrome&type=xhttp&sni=stats.vk-portal.net&sid=965af8960474c29c#| White lists 🇳🇱 Netherlands
 vless://9fa77e0f-c9b3-48a2-aea8-884e298ecd44@151.236.114.154:5444?mode=auto&path=%2Fcheck-update&security=reality&encryption=none&pbk=p5FHiqHm_j2WRyA6aJyLi7RJ1fBEqZ86LtxAUsV_dxQ&host=ads.x5.ru&fp=random&type=xhttp&sni=ads.x5.ru&sid=f03a9c2b#🇪🇺 Европа LTE  ⭐
 vless://64d5917f-fa9f-4a4d-8b29-fc597feb3b0f@213.176.73.37:443?flow=xtls-rprx-vision&fp=chrome&pbk=-kYkVmQw_UifppSlJ-IGNW4jq89GGEdQg3kayk50rxI&security=reality&sid=d142243f4a389be9&sni=ads.x5.ru&type=tcp#🇫🇷 Франция, Париж
@@ -21,6 +23,7 @@ vless://30dab345-4de9-4b70-ad9f-8ebd5c66686f@node5.boomvpn.ru:443?security=reali
 vless://e502ee54-8e2a-41c6-a3ca-3d192e8710fb@195.133.84.136:64003?authority=download.docker.com&fp=firefox&mode=gun&pbk=dG1suoqzIlJMu_sHTvWy1RK12ZORBro6NrkqdQ6h7iQ&security=reality&serviceName=xraygrpc&sid=fbf3edeea8eabbdc&sni=download.docker.com&spx=/mac&type=grpc#🇩🇪 Германия #2
 vless://2001daf3-5c56-4bef-8ea6-8dd0493c5a4c@185.216.71.204:443/?flow=xtls-rprx-vision&type=tcp&headerType=none&security=reality&fp=chrome&sni=deepl.com&pbk=ZHEMPjSWslk6_qD2JNQzd5enUPz8nY9mYRRuM6NkZmU#🇫🇮Финляндия #1 |
 vless://b43a13be-150c-4a6a-8501-b71c1b6476fb@srv191.towersflowerss.com:65000?path=%2F&security=&encryption=none&fp=randomized&type=ws#🇬🇧 Великобритания #1
+vless://dcc931db-74c0-4bc7-a804-db764310273a@ss.astrokolchick.com:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=api-maps.yandex.ru&fp=random&pbk=xwusQ4IEWdYyuPLCc4LOA89P6HyQDNT7xo_75v2YW2I&sid=27e53bbcab7593d7&type=tcp#🇪🇺 3-2. LTE | Все операторы
 vless://fb384123-d578-40b1-a37a-70911a50f3b4@62.152.56.211:443?security=reality&encryption=none&pbk=lh3qj3VX335HGH2T3xQ8RHZ4v3zEStbz6ENiPwkILSg&headerType=&fp=chrome&type=tcp&flow=xtls-rprx-vision&sni=wl-12.nodes.ac&sid=cf43c0c197cd464a#| White lists 🇷🇺 Russia
 vless://9fa77e0f-c9b3-48a2-aea8-884e298ecd44@84.201.174.102:5443?security=reality&encryption=none&pbk=GSM84A6u4gqXK9Wx4jb3fwgVxBxcIo1jYiXPoq8F3xw&headerType=none&fp=random&type=tcp&flow=xtls-rprx-vision&sni=any.yandex.ru&sid=4d7b8a1e#🇪🇺 Европа LTE 6  ⭐
 vless://64d5917f-fa9f-4a4d-8b29-fc597feb3b0f@144.31.109.135:443?flow=xtls-rprx-vision&fp=chrome&pbk=-AcI8A-X4qx7X3le5twlze5wWAUq99nx4ELVGhQn9Bc&security=reality&sid=c22834ecf6baf890&sni=yandex.ru&type=tcp#🇫🇮 Финляндия, Хельсинки
