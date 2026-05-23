@@ -34,3 +34,4 @@ LizardVPN
 Сервера будут работать стабильнее через 1-5 дней
 @halyava_vpnx
 Premium
+QuorVPN
