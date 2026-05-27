@@ -1,7 +1,7 @@
 #profile-title:📡КРОТовые ТОННЕЛИ📡
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 374 | 📅 27-05-2026 13:44
+#announce:ТОННЕЛЕЙ: 374 | 📅 27-05-2026 13:48
 vless://73b7ea7f-2e71-4ced-8e0f-0f441d08960b@193.33.133.174:14443?mode=auto&security=reality&encryption=none&pbk=gXqYp236NB8zxHC5B6BEjOVwS7l4PrkgGJQtVgjXI1A&fp=chrome&type=xhttp&sni=ads.x5.ru&sid=f18c3bd9c8b9197b#🇫🇮 (ai) обход бс
 vless://f80bb04e-b5b9-41c1-bec8-55d53398e093@84.201.180.178:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=randomized&sni=api-maps.yandex.ru&pbk=yX1E6fqEpS0oU3efsyAc0x6hXsl7w5iBTnZkbzG7JB8&sid=22730c666bd10642#🇷🇺 Yandex — #1
 hysteria2://rstnnl%3AhrQVPjgUr9HTgKyTj0oFCr6j4EpRzXTQ@reddeadfan.rd-team.ru:2026?security=tls&obfs=salamander&obfs-password=FxZylbqClUqVqAs2nezW9kPyFb2edZ2&insecure=1&sni=reddeadfan.rd-team.ru#| 🇧🇬 Bulgaria
