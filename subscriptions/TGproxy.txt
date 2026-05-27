@@ -1,5 +1,5 @@
 // --- TG PROXY STATISTICS ---
-// Updated      : 2026-05-27 07:44:40
+// Updated      : 2026-05-27 09:42:26
 // Working (verified): 74
 tg://proxy?server=dreams.nolags.pw&port=443&secret=dd2d558135931b5e0c5da5e7501724b32c
 tg://proxy?server=87.248.129.199&port=25565&secret=79e344818749bd7ac519130220c25d09
