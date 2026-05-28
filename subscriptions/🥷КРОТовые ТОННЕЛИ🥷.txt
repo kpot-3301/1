@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 49 | 📅 28-05-2026 20:14
+#announce:ТОННЕЛЕЙ: 49 | 📅 28-05-2026 20:23
 vless://dc0470c2-50c2-445c-bfdf-1d1fe38d69da@65.109.221.68:8443?encryption=none&type=raw&headerType=http&host=varzesh3.com&path=%2F&security=none#2. 🇫🇮 Finland
 vless://279828c6-13f2-439c-9a4e-ea7d4f470fa4@g1.steptofreedom.one:443?type=tcp&headerType=none&security=reality&encryption=none&sni=g1.steptofreedom.one&fp=randomized&pbk=ivgTfLR13A6xBsicIA28OPoav2tXlsstTTmGuETfnSk&sid=6d6f13013d3e1d0c&flow=xtls-rprx-vision#3. 🇳🇱 The Netherlands
 vless://8850643f-605c-498a-8b0a-674448eee39a@v2configlab.v2configlab18.workers.dev:80?path=/?ed=2048&security=none&encryption=none&host=v2configlab.v2configlab18.workers.dev&type=ws#4. 🇳🇴 Norway
