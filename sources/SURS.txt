@@ -48,3 +48,4 @@
 
 https://gist.githubusercontent.com/zorka-project/efc486572e465d9fb6698264e9895f59/raw/zorka-project.txt?nocache=1
 
+https://raw.githubusercontent.com/v0id9/vpn-configs/refs/heads/main/vpn.txt
