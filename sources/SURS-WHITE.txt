@@ -16,3 +16,6 @@ https://raw.githubusercontent.com/Temnuk/naabuzil/refs/heads/main/whitelist
 
 # igareck
 https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/Vless-Reality-White-Lists-Rus-Mobile.txt
+
+# Xpa
+https://www.xpabs.sryze.cc
