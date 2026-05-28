@@ -7,8 +7,8 @@
 # Destroy #https://gist.githubusercontent.com/DestroyST6767/f00837ad379aa3272183fdaabcfd50da/raw
 
 # mifa 
-#https://mifa.world/fast
-#https://mifa.world/turbo
+https://mifa.world/fast
+https://mifa.world/turbo
 
 # KomaryServers
 #https://raw.githubusercontent.com/kama55726/KomaryServers/refs/heads/main/KomaryServ
