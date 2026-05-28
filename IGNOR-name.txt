@@ -38,3 +38,6 @@ QuorVPN
 @nzea_tri_bykvi
 тгк: @rostunnel
 @free_internet
+QUORVPN
+@VSPBOOST
+QuorVPN
