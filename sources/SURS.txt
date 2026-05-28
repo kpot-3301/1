@@ -39,7 +39,7 @@
 
 # cved
 #https://gist.githubusercontent.com/pidarasuebisov-afk/e220b44264242d1a97c0908aba091edd/raw/ec4bba15f49f68f9c09215fbe25b2474ba5a39b0/PKN%2520cocnyL
-https://gist.githubusercontent.com/pidarasuebisov-afk/e220b44264242d1a97c0908aba091edd/raw/ec4bba15f49f68f9c09215fbe25b2474ba5a39b0/PKN%2520cocnyL
+#https://gist.githubusercontent.com/pidarasuebisov-afk/e220b44264242d1a97c0908aba091edd/raw/ec4bba15f49f68f9c09215fbe25b2474ba5a39b0/PKN%2520cocnyL
 
 #QuorVPN
 #https://gist.githubusercontent.com/nikitavalentinov90021-ai/5c0f36a8c7e078484a4c08fab5beee72/raw/8be7c44d7b264e3bf4119b031b4c5a96d7f306ca/Premium.txt
