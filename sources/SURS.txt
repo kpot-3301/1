@@ -14,7 +14,7 @@
 #https://raw.githubusercontent.com/kama55726/KomaryServers/refs/heads/main/KomaryServ
 
 # Hem1ks
-https://gist.githubusercontent.com/Hem1ks/57428d826e518a97de8c878af82fc941/raw/c77bdae23fe8b542308ed517bf20a974ae9ef104/Hem1ksVPN
+#https://gist.githubusercontent.com/Hem1ks/57428d826e518a97de8c878af82fc941/raw/c77bdae23fe8b542308ed517bf20a974ae9ef104/Hem1ksVPN
 
 # HalyavusVPNUS
 #https://gist.githubusercontent.com/HalyavusVPNUS/812f93b19567f4ef33e610cb3fd12cdb/raw/7996c3a6500bd5e2fe89bb60774f08d8270a1a0d/%25D0%25B2%25D0%25BF%25D0%25BD
@@ -29,16 +29,16 @@ https://gist.githubusercontent.com/HappKeysHub/117070129146ea50bbf929c9c091705e/
 #https://raw.githubusercontent.com/cinev505/VlessTrogan-vpn-key/refs/heads/main/WhiteList-VPN-Vless
 
 # халява впн
-https://gist.githubusercontent.com/HalyavusVPNUS/8182552c589d1d2b8cff2c8403a748ee/raw/43856eb1341e55e11f5afddc06c2b8fed1dc62e8/%25D1%2585%25D0%25B0%25D0%25BB%25D1%258F%25D0%25B2%25D0%25B0%2520%25D0%25B2%25D0%25BF%25D0%25BD
-https://gist.githubusercontent.com/HalyavusVPNUS/a93def732d3c624029c09c393dd0772e/raw/6fe83e053a2a4267d1422afe44d8a82aa47f0d3a/%25D0%25BA%25D0%25BE%25D0%25BD%25D1%2584%25D0%25B8%25D0%25B3%25D0%25B8
-https://raw.githubusercontent.com/HalyavusVPNUS/halyava-vpn-mini/refs/heads/main/mini.txt
-https://gist.githubusercontent.com/HalyavusVPNUS/8461fed4b193d4d6ba9a84061e6d0da4/raw/5f5d0668591ed0ba19935caeb3a6abaec84700e9/%25D0%25B1%25D0%25B5%25D0%25BB%25D1%258B%25D0%25B5%2520%25D1%2581%25D0%25BF%25D0%25B8%25D1%2581%25D0%25BA%25D0%25B8
+#https://gist.githubusercontent.com/HalyavusVPNUS/8182552c589d1d2b8cff2c8403a748ee/raw/43856eb1341e55e11f5afddc06c2b8fed1dc62e8/%25D1%2585%25D0%25B0%25D0%25BB%25D1%258F%25D0%25B2%25D0%25B0%2520%25D0%25B2%25D0%25BF%25D0%25BD
+#https://gist.githubusercontent.com/HalyavusVPNUS/a93def732d3c624029c09c393dd0772e/raw/6fe83e053a2a4267d1422afe44d8a82aa47f0d3a/%25D0%25BA%25D0%25BE%25D0%25BD%25D1%2584%25D0%25B8%25D0%25B3%25D0%25B8
+#https://raw.githubusercontent.com/HalyavusVPNUS/halyava-vpn-mini/refs/heads/main/mini.txt
+#https://gist.githubusercontent.com/HalyavusVPNUS/8461fed4b193d4d6ba9a84061e6d0da4/raw/5f5d0668591ed0ba19935caeb3a6abaec84700e9/%25D0%25B1%25D0%25B5%25D0%25BB%25D1%258B%25D0%25B5%2520%25D1%2581%25D0%25BF%25D0%25B8%25D1%2581%25D0%25BA%25D0%25B8
 
 # AetrisVPN
-https://gist.githubusercontent.com/flaafix/c79a81037d15163360571c7a7331b153/raw/AetrisVPN.txt
+#https://gist.githubusercontent.com/flaafix/c79a81037d15163360571c7a7331b153/raw/AetrisVPN.txt
 
 # cved
-https://gist.githubusercontent.com/pidarasuebisov-afk/e220b44264242d1a97c0908aba091edd/raw/ec4bba15f49f68f9c09215fbe25b2474ba5a39b0/PKN%2520cocnyL
+#https://gist.githubusercontent.com/pidarasuebisov-afk/e220b44264242d1a97c0908aba091edd/raw/ec4bba15f49f68f9c09215fbe25b2474ba5a39b0/PKN%2520cocnyL
 https://gist.githubusercontent.com/pidarasuebisov-afk/e220b44264242d1a97c0908aba091edd/raw/ec4bba15f49f68f9c09215fbe25b2474ba5a39b0/PKN%2520cocnyL
 
 #QuorVPN
