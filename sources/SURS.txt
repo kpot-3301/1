@@ -4,17 +4,11 @@ https://mifa.world/fast
 https://mifa.world/turbo
 https://mifa.world/other
 
+
+
+
 # LimeHi
-https://raw.githubusercontent.com/LimeHi/LimeVPN/refs/heads/main/LimeVPN.txt?v=1
-
-# Wortex116
-https://raw.githubusercontent.com/Wortex116/VPNfree/refs/heads/main/Free
-
-# accargame
-https://accargame.cfd/sub/5cK11i8CN5duBEiM
-
-
-
+#https://raw.githubusercontent.com/LimeHi/LimeVPN/refs/heads/main/LimeVPN.txt?v=1
 
 # KomaryServers
 #https://raw.githubusercontent.com/kama55726/KomaryServers/refs/heads/main/KomaryServ
