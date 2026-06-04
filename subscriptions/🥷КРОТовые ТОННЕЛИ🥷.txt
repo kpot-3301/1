@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 213 | 📅 04-06-2026 09:57
+#announce:ТОННЕЛЕЙ: 213 | 📅 04-06-2026 10:09
 vless://d78c12c4-6927-40b8-8550-ed9be00334da@cxcczechia1.chickenkiller.com:443?type=tcp&headerType=none&security=reality&encryption=none&sni=cxcczechia1.chickenkiller.com&fp=firefox&pbk=K7no4vVZPV-eW6uFsq2xP3m5bwuau4bSvRU1bnFs80k&sid=fcfb56dcc1d63834&flow=xtls-rprx-vision#🇦🇹  Austria  [01]
 vless://@IR_NETLIFY@194.59.183.234:666?security=none&type=tcp&encryption=none#3. 🇩🇪 Germany
 vless://d78c12c4-6927-40b8-8550-ed9be00334da@shveccxc1.twilightparadox.com:443?type=tcp&headerType=none&security=reality&encryption=none&sni=shveccxc1.twilightparadox.com&fp=firefox&pbk=wPBLToF6GA4jIb7C7yu0UMlCXlxTV9UlEh1R-EdCzRU&sid=2e5b7512fc1d69be&flow=xtls-rprx-vision#🇨🇭  Switzerland  [01]
