@@ -1,10 +1,10 @@
 
 # mifa 
-https://mifa.world/fast
-https://mifa.world/turbo
-https://mifa.world/other
+#https://mifa.world/fast
+#https://mifa.world/turbo
+#https://mifa.world/other
 
-
+https://raw.githubusercontent.com/v0id9/vpn-configs/refs/heads/main/vpn.txt
 
 
 # LimeHi
