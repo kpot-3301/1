@@ -1,50 +1,26 @@
-# YaltaVPN #https://raw.githubusercontent.com/YaltaVPN/YaltaVPNConfigs/refs/heads/main/%D0%A2%D0%B5%D1%80%D0%B5%D0%BA%D0%92%D0%9F%D0%9D%20-%20%D0%9F%D0%BE%D0%B4%D0%BF%D0%B8%D1%81%D0%BA%D0%B0
-# YaltaVPN #https://raw.githubusercontent.com/YaltaVPN/YaltaVPNConfigs/refs/heads/main/YaltaVPN%20-%20Subscription
-
-# LimeHi
-#https://raw.githubusercontent.com/LimeHi/LimeVPN/refs/heads/main/LimeVPN.txt?v=1
-
-# Destroy #https://gist.githubusercontent.com/DestroyST6767/f00837ad379aa3272183fdaabcfd50da/raw
 
 # mifa 
 https://mifa.world/fast
 https://mifa.world/turbo
+https://mifa.world/other
+
+# LimeHi
+https://raw.githubusercontent.com/LimeHi/LimeVPN/refs/heads/main/LimeVPN.txt?v=1
+
+# Wortex116
+https://raw.githubusercontent.com/Wortex116/VPNfree/refs/heads/main/Free
+
+
+
+
+
 
 # KomaryServers
 #https://raw.githubusercontent.com/kama55726/KomaryServers/refs/heads/main/KomaryServ
 
-# Hem1ks
-#https://gist.githubusercontent.com/Hem1ks/57428d826e518a97de8c878af82fc941/raw/c77bdae23fe8b542308ed517bf20a974ae9ef104/Hem1ksVPN
-
-# HalyavusVPNUS
-#https://gist.githubusercontent.com/HalyavusVPNUS/812f93b19567f4ef33e610cb3fd12cdb/raw/7996c3a6500bd5e2fe89bb60774f08d8270a1a0d/%25D0%25B2%25D0%25BF%25D0%25BD
-
-# happi обход глушилок 
-#https://yax.nenadoblokirowatgnidda.ru/exec?url=http%3A%2F%2F77.110.104.181%3A5002%2Fsub%2FaThSTXN5LDE3Nzk1NTQ2NDMdkJVM1EiAC
-
 # HappKeysHub
-#https://gist.githubusercontent.com/HappKeysHub/117070129146ea50bbf929c9c091705e/raw/ad20fd1fb58785776b6ed7a6c72266da389e10ae/HappKeysHub%2520%25D0%25BF%25D0%25BE%25D0%25B4%25D0%25BF%25D0%25B8%25D1%2581%25D0%25BA%25D0%25B0
+https://gist.githubusercontent.com/HappKeysHub/117070129146ea50bbf929c9c091705e/raw/ad20fd1fb58785776b6ed7a6c72266da389e10ae/HappKeysHub%2520%25D0%25BF%25D0%25BE%25D0%25B4%25D0%25BF%25D0%25B8%25D1%2581%25D0%25BA%25D0%25B0
 
-# против блокировок
-#https://raw.githubusercontent.com/cinev505/VlessTrogan-vpn-key/refs/heads/main/WhiteList-VPN-Vless
+# 500 ключей
+# https://raw.githubusercontent.com/v0id9/vpn-configs/refs/heads/main/vpn.txt
 
-# халява впн
-#https://gist.githubusercontent.com/HalyavusVPNUS/8182552c589d1d2b8cff2c8403a748ee/raw/43856eb1341e55e11f5afddc06c2b8fed1dc62e8/%25D1%2585%25D0%25B0%25D0%25BB%25D1%258F%25D0%25B2%25D0%25B0%2520%25D0%25B2%25D0%25BF%25D0%25BD
-#https://gist.githubusercontent.com/HalyavusVPNUS/a93def732d3c624029c09c393dd0772e/raw/6fe83e053a2a4267d1422afe44d8a82aa47f0d3a/%25D0%25BA%25D0%25BE%25D0%25BD%25D1%2584%25D0%25B8%25D0%25B3%25D0%25B8
-#https://raw.githubusercontent.com/HalyavusVPNUS/halyava-vpn-mini/refs/heads/main/mini.txt
-#https://gist.githubusercontent.com/HalyavusVPNUS/8461fed4b193d4d6ba9a84061e6d0da4/raw/5f5d0668591ed0ba19935caeb3a6abaec84700e9/%25D0%25B1%25D0%25B5%25D0%25BB%25D1%258B%25D0%25B5%2520%25D1%2581%25D0%25BF%25D0%25B8%25D1%2581%25D0%25BA%25D0%25B8
-
-# AetrisVPN
-#https://gist.githubusercontent.com/flaafix/c79a81037d15163360571c7a7331b153/raw/AetrisVPN.txt
-
-# cved
-#https://gist.githubusercontent.com/pidarasuebisov-afk/e220b44264242d1a97c0908aba091edd/raw/ec4bba15f49f68f9c09215fbe25b2474ba5a39b0/PKN%2520cocnyL
-#https://gist.githubusercontent.com/pidarasuebisov-afk/e220b44264242d1a97c0908aba091edd/raw/ec4bba15f49f68f9c09215fbe25b2474ba5a39b0/PKN%2520cocnyL
-
-#QuorVPN
-#https://gist.githubusercontent.com/nikitavalentinov90021-ai/5c0f36a8c7e078484a4c08fab5beee72/raw/8be7c44d7b264e3bf4119b031b4c5a96d7f306ca/Premium.txt
-
-
-https://vspsub.onrender.com/get/8tyv6u
-
-https://raw.githubusercontent.com/v0id9/vpn-configs/refs/heads/main/vpn.txt
