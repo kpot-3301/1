@@ -2,15 +2,15 @@
 https://www.dropbox.com/scl/fi/eza4d57tsvsls2crc5vts/TGproxy.txt?rlkey=7mxn5h3yw30seqs16layneatm&st=flenfpqy&raw=1
 
 # kort0881
-https://raw.githubusercontent.com/kort0881/telegram-proxy-collector/refs/heads/main/proxy_all.txt
-https://raw.githubusercontent.com/kort0881/telegram-proxy-collector/refs/heads/main/proxy_eu.txt
-https://raw.githubusercontent.com/kort0881/telegram-proxy-collector/refs/heads/main/proxy_ru.txt
+#https://raw.githubusercontent.com/kort0881/telegram-proxy-collector/refs/heads/main/proxy_all.txt
+#https://raw.githubusercontent.com/kort0881/telegram-proxy-collector/refs/heads/main/proxy_eu.txt
+#https://raw.githubusercontent.com/kort0881/telegram-proxy-collector/refs/heads/main/proxy_ru.txt
 
 # SoliSpirit
-https://raw.githubusercontent.com/SoliSpirit/mtproto/refs/heads/master/all_proxies.txt
+#https://raw.githubusercontent.com/SoliSpirit/mtproto/refs/heads/master/all_proxies.txt
 
 # Grim1313
-https://raw.githubusercontent.com/Grim1313/mtproto-for-telegram/refs/heads/master/all_proxies.txt
+#https://raw.githubusercontent.com/Grim1313/mtproto-for-telegram/refs/heads/master/all_proxies.txt
 
 # Argh94
 https://raw.githubusercontent.com/Argh94/Proxy-List/refs/heads/main/MTProto.txt
