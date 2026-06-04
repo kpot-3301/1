@@ -1,21 +1,17 @@
 
-# Destroy
-https://gist.githubusercontent.com/DestroyST6767/50af50221ca1858ba2084efc0f524fbc/raw
-
 # zieng2  
 https://raw.githubusercontent.com/zieng2/wl/main/vless_universal.txt
 https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
-https://raw.githubusercontent.com/zieng2/wl/main/vless_lite.txt
 https://raw.githubusercontent.com/zieng2/wl/refs/heads/main/vless_universal.txt
-
-# AETRISVPN
-https://gist.githubusercontent.com/flaafix/c79a81037d15163360571c7a7331b153/raw/AetrisVPN.txt
-
-# Temnuk 
-https://raw.githubusercontent.com/Temnuk/naabuzil/refs/heads/main/whitelist
 
 # igareck
 https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/refs/heads/main/Vless-Reality-White-Lists-Rus-Mobile.txt
 
 # Xpa
 https://www.xpabs.sryze.cc
+
+# terik21
+https://github.com/terik21/HiddifySubs-VlessKeys/raw/refs/heads/main/RU_other
+https://github.com/terik21/HiddifySubs-VlessKeys/raw/refs/heads/main/WhiteKeys
+https://github.com/terik21/HiddifySubs-VlessKeys/raw/refs/heads/main/2Tues
+
