@@ -1,7 +1,7 @@
 #profile-title:📡КРОТовые ТОННЕЛИ📡
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 312 | 📅 04-06-2026 12:51
+#announce:ТОННЕЛЕЙ: 312 | 📅 04-06-2026 12:53
 vless://7d876627-abf5-4865-8ff4-03f37d49de5d@217.16.21.116:5443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=chrome&sni=max.ru&pbk=LGcG8Sqv5vPDypbaEgHV0ZGqQOBkgDepPWXyDohbVXQ#🇷🇺 VK — #1
 vless://7d876627-abf5-4865-8ff4-03f37d49de5d@db.herumhas.shop:8443?encryption=none&flow=xtls-rprx-vision&security=tls&sni=db.herumhas.shop&fp=chrome&insecure=0&allowInsecure=0&type=tcp&headerType=none#🇫🇮 Finland | 🌐 [*CIDR]
 vless://e2350ba4-16aa-455e-ae8b-f65102227cf4@158.160.214.183:443?encryption=none&type=ws&security=tls&path=/sequre/ws?ed=2560&host=cloudflare.tyr-agentstvo.tech&fp=qq&sni=cloudflare.tyr-agentstvo.tech&alpn=http/1.1#- 1 🇷🇺
