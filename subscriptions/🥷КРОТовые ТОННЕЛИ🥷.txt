@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 85 | 📅 04-06-2026 21:12
+#announce:ТОННЕЛЕЙ: 85 | 📅 04-06-2026 21:26
 vless://03bc875d-0d8e-49b6-9094-89a8159e65ee@91.107.191.12:29376?encryption=none&security=none&type=tcp&headerType=none#1. 🇩🇪 Germany
 vless://a4eaa9bf-078c-4541-a7c8-238430ca7a8e@46.232.248.67:443?security=reality&encryption=none&pbk=2cdGHEGP5A3WdXhrCSZEdNtMe80thM6o2mhzre3sMhY&headerType=none&fp=chrome&allowinsecure=0&type=tcp&flow=xtls-rprx-vision&sni=apple.com&sid=94d59abc6f#🇪🇺Автовыбор
 vless://8c3ea797-4532-4d19-8999-c8e243bba638@185.242.19.249:443?encryption=none&type=xhttp&security=tls&path=%2Fxhttppath&mode=auto&extra=null&fp=chrome&sni=top3259365054.mwscdn.ru#4. 🇬🇧 United Kingdom

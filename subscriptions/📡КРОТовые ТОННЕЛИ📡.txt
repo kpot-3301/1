@@ -1,7 +1,7 @@
 #profile-title:📡КРОТовые ТОННЕЛИ📡
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 400 | 📅 04-06-2026 21:12
+#announce:ТОННЕЛЕЙ: 400 | 📅 04-06-2026 21:26
 vless://69b578b6-6167-447d-a82c-033928da5e03@212.233.122.244:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=chrome&sni=static.rutube.ru&pbk=1BAG3ZcDThZ_tEFyPAaxh5EfY5RyK8D8CIHplP-qXmc&sid=9a62a7103e3791eb#🇷🇺 VK — #1
 vless://c09f00bc-ef4c-441e-8317-17ac954c54ad@ss.ll0ll.vip:2096?mode=gun&security=reality&encryption=none&authority=&echfq=none&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&fp=chrome&allowinsecure=0&type=grpc&serviceName=vless-grpc-reality&sni=id.vk.com#🇦🇹 Austria [*CIDR]
 vless://e2350ba4-16aa-455e-ae8b-f65102227cf4@158.160.214.183:443?encryption=none&type=ws&security=tls&path=/sequre/ws?ed=2560&host=cloudflare.tyr-agentstvo.tech&fp=qq&sni=cloudflare.tyr-agentstvo.tech&alpn=http/1.1#- 1 🇷🇺
