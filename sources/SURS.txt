@@ -4,11 +4,11 @@
 #https://mifa.world/turbo
 #https://mifa.world/other
 
-https://raw.githubusercontent.com/v0id9/vpn-configs/refs/heads/main/vpn.txt
+#https://raw.githubusercontent.com/v0id9/vpn-configs/refs/heads/main/vpn.txt
 
 
 # LimeHi
-#https://raw.githubusercontent.com/LimeHi/LimeVPN/refs/heads/main/LimeVPN.txt?v=1
+https://raw.githubusercontent.com/LimeHi/LimeVPN/refs/heads/main/LimeVPN.txt?v=1
 
 # KomaryServers
 #https://raw.githubusercontent.com/kama55726/KomaryServers/refs/heads/main/KomaryServ
