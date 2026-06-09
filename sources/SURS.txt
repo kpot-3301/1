@@ -1,6 +1,9 @@
 #FrizanGAME
 https://gist.githubusercontent.com/FrizanGAME/dfd1f7ac36511593dc6d0faff14cc8bb/raw/frizanVPN.txt
 
+#Kedoni
+https://raw.githubusercontent.com/Kedoni/VPN-Sub/refs/heads/main/Hal.txt
+
 # mifa 
 #https://mifa.world/fast
 #https://mifa.world/turbo
