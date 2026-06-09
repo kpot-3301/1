@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 112 | 📅 09-06-2026 11:04
+#announce:ТОННЕЛЕЙ: 112 | 📅 09-06-2026 13:37
 vless://9ad4f937-6366-474b-9d7e-e2a694deb4e2@pro-fi.emrata.top:753?flow=xtls-rprx-vision&type=tcp&headerType=none&security=reality&fp=firefox&sni=www.amd.com&pbk=F2VfBr2UmjDTErB_oruvW5aIvzH_xGfM2AW5_w-DF0I#🇫🇮 Финляндия
 vless://25e30296-6c02-46e3-b3a8-32febe6cf876@de.vz-or.com:443?flow=xtls-rprx-vision&type=tcp&headerType=none&security=reality&fp=qq&sni=ads.x5.ru&pbk=RJETAkoZ6lowmwc5f0HtPy00c3dfojqQuypriLExXRE&sid=abbcd128#🇳🇱 Нидерланды
 vless://d8ad7276-7ac8-4eb2-9429-0fdb9bb45d12@148.253.213.81:443?encryption=none&fp=&pbk=iC8Bb2OV8PgEI0_4RPZecUE3vm6vsLnZ42zvbPeVIgw&security=reality&sid=cb4d31a32bc04d7e&sni=nid.bkwidjet.ru&type=tcp#3.🇳🇱Нидерланды |
