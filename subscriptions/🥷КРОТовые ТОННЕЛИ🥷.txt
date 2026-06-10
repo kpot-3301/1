@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 563 | 📅 11-06-2026 00:42
+#announce:ТОННЕЛЕЙ: 563 | 📅 11-06-2026 03:12
 vless://122bbb97-7819-4e48-8b4f-164045b8419b@217.60.62.22:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=firefox&pbk=LlmeRLZaOVzOFU5YPLBxAHtHVjyrM0HdCXOrZxvbBBM&sid=c6&type=tcp&headerType=none#🇪🇺 ⚡️Европа | Game 🎮
 vless://dc22c1b5-ea27-4d89-89ae-c0580ed94ca5@2.27.26.140:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=aq.cdn-global.pro&fp=edge&pbk=HKkU-5UanGjWdmX8E-EGulXMk1BnidkFsVveyyOlTg8&sid=90f9d05bf95cb335&type=tcp#🇫🇷 Франция|Быстрый
 vless://1da3b96e-55af-0012-9147-39e79074aaea@62.152.56.226:8443?mode=multi&security=reality&encryption=none&authority=&pbk=36F7ul7R68ih8TAKPfHnqEvw_23kWNgOXCrfQKK3MXQ&fp=firefox&allowinsecure=0&type=grpc&serviceName=%2Fapi&sni=loadtest.dev.urent.ru&sid=3722621913893e97#🇬🇧+VPN 1
