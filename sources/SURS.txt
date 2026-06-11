@@ -29,6 +29,7 @@
 # https://raw.githubusercontent.com/v0id9/vpn-configs/refs/heads/main/vpn.txt
 
 https://tinyurl.com/4m45w9ax
+
 https://lumixnet.com/api/subscriptions/g5fxJfVyGcSqe7wK
 
 https://connliberty.com/connection/subs/d8849138-1a7d-4b77-b380-89ef96d59a5c
