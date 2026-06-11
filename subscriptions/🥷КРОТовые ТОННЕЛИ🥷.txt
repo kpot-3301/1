@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 14 | 📅 11-06-2026 22:01
+#announce:ТОННЕЛЕЙ: 14 | 📅 11-06-2026 22:05
 vless://4075d9b3-39ff-48dd-a23f-a95ec76deef6@finnode1.frost-api.com:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=SHIYN7zN9aFVxwKK-bIvDbhUgtHvlBhDi1qSl2sWwRw&security=reality&sid=4f61d0728e062b&sni=eh.vk.com&type=tcp#❄️ Авто-выбор [ALL]
 vless://4075d9b3-39ff-48dd-a23f-a95ec76deef6@finnode2.frost-api.com:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=SHIYN7zN9aFVxwKK-bIvDbhUgtHvlBhDi1qSl2sWwRw&security=reality&sid=01e7&sni=eh.vk.com&type=tcp#🇫🇮 Финляндия
 vless://4075d9b3-39ff-48dd-a23f-a95ec76deef6@fra1.frost-api.com:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=SHIYN7zN9aFVxwKK-bIvDbhUgtHvlBhDi1qSl2sWwRw&security=reality&sid=fb916778d4&sni=max.ru&type=tcp#🇫🇷 Франция
