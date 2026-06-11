@@ -17,14 +17,15 @@ https://raw.githubusercontent.com/Kedoni/VPN-Sub/refs/heads/main/Hal.txt
 
 
 # LimeHi
-https://raw.githubusercontent.com/LimeHi/LimeVPN/refs/heads/main/LimeVPN.txt?v=1
+#https://raw.githubusercontent.com/LimeHi/LimeVPN/refs/heads/main/LimeVPN.txt?v=1
 
 # KomaryServers
 #https://raw.githubusercontent.com/kama55726/KomaryServers/refs/heads/main/KomaryServ
 
 # HappKeysHub
-https://gist.githubusercontent.com/HappKeysHub/117070129146ea50bbf929c9c091705e/raw/ad20fd1fb58785776b6ed7a6c72266da389e10ae/HappKeysHub%2520%25D0%25BF%25D0%25BE%25D0%25B4%25D0%25BF%25D0%25B8%25D1%2581%25D0%25BA%25D0%25B0
+#https://gist.githubusercontent.com/HappKeysHub/117070129146ea50bbf929c9c091705e/raw/ad20fd1fb58785776b6ed7a6c72266da389e10ae/HappKeysHub%2520%25D0%25BF%25D0%25BE%25D0%25B4%25D0%25BF%25D0%25B8%25D1%2581%25D0%25BA%25D0%25B0
 
 # 500 ключей
 # https://raw.githubusercontent.com/v0id9/vpn-configs/refs/heads/main/vpn.txt
 
+https://tinyurl.com/4m45w9ax
