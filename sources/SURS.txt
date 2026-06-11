@@ -3,15 +3,15 @@
 
 
 #FrizanGAME
-https://gist.githubusercontent.com/FrizanGAME/dfd1f7ac36511593dc6d0faff14cc8bb/raw/frizanVPN.txt
+#https://gist.githubusercontent.com/FrizanGAME/dfd1f7ac36511593dc6d0faff14cc8bb/raw/frizanVPN.txt
 
 #Kedoni
 #https://raw.githubusercontent.com/Kedoni/VPN-Sub/refs/heads/main/Hal.txt
 
 # mifa 
-https://mifa.world/fast
-https://mifa.world/turbo
-https://mifa.world/other
+#https://mifa.world/fast
+#https://mifa.world/turbo
+#https://mifa.world/other
 
 #https://raw.githubusercontent.com/v0id9/vpn-configs/refs/heads/main/vpn.txt
 
@@ -29,3 +29,8 @@ https://mifa.world/other
 # https://raw.githubusercontent.com/v0id9/vpn-configs/refs/heads/main/vpn.txt
 
 https://tinyurl.com/4m45w9ax
+https://lumixnet.com/api/subscriptions/g5fxJfVyGcSqe7wK
+
+https://connliberty.com/connection/subs/d8849138-1a7d-4b77-b380-89ef96d59a5c
+
+https://gist.githubusercontent.com/j80547013-max/5ef5a20db71c4458ea9ddb6f8344d092/raw/66c6ff7874bff72282e75b20750f2562696d5f0b/gistfile1.txt
