@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 272 | 📅 12-06-2026 09:54
+#announce:ТОННЕЛЕЙ: 272 | 📅 12-06-2026 14:07
 vless://1c0277ad-bb4d-496f-bc0c-40ccee03fca5@31.56.188.15:7443?type=tcp&headerType=none&security=reality&encryption=none&sni=mi.com&fp=firefox&pbk=5QAO98ot2U7TcGs_f6EEaQjCzNOJLNHqPf6smYsdFVI&sid=be0ce047&flow=xtls-rprx-vision#🇦🇪  United Arab Emirates  [01]
 vless://93796b65-0d32-4fcc-987c-16c97ecf44c2@87.121.112.61:443?type=tcp&headerType=none&security=reality&encryption=none&sni=bolgarinorrumin.life&fp=firefox&pbk=B36LpwvWN-drFiQRDs851KzIrG8gz-xxtMuAniOgRXA&flow=xtls-rprx-vision#🇧🇬  Bulgaria  [01]
 vless://4075d9b3-39ff-48dd-a23f-a95ec76deef6@finnode1.frost-api.com:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=SHIYN7zN9aFVxwKK-bIvDbhUgtHvlBhDi1qSl2sWwRw&security=reality&sid=4f61d0728e062b&sni=eh.vk.com&type=tcp#❄️ Авто-выбор [ALL]
