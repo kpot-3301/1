@@ -19,3 +19,6 @@ https://github.com/terik21/HiddifySubs-VlessKeys/raw/refs/heads/main/2Tues
 
 #cid
 #https://gitverse.ru/api/repos/cid-uskoritel/cid-catwhite-uskoritel/raw/branch/master/configs.txt
+
+#ркп
+https://raw.githubusercontent.com/RKPchannel/RKP_bypass_configs/refs/heads/main/whitelist.txt
