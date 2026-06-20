@@ -28,12 +28,5 @@ https://mifa.world/other
 # 500 ключей
 # https://raw.githubusercontent.com/v0id9/vpn-configs/refs/heads/main/vpn.txt
 
-https://tinyurl.com/4m45w9ax
-
-
-https://gist.githubusercontent.com/j80547013-max/5ef5a20db71c4458ea9ddb6f8344d092/raw/66c6ff7874bff72282e75b20750f2562696d5f0b/gistfile1.txt
-
-ᅠ ᅠ:
-https://gist.githubusercontent.com/zorka-project/efc486572e465d9fb6698264e9895f59/raw/kuertov-project.txt?nocache=1
-
-https://github.com/Remiuc0ff/ya-nikogo-ne-ubival/raw/refs/heads/Remiuc0ff-patch-1/okak
+# ркп
+https://raw.githubusercontent.com/RKPchannel/RKP_bypass_configs/refs/heads/main/blacklist.txt
