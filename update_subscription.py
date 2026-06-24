@@ -9,60 +9,35 @@ from urllib.parse import urlparse, unquote
 
 import requests
 
-# Перенаправляем stdout в stderr, чтобы логи были видны в GitHub Actions
+# Перенаправляем stdout в stderr
 sys.stdout = sys.stderr
 
 # ===== ПОПЫТКА ИМПОРТА БИБЛИОТЕКИ =====
 HAPP_DECRYPT_AVAILABLE = False
 decrypt_link = None
 
-# Пробуем разные варианты импорта
 try:
-    from happ_decrypt import decrypt_link
-    HAPP_DECRYPT_AVAILABLE = True
-    print("✅ Библиотека импортирована как happ_decrypt.decrypt_link")
-except ImportError:
-    try:
-        from happ_decrypt import decrypt
-        decrypt_link = decrypt
+    import happ_link_processor
+    if hasattr(happ_link_processor, "decrypt_link"):
+        decrypt_link = happ_link_processor.decrypt_link
         HAPP_DECRYPT_AVAILABLE = True
-        print("✅ Библиотека импортирована как happ_decrypt.decrypt")
-    except ImportError:
-        try:
-            from happ_link_processor import decrypt_link
-            HAPP_DECRYPT_AVAILABLE = True
-            print("✅ Библиотека импортирована как happ_link_processor.decrypt_link")
-        except ImportError:
-            try:
-                from happ_link_processor import decrypt
-                decrypt_link = decrypt
+        print("✅ Импортирован happ_link_processor.decrypt_link")
+    else:
+        # ищем любую вызываемую функцию
+        for attr in dir(happ_link_processor):
+            obj = getattr(happ_link_processor, attr)
+            if callable(obj) and not attr.startswith("_"):
+                decrypt_link = obj
                 HAPP_DECRYPT_AVAILABLE = True
-                print("✅ Библиотека импортирована как happ_link_processor.decrypt")
-            except ImportError:
-                # Если не удалось, пробуем importlib
-                try:
-                    import importlib
-                    spec = importlib.util.find_spec("happ_decrypt")
-                    if spec:
-                        module = importlib.import_module("happ_decrypt")
-                        if hasattr(module, "decrypt_link"):
-                            decrypt_link = module.decrypt_link
-                        elif hasattr(module, "decrypt"):
-                            decrypt_link = module.decrypt
-                        else:
-                            # ищем любую функцию
-                            for attr in dir(module):
-                                if callable(getattr(module, attr)) and not attr.startswith("_"):
-                                    decrypt_link = getattr(module, attr)
-                                    break
-                        if decrypt_link:
-                            HAPP_DECRYPT_AVAILABLE = True
-                            print(f"✅ Библиотека импортирована через importlib, функция {decrypt_link.__name__}")
-                except Exception as e:
-                    print(f"⚠️ Не удалось импортировать библиотеку: {e}")
+                print(f"✅ Импортирован happ_link_processor.{attr}")
+                break
+        if not HAPP_DECRYPT_AVAILABLE:
+            print("⚠️ В модуле нет вызываемых функций. Атрибуты:", dir(happ_link_processor))
+except ImportError as e:
+    print(f"⚠️ Не удалось импортировать happ_link_processor: {e}")
 
 if not HAPP_DECRYPT_AVAILABLE:
-    print("⚠️  Библиотека happ-link-processor не найдена. Расшифровка happ:// недоступна.")
+    print("⚠️ Библиотека не найдена. Расшифровка недоступна.")
 
 try:
     import cloudscraper
@@ -70,7 +45,7 @@ try:
 except ImportError:
     CLOUDSCRAPER_AVAILABLE = False
 
-# ===== НАСТРОЙКИ ПУТЕЙ =====
+# ===== НАСТРОЙКИ =====
 SOURCES_DIR = "sources"
 OUTPUT_DIR = "subscriptions"
 
@@ -86,13 +61,7 @@ OUTPUT_WHITE = os.path.join(OUTPUT_DIR, "📡КРОТовые ТОННЕЛИ📡
 OUTPUT_TG = os.path.join(OUTPUT_DIR, "TGproxy.txt")
 OUTPUT_TOR = os.path.join(OUTPUT_DIR, "TOR.txt")
 
-# --- BANNED HOSTS FILTER -----------------
-BANNED_HOSTS = [
-    '111.111.111.111',
-    '0.0.0.0',
-    'sub.limevpn.lol'
-]
-# -----------------------------------------
+BANNED_HOSTS = ['111.111.111.111', '0.0.0.0', 'sub.limevpn.lol']
 
 HEADER_SURS = """#profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
@@ -120,19 +89,15 @@ VALID_PROTOCOLS = re.compile(
     r'^(vmess|vless|trojan|ss|ssr|hysteria2|hysteria|tuic|socks5|http|https)://'
 )
 
-# ===== ФУНКЦИЯ РАСШИФРОВКИ =====
+# ===== РАСШИФРОВКА =====
 def decrypt_happ_link(link):
-    """Расшифровывает ссылку happ:// с помощью установленной библиотеки."""
     if not HAPP_DECRYPT_AVAILABLE or decrypt_link is None:
         return None
     try:
-        # Очищаем ссылку от пробелов и мусора
-        clean_link = ''.join(link.split())
-        # Убираем префикс "happ://", если он есть
-        if clean_link.startswith('happ://'):
-            clean_link = clean_link[7:]  # удаляем "happ://"
-        # Вызываем функцию
-        result = decrypt_link(clean_link)
+        clean = ''.join(link.split())
+        if clean.startswith('happ://'):
+            clean = clean[7:]
+        result = decrypt_link(clean)
         if result and VALID_PROTOCOLS.match(result):
             return result
         return None
@@ -140,26 +105,20 @@ def decrypt_happ_link(link):
         print(f"   ❌ Ошибка расшифровки: {e}")
         return None
 
-# ===== ЗАГРУЗКА И РАСШИФРОВКА ССЫЛОК ИЗ Cript =====
 def load_and_decrypt_happ_links():
-    """Читает файл Cript, склеивает ссылки и расшифровывает."""
     print(f"📂 Обработка {CRIPT_FILE}...")
     if not os.path.exists(CRIPT_FILE):
-        print(f"   ⚠️ Файл не найден, пропускаю.")
+        print(f"   ⚠️ Файл не найден")
         return []
-
     try:
         with open(CRIPT_FILE, 'r', encoding='utf-8') as f:
             content = f.read()
-        # Удаляем все пробелы и переносы
         content = ''.join(content.split())
-        # Ищем ссылки (начинаются с happ://crypt5/)
         links = re.findall(r'happ://crypt5/[A-Za-z0-9+/=]+', content)
         if not links:
-            print(f"   ⚠️ В файле не найдено ссылок happ://")
+            print("   ⚠️ Ссылок не найдено")
             return []
-
-        print(f"   🔗 Найдено {len(links)} ссылок.")
+        print(f"   🔗 Найдено {len(links)} ссылок")
         results = []
         for link in links:
             print(f"   🔑 Расшифровка...")
@@ -168,14 +127,14 @@ def load_and_decrypt_happ_links():
                 results.append(dec)
                 print(f"   ✅ Расшифровано: {dec[:50]}...")
             else:
-                print(f"   ❌ Не удалось расшифровать.")
-        print(f"   🧹 Получено {len(results)} ключей.")
+                print("   ❌ Не удалось")
+        print(f"   🧹 Получено {len(results)} ключей")
         return results
     except Exception as e:
         print(f"   ❌ Ошибка: {e}")
         return []
 
-# ---------- ОСТАЛЬНЫЕ ФУНКЦИИ (БЕЗ ИЗМЕНЕНИЙ) ----------
+# ========== ВСЕ ОСТАЛЬНЫЕ ФУНКЦИИ (БЕЗ ИЗМЕНЕНИЙ) ==========
 def load_ignore_words():
     if not os.path.exists(IGNOR_FILE):
         print(f"⚠️  Файл {IGNOR_FILE} не найден, фильтрация отключена.")
@@ -450,7 +409,6 @@ def process_source(source_file, output_file, header_template, ignore_words, date
         f.write('\n'.join(final_keys))
     print(f"✅ Создан файл {output_file}")
 
-# ---------- TG и TOR ----------
 def process_tg_source(source_file, output_file, datetime_str):
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
@@ -556,31 +514,23 @@ def process_tor_source(source_file, output_file, date_str):
 def main():
     print("🔍 Загрузка игнорируемых слов...")
     ignore_words = load_ignore_words()
-
     cript_keys = load_and_decrypt_happ_links()
-
     now_ekb = datetime.now(ZoneInfo("Asia/Yekaterinburg"))
     datetime_str_main = now_ekb.strftime("%d-%m-%Y %H:%M")
     datetime_str_tg = now_ekb.strftime("%Y-%m-%d %H:%M:%S")
     date_str_tor = now_ekb.strftime("%Y-%m-%d")
-
     if CLOUDSCRAPER_AVAILABLE:
         print("🌩  Cloudscraper активирован.")
     else:
         print("ℹ️  Cloudscraper не установлен. Используем обычный requests.")
-
     print("\n===== 🥷 SURS ===================================")
     process_source(SURS_FILE, OUTPUT_SURS, HEADER_SURS, ignore_words, datetime_str_main, cript_keys)
-
     print("\n===== 📡 SURS-WHITE ===============================")
     process_source(SURS_WHITE_FILE, OUTPUT_WHITE, HEADER_WHITE, ignore_words, datetime_str_main, cript_keys)
-
     print("\n===== ✈️ TG PROXY =================================")
     process_tg_source(TG_SURS_FILE, OUTPUT_TG, datetime_str_tg)
-
     print("\n===== 🧅 TOR BRIDGES =============================")
     process_tor_source(TOR_SURS_FILE, OUTPUT_TOR, date_str_tor)
-
     print("\n🎉 Все подписки обновлены!")
 
 if __name__ == "__main__":
