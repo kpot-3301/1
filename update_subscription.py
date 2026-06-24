@@ -104,10 +104,8 @@ def load_and_decrypt_happ_links():
         lines = [line.strip() for line in content.splitlines() if line.strip()]
         # Если все в одной строке без переносов, разбиваем по 'happ://'
         if len(lines) == 1 and 'happ://' in lines[0]:
-            # Ищем все вхождения
             lines = re.findall(r'happ://crypt5/[A-Za-z0-9+/=]+', lines[0])
         else:
-            # Если уже разбиты по строкам, фильтруем только happ://
             lines = [ln for ln in lines if ln.startswith('happ://')]
 
         if not lines:
@@ -124,7 +122,6 @@ def load_and_decrypt_happ_links():
                 continue
             print(f"   ✅ Расшифрованный URL: {decrypted_url[:100]}...")
 
-            # Теперь загружаем этот URL как подписку
             print(f"   📥 Загрузка расшифрованной подписки...")
             keys = fetch_subscription(decrypted_url)
             if keys:
@@ -142,7 +139,6 @@ def load_and_decrypt_happ_links():
                 seen.add(hp)
                 unique_keys.append(key)
             elif not hp:
-                # если не можем извлечь host:port, пропускаем дубликаты по полной строке
                 if key not in unique_keys:
                     unique_keys.append(key)
         print(f"   🧹 Всего уникальных ключей после расшифровки: {len(unique_keys)}")
@@ -164,11 +160,10 @@ def load_ignore_words():
 def remove_ignored_words(name, ignore_words):
     """Удаляет все игнорируемые слова из имени (регистронезависимо)."""
     for word in ignore_words:
-        # Используем re.IGNORECASE для удаления в любом регистре
         name = re.sub(re.escape(word), '', name, flags=re.IGNORECASE)
     return name.strip()
 
-# ---------- ОСТАЛЬНЫЕ ФУНКЦИИ (без изменений) ----------
+# ---------- ОСТАЛЬНЫЕ ФУНКЦИИ ----------
 def extract_host_port(config_str):
     if config_str.startswith('vmess://'):
         try:
@@ -257,7 +252,7 @@ def fetch_subscription(url):
         return []
 
     content = resp.text.strip()
-    # Если содержимое выглядит как base64 (только символы base64), пытаемся декодировать
+    # Если содержимое выглядит как base64, декодируем
     if re.match(r'^[A-Za-z0-9+/=]+$', content):
         try:
             missing_padding = len(content) % 4
@@ -269,11 +264,8 @@ def fetch_subscription(url):
             pass
 
     lines = [line.strip() for line in content.splitlines() if line.strip()]
-
-    # Если в строках есть ссылки vmess:// и т.д. — оставляем их
     valid_lines = [line for line in lines if VALID_PROTOCOLS.match(line)]
     if not valid_lines:
-        # Если не нашли ключей, возможно, это список URL подписок — тогда обрабатываем каждый URL
         found = re.findall(r'(vmess|vless|trojan|ss|ssr|hysteria2?|tuic|socks5)://[^\s\"\'<>]+', content)
         if found:
             lines = found
@@ -390,23 +382,26 @@ def process_source(source_file, output_file, header_template, ignore_words, date
     print(f"   🔗 Найдено {len(urls)} URL в {source_file}")
 
     used_hostports = set()
-    happ_keys = list(extra_keys)  # уже расшифрованные ключи из Cript
+    # Очищаем имена у ключей из Cript ДО добавления в финальный список
+    happ_keys = []
+    for k in extra_keys:
+        cleaned = clean_name_in_key(k, ignore_words)
+        if cleaned != k:
+            print(f"   🧹 Очищено имя (из Cript): {k[:80]} → {cleaned[:80]}")
+        happ_keys.append(cleaned)
+
     normal_keys = []
 
     for url in urls:
         is_happ_source = False
         if url.startswith('happ://'):
-            # Это прямая зашифрованная ссылка в файле SURS — обрабатываем как раньше
             decrypted_url = decrypt_via_api(url)
             if decrypted_url:
-                # Если decrypted_url — это ключ, добавляем сразу
                 if VALID_PROTOCOLS.match(decrypted_url):
                     keys = [decrypted_url]
                     is_happ_source = True
                 else:
-                    # Иначе загружаем как подписку
                     keys = fetch_subscription(decrypted_url)
-                    # Эти ключи помечаем как happ (чтобы они были в начале)
                     is_happ_source = True
             else:
                 continue
@@ -427,7 +422,6 @@ def process_source(source_file, output_file, header_template, ignore_words, date
             if hp and hp in used_hostports:
                 continue
             cleaned_key = clean_name_in_key(key, ignore_words)
-            # Логируем изменение имени для отладки
             if cleaned_key != key:
                 print(f"   🧹 Очищено имя: {key[:80]} → {cleaned_key[:80]}")
             if hp:
@@ -554,7 +548,6 @@ def main():
     print("🔍 Загрузка игнорируемых слов...")
     ignore_words = load_ignore_words()
 
-    # Расшифровываем ссылки из Cript (это уже включает загрузку подписок)
     cript_keys = load_and_decrypt_happ_links()
 
     now_ekb = datetime.now(ZoneInfo("Asia/Yekaterinburg"))
