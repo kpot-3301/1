@@ -1,2 +1,1 @@
 requests
-git+https://codeberg.org/hikeri/happ-link-processor.git
