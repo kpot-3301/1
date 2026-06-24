@@ -1,8 +1,8 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 314 | 📅 24-06-2026 11:21
-vless://e36360b4-052a-4b56-8f22-4cc8b06884a2@146.75.84.85:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh1.global.ssl.fastly.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+%221000000%22%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=api.fastly.com&fp=chrome&alpn=h3#🇩🇪 elegram: @
+#announce:ТОННЕЛЕЙ: 314 | 📅 24-06-2026 11:23
+vless://e36360b4-052a-4b56-8f22-4cc8b06884a2@146.75.84.85:443?security=tls&type=xhttp&headerType=&path=%2F&host=oh1.global.ssl.fastly.net&mode=packet-up&extra=%7B%22scMaxEachPostBytes%22%3A+%221000000%22%2C+%22scMaxConcurrentPosts%22%3A+100%2C+%22scMinPostsIntervalMs%22%3A+30%2C+%22xPaddingBytes%22%3A+%22100-1000%22%2C+%22noGRPCHeader%22%3A+false%7D&sni=api.fastly.com&fp=chrome&alpn=h3#🇩🇪 : @
 vless://e36360b4-052a-4b56-8f22-4cc8b06884a2@91.186.216.62:443?security=tls&type=ws&headerType=&path=%2F&host=polshaov.ochmaybrooooo.online&sni=polshaov.ochmaybrooooo.online&fp=chrome&alpn=http%2F1.1#🇮🇩 [PL] - Для России 🔥
 vless://b0b12749-ab9b-4ae5-b3ff-ff5b0ce7d2e3@51.250.91.220:443?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=random&sni=yandex.ru&pbk=Ec54Eop0jZft7rcJsPN4RHc4xG9smXhtenM52pJFUQI&sid=27e53bbcab7593d7&spx=%2F#🇪🇺 Oбход глушилок #1
 vless://f9255507-1b65-433f-bfd8-193b35e068e2@77.74.228.140:80?type=ws&security=none&fp=firefox&path=Telegram%F0%9F%87%A8%F0%9F%87%B3%2B%40WangCai2&host=s5.868001.xyz#🇪🇺 Oбход глушилок #2
