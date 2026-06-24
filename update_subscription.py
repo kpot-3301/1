@@ -81,14 +81,13 @@ def get_platform_info():
     if system == 'windows':
         return 'windows', 'x86_64'
     elif system == 'linux':
-        # Проверяем, запущен ли скрипт в Termux (Android)
         if 'android' in platform.platform().lower() or 'termux' in os.environ.get('PREFIX', ''):
             if machine in ('aarch64', 'arm64'):
                 return 'android', 'arm64'
             elif machine in ('armv7l', 'armv8l'):
                 return 'android', 'armv7'
             else:
-                return 'android', 'arm64'   # fallback
+                return 'android', 'arm64'
         else:
             if machine in ('x86_64', 'amd64'):
                 return 'linux', 'x86_64'
@@ -186,7 +185,6 @@ def get_happ_decrypt_binary():
                     except:
                         pass
                 return candidate
-        # Также glob для любых файлов с "happ" в имени
         for f in glob.glob(os.path.join(base_dir, '*')):
             if os.path.isfile(f) and os.access(f, os.X_OK):
                 if 'happ' in f.lower() or 'decrypt' in f.lower():
@@ -200,23 +198,45 @@ def get_happ_decrypt_binary():
     return None
 
 def decrypt_happ_link(link):
-    """Вызывает бинарник для расшифровки ссылки happ://."""
+    """Вызывает бинарник для расшифровки ссылки happ:// с детальным логированием."""
     binary = get_happ_decrypt_binary()
     if not binary:
         return None
     
+    # Проверяем, работает ли бинарник вообще (запуск без аргументов)
+    try:
+        test_proc = subprocess.run([binary], capture_output=True, text=True, timeout=5)
+        if test_proc.returncode != 0:
+            print(f"   ⚠️ Бинарник {binary} не возвращает usage (код {test_proc.returncode})")
+            print(f"   STDOUT: {test_proc.stdout}")
+            print(f"   STDERR: {test_proc.stderr}")
+        else:
+            # Если выводит что-то похожее на usage, то работает
+            if "usage" in test_proc.stdout.lower() or "decrypt" in test_proc.stdout.lower():
+                print(f"   ✅ Бинарник {binary} работает")
+    except Exception as e:
+        print(f"   ⚠️ Не удалось проверить бинарник: {e}")
+    
     try:
         proc = subprocess.run([binary, link], capture_output=True, text=True, timeout=10)
         if proc.returncode != 0:
-            print(f"   ❌ Ошибка расшифровки (код {proc.returncode}): {proc.stderr.strip()}")
+            print(f"   ❌ Ошибка расшифровки (код {proc.returncode})")
+            if proc.stdout:
+                print(f"   STDOUT: {proc.stdout[:500]}")  # ограничим для читаемости
+            if proc.stderr:
+                print(f"   STDERR: {proc.stderr[:500]}")
             return None
         output = proc.stdout.strip()
+        if not output:
+            print("   ⚠️ Бинарник вернул пустой вывод")
+            return None
+        # Ищем строку "Result ..."
         match = re.search(r'^Result\s+(.*)$', output, re.MULTILINE)
         if match:
             result = match.group(1).strip()
             if result:
                 return result
-        # Если не нашли "Result", берём последнюю неслужебную строку
+        # Если не нашли, берём последнюю неслужебную строку
         lines = output.splitlines()
         for line in reversed(lines):
             line = line.strip()
@@ -468,41 +488,31 @@ def process_source(source_file, output_file, header_template, ignore_words, date
     for url in urls:
         is_happ_source = False
         if url.startswith('happ://'):
-            # Это зашифрованный ключ, расшифровываем
             decrypted = decrypt_happ_link(url)
             if decrypted:
                 keys = [decrypted]
                 is_happ_source = True
             else:
-                continue  # не удалось расшифровать
+                continue
         else:
             keys = fetch_subscription(url)
             is_happ_source = False
 
-        # Обрабатываем полученные ключи
         for key in keys:
-            # Проверка протокола
             if not VALID_PROTOCOLS.match(key):
                 continue
-            # Пропускаем shadowsocks
             if key.startswith('ss://'):
                 continue
-            # Проверка banned хоста
             host = extract_host_from_key(key)
             if host and host in BANNED_HOSTS:
                 print(f"   🚫 Удалён ключ с запрещённым хостом: {host}")
                 continue
-            # Дедупликация по host:port
             hp = extract_host_port(key)
             if hp and hp in used_hostports:
                 continue
-            # Очищаем имя
             cleaned_key = clean_name_in_key(key, ignore_words)
-            # Запоминаем host:port как использованный
             if hp:
                 used_hostports.add(hp)
-
-            # Распределяем по группам
             if is_happ_source:
                 happ_keys.append(cleaned_key)
             else:
