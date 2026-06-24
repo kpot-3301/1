@@ -25,7 +25,7 @@ except ImportError:
 # ===== НАСТРОЙКИ ПУТЕЙ =====
 SOURCES_DIR = "sources"
 OUTPUT_DIR = "subscriptions"
-BIN_DIR = "bin"                     # папка для бинарников
+BIN_DIR = "bin"
 
 SURS_FILE = os.path.join(SOURCES_DIR, "SURS.txt")
 SURS_WHITE_FILE = os.path.join(SOURCES_DIR, "SURS-WHITE.txt")
@@ -461,27 +461,26 @@ def process_source(source_file, output_file, header_template, ignore_words, date
     urls = read_urls_from_file(source_file)
     print(f"   🔗 Найдено {len(urls)} URL в {source_file}")
 
-    source_raw = []
-    for url in urls:
-        keys = fetch_subscription(url)
-        source_raw.append(keys)
-
     used_hostports = set()
     happ_keys = []      # расшифрованные ключи
     normal_keys = []    # все остальные
 
-    for keys in source_raw:
-        for key in keys:
-            is_happ = False
-            # Если ключ начинается с happ:// – пробуем расшифровать
-            if key.startswith('happ://'):
-                decrypted = decrypt_happ_link(key)
-                if decrypted:
-                    key = decrypted
-                    is_happ = True
-                else:
-                    continue  # расшифровка не удалась – пропускаем
+    for url in urls:
+        is_happ_source = False
+        if url.startswith('happ://'):
+            # Это зашифрованный ключ, расшифровываем
+            decrypted = decrypt_happ_link(url)
+            if decrypted:
+                keys = [decrypted]
+                is_happ_source = True
+            else:
+                continue  # не удалось расшифровать
+        else:
+            keys = fetch_subscription(url)
+            is_happ_source = False
 
+        # Обрабатываем полученные ключи
+        for key in keys:
             # Проверка протокола
             if not VALID_PROTOCOLS.match(key):
                 continue
@@ -504,12 +503,11 @@ def process_source(source_file, output_file, header_template, ignore_words, date
                 used_hostports.add(hp)
 
             # Распределяем по группам
-            if is_happ:
+            if is_happ_source:
                 happ_keys.append(cleaned_key)
             else:
                 normal_keys.append(cleaned_key)
 
-    # Финальный список: сначала все расшифрованные, затем обычные
     final_keys = happ_keys + normal_keys
     print(f"   🧹 Итоговых ключей: {len(final_keys)} (из них happ: {len(happ_keys)})")
 
