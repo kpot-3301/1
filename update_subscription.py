@@ -26,6 +26,7 @@ SURS_FILE = os.path.join(SOURCES_DIR, "SURS.txt")
 SURS_WHITE_FILE = os.path.join(SOURCES_DIR, "SURS-WHITE.txt")
 TG_SURS_FILE = os.path.join(SOURCES_DIR, "TG-SURS.txt")
 TOR_SURS_FILE = os.path.join(SOURCES_DIR, "TOR-SURS.txt")
+CRIPT_FILE = os.path.join(SOURCES_DIR, "Cript")
 IGNOR_FILE = "IGNOR-name.txt"
 
 OUTPUT_SURS = os.path.join(OUTPUT_DIR, "🥷КРОТовые ТОННЕЛИ🥷.txt")
@@ -67,6 +68,101 @@ VALID_PROTOCOLS = re.compile(
     r'^(vmess|vless|trojan|ss|ssr|hysteria2|hysteria|tuic|socks5|http|https)://'
 )
 
+# ===== РАСШИФРОВКА ЧЕРЕЗ API happy-decoder.cc =====
+def decrypt_via_api(link):
+    """
+    Расшифровывает ссылку happ:// через публичный API happy-decoder.cc
+    """
+    try:
+        # Очищаем ссылку от пробелов
+        clean_link = link.strip()
+        print(f"   🔑 Отправка в API: {clean_link[:80]}...")
+
+        # Отправляем POST-запрос
+        response = requests.post(
+            'https://happy-decoder.cc/api/decrypt',
+            json={'url': clean_link},
+            timeout=30,
+            headers={'Content-Type': 'application/json'}
+        )
+
+        if response.status_code == 200:
+            data = response.json()
+            if 'decryptedUrl' in data and data['decryptedUrl']:
+                result = data['decryptedUrl']
+                # Проверяем, что это валидный ключ
+                if VALID_PROTOCOLS.match(result):
+                    print(f"   ✅ API вернул ключ: {result[:50]}...")
+                    return result
+                else:
+                    print(f"   ⚠️ API вернул невалидный ключ: {result[:50]}...")
+                    return None
+            else:
+                error_msg = data.get('error', 'неизвестная ошибка')
+                print(f"   ⚠️ API вернул ошибку: {error_msg}")
+                return None
+        else:
+            print(f"   ❌ API вернул код {response.status_code}")
+            # Попробуем прочитать текст ошибки
+            try:
+                error_text = response.text[:200]
+                print(f"   Текст ответа: {error_text}")
+            except:
+                pass
+            return None
+
+    except requests.exceptions.Timeout:
+        print("   ❌ Таймаут при запросе к API")
+        return None
+    except requests.exceptions.ConnectionError:
+        print("   ❌ Ошибка соединения с API")
+        return None
+    except Exception as e:
+        print(f"   ❌ Ошибка при вызове API: {e}")
+        return None
+
+def decrypt_happ_link(link):
+    """
+    Расшифровывает ссылку happ:// – использует API happy-decoder.cc.
+    """
+    return decrypt_via_api(link)
+
+# ===== ЗАГРУЗКА И РАСШИФРОВКА ССЫЛОК ИЗ Cript =====
+def load_and_decrypt_happ_links():
+    """Читает файл Cript, склеивает ссылки и расшифровывает через API."""
+    print(f"📂 Обработка {CRIPT_FILE}...")
+    if not os.path.exists(CRIPT_FILE):
+        print(f"   ⚠️ Файл не найден, пропускаю.")
+        return []
+
+    try:
+        with open(CRIPT_FILE, 'r', encoding='utf-8') as f:
+            content = f.read()
+        # Удаляем все пробелы и переносы
+        content = ''.join(content.split())
+        # Ищем ссылки, начинающиеся с happ://crypt5/
+        links = re.findall(r'happ://crypt5/[A-Za-z0-9+/=]+', content)
+        if not links:
+            print(f"   ⚠️ В файле не найдено ссылок happ://")
+            return []
+
+        print(f"   🔗 Найдено {len(links)} ссылок.")
+        results = []
+        for link in links:
+            print(f"   🔑 Расшифровка через API...")
+            dec = decrypt_happ_link(link)
+            if dec:
+                results.append(dec)
+                print(f"   ✅ Расшифровано: {dec[:50]}...")
+            else:
+                print(f"   ❌ Не удалось расшифровать.")
+        print(f"   🧹 Получено {len(results)} ключей.")
+        return results
+    except Exception as e:
+        print(f"   ❌ Ошибка: {e}")
+        return []
+
+# ---------- ОСТАЛЬНЫЕ ФУНКЦИИ (БЕЗ ИЗМЕНЕНИЙ) ----------
 def load_ignore_words():
     if not os.path.exists(IGNOR_FILE):
         print(f"⚠️  Файл {IGNOR_FILE} не найден, фильтрация отключена.")
@@ -123,14 +219,11 @@ def extract_host_port(config_str):
         return f"{match.group(1)}:{match.group(2)}"
     return None
 
-# --- BANNED HOSTS: извлечение хоста из ключа ---
 def extract_host_from_key(key):
     hp = extract_host_port(key)
     if hp:
-        # host:port -> берём часть до последнего двоеточия
         return hp.rsplit(':', 1)[0]
     return None
-# ----------------------------------------------
 
 def convert_github_url(url):
     match = re.match(r'https://github\.com/([^/]+)/([^/]+)/blob/([^/]+)/(.*)', url)
@@ -140,7 +233,6 @@ def convert_github_url(url):
     return url
 
 def convert_dropbox_url(url):
-    """Преобразует ссылки Dropbox для прямой выдачи файла (raw)."""
     if 'dropbox.com' in url and 'raw=1' not in url:
         url = re.sub(r'[?&]dl=[01]', '', url)
         if '?' in url:
@@ -162,7 +254,6 @@ def _create_session():
         return session
 
 def fetch_subscription(url):
-    """Скачивает подписку VPN (требуются vmess:// и т.п.)"""
     raw_url = convert_github_url(url)
     print(f"   📥 Загрузка: {raw_url}")
     session = _create_session()
@@ -199,7 +290,6 @@ def fetch_subscription(url):
     return lines
 
 def fetch_tor_source(url):
-    """Скачивает список Tor-мостов (любой текст, без проверки протоколов)"""
     raw_url = convert_github_url(url)
     print(f"   📥 Загрузка: {raw_url}")
     session = _create_session()
@@ -267,15 +357,12 @@ def classify_bridge(line):
     return None
 
 def extract_url_from_line(line):
-    """Извлекает URL из строки вида '# Комментарий https://...' или просто https://..."""
     urls = re.findall(r'https?://\S+', line)
     if urls:
         return urls[-1]
     return line.strip()
 
 def read_urls_from_file(filepath):
-    """Читает файл, игнорирует строки, начинающиеся с # (чистые комментарии),
-    и извлекает URL из строк с комментариями."""
     if not os.path.exists(filepath):
         return []
     urls = []
@@ -292,8 +379,11 @@ def read_urls_from_file(filepath):
                 urls.append(line)
     return urls
 
-# ========== ОСНОВНАЯ ЛОГИКА С ЧЕРЕДОВАНИЕМ ==========
-def process_source(source_file, output_file, header_template, ignore_words, datetime_str):
+# ========== ОСНОВНАЯ ЛОГИКА С РАЗДЕЛЕНИЕМ НА HAPP И ОБЫЧНЫЕ ==========
+def process_source(source_file, output_file, header_template, ignore_words, datetime_str, extra_keys=None):
+    if extra_keys is None:
+        extra_keys = []
+    
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
@@ -301,62 +391,45 @@ def process_source(source_file, output_file, header_template, ignore_words, date
     urls = read_urls_from_file(source_file)
     print(f"   🔗 Найдено {len(urls)} URL в {source_file}")
 
-    # Собираем сырые ключи по источникам
-    source_raw = []
+    used_hostports = set()
+    happ_keys = list(extra_keys)  # ключи из Cript сразу в начало
+    normal_keys = []
+
     for url in urls:
-        keys = fetch_subscription(url)
-        source_raw.append(keys)
+        is_happ_source = False
+        if url.startswith('happ://'):
+            decrypted = decrypt_happ_link(url)
+            if decrypted:
+                keys = [decrypted]
+                is_happ_source = True
+            else:
+                continue
+        else:
+            keys = fetch_subscription(url)
+            is_happ_source = False
 
-    # Глобальные структуры для уникальности
-    used_hostports = set()        # host:port
-    used_hosts_for_banned = set() # host (для banned)
-
-    # Обрабатываем каждый источник, отбрасывая дубликаты глобально
-    processed_sources = []
-    for keys in source_raw:
-        cleaned = []
         for key in keys:
-            # 1. Протокол
             if not VALID_PROTOCOLS.match(key):
                 continue
-            # --- ИГНОРИРУЕМ ВСЕ SHADOWSOCKS КЛЮЧИ ---
             if key.startswith('ss://'):
                 continue
-            # -----------------------------------------
-            # 2. Запрещённый хост
             host = extract_host_from_key(key)
             if host and host in BANNED_HOSTS:
                 print(f"   🚫 Удалён ключ с запрещённым хостом: {host}")
                 continue
-            # 3. Уникальность по host:port
             hp = extract_host_port(key)
             if hp and hp in used_hostports:
                 continue
-            # 4. Очистка имени
             cleaned_key = clean_name_in_key(key, ignore_words)
-            # Фиксируем как использованный
             if hp:
                 used_hostports.add(hp)
-            if host:
-                used_hosts_for_banned.add(host)
-            cleaned.append(cleaned_key)
-        processed_sources.append(cleaned)
+            if is_happ_source:
+                happ_keys.append(cleaned_key)
+            else:
+                normal_keys.append(cleaned_key)
 
-    # Чередование: берём по одному ключу из каждого источника по кругу
-    final_keys = []
-    iterators = [iter(lst) for lst in processed_sources]
-    active = True
-    while active:
-        active = False
-        for it in iterators:
-            try:
-                key = next(it)
-                final_keys.append(key)
-                active = True
-            except StopIteration:
-                pass
-
-    print(f"   🧹 Итоговых ключей: {len(final_keys)}")
+    final_keys = happ_keys + normal_keys
+    print(f"   🧹 Итоговых ключей: {len(final_keys)} (из них happ: {len(happ_keys)})")
 
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
     header = header_template.format(count=len(final_keys), datetime=datetime_str)
@@ -367,6 +440,7 @@ def process_source(source_file, output_file, header_template, ignore_words, date
 
 # =====================================================
 
+# ---------- Обработка TG и TOR (без изменений) ----------
 def process_tg_source(source_file, output_file, datetime_str):
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
@@ -403,7 +477,6 @@ def process_tg_source(source_file, output_file, datetime_str):
 
     print(f"   📊 Всего прокси до фильтрации: {len(all_proxies)}")
 
-    # Уникальность по server:port:secret, также отбрасываем запрещённые хосты
     seen = set()
     unique_proxies = []
     for proxy in all_proxies:
@@ -412,17 +485,14 @@ def process_tg_source(source_file, output_file, datetime_str):
         match_secret = re.search(r'\bsecret=([^&]+)', proxy)
         if match_server and match_port and match_secret:
             server = match_server.group(1)
-            # --- BANNED HOSTS FILTER для TG ---
             if server in BANNED_HOSTS:
                 print(f"   🚫 Удалён TG-прокси с запрещённым сервером: {server}")
                 continue
-            # ---------------------------------
             key = f"{server}:{match_port.group(1)}:{match_secret.group(1)}"
             if key not in seen:
                 seen.add(key)
                 unique_proxies.append(proxy)
         else:
-            # если не можем извлечь сервер — на всякий случай тоже проверим весь URL
             if not any(banned in proxy for banned in BANNED_HOSTS):
                 unique_proxies.append(proxy)
 
@@ -488,9 +558,12 @@ def process_tor_source(source_file, output_file, date_str):
 
     print(f"✅ Создан файл {output_file} с {total} мостами.")
 
+# ---------- Главная функция ----------
 def main():
     print("🔍 Загрузка игнорируемых слов...")
     ignore_words = load_ignore_words()
+
+    cript_keys = load_and_decrypt_happ_links()
 
     now_ekb = datetime.now(ZoneInfo("Asia/Yekaterinburg"))
     datetime_str_main = now_ekb.strftime("%d-%m-%Y %H:%M")
@@ -503,10 +576,10 @@ def main():
         print("ℹ️  Cloudscraper не установлен. Используем обычный requests.")
 
     print("\n===== 🥷 SURS ===================================")
-    process_source(SURS_FILE, OUTPUT_SURS, HEADER_SURS, ignore_words, datetime_str_main)
+    process_source(SURS_FILE, OUTPUT_SURS, HEADER_SURS, ignore_words, datetime_str_main, cript_keys)
 
     print("\n===== 📡 SURS-WHITE ===============================")
-    process_source(SURS_WHITE_FILE, OUTPUT_WHITE, HEADER_WHITE, ignore_words, datetime_str_main)
+    process_source(SURS_WHITE_FILE, OUTPUT_WHITE, HEADER_WHITE, ignore_words, datetime_str_main, cript_keys)
 
     print("\n===== ✈️ TG PROXY =================================")
     process_tg_source(TG_SURS_FILE, OUTPUT_TG, datetime_str_tg)
