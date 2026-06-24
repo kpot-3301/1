@@ -183,7 +183,7 @@ def get_happ_decrypt_binary():
     return None
 
 def decrypt_happ_link(link):
-    """Расшифровывает ссылку happ:// с помощью бинарника."""
+    """Расшифровывает ссылку happ:// с помощью бинарника (с fallback на --cli)."""
     binary = get_happ_decrypt_binary()
     if not binary:
         return None
@@ -191,29 +191,64 @@ def decrypt_happ_link(link):
     # Очищаем ссылку от непечатаемых и пробелов
     clean_link = ''.join(link.split())
     print(f"   🔑 Длина ссылки: {len(clean_link)} символов")
+    print(f"   🔑 Начало ссылки: {clean_link[:80]}...")
 
+    # Попытка 1: прямой вызов с аргументом
     try:
         proc = subprocess.run([binary, clean_link], capture_output=True, text=True, timeout=10)
+        if proc.returncode == 0:
+            output = proc.stdout.strip()
+            match = re.search(r'^Result\s+(.*)$', output, re.MULTILINE)
+            if match:
+                result = match.group(1).strip()
+                if result:
+                    return result
+            # Если нет Result, берём последнюю неслужебную строку
+            for line in reversed(output.splitlines()):
+                line = line.strip()
+                if line and not line.startswith(('Input', 'payload', 'marker')):
+                    return line
+        else:
+            print(f"   ⚠️ Прямой вызов вернул код {proc.returncode}")
+            if proc.stderr:
+                print(f"   STDERR: {proc.stderr[:200]}")
+            if proc.stdout:
+                print(f"   STDOUT: {proc.stdout[:200]}")
+    except Exception as e:
+        print(f"   ⚠️ Ошибка при прямом вызове: {e}")
+
+    # Попытка 2: интерактивный режим --cli (передача через stdin)
+    print("   🔄 Пробуем через --cli...")
+    try:
+        proc = subprocess.run(
+            [binary, '--cli'],
+            input=clean_link + '\n',
+            capture_output=True,
+            text=True,
+            timeout=10
+        )
         if proc.returncode != 0:
-            print(f"   ❌ Ошибка расшифровки (код {proc.returncode})")
+            print(f"   ❌ --cli вернул код {proc.returncode}")
+            if proc.stderr:
+                print(f"   STDERR: {proc.stderr[:200]}")
+            if proc.stdout:
+                print(f"   STDOUT: {proc.stdout[:200]}")
             return None
         output = proc.stdout.strip()
-        # Ищем строку "Result ..."
         match = re.search(r'^Result\s+(.*)$', output, re.MULTILINE)
         if match:
             result = match.group(1).strip()
             if result:
                 return result
-        # Если не нашли, берём последнюю неслужебную строку
-        lines = output.splitlines()
-        for line in reversed(lines):
+        # fallback
+        for line in reversed(output.splitlines()):
             line = line.strip()
-            if line and not line.startswith('Input') and not line.startswith('payload') and not line.startswith('marker'):
+            if line and not line.startswith(('Input', 'payload', 'marker')):
                 return line
-        print(f"   ⚠️ Не удалось распарсить вывод: {output[:200]}")
+        print(f"   ⚠️ --cli не вернул результат, stdout: {output[:200]}")
         return None
     except Exception as e:
-        print(f"   ❌ Ошибка при вызове бинарника: {e}")
+        print(f"   ❌ Ошибка при --cli: {e}")
         return None
 
 # ===== ЗАГРУЗКА И РАСШИФРОВКА ССЫЛОК ИЗ Cript =====
