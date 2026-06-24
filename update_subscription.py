@@ -151,7 +151,7 @@ def load_and_decrypt_happ_links():
         print(f"   ❌ Ошибка: {e}")
         return []
 
-# ---------- ОСТАЛЬНЫЕ ФУНКЦИИ (без изменений) ----------
+# ===== РАБОТА С ИГНОРИРУЕМЫМИ СЛОВАМИ (регистронезависимо) =====
 def load_ignore_words():
     if not os.path.exists(IGNOR_FILE):
         print(f"⚠️  Файл {IGNOR_FILE} не найден, фильтрация отключена.")
@@ -162,10 +162,13 @@ def load_ignore_words():
     return words
 
 def remove_ignored_words(name, ignore_words):
+    """Удаляет все игнорируемые слова из имени (регистронезависимо)."""
     for word in ignore_words:
-        name = re.sub(re.escape(word), '', name)
+        # Используем re.IGNORECASE для удаления в любом регистре
+        name = re.sub(re.escape(word), '', name, flags=re.IGNORECASE)
     return name.strip()
 
+# ---------- ОСТАЛЬНЫЕ ФУНКЦИИ (без изменений) ----------
 def extract_host_port(config_str):
     if config_str.startswith('vmess://'):
         try:
@@ -268,19 +271,14 @@ def fetch_subscription(url):
     lines = [line.strip() for line in content.splitlines() if line.strip()]
 
     # Если в строках есть ссылки vmess:// и т.д. — оставляем их
-    # Если нет, но есть URL-адреса (например, новые подписки) — рекурсивно обрабатываем?
-    # Для простоты оставляем только строки, начинающиеся с протокола
     valid_lines = [line for line in lines if VALID_PROTOCOLS.match(line)]
     if not valid_lines:
         # Если не нашли ключей, возможно, это список URL подписок — тогда обрабатываем каждый URL
-        # Но это уже сложно, поэтому просто вернём все строки, которые могут быть URL
-        # но на практике обычно ключи уже есть
         found = re.findall(r'(vmess|vless|trojan|ss|ssr|hysteria2?|tuic|socks5)://[^\s\"\'<>]+', content)
         if found:
             lines = found
             print(f"   🔎 Найдено {len(found)} ссылок в HTML")
         else:
-            # Если не нашли, возможно, это просто текст, ничего не делаем
             print(f"   ⚠️ Ключи не найдены. Показываю первые 200 символов:\n{content[:200]}")
             return []
     else:
@@ -306,6 +304,7 @@ def fetch_tor_source(url):
     return lines
 
 def clean_name_in_key(key, ignore_words):
+    """Очищает имя ключа (часть после # или поле ps) от игнорируемых слов."""
     if '#' in key:
         base_part, encoded_name = key.split('#', 1)
         encoded_name = encoded_name.rstrip('=')
@@ -408,7 +407,6 @@ def process_source(source_file, output_file, header_template, ignore_words, date
                     # Иначе загружаем как подписку
                     keys = fetch_subscription(decrypted_url)
                     # Эти ключи помечаем как happ (чтобы они были в начале)
-                    # Для этого мы добавим их в is_happ_source=True
                     is_happ_source = True
             else:
                 continue
@@ -429,6 +427,9 @@ def process_source(source_file, output_file, header_template, ignore_words, date
             if hp and hp in used_hostports:
                 continue
             cleaned_key = clean_name_in_key(key, ignore_words)
+            # Логируем изменение имени для отладки
+            if cleaned_key != key:
+                print(f"   🧹 Очищено имя: {key[:80]} → {cleaned_key[:80]}")
             if hp:
                 used_hostports.add(hp)
             if is_happ_source:
