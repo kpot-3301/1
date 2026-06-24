@@ -3,6 +3,12 @@ import base64
 import json
 import os
 import re
+import subprocess
+import platform
+import glob
+import stat
+import zipfile
+import io
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from urllib.parse import urlparse, unquote
@@ -21,6 +27,7 @@ except ImportError:
 # ===== НАСТРОЙКИ ПУТЕЙ =====
 SOURCES_DIR = "sources"
 OUTPUT_DIR = "subscriptions"
+BIN_DIR = "bin"
 
 SURS_FILE = os.path.join(SOURCES_DIR, "SURS.txt")
 SURS_WHITE_FILE = os.path.join(SOURCES_DIR, "SURS-WHITE.txt")
@@ -67,6 +74,167 @@ VALID_PROTOCOLS = re.compile(
     r'^(vmess|vless|trojan|ss|ssr|hysteria2|hysteria|tuic|socks5|http|https)://'
 )
 
+# ===== ДОБАВЛЕНО: поддержка happ-decrypt-universal с автозагрузкой =====
+def get_platform_info():
+    """Определяет ОС и архитектуру для выбора правильного бинарника."""
+    system = platform.system().lower()
+    machine = platform.machine().lower()
+    
+    if system == 'windows':
+        return 'windows', 'x86_64'
+    elif system == 'linux':
+        if 'android' in platform.platform().lower() or 'termux' in os.environ.get('PREFIX', ''):
+            if machine in ('aarch64', 'arm64'):
+                return 'android', 'arm64'
+            elif machine in ('armv7l', 'armv8l'):
+                return 'android', 'armv7'
+            else:
+                return 'android', 'arm64'
+        else:
+            if machine in ('x86_64', 'amd64'):
+                return 'linux', 'x86_64'
+            else:
+                return 'linux', 'unknown'
+    else:
+        return 'unknown', 'unknown'
+
+def download_happ_decrypt():
+    """Скачивает подходящий бинарник happ-decrypt-universal из последнего релиза."""
+    print("📥 Попытка автоматической загрузки happ-decrypt-universal...")
+    os.makedirs(BIN_DIR, exist_ok=True)
+    
+    plat, arch = get_platform_info()
+    if plat == 'unknown':
+        print("❌ Не удалось определить платформу. Скачайте бинарник вручную.")
+        return None
+    
+    mapping = {
+        ('windows', 'x86_64'): 'windows-x64_x86.exe',
+        ('linux', 'x86_64'): 'linux-x64_x86',
+        ('android', 'arm64'): 'android-arm64-v8a',
+        ('android', 'armv7'): 'android-armeabi-v7a',
+    }
+    key = (plat, arch)
+    if key not in mapping:
+        print(f"❌ Нет готового бинарника для {plat}/{arch}. Скачайте вручную.")
+        return None
+    
+    filename = mapping[key]
+    api_url = "https://api.github.com/repos/amurcanov/happ-decrypt-universal/releases/latest"
+    try:
+        resp = requests.get(api_url, timeout=15)
+        resp.raise_for_status()
+        release_data = resp.json()
+    except Exception as e:
+        print(f"❌ Не удалось получить информацию о релизе: {e}")
+        return None
+    
+    asset_url = None
+    for asset in release_data.get('assets', []):
+        if asset['name'] == filename:
+            asset_url = asset['browser_download_url']
+            break
+    
+    if not asset_url:
+        print(f"❌ Файл {filename} не найден в релизе.")
+        return None
+    
+    try:
+        print(f"   ⬇️ Скачивание {filename} ...")
+        dl_resp = requests.get(asset_url, stream=True, timeout=30)
+        dl_resp.raise_for_status()
+        filepath = os.path.join(BIN_DIR, filename)
+        with open(filepath, 'wb') as f:
+            for chunk in dl_resp.iter_content(chunk_size=8192):
+                if chunk:
+                    f.write(chunk)
+        if plat in ('linux', 'android'):
+            os.chmod(filepath, os.stat(filepath).st_mode | stat.S_IEXEC)
+        print(f"✅ Бинарник сохранён в {filepath}")
+        return filepath
+    except Exception as e:
+        print(f"❌ Ошибка при скачивании: {e}")
+        return None
+
+def get_happ_decrypt_binary():
+    """Ищет бинарник, при необходимости скачивает его."""
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    search_dirs = [script_dir, os.path.join(script_dir, BIN_DIR)]
+    
+    possible_names = ['happ-decrypt', 'happ-decrypt.exe']
+    plat, arch = get_platform_info()
+    if plat == 'windows':
+        possible_names.append('windows-x64_x86.exe')
+    elif plat == 'linux':
+        possible_names.append('linux-x64_x86')
+    elif plat == 'android':
+        if arch == 'arm64':
+            possible_names.append('android-arm64-v8a')
+        elif arch == 'armv7':
+            possible_names.append('android-armeabi-v7a')
+        else:
+            possible_names.append('android-arm64-v8a')
+    
+    for base_dir in search_dirs:
+        if not os.path.isdir(base_dir):
+            continue
+        for name in possible_names:
+            candidate = os.path.join(base_dir, name)
+            if os.path.isfile(candidate):
+                if plat in ('linux', 'android') and not os.access(candidate, os.X_OK):
+                    try:
+                        os.chmod(candidate, os.stat(candidate).st_mode | stat.S_IEXEC)
+                    except:
+                        pass
+                return candidate
+        for f in glob.glob(os.path.join(base_dir, '*')):
+            if os.path.isfile(f) and os.access(f, os.X_OK):
+                if 'happ' in f.lower() or 'decrypt' in f.lower():
+                    return f
+    
+    downloaded = download_happ_decrypt()
+    if downloaded:
+        return downloaded
+    
+    print("⚠️  Бинарник happ-decrypt не найден и не удалось скачать. Расшифровка happ:// недоступна.")
+    return None
+
+def decrypt_happ_link(link):
+    """Вызывает бинарник для расшифровки ссылки happ://."""
+    binary = get_happ_decrypt_binary()
+    if not binary:
+        return None
+    
+    try:
+        proc = subprocess.run([binary, link], capture_output=True, text=True, timeout=10)
+        if proc.returncode != 0:
+            print(f"   ❌ Ошибка расшифровки (код {proc.returncode}): {proc.stderr.strip()}")
+            return None
+        output = proc.stdout.strip()
+        match = re.search(r'^Result\s+(.*)$', output, re.MULTILINE)
+        if match:
+            result = match.group(1).strip()
+            if result:
+                return result
+        lines = output.splitlines()
+        for line in reversed(lines):
+            line = line.strip()
+            if line and not line.startswith('Input') and not line.startswith('payload') and not line.startswith('marker'):
+                return line
+        print(f"   ⚠️  Не удалось распарсить вывод: {output[:200]}")
+        return None
+    except FileNotFoundError:
+        print(f"   ❌ Бинарник {binary} не найден.")
+        return None
+    except subprocess.TimeoutExpired:
+        print(f"   ❌ Тайм-аут расшифровки для {link[:50]}...")
+        return None
+    except Exception as e:
+        print(f"   ❌ Ошибка при расшифровке: {e}")
+        return None
+# =======================================================
+
+# ---------- Остальные функции (без изменений) ----------
 def load_ignore_words():
     if not os.path.exists(IGNOR_FILE):
         print(f"⚠️  Файл {IGNOR_FILE} не найден, фильтрация отключена.")
@@ -123,14 +291,11 @@ def extract_host_port(config_str):
         return f"{match.group(1)}:{match.group(2)}"
     return None
 
-# --- BANNED HOSTS: извлечение хоста из ключа ---
 def extract_host_from_key(key):
     hp = extract_host_port(key)
     if hp:
-        # host:port -> берём часть до последнего двоеточия
         return hp.rsplit(':', 1)[0]
     return None
-# ----------------------------------------------
 
 def convert_github_url(url):
     match = re.match(r'https://github\.com/([^/]+)/([^/]+)/blob/([^/]+)/(.*)', url)
@@ -140,7 +305,6 @@ def convert_github_url(url):
     return url
 
 def convert_dropbox_url(url):
-    """Преобразует ссылки Dropbox для прямой выдачи файла (raw)."""
     if 'dropbox.com' in url and 'raw=1' not in url:
         url = re.sub(r'[?&]dl=[01]', '', url)
         if '?' in url:
@@ -162,7 +326,6 @@ def _create_session():
         return session
 
 def fetch_subscription(url):
-    """Скачивает подписку VPN (требуются vmess:// и т.п.)"""
     raw_url = convert_github_url(url)
     print(f"   📥 Загрузка: {raw_url}")
     session = _create_session()
@@ -199,7 +362,6 @@ def fetch_subscription(url):
     return lines
 
 def fetch_tor_source(url):
-    """Скачивает список Tor-мостов (любой текст, без проверки протоколов)"""
     raw_url = convert_github_url(url)
     print(f"   📥 Загрузка: {raw_url}")
     session = _create_session()
@@ -267,15 +429,12 @@ def classify_bridge(line):
     return None
 
 def extract_url_from_line(line):
-    """Извлекает URL из строки вида '# Комментарий https://...' или просто https://..."""
     urls = re.findall(r'https?://\S+', line)
     if urls:
         return urls[-1]
     return line.strip()
 
 def read_urls_from_file(filepath):
-    """Читает файл, игнорирует строки, начинающиеся с # (чистые комментарии),
-    и извлекает URL из строк с комментариями."""
     if not os.path.exists(filepath):
         return []
     urls = []
@@ -301,40 +460,39 @@ def process_source(source_file, output_file, header_template, ignore_words, date
     urls = read_urls_from_file(source_file)
     print(f"   🔗 Найдено {len(urls)} URL в {source_file}")
 
-    # Собираем сырые ключи по источникам
     source_raw = []
     for url in urls:
         keys = fetch_subscription(url)
         source_raw.append(keys)
 
-    # Глобальные структуры для уникальности
-    used_hostports = set()        # host:port
-    used_hosts_for_banned = set() # host (для banned)
+    used_hostports = set()
+    used_hosts_for_banned = set()
 
-    # Обрабатываем каждый источник, отбрасывая дубликаты глобально
     processed_sources = []
     for keys in source_raw:
         cleaned = []
         for key in keys:
-            # 1. Протокол
+            # ========== ДОБАВЛЕННАЯ ОБРАБОТКА happ:// ==========
+            if key.startswith('happ://'):
+                decrypted = decrypt_happ_link(key)
+                if decrypted:
+                    key = decrypted
+                else:
+                    continue
+            # ====================================================
+
             if not VALID_PROTOCOLS.match(key):
                 continue
-            # --- ИГНОРИРУЕМ ВСЕ SHADOWSOCKS КЛЮЧИ ---
             if key.startswith('ss://'):
                 continue
-            # -----------------------------------------
-            # 2. Запрещённый хост
             host = extract_host_from_key(key)
             if host and host in BANNED_HOSTS:
                 print(f"   🚫 Удалён ключ с запрещённым хостом: {host}")
                 continue
-            # 3. Уникальность по host:port
             hp = extract_host_port(key)
             if hp and hp in used_hostports:
                 continue
-            # 4. Очистка имени
             cleaned_key = clean_name_in_key(key, ignore_words)
-            # Фиксируем как использованный
             if hp:
                 used_hostports.add(hp)
             if host:
@@ -342,7 +500,6 @@ def process_source(source_file, output_file, header_template, ignore_words, date
             cleaned.append(cleaned_key)
         processed_sources.append(cleaned)
 
-    # Чередование: берём по одному ключу из каждого источника по кругу
     final_keys = []
     iterators = [iter(lst) for lst in processed_sources]
     active = True
@@ -364,8 +521,6 @@ def process_source(source_file, output_file, header_template, ignore_words, date
         f.write(header)
         f.write('\n'.join(final_keys))
     print(f"✅ Создан файл {output_file}")
-
-# =====================================================
 
 def process_tg_source(source_file, output_file, datetime_str):
     if not os.path.exists(source_file):
@@ -403,7 +558,6 @@ def process_tg_source(source_file, output_file, datetime_str):
 
     print(f"   📊 Всего прокси до фильтрации: {len(all_proxies)}")
 
-    # Уникальность по server:port:secret, также отбрасываем запрещённые хосты
     seen = set()
     unique_proxies = []
     for proxy in all_proxies:
@@ -412,17 +566,14 @@ def process_tg_source(source_file, output_file, datetime_str):
         match_secret = re.search(r'\bsecret=([^&]+)', proxy)
         if match_server and match_port and match_secret:
             server = match_server.group(1)
-            # --- BANNED HOSTS FILTER для TG ---
             if server in BANNED_HOSTS:
                 print(f"   🚫 Удалён TG-прокси с запрещённым сервером: {server}")
                 continue
-            # ---------------------------------
             key = f"{server}:{match_port.group(1)}:{match_secret.group(1)}"
             if key not in seen:
                 seen.add(key)
                 unique_proxies.append(proxy)
         else:
-            # если не можем извлечь сервер — на всякий случай тоже проверим весь URL
             if not any(banned in proxy for banned in BANNED_HOSTS):
                 unique_proxies.append(proxy)
 
