@@ -382,12 +382,10 @@ def process_source(source_file, output_file, header_template, ignore_words, date
     print(f"   🔗 Найдено {len(urls)} URL в {source_file}")
 
     used_hostports = set()
-    # Очищаем имена у ключей из Cript ДО добавления в финальный список
+    # Очищаем имена у ключей из Cript ДО добавления
     happ_keys = []
     for k in extra_keys:
         cleaned = clean_name_in_key(k, ignore_words)
-        if cleaned != k:
-            print(f"   🧹 Очищено имя (из Cript): {k[:80]} → {cleaned[:80]}")
         happ_keys.append(cleaned)
 
     normal_keys = []
@@ -422,8 +420,6 @@ def process_source(source_file, output_file, header_template, ignore_words, date
             if hp and hp in used_hostports:
                 continue
             cleaned_key = clean_name_in_key(key, ignore_words)
-            if cleaned_key != key:
-                print(f"   🧹 Очищено имя: {key[:80]} → {cleaned_key[:80]}")
             if hp:
                 used_hostports.add(hp)
             if is_happ_source:
