@@ -1,7 +1,7 @@
 #profile-title:📡КРОТовые ТОННЕЛИ📡
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 464 | 📅 24-06-2026 10:00
+#announce:ТОННЕЛЕЙ: 464 | 📅 24-06-2026 10:04
 vless://612fd187-9d13-07d0-ac8f-6208aef109b5@89.208.231.191:52006?flow=xtls-rprx-vision&encryption=none&type=tcp&security=tls&fp=chrome&alpn=h2%2Chttp%2F1.1#🇷🇺 VK — #1
 vless://a48c736e-d3de-47b8-a6eb-ef1d6fd34c63@84.201.146.213:2777?flow=xtls-rprx-vision&encryption=none&type=tcp&security=reality&fp=chrome&sni=ads.x5.ru&pbk=HyxhIAJ1VbVX77n76vXAps81yWRVbKCr8AC_71sM5Ao&sid=0f4dacf08722a29f&spx=%2F#🇷🇺 Yandex — #2
 vless://448f6d1f-b658-4dea-a7c6-942f19022ac6@45.151.62.25:443?encryption=none&type=grpc&security=reality&mode=gun&serviceName=xyz&fp=chrome&sni=unpkg.com&pbk=ZrczdfyTT7tbeJ1FYwk6_RBKBkWvJURxYXU7Wn_aRWk&sid=c457b36dfffec3bb#🇷🇺 4vps.su — #3
