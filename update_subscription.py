@@ -183,19 +183,29 @@ def get_happ_decrypt_binary():
     return None
 
 def decrypt_happ_link(link):
-    """Расшифровывает ссылку happ:// с помощью бинарника (с fallback на --cli)."""
+    """
+    Расшифровывает ссылку happ:// с помощью бинарника.
+    Удаляем префикс 'happ://' и суффикс 'ff' (если есть), так как бинарник ожидает чистую ссылку.
+    """
     binary = get_happ_decrypt_binary()
     if not binary:
         return None
 
-    # Очищаем ссылку от непечатаемых и пробелов
-    clean_link = ''.join(link.split())
-    print(f"   🔑 Длина ссылки: {len(clean_link)} символов")
-    print(f"   🔑 Начало ссылки: {clean_link[:80]}...")
+    # Очищаем ссылку от пробелов и непечатаемых
+    clean = ''.join(link.split())
+    # Удаляем префикс "happ://"
+    if clean.startswith('happ://'):
+        clean = clean[7:]
+    # Удаляем суффикс "ff", если есть
+    if clean.endswith('ff'):
+        clean = clean[:-2]
+    
+    print(f"   🔑 Очищенная ссылка (первые 100 символов): {clean[:100]}...")
+    print(f"   🔑 Длина после очистки: {len(clean)} символов")
 
     # Попытка 1: прямой вызов с аргументом
     try:
-        proc = subprocess.run([binary, clean_link], capture_output=True, text=True, timeout=10)
+        proc = subprocess.run([binary, clean], capture_output=True, text=True, timeout=10)
         if proc.returncode == 0:
             output = proc.stdout.strip()
             match = re.search(r'^Result\s+(.*)$', output, re.MULTILINE)
@@ -203,13 +213,13 @@ def decrypt_happ_link(link):
                 result = match.group(1).strip()
                 if result:
                     return result
-            # Если нет Result, берём последнюю неслужебную строку
+            # Если нет "Result", берём последнюю неслужебную строку
             for line in reversed(output.splitlines()):
                 line = line.strip()
                 if line and not line.startswith(('Input', 'payload', 'marker')):
                     return line
         else:
-            print(f"   ⚠️ Прямой вызов вернул код {proc.returncode}")
+            print(f"   ⚠️ Прямой вызов не удался (код {proc.returncode})")
             if proc.stderr:
                 print(f"   STDERR: {proc.stderr[:200]}")
             if proc.stdout:
@@ -217,12 +227,12 @@ def decrypt_happ_link(link):
     except Exception as e:
         print(f"   ⚠️ Ошибка при прямом вызове: {e}")
 
-    # Попытка 2: интерактивный режим --cli (передача через stdin)
+    # Попытка 2: интерактивный режим --cli
     print("   🔄 Пробуем через --cli...")
     try:
         proc = subprocess.run(
             [binary, '--cli'],
-            input=clean_link + '\n',
+            input=clean + '\n',
             capture_output=True,
             text=True,
             timeout=10
