@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 262 | 📅 24-06-2026 09:47
+#announce:ТОННЕЛЕЙ: 262 | 📅 24-06-2026 09:52
 vless://3e7cede4-721a-4807-b0a2-5fe6586af907@lt-cherry-01.com:8443?type=tcp&headerType=none&security=reality&encryption=none&sni=storage.yandex.net&fp=firefox&pbk=L3X1eh1Jq_6PKJ6LlwjgiWq0XNaDOqCVKgIElJ5nkVA&sid=2cfb5a0ae8ab0cb0&flow=xtls-rprx-vision#🇦🇷  Argentina  [01]
 vless://1f4c983e-382c-d2fa-b2dc-7981f02b34de@77.73.131.154:443?type=tcp&headerType=none&security=reality&encryption=none&sni=vindobona.org&fp=firefox&pbk=5GhMSJXQv1wXHVD999YHRRj83m-7VKH8qb_vTxBGbng&sid=08&flow=xtls-rprx-vision#🇦🇹  Austria  [01]
 vless://1dd5f2be-f124-4f35-9239-8abc042829c2@77.110.110.81:14302?type=tcp&headerType=none&security=reality&encryption=none&sni=www.samsung.com&fp=firefox&pbk=lw7-Msn5E2O6HbBdqMw9SvoDJgbDIvHss0UVQ9iZFRc&sid=106f1604d65bb70c&flow=xtls-rprx-vision#🇦🇹  Austria  [02]
