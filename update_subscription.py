@@ -7,6 +7,7 @@ import subprocess
 import platform
 import glob
 import stat
+import shlex
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from urllib.parse import urlparse, unquote
@@ -192,44 +193,55 @@ def decrypt_happ_link(link):
     if not binary:
         return None
 
-    # Минимальная очистка: убираем непечатаемые и пробелы
-    clean_link = re.sub(r'[\x00-\x1f\x7f]', '', link).strip()
-    # НЕ обрезаем суффикс ff
-    print(f"   🔑 Попытка расшифровки (первые 80 символов): {clean_link[:80]}...")
+    # Минимальная очистка: убираем непечатаемые и пробелы, BOM и другие спецсимволы
+    clean_link = re.sub(r'[\x00-\x1f\x7f\uFEFF]', '', link).strip()
+    # Удаляем все возможные пробелы и табуляции
+    clean_link = ''.join(clean_link.split())
 
-    # Попытка 1: обычный вызов
+    print(f"   🔑 Очищенная ссылка (первые 100 символов): {clean_link[:100]}...")
+    print(f"   🔑 Длина очищенной ссылки: {len(clean_link)} символов")
+
+    # Попытка 1: обычный вызов с аргументом (используем shlex.quote для безопасности)
     try:
-        proc = subprocess.run([binary, clean_link], capture_output=True, text=True, timeout=10)
+        # Используем shell=True для передачи как есть
+        cmd = f"{shlex.quote(binary)} {shlex.quote(clean_link)}"
+        proc = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=10)
         if proc.returncode == 0:
             output = proc.stdout.strip()
-            # Ищем Result
             match_res = re.search(r'^Result\s+(.*)$', output, re.MULTILINE)
             if match_res:
                 result = match_res.group(1).strip()
                 if result:
                     return result
-            # Если нет Result, берём последнюю неслужебную строку
             lines = output.splitlines()
             for line in reversed(lines):
                 line = line.strip()
                 if line and not line.startswith('Input') and not line.startswith('payload') and not line.startswith('marker'):
                     return line
         else:
-            print(f"   ⚠️ Обычный вызов не удался (код {proc.returncode}), stdout: {proc.stdout[:100]}, stderr: {proc.stderr[:100]}")
+            print(f"   ⚠️ Обычный вызов (shell) не удался (код {proc.returncode})")
+            if proc.stderr:
+                print(f"   STDERR: {proc.stderr[:200]}")
+            if proc.stdout:
+                print(f"   STDOUT: {proc.stdout[:200]}")
     except Exception as e:
         print(f"   ⚠️ Ошибка при обычном вызове: {e}")
 
-    # Попытка 2: интерактивный режим
+    # Попытка 2: --cli через stdin
     try:
         proc = subprocess.run(
             [binary, '--cli'],
-            input=clean_link + '\n',
+            input=clean_link,
             capture_output=True,
             text=True,
             timeout=10
         )
         if proc.returncode != 0:
-            print(f"   ❌ --cli вернул код {proc.returncode}, stderr: {proc.stderr[:100]}")
+            print(f"   ❌ --cli вернул код {proc.returncode}")
+            if proc.stderr:
+                print(f"   STDERR: {proc.stderr[:200]}")
+            if proc.stdout:
+                print(f"   STDOUT: {proc.stdout[:200]}")
             return None
         output = proc.stdout.strip()
         match_res = re.search(r'^Result\s+(.*)$', output, re.MULTILINE)
@@ -237,13 +249,11 @@ def decrypt_happ_link(link):
             result = match_res.group(1).strip()
             if result:
                 return result
-        # Иначе берём последнюю неслужебную строку
         lines = output.splitlines()
         for line in reversed(lines):
             line = line.strip()
             if line and not line.startswith('Input') and not line.startswith('payload') and not line.startswith('marker'):
                 return line
-        # Если ничего не нашли, выводим stdout для диагностики
         print(f"   ⚠️ --cli не вернул результат, stdout: {output[:200]}")
         return None
     except Exception as e:
@@ -261,12 +271,13 @@ def load_and_decrypt_happ_links():
 
     try:
         with open(CRIPT_FILE, 'r', encoding='utf-8') as f:
-            # Читаем весь файл и удаляем все пробельные символы (включая переносы и пробелы)
             content = f.read()
-            # Удаляем все пробелы, табуляции, переводы строк
-            content = ''.join(content.split())  # split() без аргументов удаляет все виды пробелов
-            # Ищем ссылки, начинающиеся с happ://crypt5/
-            # Ссылка может заканчиваться на =ff или просто длинной строкой
+            # Выводим первые 200 символов для диагностики
+            print(f"   📄 Содержимое файла (первые 200 символов):")
+            print(f"      {content[:200].replace(chr(10), '↵').replace(chr(13), '␍')}")
+            # Удаляем все пробельные символы
+            content = ''.join(content.split())
+            # Ищем ссылки
             happ_links = re.findall(r'happ://crypt5/[A-Za-z0-9+/=]+', content)
             if not happ_links:
                 print(f"   ⚠️ В файле {CRIPT_FILE} не найдено ссылок happ://")
@@ -274,10 +285,7 @@ def load_and_decrypt_happ_links():
 
             print(f"   🔗 Найдено {len(happ_links)} зашифрованных ссылок в {CRIPT_FILE}")
             for link in happ_links:
-                # Восстанавливаем суффикс, если он был потерян
-                # Проверим, заканчивается ли исходная ссылка на 'ff' (поищем в контенте)
-                # но мы уже удалили все пробелы, поэтому просто проверим, если в ссылке нет 'ff' в конце, но в оригинале был - добавим?
-                # Лучше не добавлять, а расшифровывать как есть.
+                print(f"   🔗 Ссылка для расшифровки (первые 80 символов): {link[:80]}...")
                 decrypted = decrypt_happ_link(link)
                 if decrypted:
                     if VALID_PROTOCOLS.match(decrypted):
@@ -510,7 +518,7 @@ def read_urls_from_file(filepath):
                 urls.append(line)
     return urls
 
-# ========== ОСНОВНАЯ ЛОГИКА (С НОВЫМ ПАРАМЕТРОМ extra_keys) ==========
+# ========== ОСНОВНАЯ ЛОГИКА ==========
 def process_source(source_file, output_file, header_template, ignore_words, datetime_str, extra_keys=None):
     if extra_keys is None:
         extra_keys = []
@@ -523,7 +531,7 @@ def process_source(source_file, output_file, header_template, ignore_words, date
     print(f"   🔗 Найдено {len(urls)} URL в {source_file}")
 
     used_hostports = set()
-    happ_keys = list(extra_keys)  # ключи из Cript сразу в начало
+    happ_keys = list(extra_keys)
     normal_keys = []
 
     for url in urls:
@@ -569,7 +577,7 @@ def process_source(source_file, output_file, header_template, ignore_words, date
         f.write('\n'.join(final_keys))
     print(f"✅ Создан файл {output_file}")
 
-# ---------- Обработка TG и TOR (без изменений) ----------
+# ---------- Обработка TG и TOR ----------
 def process_tg_source(source_file, output_file, datetime_str):
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
