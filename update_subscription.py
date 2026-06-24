@@ -3,18 +3,21 @@ import base64
 import json
 import os
 import re
-import subprocess
-import platform
-import glob
-import stat
-import shlex
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from urllib.parse import urlparse, unquote
 
 import requests
 
+# Перенаправляем stdout в stderr, чтобы логи были видны в GitHub Actions
 sys.stdout = sys.stderr
+
+try:
+    from happ_decrypt import decrypt_link  # библиотека для расшифровки
+    HAPP_DECRYPT_AVAILABLE = True
+except ImportError:
+    HAPP_DECRYPT_AVAILABLE = False
+    print("⚠️  Библиотека happ-link-processor не установлена. Расшифровка happ:// недоступна.")
 
 try:
     import cloudscraper
@@ -22,10 +25,9 @@ try:
 except ImportError:
     CLOUDSCRAPER_AVAILABLE = False
 
-# ===== ПУТИ =====
+# ===== НАСТРОЙКИ ПУТЕЙ =====
 SOURCES_DIR = "sources"
 OUTPUT_DIR = "subscriptions"
-BIN_DIR = "bin"
 
 SURS_FILE = os.path.join(SOURCES_DIR, "SURS.txt")
 SURS_WHITE_FILE = os.path.join(SOURCES_DIR, "SURS-WHITE.txt")
@@ -39,7 +41,13 @@ OUTPUT_WHITE = os.path.join(OUTPUT_DIR, "📡КРОТовые ТОННЕЛИ📡
 OUTPUT_TG = os.path.join(OUTPUT_DIR, "TGproxy.txt")
 OUTPUT_TOR = os.path.join(OUTPUT_DIR, "TOR.txt")
 
-BANNED_HOSTS = ['111.111.111.111', '0.0.0.0', 'sub.limevpn.lol']
+# --- BANNED HOSTS FILTER -----------------
+BANNED_HOSTS = [
+    '111.111.111.111',
+    '0.0.0.0',
+    'sub.limevpn.lol'
+]
+# -----------------------------------------
 
 HEADER_SURS = """#profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
@@ -67,166 +75,32 @@ VALID_PROTOCOLS = re.compile(
     r'^(vmess|vless|trojan|ss|ssr|hysteria2|hysteria|tuic|socks5|http|https)://'
 )
 
-# ===== happ-decrypt =====
-def get_platform_info():
-    system = platform.system().lower()
-    machine = platform.machine().lower()
-    if system == 'windows':
-        return 'windows', 'x86_64'
-    elif system == 'linux':
-        if 'android' in platform.platform().lower() or 'termux' in os.environ.get('PREFIX', ''):
-            if machine in ('aarch64', 'arm64'):
-                return 'android', 'arm64'
-            elif machine in ('armv7l', 'armv8l'):
-                return 'android', 'armv7'
-            else:
-                return 'android', 'arm64'
-        else:
-            if machine in ('x86_64', 'amd64'):
-                return 'linux', 'x86_64'
-            else:
-                return 'linux', 'unknown'
-    else:
-        return 'unknown', 'unknown'
-
-def download_happ_decrypt():
-    """Скачивает бинарник напрямую (без API, чтобы избежать лимитов)."""
-    plat, arch = get_platform_info()
-    if plat == 'unknown':
-        print("❌ Не удалось определить платформу.")
-        return None
-
-    mapping = {
-        ('windows', 'x86_64'): ('windows-x64_x86.exe', 'windows'),
-        ('linux', 'x86_64'): ('linux-x64_x86', 'linux'),
-        ('android', 'arm64'): ('android-arm64-v8a', 'android'),
-        ('android', 'armv7'): ('android-armeabi-v7a', 'android'),
-    }
-    key = (plat, arch)
-    if key not in mapping:
-        print(f"❌ Нет бинарника для {plat}/{arch}")
-        return None
-
-    filename, os_type = mapping[key]
-    # Прямая ссылка на последний релиз (GitHub перенаправляет)
-    url = f"https://github.com/amurcanov/happ-decrypt-universal/releases/latest/download/{filename}"
-    print(f"   ⬇️ Скачивание {filename} с {url} ...")
-    try:
-        resp = requests.get(url, stream=True, timeout=30)
-        if resp.status_code != 200:
-            print(f"❌ Ошибка скачивания: код {resp.status_code}")
-            return None
-        os.makedirs(BIN_DIR, exist_ok=True)
-        filepath = os.path.join(BIN_DIR, filename)
-        with open(filepath, 'wb') as f:
-            for chunk in resp.iter_content(chunk_size=8192):
-                if chunk:
-                    f.write(chunk)
-        if os_type in ('linux', 'android'):
-            os.chmod(filepath, os.stat(filepath).st_mode | stat.S_IEXEC)
-        print(f"✅ Бинарник сохранён в {filepath}")
-        return filepath
-    except Exception as e:
-        print(f"❌ Ошибка при скачивании: {e}")
-        return None
-
-def get_happ_decrypt_binary():
-    """Ищет бинарник, если нет — скачивает."""
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    search_dirs = [script_dir, os.path.join(script_dir, BIN_DIR)]
-    possible_names = ['happ-decrypt', 'happ-decrypt.exe']
-    plat, arch = get_platform_info()
-    if plat == 'windows':
-        possible_names.append('windows-x64_x86.exe')
-    elif plat == 'linux':
-        possible_names.append('linux-x64_x86')
-    elif plat == 'android':
-        if arch == 'arm64':
-            possible_names.append('android-arm64-v8a')
-        elif arch == 'armv7':
-            possible_names.append('android-armeabi-v7a')
-        else:
-            possible_names.append('android-arm64-v8a')
-
-    for base_dir in search_dirs:
-        if not os.path.isdir(base_dir):
-            continue
-        for name in possible_names:
-            candidate = os.path.join(base_dir, name)
-            if os.path.isfile(candidate):
-                if plat in ('linux', 'android') and not os.access(candidate, os.X_OK):
-                    try:
-                        os.chmod(candidate, os.stat(candidate).st_mode | stat.S_IEXEC)
-                    except:
-                        pass
-                return candidate
-
-    # Не нашли — скачиваем
-    downloaded = download_happ_decrypt()
-    if downloaded:
-        return downloaded
-    print("⚠️  Бинарник не найден и не удалось скачать. Расшифровка недоступна.")
-    return None
-
+# ===== ФУНКЦИЯ РАСШИФРОВКИ (использует библиотеку) =====
 def decrypt_happ_link(link):
-    binary = get_happ_decrypt_binary()
-    if not binary:
+    """Расшифровывает ссылку happ:// с помощью happ-link-processor."""
+    if not HAPP_DECRYPT_AVAILABLE:
+        return None
+    try:
+        # Очищаем ссылку от пробелов и мусора
+        clean_link = ''.join(link.split())
+        # Библиотека ожидает строку вида "crypt5/..." без префикса "happ://"
+        if clean_link.startswith('happ://'):
+            clean_link = clean_link[7:]  # убираем "happ://"
+        # Вызываем библиотечную функцию
+        result = decrypt_link(clean_link)
+        if result and VALID_PROTOCOLS.match(result):
+            return result
+        return None
+    except Exception as e:
+        print(f"   ❌ Ошибка расшифровки: {e}")
         return None
 
-    # Очистка от непечатаемых и пробелов
-    clean_link = re.sub(r'[\x00-\x1f\x7f\uFEFF]', '', link).strip()
-    clean_link = ''.join(clean_link.split())
-
-    print(f"   🔑 Длина ссылки: {len(clean_link)} символов")
-
-    # Пробуем обычный вызов
-    try:
-        proc = subprocess.run([binary, clean_link], capture_output=True, text=True, timeout=10)
-        if proc.returncode == 0:
-            output = proc.stdout.strip()
-            match = re.search(r'^Result\s+(.*)$', output, re.MULTILINE)
-            if match:
-                return match.group(1).strip()
-            # Если нет Result, берём последнюю неслужебную строку
-            for line in reversed(output.splitlines()):
-                line = line.strip()
-                if line and not line.startswith(('Input', 'payload', 'marker')):
-                    return line
-        else:
-            print(f"   ⚠️ Обычный вызов не удался (код {proc.returncode})")
-    except Exception as e:
-        print(f"   ⚠️ Ошибка: {e}")
-
-    # Пробуем --cli
-    try:
-        proc = subprocess.run(
-            [binary, '--cli'],
-            input=clean_link + '\n',
-            capture_output=True,
-            text=True,
-            timeout=10
-        )
-        if proc.returncode == 0:
-            output = proc.stdout.strip()
-            match = re.search(r'^Result\s+(.*)$', output, re.MULTILINE)
-            if match:
-                return match.group(1).strip()
-            for line in reversed(output.splitlines()):
-                line = line.strip()
-                if line and not line.startswith(('Input', 'payload', 'marker')):
-                    return line
-        else:
-            print(f"   ❌ --cli не удался (код {proc.returncode})")
-    except Exception as e:
-        print(f"   ❌ Ошибка --cli: {e}")
-
-    return None
-
-# ===== ЗАГРУЗКА ИЗ Cript =====
+# ===== ЗАГРУЗКА И РАСШИФРОВКА ССЫЛОК ИЗ Cript =====
 def load_and_decrypt_happ_links():
+    """Читает файл Cript, склеивает ссылки и расшифровывает."""
     print(f"📂 Обработка {CRIPT_FILE}...")
     if not os.path.exists(CRIPT_FILE):
-        print(f"   ⚠️ Файл не найден.")
+        print(f"   ⚠️ Файл не найден, пропускаю.")
         return []
 
     try:
@@ -234,10 +108,10 @@ def load_and_decrypt_happ_links():
             content = f.read()
         # Удаляем все пробелы и переносы
         content = ''.join(content.split())
-        # Ищем ссылки
+        # Ищем ссылки (начинаются с happ://crypt5/)
         links = re.findall(r'happ://crypt5/[A-Za-z0-9+/=]+', content)
         if not links:
-            print(f"   ⚠️ Ссылок не найдено.")
+            print(f"   ⚠️ В файле не найдено ссылок happ://")
             return []
 
         print(f"   🔗 Найдено {len(links)} ссылок.")
@@ -245,7 +119,7 @@ def load_and_decrypt_happ_links():
         for link in links:
             print(f"   🔑 Расшифровка...")
             dec = decrypt_happ_link(link)
-            if dec and VALID_PROTOCOLS.match(dec):
+            if dec:
                 results.append(dec)
                 print(f"   ✅ Расшифровано: {dec[:50]}...")
             else:
@@ -256,7 +130,7 @@ def load_and_decrypt_happ_links():
         print(f"   ❌ Ошибка: {e}")
         return []
 
-# ========== ОСТАЛЬНЫЕ ФУНКЦИИ (БЕЗ ИЗМЕНЕНИЙ) ==========
+# ---------- ОСТАЛЬНЫЕ ФУНКЦИИ (БЕЗ ИЗМЕНЕНИЙ) ----------
 def load_ignore_words():
     if not os.path.exists(IGNOR_FILE):
         print(f"⚠️  Файл {IGNOR_FILE} не найден, фильтрация отключена.")
