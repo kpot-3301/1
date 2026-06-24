@@ -72,12 +72,10 @@ VALID_PROTOCOLS = re.compile(
     r'^(vmess|vless|trojan|ss|ssr|hysteria2|hysteria|tuic|socks5|http|https)://'
 )
 
-# ===== ДОБАВЛЕНО: поддержка happ-decrypt-universal с автозагрузкой =====
+# ===== happ-decrypt с автозагрузкой =====
 def get_platform_info():
-    """Определяет ОС и архитектуру для выбора правильного бинарника."""
     system = platform.system().lower()
     machine = platform.machine().lower()
-    
     if system == 'windows':
         return 'windows', 'x86_64'
     elif system == 'linux':
@@ -97,15 +95,12 @@ def get_platform_info():
         return 'unknown', 'unknown'
 
 def download_happ_decrypt():
-    """Скачивает подходящий бинарник happ-decrypt-universal из последнего релиза."""
     print("📥 Попытка автоматической загрузки happ-decrypt-universal...")
     os.makedirs(BIN_DIR, exist_ok=True)
-    
     plat, arch = get_platform_info()
     if plat == 'unknown':
         print("❌ Не удалось определить платформу. Скачайте бинарник вручную.")
         return None
-    
     mapping = {
         ('windows', 'x86_64'): 'windows-x64_x86.exe',
         ('linux', 'x86_64'): 'linux-x64_x86',
@@ -116,7 +111,6 @@ def download_happ_decrypt():
     if key not in mapping:
         print(f"❌ Нет готового бинарника для {plat}/{arch}. Скачайте вручную.")
         return None
-    
     filename = mapping[key]
     api_url = "https://api.github.com/repos/amurcanov/happ-decrypt-universal/releases/latest"
     try:
@@ -126,17 +120,14 @@ def download_happ_decrypt():
     except Exception as e:
         print(f"❌ Не удалось получить информацию о релизе: {e}")
         return None
-    
     asset_url = None
     for asset in release_data.get('assets', []):
         if asset['name'] == filename:
             asset_url = asset['browser_download_url']
             break
-    
     if not asset_url:
         print(f"❌ Файл {filename} не найден в релизе.")
         return None
-    
     try:
         print(f"   ⬇️ Скачивание {filename} ...")
         dl_resp = requests.get(asset_url, stream=True, timeout=30)
@@ -155,10 +146,8 @@ def download_happ_decrypt():
         return None
 
 def get_happ_decrypt_binary():
-    """Ищет бинарник, при необходимости скачивает его."""
     script_dir = os.path.dirname(os.path.abspath(__file__))
     search_dirs = [script_dir, os.path.join(script_dir, BIN_DIR)]
-    
     possible_names = ['happ-decrypt', 'happ-decrypt.exe']
     plat, arch = get_platform_info()
     if plat == 'windows':
@@ -172,7 +161,6 @@ def get_happ_decrypt_binary():
             possible_names.append('android-armeabi-v7a')
         else:
             possible_names.append('android-arm64-v8a')
-    
     for base_dir in search_dirs:
         if not os.path.isdir(base_dir):
             continue
@@ -189,63 +177,86 @@ def get_happ_decrypt_binary():
             if os.path.isfile(f) and os.access(f, os.X_OK):
                 if 'happ' in f.lower() or 'decrypt' in f.lower():
                     return f
-    
     downloaded = download_happ_decrypt()
     if downloaded:
         return downloaded
-    
     print("⚠️  Бинарник happ-decrypt не найден и не удалось скачать. Расшифровка happ:// недоступна.")
     return None
 
 def decrypt_happ_link(link):
     """
-    Очищает ссылку от лишних символов и вызывает бинарник для расшифровки.
+    Очищает ссылку и пытается расшифровать.
+    Сначала обычный вызов, при ошибке – через --cli (stdin).
     """
     binary = get_happ_decrypt_binary()
     if not binary:
         return None
 
-    # Удаляем непечатаемые символы и пробелы
+    # Удаляем непечатаемые символы
     clean_link = re.sub(r'[\x00-\x1f\x7f]', '', link).strip()
-    # Выделяем часть до последнего допустимого символа (буквы, цифры, +, /, =)
+    # Отрезаем суффикс ff, если есть
+    if clean_link.endswith('ff'):
+        clean_link = clean_link[:-2]
+    # Оставляем только корректную часть (до последнего допустимого символа)
     match = re.match(r'(happ://crypt5/[A-Za-z0-9+/=]+)', clean_link)
     if match:
         clean_link = match.group(1)
     else:
-        # Если не совпало, пробуем оставить только допустимые символы в конце
-        valid_chars = re.search(r'[A-Za-z0-9+/=]+$', clean_link)
-        if valid_chars:
-            clean_link = clean_link[:valid_chars.end()]
-        # Если ничего не найдено – возвращаем None (ссылка явно битая)
+        # Если не совпало – пробуем просто обрезать по последнему допустимому символу
+        valid = re.search(r'[A-Za-z0-9+/=]+$', clean_link)
+        if valid:
+            clean_link = clean_link[:valid.end()]
         else:
             print(f"   ⚠️ Не удалось очистить ссылку: {link[:80]}...")
             return None
 
-    # Диагностика: показываем очищенную ссылку (первые 80 символов)
     print(f"   🔑 Очищенная ссылка: {clean_link[:80]}...")
 
+    # Попытка 1: обычный вызов
     try:
         proc = subprocess.run([binary, clean_link], capture_output=True, text=True, timeout=10)
+        if proc.returncode == 0:
+            output = proc.stdout.strip()
+            match_res = re.search(r'^Result\s+(.*)$', output, re.MULTILINE)
+            if match_res:
+                return match_res.group(1).strip()
+            # если нет Result, берём последнюю неслужебную строку
+            lines = output.splitlines()
+            for line in reversed(lines):
+                if line and not line.startswith('Input') and not line.startswith('payload') and not line.startswith('marker'):
+                    return line.strip()
+        else:
+            # Ошибка при обычном вызове – попробуем --cli
+            print(f"   ⚠️ Обычный вызов не удался (код {proc.returncode}), пробуем --cli...")
+    except Exception as e:
+        print(f"   ⚠️ Ошибка при обычном вызове: {e}")
+
+    # Попытка 2: интерактивный режим --cli
+    try:
+        proc = subprocess.run(
+            [binary, '--cli'],
+            input=clean_link + '\n',
+            capture_output=True,
+            text=True,
+            timeout=10
+        )
         if proc.returncode != 0:
             err_msg = proc.stderr.strip() or proc.stdout.strip()
             if err_msg:
-                print(f"   ❌ Ошибка расшифровки: {err_msg}")
+                print(f"   ❌ Ошибка расшифровки (--cli): {err_msg}")
             return None
         output = proc.stdout.strip()
-        match_result = re.search(r'^Result\s+(.*)$', output, re.MULTILINE)
-        if match_result:
-            result = match_result.group(1).strip()
-            if result:
-                return result
-        # Если не нашли "Result", берём последнюю неслужебную строку
+        match_res = re.search(r'^Result\s+(.*)$', output, re.MULTILINE)
+        if match_res:
+            return match_res.group(1).strip()
+        # иначе ищем последнюю неслужебную строку
         lines = output.splitlines()
         for line in reversed(lines):
-            line = line.strip()
             if line and not line.startswith('Input') and not line.startswith('payload') and not line.startswith('marker'):
-                return line
+                return line.strip()
         return None
     except Exception as e:
-        print(f"   ❌ Ошибка при вызове бинарника: {e}")
+        print(f"   ❌ Ошибка при вызове бинарника с --cli: {e}")
         return None
 
 # =======================================================
@@ -467,7 +478,7 @@ def read_urls_from_file(filepath):
                 urls.append(line)
     return urls
 
-# ========== ОСНОВНАЯ ЛОГИКА С РАЗДЕЛЕНИЕМ НА HAPP И ОБЫЧНЫЕ ==========
+# ========== ОСНОВНАЯ ЛОГИКА ==========
 def process_source(source_file, output_file, header_template, ignore_words, datetime_str):
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
@@ -477,8 +488,8 @@ def process_source(source_file, output_file, header_template, ignore_words, date
     print(f"   🔗 Найдено {len(urls)} URL в {source_file}")
 
     used_hostports = set()
-    happ_keys = []      # расшифрованные ключи
-    normal_keys = []    # все остальные
+    happ_keys = []
+    normal_keys = []
 
     for url in urls:
         is_happ_source = False
@@ -523,17 +534,13 @@ def process_source(source_file, output_file, header_template, ignore_words, date
         f.write('\n'.join(final_keys))
     print(f"✅ Создан файл {output_file}")
 
-# =====================================================
-
-# ---------- Обработка TG и TOR (без изменений) ----------
+# ---------- TG и TOR ----------
 def process_tg_source(source_file, output_file, datetime_str):
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
-
     urls = read_urls_from_file(source_file)
     print(f"   🔗 Найдено {len(urls)} URL в {source_file}")
-
     all_proxies = []
     for url in urls:
         url = convert_dropbox_url(convert_github_url(url))
@@ -545,7 +552,6 @@ def process_tg_source(source_file, output_file, datetime_str):
         except Exception as e:
             print(f"   ❌ Ошибка запроса: {e}")
             continue
-
         lines = resp.text.strip().splitlines()
         proxy_re = re.compile(r'(tg://proxy\S+|tg://socks\S+|https://t\.me/proxy\S+)')
         for line in lines:
@@ -559,9 +565,7 @@ def process_tg_source(source_file, output_file, datetime_str):
                 if raw.startswith('https://t.me/proxy'):
                     raw = re.sub(r'^https://t\.me/proxy', 'tg://proxy', raw)
                 all_proxies.append(raw)
-
     print(f"   📊 Всего прокси до фильтрации: {len(all_proxies)}")
-
     seen = set()
     unique_proxies = []
     for proxy in all_proxies:
@@ -580,7 +584,6 @@ def process_tg_source(source_file, output_file, datetime_str):
         else:
             if not any(banned in proxy for banned in BANNED_HOSTS):
                 unique_proxies.append(proxy)
-
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
     header = HEADER_TG.format(count=len(unique_proxies), datetime=datetime_str)
     with open(output_file, 'w', encoding='utf-8') as f:
@@ -592,38 +595,30 @@ def process_tor_source(source_file, output_file, date_str):
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
         return
-
     urls = read_urls_from_file(source_file)
     print(f"   🔗 Найдено {len(urls)} URL в {source_file}")
-
     bridges_by_type = {'obfs4': set(), 'vanilla': set(), 'webtunnel': set()}
     for url in urls:
         lines = fetch_tor_source(url)
         if not lines:
             continue
-
         sample = lines[:5]
         print(f"   🔎 Примеры строк:")
         for s in sample:
             print(f"      -> {s[:120]}")
-
         for line in lines:
             stripped = line.strip()
             if not stripped or stripped.startswith('#') or stripped.startswith('//'):
                 continue
-
             bt = classify_bridge(stripped)
             if not bt and re.match(r'^\d+\.\d+\.\d+\.\d+:\d+$', stripped):
                 bt = 'vanilla'
-
             if bt:
                 stripped = re.sub(r'^\s*(obfs4|webtunnel)\s+', '', stripped, flags=re.IGNORECASE)
                 bridges_by_type[bt].add(stripped)
-
     types = ['obfs4', 'webtunnel', 'vanilla']
     counts = {t: len(bridges_by_type[t]) for t in types}
     total = sum(counts.values())
-
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
     header = HEADER_TOR.format(
         date=date_str,
@@ -640,36 +635,27 @@ def process_tor_source(source_file, output_file, date_str):
                 for bridge in sorted(bridges_by_type[t]):
                     prefix = f"{t} " if t != 'vanilla' else ""
                     f.write(f"{prefix}{bridge}\n")
-
     print(f"✅ Создан файл {output_file} с {total} мостами.")
 
-# ---------- Главная функция ----------
 def main():
     print("🔍 Загрузка игнорируемых слов...")
     ignore_words = load_ignore_words()
-
     now_ekb = datetime.now(ZoneInfo("Asia/Yekaterinburg"))
     datetime_str_main = now_ekb.strftime("%d-%m-%Y %H:%M")
     datetime_str_tg = now_ekb.strftime("%Y-%m-%d %H:%M:%S")
     date_str_tor = now_ekb.strftime("%Y-%m-%d")
-
     if CLOUDSCRAPER_AVAILABLE:
         print("🌩  Cloudscraper активирован.")
     else:
         print("ℹ️  Cloudscraper не установлен. Используем обычный requests.")
-
     print("\n===== 🥷 SURS ===================================")
     process_source(SURS_FILE, OUTPUT_SURS, HEADER_SURS, ignore_words, datetime_str_main)
-
     print("\n===== 📡 SURS-WHITE ===============================")
     process_source(SURS_WHITE_FILE, OUTPUT_WHITE, HEADER_WHITE, ignore_words, datetime_str_main)
-
     print("\n===== ✈️ TG PROXY =================================")
     process_tg_source(TG_SURS_FILE, OUTPUT_TG, datetime_str_tg)
-
     print("\n===== 🧅 TOR BRIDGES =============================")
     process_tor_source(TOR_SURS_FILE, OUTPUT_TOR, date_str_tor)
-
     print("\n🎉 Все подписки обновлены!")
 
 if __name__ == "__main__":
