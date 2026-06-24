@@ -12,12 +12,57 @@ import requests
 # Перенаправляем stdout в stderr, чтобы логи были видны в GitHub Actions
 sys.stdout = sys.stderr
 
+# ===== ПОПЫТКА ИМПОРТА БИБЛИОТЕКИ =====
+HAPP_DECRYPT_AVAILABLE = False
+decrypt_link = None
+
+# Пробуем разные варианты импорта
 try:
-    from happ_decrypt import decrypt_link  # библиотека для расшифровки
+    from happ_decrypt import decrypt_link
     HAPP_DECRYPT_AVAILABLE = True
+    print("✅ Библиотека импортирована как happ_decrypt.decrypt_link")
 except ImportError:
-    HAPP_DECRYPT_AVAILABLE = False
-    print("⚠️  Библиотека happ-link-processor не установлена. Расшифровка happ:// недоступна.")
+    try:
+        from happ_decrypt import decrypt
+        decrypt_link = decrypt
+        HAPP_DECRYPT_AVAILABLE = True
+        print("✅ Библиотека импортирована как happ_decrypt.decrypt")
+    except ImportError:
+        try:
+            from happ_link_processor import decrypt_link
+            HAPP_DECRYPT_AVAILABLE = True
+            print("✅ Библиотека импортирована как happ_link_processor.decrypt_link")
+        except ImportError:
+            try:
+                from happ_link_processor import decrypt
+                decrypt_link = decrypt
+                HAPP_DECRYPT_AVAILABLE = True
+                print("✅ Библиотека импортирована как happ_link_processor.decrypt")
+            except ImportError:
+                # Если не удалось, пробуем importlib
+                try:
+                    import importlib
+                    spec = importlib.util.find_spec("happ_decrypt")
+                    if spec:
+                        module = importlib.import_module("happ_decrypt")
+                        if hasattr(module, "decrypt_link"):
+                            decrypt_link = module.decrypt_link
+                        elif hasattr(module, "decrypt"):
+                            decrypt_link = module.decrypt
+                        else:
+                            # ищем любую функцию
+                            for attr in dir(module):
+                                if callable(getattr(module, attr)) and not attr.startswith("_"):
+                                    decrypt_link = getattr(module, attr)
+                                    break
+                        if decrypt_link:
+                            HAPP_DECRYPT_AVAILABLE = True
+                            print(f"✅ Библиотека импортирована через importlib, функция {decrypt_link.__name__}")
+                except Exception as e:
+                    print(f"⚠️ Не удалось импортировать библиотеку: {e}")
+
+if not HAPP_DECRYPT_AVAILABLE:
+    print("⚠️  Библиотека happ-link-processor не найдена. Расшифровка happ:// недоступна.")
 
 try:
     import cloudscraper
@@ -75,18 +120,18 @@ VALID_PROTOCOLS = re.compile(
     r'^(vmess|vless|trojan|ss|ssr|hysteria2|hysteria|tuic|socks5|http|https)://'
 )
 
-# ===== ФУНКЦИЯ РАСШИФРОВКИ (использует библиотеку) =====
+# ===== ФУНКЦИЯ РАСШИФРОВКИ =====
 def decrypt_happ_link(link):
-    """Расшифровывает ссылку happ:// с помощью happ-link-processor."""
-    if not HAPP_DECRYPT_AVAILABLE:
+    """Расшифровывает ссылку happ:// с помощью установленной библиотеки."""
+    if not HAPP_DECRYPT_AVAILABLE or decrypt_link is None:
         return None
     try:
         # Очищаем ссылку от пробелов и мусора
         clean_link = ''.join(link.split())
-        # Библиотека ожидает строку вида "crypt5/..." без префикса "happ://"
+        # Убираем префикс "happ://", если он есть
         if clean_link.startswith('happ://'):
-            clean_link = clean_link[7:]  # убираем "happ://"
-        # Вызываем библиотечную функцию
+            clean_link = clean_link[7:]  # удаляем "happ://"
+        # Вызываем функцию
         result = decrypt_link(clean_link)
         if result and VALID_PROTOCOLS.match(result):
             return result
@@ -405,7 +450,7 @@ def process_source(source_file, output_file, header_template, ignore_words, date
         f.write('\n'.join(final_keys))
     print(f"✅ Создан файл {output_file}")
 
-# ---------- TG и TOR (без изменений) ----------
+# ---------- TG и TOR ----------
 def process_tg_source(source_file, output_file, datetime_str):
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
