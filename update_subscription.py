@@ -7,8 +7,6 @@ import subprocess
 import platform
 import glob
 import stat
-import zipfile
-import io
 from datetime import datetime
 from zoneinfo import ZoneInfo
 from urllib.parse import urlparse, unquote
@@ -27,7 +25,7 @@ except ImportError:
 # ===== НАСТРОЙКИ ПУТЕЙ =====
 SOURCES_DIR = "sources"
 OUTPUT_DIR = "subscriptions"
-BIN_DIR = "bin"
+BIN_DIR = "bin"                     # папка для бинарников
 
 SURS_FILE = os.path.join(SOURCES_DIR, "SURS.txt")
 SURS_WHITE_FILE = os.path.join(SOURCES_DIR, "SURS-WHITE.txt")
@@ -83,13 +81,14 @@ def get_platform_info():
     if system == 'windows':
         return 'windows', 'x86_64'
     elif system == 'linux':
+        # Проверяем, запущен ли скрипт в Termux (Android)
         if 'android' in platform.platform().lower() or 'termux' in os.environ.get('PREFIX', ''):
             if machine in ('aarch64', 'arm64'):
                 return 'android', 'arm64'
             elif machine in ('armv7l', 'armv8l'):
                 return 'android', 'armv7'
             else:
-                return 'android', 'arm64'
+                return 'android', 'arm64'   # fallback
         else:
             if machine in ('x86_64', 'amd64'):
                 return 'linux', 'x86_64'
@@ -187,6 +186,7 @@ def get_happ_decrypt_binary():
                     except:
                         pass
                 return candidate
+        # Также glob для любых файлов с "happ" в имени
         for f in glob.glob(os.path.join(base_dir, '*')):
             if os.path.isfile(f) and os.access(f, os.X_OK):
                 if 'happ' in f.lower() or 'decrypt' in f.lower():
@@ -216,6 +216,7 @@ def decrypt_happ_link(link):
             result = match.group(1).strip()
             if result:
                 return result
+        # Если не нашли "Result", берём последнюю неслужебную строку
         lines = output.splitlines()
         for line in reversed(lines):
             line = line.strip()
@@ -451,7 +452,7 @@ def read_urls_from_file(filepath):
                 urls.append(line)
     return urls
 
-# ========== ОСНОВНАЯ ЛОГИКА С ЧЕРЕДОВАНИЕМ ==========
+# ========== ОСНОВНАЯ ЛОГИКА С РАЗДЕЛЕНИЕМ НА HAPP И ОБЫЧНЫЕ ==========
 def process_source(source_file, output_file, header_template, ignore_words, datetime_str):
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
@@ -466,54 +467,51 @@ def process_source(source_file, output_file, header_template, ignore_words, date
         source_raw.append(keys)
 
     used_hostports = set()
-    used_hosts_for_banned = set()
+    happ_keys = []      # расшифрованные ключи
+    normal_keys = []    # все остальные
 
-    processed_sources = []
     for keys in source_raw:
-        cleaned = []
         for key in keys:
-            # ========== ДОБАВЛЕННАЯ ОБРАБОТКА happ:// ==========
+            is_happ = False
+            # Если ключ начинается с happ:// – пробуем расшифровать
             if key.startswith('happ://'):
                 decrypted = decrypt_happ_link(key)
                 if decrypted:
                     key = decrypted
+                    is_happ = True
                 else:
-                    continue
-            # ====================================================
+                    continue  # расшифровка не удалась – пропускаем
 
+            # Проверка протокола
             if not VALID_PROTOCOLS.match(key):
                 continue
+            # Пропускаем shadowsocks
             if key.startswith('ss://'):
                 continue
+            # Проверка banned хоста
             host = extract_host_from_key(key)
             if host and host in BANNED_HOSTS:
                 print(f"   🚫 Удалён ключ с запрещённым хостом: {host}")
                 continue
+            # Дедупликация по host:port
             hp = extract_host_port(key)
             if hp and hp in used_hostports:
                 continue
+            # Очищаем имя
             cleaned_key = clean_name_in_key(key, ignore_words)
+            # Запоминаем host:port как использованный
             if hp:
                 used_hostports.add(hp)
-            if host:
-                used_hosts_for_banned.add(host)
-            cleaned.append(cleaned_key)
-        processed_sources.append(cleaned)
 
-    final_keys = []
-    iterators = [iter(lst) for lst in processed_sources]
-    active = True
-    while active:
-        active = False
-        for it in iterators:
-            try:
-                key = next(it)
-                final_keys.append(key)
-                active = True
-            except StopIteration:
-                pass
+            # Распределяем по группам
+            if is_happ:
+                happ_keys.append(cleaned_key)
+            else:
+                normal_keys.append(cleaned_key)
 
-    print(f"   🧹 Итоговых ключей: {len(final_keys)}")
+    # Финальный список: сначала все расшифрованные, затем обычные
+    final_keys = happ_keys + normal_keys
+    print(f"   🧹 Итоговых ключей: {len(final_keys)} (из них happ: {len(happ_keys)})")
 
     os.makedirs(os.path.dirname(output_file), exist_ok=True)
     header = header_template.format(count=len(final_keys), datetime=datetime_str)
@@ -522,6 +520,9 @@ def process_source(source_file, output_file, header_template, ignore_words, date
         f.write('\n'.join(final_keys))
     print(f"✅ Создан файл {output_file}")
 
+# =====================================================
+
+# ---------- Обработка TG и TOR (без изменений) ----------
 def process_tg_source(source_file, output_file, datetime_str):
     if not os.path.exists(source_file):
         print(f"⚠️ Файл {source_file} не найден, пропускаю.")
@@ -639,6 +640,7 @@ def process_tor_source(source_file, output_file, date_str):
 
     print(f"✅ Создан файл {output_file} с {total} мостами.")
 
+# ---------- Главная функция ----------
 def main():
     print("🔍 Загрузка игнорируемых слов...")
     ignore_words = load_ignore_words()
