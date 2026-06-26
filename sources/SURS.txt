@@ -1,32 +1,32 @@
 # GRN_VPN
-#https://gist.github.com/lsncococososo-rgb/8275bea99890a9d64683e2aff77c3d45/raw/7113f45be74b21015501c7cc5a7673d30ccea3a0/GRN_VPN
+https://gist.github.com/lsncococososo-rgb/8275bea99890a9d64683e2aff77c3d45/raw/7113f45be74b21015501c7cc5a7673d30ccea3a0/GRN_VPN
 
 
 #FrizanGAME
-#https://gist.githubusercontent.com/FrizanGAME/dfd1f7ac36511593dc6d0faff14cc8bb/raw/frizanVPN.txt
+https://gist.githubusercontent.com/FrizanGAME/dfd1f7ac36511593dc6d0faff14cc8bb/raw/frizanVPN.txt
 
 #Kedoni
-#https://raw.githubusercontent.com/Kedoni/VPN-Sub/refs/heads/main/Hal.txt
+https://raw.githubusercontent.com/Kedoni/VPN-Sub/refs/heads/main/Hal.txt
 
 # mifa 
 https://mifa.world/fast
 https://mifa.world/turbo
 https://mifa.world/other
 
-#https://raw.githubusercontent.com/v0id9/vpn-configs/refs/heads/main/vpn.txt
+https://raw.githubusercontent.com/v0id9/vpn-configs/refs/heads/main/vpn.txt
 
 
 # LimeHi
-#https://raw.githubusercontent.com/LimeHi/LimeVPN/refs/heads/main/LimeVPN.txt?v=1
+https://raw.githubusercontent.com/LimeHi/LimeVPN/refs/heads/main/LimeVPN.txt?v=1
 
 # KomaryServers
-#https://raw.githubusercontent.com/kama55726/KomaryServers/refs/heads/main/KomaryServ
+https://raw.githubusercontent.com/kama55726/KomaryServers/refs/heads/main/KomaryServ
 
 # HappKeysHub
-#https://gist.githubusercontent.com/HappKeysHub/117070129146ea50bbf929c9c091705e/raw/ad20fd1fb58785776b6ed7a6c72266da389e10ae/HappKeysHub%2520%25D0%25BF%25D0%25BE%25D0%25B4%25D0%25BF%25D0%25B8%25D1%2581%25D0%25BA%25D0%25B0
+https://gist.githubusercontent.com/HappKeysHub/117070129146ea50bbf929c9c091705e/raw/ad20fd1fb58785776b6ed7a6c72266da389e10ae/HappKeysHub%2520%25D0%25BF%25D0%25BE%25D0%25B4%25D0%25BF%25D0%25B8%25D1%2581%25D0%25BA%25D0%25B0
 
 # 500 ключей
-# https://raw.githubusercontent.com/v0id9/vpn-configs/refs/heads/main/vpn.txt
+#https://raw.githubusercontent.com/v0id9/vpn-configs/refs/heads/main/vpn.txt
 
 # ркп
 https://raw.githubusercontent.com/RKPchannel/RKP_bypass_configs/refs/heads/main/blacklist.txt
