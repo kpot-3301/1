@@ -1,4 +1,4 @@
-=== TOR BRIDGES REPORT (2026-07-02) ===
+=== TOR BRIDGES REPORT (2026-07-03) ===
 Total: 358 | obfs4: 184 | webtunnel: 16 | vanilla: 158
 ========================================
 
