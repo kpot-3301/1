@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 492 | 📅 18-08-2026 13:47
+#announce:ТОННЕЛЕЙ: 437 | 📅 18-08-2026 14:41
 vless://00000000-0000-0000-0000-000000000000@127.0.0.1:443?security=tls&type=tcp#Подписка+недействительна.+Новая+ссылка+на+канале
 vless://122bbb97-7819-4e48-8b4f-164045b8419b@217.60.62.22:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=firefox&pbk=LlmeRLZaOVzOFU5YPLBxAHtHVjyrM0HdCXOrZxvbBBM&sid=c6&type=tcp&headerType=none#🇪🇺 ⚡️Европа | Game 🎮
 vless://122bbb97-7819-4e48-8b4f-164045b8419b@217.60.62.113:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=firefox&pbk=LlmeRLZaOVzOFU5YPLBxAHtHVjyrM0HdCXOrZxvbBBM&sid=c6&type=tcp&headerType=none#🇪🇺⚡️Европа | Game 🎮 №2
@@ -73,113 +73,58 @@ vless://ec2aaf4f-b1aa-4410-4b14-d4b4e9b5daf4@213.219.212.64:443?flow=xtls-rprx-v
 vless://ec2aaf4f-b1aa-4410-4b14-d4b4e9b5daf4@213.219.212.51:443?type=tcp&security=reality&sni=eh.vk.ru&fp=qq&pbk=AAZjVvbC7AwPKot_1ygO5VMpN7XYifCA7lG0RNR5sEk&sid=&flow=xtls-rprx-vision#🇷🇺 Russia [*CIDR] VK
 vless://6e8ee019-73c1-42aa-b9e7-357e768993c3@130.12.242.99:7443?flow=xtls-rprx-vision&fp=firefox&pbk=5QAO98ot2U7TcGs_f6EEaQjCzNOJLNHqPf6smYsdFVI&security=reality&sid=be0ce047&sni=www.microsoft.com&type=tcp#🌐 Anycas-IP | 🇬🇧 🇳🇱 [*CIDR]
 vless://00000000-0000-0000-0000-000000000000@1.1.1.1:1111?encryption=none&security=none&type=tcp&headerType=none#Получите новую бесплатную ссылку на hps://.me/_world
-vless://03707fb7-0990-440f-88f6-b0e0f7242a38@104.16.75.44:443?path=%2F&security=tls&encryption=none&insecure=0&type=ws&allowInsecure=0&sni=de-new-1.ariyuz.org#2. 🇩🇪 Germany
-vless://20f21d96-3700-46d9-9f63-5933403c0c18@104.16.101.215:8880?encryption=none&security=none&type=ws&host=restless-math-7bde.299-75c.workers.dev&path=%2Fpyip%3DProxyIP.JP.CMLiussss.net#3. 🇸🇪 Sweden
-vless://8525fe74-67e6-4a55-8a26-95f227bd1384@8.39.125.152:8443?encryption=none&fp=chrome&host=bitter-shadow-4fc5.alvlirm852.workers.dev&path=%2F&security=tls&sni=bitter-shadow-4fc5.alvlirm852.workers.dev&type=ws#6. 🇷🇺 Russia
-vless://28148be2-61a7-4f36-8adb-030cc9f82bd0@62.210.24.143:32202?encryption=none&security=reality&sni=www.amazon.com&fp=firefox&pbk=bGe_-nAtOq6_w_2mv6pcmD8RzJP65Tti-vyMP2hAwDc&sid=f57d8f26&type=xhttp&path=%2FG3EEoH63#8. 🇫🇷 France
-vmess://eyJhZGQiOiIyMDAxOmJjODozMmQ3OjFhOTo6MiIsImFpZCI6MCwiaG9zdCI6IjIwMDE6YmM4OjMyZDc6MWE5OjoyIiwiaWQiOiIzYTk2NmQyMC03YjlkLTQ4Y2MtYmEyYy04ZDM4MTYxYjZkM2EiLCJuZXQiOiJ3cyIsInBhdGgiOiIvZ2l0aHViLmNvbS9BbHZpbjk5OTktbmV3cGFjL2ZhbnFpYW5nIiwicG9ydCI6MjMzODgsInBzIjoiOS4gXHVkODNjXHVkZGViXHVkODNjXHVkZGY3IEZyYW5jZSIsInNjeSI6ImF1dG8iLCJzbmkiOiIiLCJ0bHMiOmZhbHNlLCJ0eXBlIjpudWxsLCJ2IjoyfQ
-vless://532a9115-aee7-4d39-9638-1e5146de075b@104.21.53.160:443?encryption=none&type=ws&host=muddy-math-c1fc.tmpnriqueau89.workers.dev&path=%2Fjs%2FcHlpcC55Z2tray5kcGRucy5vcmc%3D%2F%3Fed%3D2048&security=tls&alpn=h2%2Chttp%2F1.1&fp=chrome&sni=muddy-math-c1fc.tmpnriqueau89.workers.dev#12. 🇸🇪 Sweden
-vmess://eyJhZGQiOiJkZWFwcC5qaXN1eXVuLnRvcCIsImFpZCI6IjAiLCJob3N0IjoiZGVhcHAuamlzdXl1bi50b3AiLCJpZCI6IjlhMWEwNWQ5LTY5YmUtNDVkMy1lMzI2LWM2NjIxZWRmN2IzMSIsIm5ldCI6IndzIiwicGF0aCI6Ii9kZXZtIiwicG9ydCI6IjIwNTMiLCJwcyI6IjEzLiBcdWQ4M2NcdWRkZTlcdWQ4M2NcdWRkZWEgR2VybWFueSIsInNjeSI6ImF1dG8iLCJza2lwLWNlcnQtdmVyaWZ5Ijp0cnVlLCJzbmkiOiJkZWFwcC5qaXN1eXVuLnRvcCIsInRlc3RfbmFtZSI6IjE0MCIsInRscyI6InRscyIsInR5cGUiOiJub25lIiwidiI6IjIifQ
-vless://03707fb7-0990-440f-88f6-b0e0f7242a38@104.16.75.42:443?type=ws&headerType=none&security=tls&encryption=none&sni=de-new-1.ariyuz.org&path=%2F&insecure=0#15. 🇩🇪 Germany
-trojan://FH72359861@new-eagle.rooster465.autos:443?security=tls&sni=new-eagle.rooster465.autos#16. 🇯🇵 Japan
-trojan://AE62539071@wise-longhorn.rooster465.autos:443?type=tcp&security=tls&sni=wise-longhorn.rooster465.autos&fp=chrome#17. 🇯🇵 Japan
-trojan://PQ05174892@immense-eagle.rooster465.autos:443?type=tcp&security=tls&sni=immense-eagle.rooster465.autos&fp=chrome#18. 🇸🇬 Singapore
-vmess://eyJhZGQiOiIxNjUuMTQwLjIxNi4xNDEiLCJhaWQiOiIwIiwiaG9zdCI6IiIsImlkIjoiZTdkNzJhOGQtMjZmMi00YjU0LWIzNjYtMGM0M2UwYmNiYTdkIiwibmV0IjoidGNwIiwicGF0aCI6IiIsInBvcnQiOiI0NDMiLCJwcyI6IjE5LiDwn4e68J+HuCBVbmllZCBTYWVzIiwic2N5IjoiYXV0byIsInNraXAtY2VydC12ZXJpZnkiOnRydWUsInNuaSI6IiIsInRlc3RfbmFtZSI6IjIiLCJ0bHMiOiIiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0
-trojan://ND91608427@upright-impala.rooster465.autos:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=upright-impala.rooster465.autos#20. 🇯🇵 Japan
-trojan://ND91608427@uncommon-feline.rooster465.autos:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=uncommon-feline.rooster465.autos#21. 🇰🇷 Souh Korea
-trojan://ND91608427@15.237.137.197:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=fancy-skink.rooster465.autos#22. 🇫🇷 France
-vless://b2c879ed-08a2-4a79-9c57-37c7db614e96@log.bpminecraft.com:8880?&security=none&type=ws&headerType=&host=sweet-cake-1340.474-288.workers.dev&path=%2Fpyip%3DProxyIP.KR.CMLiussss.net#23. 🇭🇰 Hong Kong
-trojan://ND91608427@saving-octopus.rooster465.autos:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=saving-octopus.rooster465.autos#24. 🇰🇷 Souh Korea
-vmess://eyJhZGQiOiI2OC4xODMuMjA5LjE4MCIsImFpZCI6IjAiLCJob3N0IjoiIiwiaWQiOiJkNTEyMTE1NC1jZWQ2LTQ2MGQtYTlmZC01ODkyMDI3YWI0YTAiLCJuZXQiOiJ3cyIsInBhdGgiOiIvZ3JhcGhxbCIsInBvcnQiOiI4MCIsInBzIjoiMjUuIFx1ZDgzY1x1ZGRlOVx1ZDgzY1x1ZGRlYSBHZXJtYW55Iiwic2N5IjoiYXV0byIsInNuaSI6IiIsInRscyI6IiIsInR5cGUiOiItLS0iLCJ2IjoiMiIsInNraXAtY2VydC12ZXJpZnkiOnRydWV9
-vless://77777777-8a3e-6666-b6d1-a9c5f0e8b3a2@172.64.52.182:2087?path=%2F&security=tls&encryption=none&insecure=0&host=faxf32gkfzoxqv.fx6hsv0.ccwu.cc&fp=chrome&type=ws&allowInsecure=0&sni=faxf32gkfzoxqv.fx6hsv0.ccwu.cc#26. 🇷🇺 Russia
-vless://cf39cbf2-8926-43b5-ba3e-45b975019094@skk.moe:8880?host=snowy-feather-39d3.428.workers.dev&path=%2Fpyip%3DProxyIP.US.CMLiussss.net&type=ws#27. 🇭🇰 Hong Kong
-trojan://ND91608427@43.203.119.20:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=uncommon-feline.rooster465.autos#28. 🇰🇷 Souh Korea
-vmess://eyJhZGQiOiIxOTIuMjQ4LjE2My4xNDgiLCJhaWQiOjAsImlkIjoiNjQ3YzJkYzYtZmQ0OC00YTg0LTliNTktMTYzZGYxOWFkNmY5IiwibmV0Ijoid3MiLCJwYXRoIjoiLzY0N2MyZGM2LWZkNDgtNGE4NC05YjU5LTE2M2RmMTlhZDZmOSIsInBvcnQiOjUzMjI0LCJwcyI6IjI5LiDwn4es8J+HpyBVbmllZCBLaW5nZG9tIiwic2N5IjoiYXV0byIsInNraXAtY2VydC12ZXJpZnkiOnRydWUsInRscyI6IiIsInR5cGUiOiJub25lIiwidiI6IjIifQ
-vless://77777777-8a3e-6666-b6d1-a9c5f0e8b3a2@172.64.146.211:2087?path=%2F&security=tls&encryption=none&insecure=0&host=faxf32gkfzoxqv.fx6hsv0.ccwu.cc&fp=chrome&type=ws&allowInsecure=0&sni=faxf32gkfzoxqv.fx6hsv0.ccwu.cc#30. 🇷🇺 Russia
-trojan://PQ05174892@fair-kingfish.rooster465.autos:443?type=tcp&security=tls&sni=fair-kingfish.rooster465.autos&fp=chrome#31. 🇯🇵 Japan
-trojan://ND91608427@social-mutt.rooster465.autos:443?security=tls&sni=social-mutt.rooster465.autos#32. 🇯🇵 Japan
-trojan://AE62539071@simple-rodent.rooster465.autos:443?security=tls#33. 🇸🇬 Singapore
-trojan://FH72359861@nearby-cod.rooster465.autos:443?security=tls#34. 🇫🇷 France
-trojan://HC04361579@key-barnacle.rooster465.autos:443?type=raw&headerType=none&security=tls&sni=key-barnacle.rooster465.autos#35. 🇰🇷 Souh Korea
-vless://b81b4d1b-7f20-48f1-82dc-d24bef898cab@161.97.160.224:443?security=reality&type=tcp&packetEncoding=xudp&alpn=http%2F1.1&sni=passport.yandex.ru&fp=firefox&flow=xtls-rprx-vision&sid=e6&pbk=33zaT3jHXjtynSQ0Ucw9bK92-XH2zolJmuIeZ1XyZB0#37. 🇫🇷 France
-trojan://AE62539071@whole-perch.rooster465.autos:443?security=tls#38. 🇯🇵 Japan
-vless://41ce10f9-748b-46a0-be7c-e29d863aa028@www.ipget.net:8880?encryption=none&security=none&type=ws&host=gentle-violet-ceef.497-2fe.workers.dev&path=%2Fpyip%3Dproxyip.jp.cmliussss.net#39. 🇭🇰 Hong Kong
-vless://77777777-8a3e-6666-b6d1-a9c5f0e8b3a2@104.18.42.163:2087?path=%2F&security=tls&encryption=none&insecure=0&host=fx3h2kf8xn.fx6hsv0.ccwu.cc&fp=chrome&type=ws&allowInsecure=0&sni=fx3h2kf8xn.fx6hsv0.ccwu.cc#40. 🇷🇺 Russia
-vmess://eyJhZGQiOiJtMDFjN2IyejI2ZHRxZ2VlLnYuM2Rucy52aXAiLCJhaWQiOiIwIiwiaG9zdCI6Ik0wMWM3QjJ6MjZEdFFHRWUudi4zZG5zLnZpcCIsImlkIjoiZjIzYmI0MjdjMWY5NDM3Mzg3NmMyZjQzZTlmNzkwZjMiLCJuZXQiOiJ3cyIsInBhdGgiOiIvd3Mtdm1lc3MiLCJwb3J0IjoiNDQzIiwicHMiOiI0MS4gXHVkODNjXHVkZGVkXHVkODNjXHVkZGYwIEhvbmcgS29uZyIsInRscyI6InRscyIsInR5cGUiOiJub25lIiwidiI6IjIifQ
-trojan://AE62539071@learning-ibex.rooster465.autos:443?security=tls#42. 🇯🇵 Japan
-vmess://eyJhZGQiOiJ1MmZyeGowZzEzdmRpMHdvLnYuM2Rucy52aXAiLCJhaWQiOiIwIiwiYWxwbiI6IiIsImZwIjoiIiwiaG9zdCI6IlUyRlJ4ajBHMTN2REkwV28udi4zZG5zLnZpcCIsImlkIjoiZjIzYmI0MjctYzFmOS00MzczLTg3NmMtMmY0M2U5Zjc5MGYzIiwibmV0Ijoid3MiLCJwYXRoIjoiL3dzLXZtZXNzIiwicG9ydCI6IjQ0MyIsInBzIjoiNDMuIFx1ZDgzY1x1ZGRlZFx1ZDgzY1x1ZGRmMCBIb25nIEtvbmciLCJzY3kiOiJhdXRvIiwic25pIjoiIiwidGxzIjoidGxzIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9
-trojan://PQ05174892@infinite-anteater.rooster465.autos:443?security=tls&sni=infinite-anteater.rooster465.autos#44. 🇸🇬 Singapore
-trojan://PQ05174892@united-grouse.rooster465.autos:443?type=tcp&security=tls&sni=united-grouse.rooster465.autos&fp=chrome#46. 🇰🇷 Souh Korea
-trojan://AE62539071@skilled-monster.rooster465.autos:443?security=tls#47. 🇰🇷 Souh Korea
-trojan://FH72359861@tough-tuna.rooster465.autos:443?security=tls#48. 🇺🇸 Unied Saes
-trojan://FH72359861@champion-panther.rooster465.autos:443?security=tls#49. 🇯🇵 Japan
-trojan://ND91608427@internal-sunbird.rooster465.autos:443?security=tls&sni=internal-sunbird.rooster465.autos#50. 🇯🇵 Japan
-trojan://FH72359861@funny-squid.rooster465.autos:443?security=tls#51. 🇯🇵 Japan
-vmess://eyJhZGQiOiJ3d2FmajVsaGw2Ymk4YXU5LnYuM2Rucy52aXAiLCJhaWQiOiIwIiwiaG9zdCI6Ind3YWZqNUxIbDZiSThhVTkudi4zZG5zLnZpcCIsImlkIjoiZjIzYmI0MjdjMWY5NDM3Mzg3NmMyZjQzZTlmNzkwZjMiLCJuZXQiOiJ3cyIsInBhdGgiOiIvd3Mtdm1lc3MiLCJwb3J0IjoiNDQzIiwicHMiOiI1Mi4gXHVkODNjXHVkZGVkXHVkODNjXHVkZGYwIEhvbmcgS29uZyIsInNraXAtY2VydC12ZXJpZnkiOnRydWUsInRscyI6InRscyIsInR5cGUiOiJub25lIiwidiI6IjIifQ
-trojan://ND91608427@better-molly.rooster465.autos:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0#53. 🇯🇵 Japan
-trojan://AE62539071@safe-frog.rooster465.autos:443?type=tcp&security=tls&sni=safe-frog.rooster465.autos&fp=chrome#54. 🇯🇵 Japan
-trojan://AE62539071@liked-serval.rooster465.autos:443?security=tls#55. 🇺🇸 Unied Saes
-trojan://ND91608427@13.125.239.182:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=saving-octopus.rooster465.autos#57. 🇰🇷 Souh Korea
-trojan://ND91608427@intimate-moray.rooster465.autos:443?security=tls#58. 🇰🇷 Souh Korea
-trojan://AE62539071@52.194.223.176:443?security=tls&sni=clear-heron.rooster465.autos#60. 🇯🇵 Japan
-trojan://FH72359861@lasting-jaguar.rooster465.autos:443?security=tls#62. 🇯🇵 Japan
-trojan://FH72359861@flexible-pony.rooster465.autos:443?security=tls#63. 🇯🇵 Japan
-vmess://eyJhZGQiOiIxNjUuMTU0LjE5NS4zOCIsImFpZCI6MCwiYWxwbiI6IiIsImZwIjoiIiwiaG9zdCI6IiIsImlkIjoiOTU5YThjYWYtNGNlYS00M2QwLWE1NDgtMzYyOGU3ZGRmYWZjIiwibmV0IjoidGNwIiwicGF0aCI6IiIsInBvcnQiOjM1MDM0LCJwcyI6IjY0LiDwn4e58J+HvCBhaXdhbiIsInNjeSI6ImF1dG8iLCJzbmkiOiIiLCJ0bHMiOiJhdXRvIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9
-trojan://AE62539071@18.183.182.132:443?security=tls&sni=exciting-grizzly.rooster465.autos#65. 🇯🇵 Japan
-vmess://eyJhZGQiOiJkcmJrZzE2ZWdmM2Z6bG0zLnYuM2Rucy52aXAiLCJhaWQiOjAsImhvc3QiOiJEckJLZzE2ZUdmM0ZabE0zLnYuM2Rucy52aXAiLCJpZCI6ImYyM2JiNDI3LWMxZjktNDM3My04NzZjLTJmNDNlOWY3OTBmMyIsIm5ldCI6IndzIiwicGF0aCI6Ii93cy12bWVzcyIsInBvcnQiOjQ0MywicHMiOiI2Ni4gXHVkODNjXHVkZGVkXHVkODNjXHVkZGYwIEhvbmcgS29uZyIsInNlY3VyaXR5IjoiYXV0byIsInNraXAtY2VydC12ZXJpZnkiOnRydWUsInNuaSI6IiIsInRscyI6InRscyIsInR5cGUiOiJhdXRvIn0
-trojan://ND91608427@thankful-mustang.rooster465.autos:443?security=tls&sni=thankful-mustang.rooster465.autos#67. 🇯🇵 Japan
-trojan://AE62539071@deep-ringtail.rooster465.autos:443?security=tls#68. 🇯🇵 Japan
-trojan://FH72359861@communal-troll.rooster465.autos:443?security=tls&sni=communal-troll.rooster465.autos#70. 🇯🇵 Japan
-trojan://AE62539071@game-thrush.rooster465.autos:443?security=tls#71. 🇯🇵 Japan
-vless://e72d828e-2d8c-471e-9d4e-2dde00000000@104.17.148.22:443?encryption=none&security=tls&sni=netlivpn9361.hsjshsh2827.workers.dev&fp=chrome&insecure=0&allowInsecure=0&type=ws&host=netlivpn9361.hsjshsh2827.workers.dev&path=%2FNetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN-NetliVPN#72. 🇸🇪 Sweden
-vless://1b3ad465-d37e-48a2-bb53-d7fddfc97b11@104.21.23.72:8880?security=none&type=ws&host=calm-silence-d4a1.217.workers.dev&path=%2Fpyip#73. 🇸🇪 Sweden
-vmess://eyJhZGQiOiI0Ny44My4xOS4xNDgiLCJhaWQiOjAsImhvc3QiOiI2SkR2QXJhemdVM3FRUjZRLnYuM2Rucy52aXAiLCJpZCI6ImYyM2JiNDI3YzFmOTQzNzM4NzZjMmY0M2U5Zjc5MGYzIiwibmV0Ijoid3MiLCJwYXRoIjoiL3dzLXZtZXNzIiwicG9ydCI6NDQzLCJwcyI6Ijc0LiBcdWQ4M2NcdWRkZWRcdWQ4M2NcdWRkZjAgSG9uZyBLb25nIiwic2N5IjoiYXV0byIsInNraXAtY2VydC12ZXJpZnkiOnRydWUsInNuaSI6IjZKRHZBcmF6Z1UzcVFSNlEudi4zZG5zLnZpcCIsInRscyI6InRscyIsInR5cGUiOiJub25lIiwidiI6IjIifQ
-trojan://AE62539071@awaited-lark.rooster465.autos:443?security=tls#75. 🇯🇵 Japan
-trojan://ND91608427@striking-maggot.rooster465.autos:443?type=tcp&security=tls&encryption=none&fp=chrome&sni=striking-maggot.rooster465.autos#76. 🇰🇷 Souh Korea
-trojan://FH72359861@great-wasp.rooster465.autos:443?security=tls&sni=great-wasp.rooster465.autos#78. 🇯🇵 Japan
-vmess://eyJhZGQiOiJjZTBnZWRweHdvdTZjcW9uLnYuM2Rucy52aXAiLCJhaWQiOiIwIiwiYWxwbiI6IiIsImZwIjoiIiwiaG9zdCI6ImNFMGdlZFBYd09VNmNxb04udi4zZG5zLnZpcCIsImlkIjoiZjIzYmI0MjdjMWY5NDM3Mzg3NmMyZjQzZTlmNzkwZjMiLCJuZXQiOiJ3cyIsInBhdGgiOiIvd3Mtdm1lc3MiLCJwb3J0IjoiNDQzIiwicHMiOiI3OS4gXHVkODNjXHVkZGVkXHVkODNjXHVkZGYwIEhvbmcgS29uZyIsInNjeSI6ImF1dG8iLCJza2lwLWNlcnQtdmVyaWZ5Ijp0cnVlLCJzbmkiOiJjRTBnZWRQWHdPVTZjcW9OLnYuM2Rucy52aXAiLCJ0bHMiOiJ0bHMiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0
-trojan://FH72359861@internal-mongoose.rooster465.autos:443?security=tls&sni=internal-mongoose.rooster465.autos#80. 🇯🇵 Japan
-trojan://AE62539071@exciting-grizzly.rooster465.autos:443?security=tls&sni=exciting-grizzly.rooster465.autos#81. 🇯🇵 Japan
-trojan://AE62539071@known-albacore.rooster465.autos:443?security=tls#82. 🇯🇵 Japan
-trojan://ND91608427@13.231.232.184:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=better-molly.rooster465.autos#83. 🇯🇵 Japan
-vless://2c634977-584e-4e1f-b501-1b70c77a6743@78.159.250.33:18443?encryption=none&flow=xtls-rprx-vision&fp=firefox&security=tls&sni=disagreedebut.net&type=raw#84. 🇷🇺 Russia
-vless://93fab704-cea7-4ca4-a9ac-5bb46aef263c@it.morinsq.su:443?security=reality&encryption=none&pbk=D3qByJ6qqJd5phYkfAtJpBqAhSb8VHPax1ZhvI3ZKEE&headerType=&fp=chrome&spx=/&type=tcp&sni=it.morinsq.su&sid=96e380212691bba8#85. 🇬🇧 Unied Kingdom
-trojan://AE62539071@possible-yeti.rooster465.autos:443?security=tls#86. 🇰🇷 Souh Korea
-trojan://AE62539071@54.95.128.248:443?security=tls&sni=engaged-ram.rooster465.autos#87. 🇯🇵 Japan
-trojan://AE62539071@eager-camel.rooster465.autos:443?security=tls&sni=eager-camel.rooster465.autos#88. 🇯🇵 Japan
-vmess://eyJhZGQiOiJ2YWg0dXJkemwzamR4NXIyLnYuM2Rucy52aXAiLCJhaWQiOiIwIiwiaG9zdCI6InZhaDR1cmR6bDNqZHg1cjIudi4zZG5zLnZpcCIsImlkIjoiZjIzYmI0MjdjMWY5NDM3Mzg3NmMyZjQzZTlmNzkwZjMiLCJuZXQiOiJ3cyIsInBhdGgiOiIvd3Mtdm1lc3MiLCJwb3J0IjoiNDQzIiwicHMiOiI4OS4gXHVkODNjXHVkZGVkXHVkODNjXHVkZGYwIEhvbmcgS29uZyIsInNjeSI6ImF1dG8iLCJza2lwLWNlcnQtdmVyaWZ5Ijp0cnVlLCJzbmkiOiJ2YWg0dXJkemwzamR4NXIyLnYuM2Rucy52aXAiLCJ0bHMiOiJ0bHMiLCJ0eXBlIjoiIiwidiI6IjIifQ
-vmess://eyJhZGQiOiJjaGF0Z3B0LmNvbSIsImFpZCI6MCwiYWxwbiI6IiIsImZwIjoiIiwiaG9zdCI6IiIsImlkIjoiNjA0NDE1NDgtYjY4ZS00M2IyLTgxOTEtZTNiODg0YmU0YjNjIiwibmV0Ijoid3MiLCJwYXRoIjoiL2xNbnNaVU40LyIsInBvcnQiOjg0NDMsInBzIjoiOTEuIPCfh7rwn4e4IFVuaWVkIFNhZXMiLCJzY3kiOiJhdXRvIiwic25pIjoidjJyYXkxLmRvemFwcC54eXoiLCJ0bHMiOiJ0bHMiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0
-trojan://ND91608427@select-ferret.rooster465.autos:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=select-ferret.rooster465.autos#92. 🇰🇷 Souh Korea
-trojan://FH72359861@good-hound.rooster465.autos:443?security=tls&sni=good-hound.rooster465.autos#93. 🇰🇷 Souh Korea
-trojan://AE62539071@dear-hermit.rooster465.autos:443?security=tls#95. 🇺🇸 Unied Saes
-trojan://FH72359861@flying-swift.rooster465.autos:443?security=tls#96. 🇯🇵 Japan
-vless://0a54534f-8a65-42f7-ae91-573ae0bf09b7@2.26.194.15:443?security=reality&encryption=none&pbk=vqxKvKPwdM4NB1EnIAy90LSglZM9oTRx995mUQIW2Rg&headerType=none&fp=chrome&spx=/&type=tcp&sni=www.intel.com&sid=6bd15a#97. 🇬🇧 Unied Kingdom
-trojan://6ec301428255a78a1d826988d86cc87e@2c.fast9988.com:50887?type=raw&headerType=none&security=tls&sni=www.nintendogames.net#98. 🇭🇰 Hong Kong
-trojan://AE62539071@climbing-frog.rooster465.autos:443?security=tls#99. 🇯🇵 Japan
-vless://41ce10f9-748b-46a0-be7c-e29d863aa028@gentle-violet-ceef.497-2fe.workers.dev:8880?path=%2Fpyip%3DProxyIP.JP.CMLiussss.net&security=&encryption=none&type=ws#100. 🇭🇰 Hong Kong
-trojan://FH72359861@balanced-stag.rooster465.autos:443?security=tls#101. 🇰🇷 Souh Korea
-vless://3e553ebf-db9d-4858-b608-03d6ff615a41@www.gov.ua:8880?&security=false&fp=chrome&type=ws&headerType=none&host=rapid-waterfall-7270.255-22b.workers.dev&path=%2Fpyip%3DProxyIP.JP.CMLiussss.net#103. 🇭🇰 Hong Kong
-vless://77777777-8a3e-6666-b6d1-a9c5f0e8b3a2@172.64.52.30:2087?type=ws&security=tls&fp=chrome&sni=faxf32gkfzoxqv.fx6hsv0.ccwu.cc#104. 🇷🇺 Russia
-vless://1443b7a1-7ba9-4ec9-b904-2e867367b5d7@odd-violet-5440.asdgrweeee13.workers.dev:443?type=ws&security=tls&encryption=none&path=%2Fsync&host=odd-violet-5440.asdgrweeee13.workers.dev&sni=odd-violet-5440.asdgrweeee13.workers.dev&fp=chrome&headerType=none#105. 🇭🇰 Hong Kong
-vless://77777777-8a3e-6666-b6d1-a9c5f0e8b3a2@172.64.147.104:2087?path=%2F&security=tls&encryption=none&insecure=0&host=faxf32gkfzoxqv.fx6hsv0.ccwu.cc&fp=chrome&type=ws&allowInsecure=0&sni=faxf32gkfzoxqv.fx6hsv0.ccwu.cc#106. 🇷🇺 Russia
-trojan://FH72359861@internal-peacock.rooster465.autos:443?security=tls#107. 🇯🇵 Japan
-trojan://PQ05174892@sterling-vervet.rooster465.autos:443?security=tls&sni=sterling-vervet.rooster465.autos#108. 🇯🇵 Japan
-trojan://AE62539071@unbiased-garfish.rooster465.autos:443?security=tls#109. 🇮🇪 Ireland
-trojan://AE62539071@outgoing-ladybird.rooster465.autos:443?security=tls#110. 🇯🇵 Japan
-trojan://FH72359861@summary-lemming.rooster465.autos:443?security=tls&sni=summary-lemming.rooster465.autos#111. 🇩🇪 Germany
-vmess://eyJhZGQiOiJydXNoLTZpdDZiLnRlZW9wcC5xdWVzdCIsImFpZCI6IjAiLCJob3N0IjoicnVzaC02aXQ2Yi50ZWVvcHAucXVlc3QiLCJpZCI6IjAzZmNjNjE4LWI5M2QtNjc5Ni02YWVkLThhMzhjOTc1ZDU4MSIsIm5ldCI6IndzIiwicGF0aCI6Ii92aWRlby9rejQ5aGYvZ2JpbjVqdmUubTN1OCIsInBvcnQiOiI0NDMiLCJwcyI6IjExMy4g8J+HuvCfh7ggVW5pZWQgU2FlcyIsInNraXAtY2VydC12ZXJpZnkiOnRydWUsInRscyI6InRscyIsInR5cGUiOiJub25lIiwidiI6IjIifQ
-vmess://eyJhZGQiOiIyYjlod3k4b2N4N3E3NG5tLnYuM2Rucy52aXAiLCJhaWQiOiIwIiwiaG9zdCI6IjJiOWh3WThvQ3g3UTc0Tk0udi4zZG5zLnZpcCIsImlkIjoiZjIzYmI0MjdjMWY5NDM3Mzg3NmMyZjQzZTlmNzkwZjMiLCJuZXQiOiJ3cyIsInBhdGgiOiIvd3Mtdm1lc3MiLCJwb3J0IjoiNDQzIiwicHMiOiIxMTQuIFx1ZDgzY1x1ZGRlZFx1ZDgzY1x1ZGRmMCBIb25nIEtvbmciLCJza2lwLWNlcnQtdmVyaWZ5Ijp0cnVlLCJ0bHMiOiJ0bHMiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0
-trojan://AE62539071@helpful-possum.rooster465.autos:443?security=tls#118. 🇳🇱 he Neherlands
-trojan://AE62539071@well-jennet.rooster465.autos:443?security=tls#119. 🇯🇵 Japan
-trojan://AE62539071@right-seahorse.rooster465.autos:443?security=tls#121. 🇯🇵 Japan
-vmess://eyJhZGQiOiJueWNxZzE5emt3YWNwbTFiLnYuM2Rucy52aXAiLCJhaWQiOiIwIiwiYWxwbiI6IiIsImZwIjoiIiwiaG9zdCI6Ik5ZY1FnMTl6a3dhQ1BNMUIudi4zZG5zLnZpcCIsImlkIjoiZjIzYmI0MjdjMWY5NDM3Mzg3NmMyZjQzZTlmNzkwZjMiLCJuZXQiOiJ3cyIsInBhdGgiOiIvd3Mtdm1lc3MiLCJwb3J0IjoiNDQzIiwicHMiOiIxMjMuIFx1ZDgzY1x1ZGRlZFx1ZDgzY1x1ZGRmMCBIb25nIEtvbmciLCJzY3kiOiJhdXRvIiwic25pIjoiTlljUWcxOXprd2FDUE0xQi52LjNkbnMudmlwIiwidGxzIjoidGxzIiwidHlwZSI6Ii0tLSIsInYiOiIyIn0
-vmess://eyJhZGQiOiJleDFvZ3Q3M256cHFrYWMyLnYuM2Rucy52aXAiLCJhaWQiOjAsImhvc3QiOiJFWDFvR3Q3M056UFFLQWMyLnYuM2Rucy52aXAiLCJpZCI6ImYyM2JiNDI3YzFmOTQzNzM4NzZjMmY0M2U5Zjc5MGYzIiwibmV0Ijoid3MiLCJwYXRoIjoiL3dzLXZtZXNzIiwicG9ydCI6NDQzLCJwcyI6IjEyNC4gXHVkODNjXHVkZGVkXHVkODNjXHVkZGYwIEhvbmcgS29uZyIsInNlY3VyaXR5IjoiYXV0byIsInNraXAtY2VydC12ZXJpZnkiOnRydWUsInNuaSI6IkVYMW9HdDczTnpQUUtBYzIudi4zZG5zLnZpcCIsInRscyI6InRscyJ9
-trojan://PQ05174892@apparent-wasp.rooster465.autos:443?security=tls#125. 🇸🇬 Singapore
-vmess://eyJhZGQiOiJuMTc0NzYyNDI3NC40dTltYS5pY3UiLCJhaWQiOiIwIiwiaG9zdCI6Im4xNzQ3NjI0Mjc0LjR1OW1hLmljdSIsImlkIjoiZDhkYWY1MDctYTRhYy00ZWVhLTgzOTktOGYwY2QwNzFlYjUyIiwibmV0Ijoid3MiLCJwYXRoIjoiLyIsInBvcnQiOiI0NDMiLCJwcyI6IjEyNi4gXHVkODNjXHVkZGVkXHVkODNjXHVkZGYwIEhvbmcgS29uZyIsInNraXAtY2VydC12ZXJpZnkiOnRydWUsInRscyI6InRscyIsInR5cGUiOiJub25lIiwidiI6IjIifQ
-vmess://eyJhZGQiOiJtdGNrdW5kaWdlcHd1M3VwLnYuM2Rucy52aXAiLCJhaWQiOjAsImhvc3QiOiJtVENLVU5EaUdlUHdVM3VQLnYuM2Rucy52aXAiLCJpZCI6ImYyM2JiNDI3YzFmOTQzNzM4NzZjMmY0M2U5Zjc5MGYzIiwibmV0Ijoid3MiLCJwYXRoIjoiL3dzLXZtZXNzIiwicG9ydCI6NDQzLCJwcyI6IjEyOS4gXHVkODNjXHVkZGVkXHVkODNjXHVkZGYwIEhvbmcgS29uZyIsInNlY3VyaXR5IjoiYXV0byIsInNuaSI6Im1UQ0tVTkRpR2VQd1UzdVAudi4zZG5zLnZpcCIsInRscyI6InRscyJ9
-trojan://AE62539071@capable-jay.rooster465.autos:443?security=tls#130. 🇰🇷 Souh Korea
-trojan://AE62539071@allowed-hermit.rooster465.autos:443?security=tls#131. 🇰🇷 Souh Korea
-trojan://AE62539071@charmed-fly.rooster465.autos:443?security=tls#135. 🇯🇵 Japan
+vless://0779dc74-2464-461f-90ef-874e4cae7fae@188.114.96.3:2053?security=tls&type=ws&path=%2FeyJqdW5rIjoiUHQ4YzBma3IxczlPIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcmVmaXgiLCJwYW5lbElQcyI6WyJbMjYwMjpmYzU5OjExOjY0OjpdIl19%3Fed&host=weathered-math-1f8b.amiralighasempor010.workers.dev&sni=weathered-math-1f8b.amiralighasempor010.workers.dev&fp=chrome&encryption=none#3. 🇸🇪 Sweden
+vless://77777777-8a3e-6666-b6d1-a9c5f0e8b3a2@104.19.214.146:2087?path=%2F&security=tls&encryption=none&insecure=0&fp=chrome&type=ws&allowInsecure=0&sni=faxf32gkfzoxqv.fx6hsv0.ccwu.cc#4. 🇸🇪 Sweden
+vless://5a5fba4d-6ae8-4975-936d-bb643fb15957@172.67.208.181:443?encryption=none&type=ws&host=biyapain.biyapainbache.workers.dev&path=%2FeyJqdW5rIjoiV0lISkpXU0trWFI4OGdUIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcmVmaXgiLCJwYW5lbElQcyI6WyJbMjYwMjpmYzU5OjExOjY0OjpdIl19&security=tls&fp=chrome&sni=biyapain.biyapainbache.workers.dev#5. 🇸🇪 Sweden
+vless://77777777-8a3e-6666-b6d1-a9c5f0e8b3a2@172.64.52.97:2087?type=ws&security=tls&fp=chrome&sni=faxf32gkfzoxqv.fx6hsv0.ccwu.cc&ed=2560&eh=Sec-WebSocket-Protocol#6. 🇷🇺 Russia
+vless://2fb22d40-598f-4890-85a6-d69928b1fd55@104.16.107.139:8880?encryption=none&host=odd-cloud-f2a1.73-12e.workers.dev&path=%2Fpyip%3DProxyIP.SG.CMLiussss.net&security=none&type=ws#7. 🇸🇪 Sweden
+vless://03707fb7-0990-440f-88f6-b0e0f7242a38@170.114.45.239:443?type=ws&security=tls&fp=firefox&sni=de-new-1.ariyuz.org#8. 🇩🇪 Germany
+vless://77777777-8a3e-6666-b6d1-a9c5f0e8b3a2@172.64.52.173:2087?type=ws&security=tls&fp=chrome&sni=faxf32gkfzoxqv.fx6hsv0.ccwu.cc#9. 🇷🇺 Russia
+vless://03707fb7-0990-440f-88f6-b0e0f7242a38@ytryurdj64bbb.localip.ir:443?type=ws&security=tls&fp=chrome&sni=ro-3.ariyuz.org#10. 🇬🇧 Unied Kingdom
+vless://2f142ede-d555-4ceb-b005-7df31b484be3@anydesk.com:8880?&security=false&fp=chrome&type=ws&headerType=none&host=bitter-pine-001c.450-e0e.workers.dev&path=%2Fpyip%3DProxyIP.KR.CMLiussss.net#11. 🇭🇰 Hong Kong
+vless://77777777-8a3e-6666-b6d1-a9c5f0e8b3a2@104.19.215.97:2087?type=ws&security=tls&fp=chrome&sni=faxf32gkfzoxqv.fx6hsv0.ccwu.cc#13. 🇸🇪 Sweden
+trojan://ND91608427@13.230.118.96:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=real-werewolf.rooster465.autos#15. 🇯🇵 Japan
+trojan://ND91608427@real-werewolf.rooster465.autos:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=real-werewolf.rooster465.autos#16. 🇯🇵 Japan
+vless://5ca83936-136d-4314-8453-4ba10a86cf60@144.31.82.201.fwqfw783rg2dad.website:443?type=ws&security=tls&encryption=none&sni=144.31.82.201.fwqfw783rg2dad.website&path=%2Fwebsocket%3Fed%3D2560&alpn=http/1.1&fp=firefox#17. 🇩🇪 Germany
+vmess://eyJhZGQiOiIxMjkuMTQ2Ljc3LjI0OCIsImFpZCI6MCwiYWxwbiI6IiIsImZwIjoiIiwiaG9zdCI6IiIsImlkIjoiZjgzNmM3MzYtODdmYy00ZmRlLWFhYmMtMDA4NTdlY2RmZjNlIiwibmV0Ijoid3MiLCJwYXRoIjoiL2NjdHYxMy5tM3U4IiwicG9ydCI6Mzk0OTUsInBzIjoiMTguIPCfh7rwn4e4IFVuaWVkIFNhZXMiLCJzY3kiOiJhdXRvIiwic25pIjoiIiwidGxzIjoiYXV0byIsInR5cGUiOiJub25lIiwidiI6IjIifQ
+vless://2e9012a2-7f8c-4233-b78b-5228a9a4951b@104.17.26.45:8880?type=ws&encryption=none&path=%2Fpyip%3DProxyIP.KR.CMLiussss.net&host=icy-breeze-126c.211-eb3.workers.dev&fp=chrome&alpn=http%2F1.1&headerType=none#19. 🇸🇪 Sweden
+trojan://ND91608427@18.181.175.120:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=sure-humpback.rooster465.autos#20. 🇯🇵 Japan
+trojan://AE62539071@moral-cow.rooster465.autos:443?security=tls#21. 🇺🇸 Unied Saes
+trojan://FH72359861@devoted-zebra.rooster465.autos:443?security=tls#22. 🇯🇵 Japan
+trojan://AE62539071@liked-serval.rooster465.autos:443?security=tls#23. 🇺🇸 Unied Saes
+trojan://AE62539071@funny-hen.rooster465.autos:443?security=tls#24. 🇮🇪 Ireland
+vless://98944209-4d92-41b2-9c24-c5ac17b3b493@46.250.250.149:2053?encryption=none&security=reality&sni=www.cloudflare.com&fp=chrome&pbk=2mp1wwmKQyvIVuGujoT0AGoAHwP1IFXlZRj8jB_UnGo&sid=61abecf0a82c31f5&type=tcp#25. 🇯🇵 Japan
+vless://0cc3a24a-1e51-44ae-92c7-83102c8f0392@store2.vevluma.ir:1234?flow=xtls-rprx-vision&fp=chrome&pbk=4sT8gYkbYI1RUPlO-SFVpJENKfGgMWoYQpflbcfspkI&security=reality&sid=4844fb0c077b20b7&sni=updates.cdn-apple.com&type=tcp#26. 🇫🇮 Finland
+vless://07821f66-cdb7-4c70-9de6-e230cffac470@wgrcqwtkfyqujs43.ghydgdbdbddvv.workers.dev:443?path=%2Fvl%2FLi1khIHH3DNItJyzraemsPBQvu%3Fed%3D2560&security=tls&alpn=http%2F1.1&encryption=none&host=wgrcqwtkfyqujs43.ghydgdbdbddvv.workers.dev&fp=chrome&type=ws&sni=wgrcqwtkfyqujs43.ghydgdbdbddvv.workers.dev#27. 🇭🇰 Hong Kong
+trojan://FH72359861@one-dove.rooster465.autos:443?security=tls#28. 🇰🇷 Souh Korea
+trojan://AE62539071@bright-baboon.rooster465.autos:443?security=tls&insecure=0&allowInsecure=0&type=tcp&headerType=none#29. 🇺🇸 Unied Saes
+vless://05e3178c-ab85-43e8-87fa-3dd20ecf4df5@31.77.138.28:443?type=tcp&security=reality&encryption=none&flow=xtls-rprx-vision&fp=firefox&pbk=OWnQ9xwvYFlNw_Fnmf4ceZMtb0SVLuVUoq2WP5P8lkw&sid=5f2d02dc7ec1e539&sni=fi.reus.lol#30. 🇬🇧 Unied Kingdom
+trojan://ND91608427@intimate-moray.rooster465.autos:443?security=tls#31. 🇰🇷 Souh Korea
+trojan://AE62539071@novel-bat.rooster465.autos:443?type=tcp&security=tls&sni=novel-bat.rooster465.autos&fp=chrome#32. 🇯🇵 Japan
+vless://2efeba50-78fe-4729-9821-1fb9819ed9e8@172.67.190.141:8880?encryption=none&type=ws&host=dark-dew-c3ed.48-97c.workers.dev&path=/pyip%3DProxyIP.KR.CMLiussss.net&packetEncoding=xudp#33. 🇸🇪 Sweden
+trojan://AE62539071@magnetic-haddock.rooster465.autos:443?type=tcp&security=tls&sni=magnetic-haddock.rooster465.autos&fp=chrome#34. 🇰🇷 Souh Korea
+vless://2efeba50-78fe-4729-9821-1fb9819ed9e8@104.21.56.202:8880?encryption=none&type=ws&host=dark-dew-c3ed.48-97c.workers.dev&path=/pyip%3DProxyIP.KR.CMLiussss.net&packetEncoding=xudp#35. 🇸🇪 Sweden
+vless://65c56e1f-5c41-40bc-b0b5-9346772476ca@172.64.157.48:8443?fp=edge&host=hongkong.11459178.xyz&path=%2Fcdn%2Fpackages%2Fruntime-core.tar.gz&security=tls&sni=hongkong.11459178.xyz&type=ws#36. 🇭🇰 Hong Kong
+vmess://eyJhZGQiOiJydXNoLTZpdDZiLnRlZW9wcC5xdWVzdCIsImFpZCI6MCwiaWQiOiIwM2ZjYzYxOC1iOTNkLTY3OTYtNmFlZC04YTM4Yzk3NWQ1ODEiLCJuZXQiOiJ3cyIsInBhdGgiOiIvdmlkZW8va3o0OWhmL2diaW41anZlLm0zdTgiLCJwb3J0Ijo0NDMsInBzIjoiMzcuIPCfh7rwn4e4IFVuaWVkIFNhZXMiLCJzY3kiOiJhdXRvIiwidGxzIjoidGxzIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9
+trojan://ND91608427@pure-ram.rooster465.autos:443?security=tls#38. 🇰🇷 Souh Korea
+vless://03707fb7-0990-440f-88f6-b0e0f7242a38@104.16.75.27:443?type=ws&security=tls&fp=chrome&sni=ro.ariyuz.org#39. 🇬🇧 Unied Kingdom
+vless://5415953e-c623-1f62-4538-3a4300000000@104.21.208.1:443?path=%2F&security=tls&encryption=none&insecure=0&fp=chrome&type=ws&allowInsecure=0&sni=ez-bd46ae.ezaccess13f54ec.workers.dev#41. 🇸🇪 Sweden
+trojan://FH72359861@loyal-molly.rooster465.autos:443?security=tls#42. 🇰🇷 Souh Korea
+trojan://FH72359861@worthy-perch.rooster465.autos:443?security=tls#44. 🇸🇬 Singapore
+trojan://AE62539071@infinite-tuna.rooster465.autos:443?security=tls#45. 🇰🇷 Souh Korea
+vless://b98d4c6e-6770-4a31-8256-a4750cdea0e7@66.175.217.170:443?security=reality&type=tcp&alpn=http%2F1.1&sni=www.amazon.com&fp=chrome&flow=xtls-rprx-vision&sid=1a&pbk=0i_xAxYgSNx5NMpK2lOaWGS-CvAiD_LneYPO0MF0owo&freeinternet=kizyak_vpn1786962122496#46. 🇺🇸 Unied Saes
+vmess://eyJhZGQiOiJwbGFuYi5tb2pjbi5jb20ubGludXhsaC54aW4iLCJhaWQiOiIwIiwiaG9zdCI6IjQwN2EyYmM2ZDQ1MmZmOTNlNmQ3YjczMDc4NTM5ZDllLm1vYmdzbGIudGJjYWNoZS5jb20iLCJpZCI6Ijk3YzYzOGM2LTg2ZDUtNGNmNi1iNzBiLTExNGM2ODA5YjYzNyIsIm5ldCI6IndzIiwicGF0aCI6Ii8iLCJwb3J0IjoiMTY2MzIiLCJwcyI6IjQ3LiBcdWQ4M2NcdWRkZWRcdWQ4M2NcdWRkZjAgSG9uZyBLb25nIiwic2tpcC1jZXJ0LXZlcmlmeSI6dHJ1ZSwidGxzIjoiIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9
+trojan://ND91608427@3.113.1.131:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=perfect-slug.rooster465.autos#49. 🇯🇵 Japan
+vless://2efeba50-78fe-4729-9821-1fb9819ed9e8@104.21.89.181:8880?encryption=none&type=ws&host=dark-dew-c3ed.48-97c.workers.dev&path=/pyip%3DProxyIP.KR.CMLiussss.net&packetEncoding=xudp#50. 🇸🇪 Sweden
+vmess://eyJhZGQiOiIyMDAxOmJjODozMmQ3OjFhOTo6MiIsImFpZCI6MCwiaG9zdCI6IjIwMDE6YmM4OjMyZDc6MWE5OjoyIiwiaWQiOiIzYTk2NmQyMC03YjlkLTQ4Y2MtYmEyYy04ZDM4MTYxYjZkM2EiLCJuZXQiOiJ3cyIsInBhdGgiOiIvZ2l0aHViLmNvbS9BbHZpbjk5OTktbmV3cGFjL2ZhbnFpYW5nIiwicG9ydCI6MjMzODgsInBzIjoiNTEuIFx1ZDgzY1x1ZGRlYlx1ZDgzY1x1ZGRmNyBGcmFuY2UiLCJzY3kiOiJhdXRvIiwic25pIjoiIiwidGxzIjpmYWxzZSwidHlwZSI6bnVsbCwidiI6Mn0
+trojan://AE62539071@central-jawfish.rooster465.autos:443?security=tls#52. 🇯🇵 Japan
+vless://55d61055-1a7f-4bc5-aca2-4ee78c738b60@194.233.75.66:443?encryption=none&type=raw&headerType=none&security=tls&fp=firefox&sni=sahanwickramasinghevip.shop#53. 🇸🇬 Singapore
+trojan://ND91608427@perfect-slug.rooster465.autos:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=perfect-slug.rooster465.autos#54. 🇯🇵 Japan
+vmess://eyJhZGQiOiIxNDAuODMuNTEuMTYxIiwiYWlkIjowLCJhbHBuIjoiIiwiZnAiOiIiLCJob3N0IjoiIiwiaWQiOiI2NzMzYzM1Ny1iYTExLTRlOWYtZjAwZi03ZDg3ZjI3NzZmZjkiLCJuZXQiOiJ3cyIsInBhdGgiOiIvY2N0djEzLm0zdTgiLCJwb3J0IjoyNTY4NiwicHMiOiI1NS4gXHVkODNjXHVkZGVmXHVkODNjXHVkZGY1IEphcGFuIiwic2N5IjoiYXV0byIsInNuaSI6IiIsInRscyI6ImF1dG8iLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0
+vless://746c4004-1d8f-4541-8e8a-533213d8a863@66.90.93.74:8443?encryption=none&fp=firefox&path=%2Fapi%2Fconnect&security=tls&sni=gateway-v1.bosx.net&type=ws#56. 🇷🇺 Russia
+trojan://AE62539071@oriented-pegasus.rooster465.autos:443?security=tls#57. 🇰🇷 Souh Korea
+vless://2a8cafda-479d-4e30-82d1-0bd4c6da6db9@104.21.12.116:8880?encryption=none&security=none&type=ws&host=delicate-meadow-15da.423-c77.workers.dev&path=%2Fpyip%3DProxyIP.US.CMLiussss.net#58. 🇸🇪 Sweden
+trojan://FH72359861@welcome-owl.rooster465.autos:443?security=tls#59. 🇯🇵 Japan
 vless://ff1b0b50-70dc-4bae-866e-55cff86f4d6d@newlinkplease.su:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=newlinkplease.su&fp=firefox&security=reality&pbk=lE6w45X8Bwb0HscO6Wa5wnN0qlw7wUuaCW8-iYL5HAQ&sid=bc609efa3b2d052f#Получите новые ссылки
 vless://47388561-cf0c-4cfc-91f8-fdfd9fa3d756@newlinkplease.su:8443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=newlinkplease.su&fp=firefox&security=reality&pbk=B5F8h8tpeZ-1ydiT0uFgdc30jJyw8H89Y8e-p_VV6yw&sid=7b
 vless://507e8554-4941-4297-9196-af102455f6ed@186.246.6.189:443?encryption=none&pbk=unNROkbh95ZZNHzG2RIkgrFftOLldNH0ccmtW63CziE&security=reality&serviceName=ebl&sni=optim.tildacdn.pub&type=grpc&fp=edge##🇷🇺1 Россия 🚀
