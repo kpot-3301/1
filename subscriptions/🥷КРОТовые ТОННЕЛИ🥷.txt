@@ -1,8 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 402 | 📅 18-08-2026 15:37
-vless://00000000-0000-0000-0000-000000000000@127.0.0.1:443?security=tls&type=tcp#Подписка+недействительна.+Новая+ссылка+на+канале
+#announce:ТОННЕЛЕЙ: 467 | 📅 18-08-2026 16:33
 vless://122bbb97-7819-4e48-8b4f-164045b8419b@217.60.62.22:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=firefox&pbk=LlmeRLZaOVzOFU5YPLBxAHtHVjyrM0HdCXOrZxvbBBM&sid=c6&type=tcp&headerType=none#🇪🇺 ⚡️Европа | Game 🎮
 vless://122bbb97-7819-4e48-8b4f-164045b8419b@217.60.62.113:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=firefox&pbk=LlmeRLZaOVzOFU5YPLBxAHtHVjyrM0HdCXOrZxvbBBM&sid=c6&type=tcp&headerType=none#🇪🇺⚡️Европа | Game 🎮 №2
 vless://122bbb97-7819-4e48-8b4f-164045b8419b@85.239.38.42:43734?security=reality&encryption=none&pbk=LlmeRLZaOVzOFU5YPLBxAHtHVjyrM0HdCXOrZxvbBBM&headerType=none&fp=firefox&type=tcp&flow=xtls-rprx-vision&sni=ads.x5.ru&sid=c6#🇳🇱 Нидерланды | ikok
@@ -73,23 +72,90 @@ vless://ec2aaf4f-b1aa-4410-4b14-d4b4e9b5daf4@213.219.212.64:443?flow=xtls-rprx-v
 vless://ec2aaf4f-b1aa-4410-4b14-d4b4e9b5daf4@213.219.212.51:443?type=tcp&security=reality&sni=eh.vk.ru&fp=qq&pbk=AAZjVvbC7AwPKot_1ygO5VMpN7XYifCA7lG0RNR5sEk&sid=&flow=xtls-rprx-vision#🇷🇺 Russia [*CIDR] VK
 vless://6e8ee019-73c1-42aa-b9e7-357e768993c3@130.12.242.99:7443?flow=xtls-rprx-vision&fp=firefox&pbk=5QAO98ot2U7TcGs_f6EEaQjCzNOJLNHqPf6smYsdFVI&security=reality&sid=be0ce047&sni=www.microsoft.com&type=tcp#🌐 Anycas-IP | 🇬🇧 🇳🇱 [*CIDR]
 vless://00000000-0000-0000-0000-000000000000@1.1.1.1:1111?encryption=none&security=none&type=tcp&headerType=none#Получите новую бесплатную ссылку на hps://.me/_world
-vless://77777777-8a3e-6666-b6d1-a9c5f0e8b3a2@172.64.53.60:2087?type=ws&security=tls&fp=chrome&sni=faxf32gkfzoxqv.fx6hsv0.ccwu.cc&ed=2560&eh=Sec-WebSocket-Protocol#1. 🇷🇺 Russia
-vless://77777777-8a3e-6666-b6d1-a9c5f0e8b3a2@104.16.150.130:2087?type=ws&security=tls&fp=chrome&sni=faxf32gkfzoxqv.fx6hsv0.ccwu.cc&ed=2560&eh=Sec-WebSocket-Protocol#2. 🇸🇪 Sweden
-vless://0779dc74-2464-461f-90ef-874e4cae7fae@188.114.96.3:2053?security=tls&type=ws&path=%2FeyJqdW5rIjoiUHQ4YzBma3IxczlPIiwicHJvdG9jb2wiOiJ2bCIsIm1vZGUiOiJwcmVmaXgiLCJwYW5lbElQcyI6WyJbMjYwMjpmYzU5OjExOjY0OjpdIl19%3Fed&host=weathered-math-1f8b.amiralighasempor010.workers.dev&sni=weathered-math-1f8b.amiralighasempor010.workers.dev&fp=chrome&encryption=none#3. 🇸🇪 Sweden
-vless://d9f94532-c4d4-4f94-ba23-6eb6d35bfc7d@104.21.54.140:443?encryption=none&type=ws&host=small-scene-f215.amiralizarefast1.workers.dev&path=%2FeyJqdW5rIjoiZW5GMjJSRmYiLCJwcm90b2NvbCI6InZsIiwibW9kZSI6InByZWZpeCIsInBhbmVsSVBzIjpbIlsyNjAyOmZjNTk6YjA6NjQ6Ol0iXX0%3D&security=tls&fp=chrome&sni=small-scene-f215.amiralizarefast1.workers.dev#5. 🇸🇪 Sweden
-vless://fc60147e-76b8-4bc5-b691-90b2da79e3d2@104.17.3.81:443?encryption=none&type=ws&host=nautica-cff.kloningstrife002.workers.dev&path=%2F138.2.74.219-28616&security=tls&fp=chrome&sni=nautica-cff.kloningstrife002.workers.dev#6. 🇸🇪 Sweden
-vless://03707fb7-0990-440f-88f6-b0e0f7242a38@104.19.45.195:443?type=ws&security=tls&fp=chrome&sni=de-new-1.ariyuz.org#7. 🇩🇪 Germany
-vless://77777777-8a3e-6666-b6d1-a9c5f0e8b3a2@104.19.215.97:2087?type=ws&security=tls&fp=chrome&sni=faxf32gkfzoxqv.fx6hsv0.ccwu.cc#8. 🇸🇪 Sweden
-vless://03707fb7-0990-440f-88f6-b0e0f7242a38@45.8.211.57:443?type=ws&security=tls&fp=chrome&sni=de-new-1.ariyuz.org#9. 🇩🇪 Germany
-vless://77777777-8a3e-6666-b6d1-a9c5f0e8b3a2@www.shopify.com:2087?&security=tls&fp=chrome&sni=fx3h2kf8xn.fx6hsv0.ccwu.cc&type=ws&headerType=none&host=fx3h2kf8xn.fx6hsv0.ccwu.cc&path=%2F%3Fed%3D2560#11. 🇷🇺 Russia
-vless://77777777-8a3e-6666-b6d1-a9c5f0e8b3a2@104.19.214.98:2087?type=ws&security=tls&fp=chrome&sni=faxf32gkfzoxqv.fx6hsv0.ccwu.cc#12. 🇸🇪 Sweden
-trojan://FH72359861@tough-tuna.rooster465.autos:443?security=tls#13. 🇺🇸 Unied Saes
-vless://766f6c65-0000-4000-8000-787000000002@volexproxy.karjadidd.workers.dev:2083?type=ws&security=tls&fp=chrome#14. 🇭🇰 Hong Kong
-vless://73bcd72f-9545-4cb8-8daf-7d004501880d@172.67.65.53:2087?encryption=none&type=ws&host=shanxp.dpdns.org&path=%2Ffp%3Dchrome&security=tls&fp=chrome&sni=shanxp.dpdns.org#16. 🇸🇪 Sweden
-vless://77777777-8a3e-6666-b6d1-a9c5f0e8b3a2@104.16.150.7:2087?type=ws&security=tls&fp=chrome&sni=faxf32gkfzoxqv.fx6hsv0.ccwu.cc&ed=2560&eh=Sec-WebSocket-Protocol#17. 🇸🇪 Sweden
-vmess://eyJ2IjoiMiIsInBzIjoiMTguIFx1ZDgzY1x1ZGRlZFx1ZDgzY1x1ZGRmMCBIb25nIEtvbmciLCJhZGQiOiJwbGFuYi5tb2pjbi5jb20ubGludXhsaC54aW4iLCJwb3J0IjoiMTY2MzIiLCJ0eXBlIjoibm9uZSIsImlkIjoiOTdjNjM4YzYtODZkNS00Y2Y2LWI3MGItMTE0YzY4MDliNjM3IiwiYWlkIjoiMCIsIm5ldCI6IndzIiwicGF0aCI6Ii8iLCJob3N0IjoiNDA3YTJiYzZkNDUyZmY5M2U2ZDdiNzMwNzg1MzlkOWUubW9iZ3NsYi50YmNhY2hlLmNvbSIsInRscyI6IiJ9
-vless://03707fb7-0990-440f-88f6-b0e0f7242a38@104.16.75.46:443?type=ws&security=tls&fp=chrome&sni=de-new.ariyuz.org#19. 🇩🇪 Germany
-trojan://AE62539071@healthy-panda.rooster465.autos:443?security=tls#21. 🇮🇪 Ireland
+trojan://AE62539071@43.207.176.210:443?sni=whole-perch.rooster465.autos&type=tcp&fp=chrome#1. 🇸🇪 Sweden
+trojan://AE62539071@51.44.161.22:443?sni=distinct-quail.rooster465.autos&fp=chrome&type=tcp&path=%2f#2. 🇷🇺 Russia
+trojan://AE62539071@52.68.175.30:443?sni=on-roughy.rooster465.autos&type=tcp&path=/#3. 🇷🇺 Russia
+vmess://eyJhZGQiOiJkZWFwcC5qaXN1eXVuLnRvcCIsImFpZCI6MCwiaG9zdCI6ImRlYXBwLmppc3V5dW4udG9wIiwiaWQiOiI5YTFhMDVkOS02OWJlLTQ1ZDMtZTMyNi1jNjYyMWVkZjdiMzEiLCJuZXQiOiJ3cyIsInBhdGgiOiIvZGV2bSIsInBvcnQiOiIyMDUzIiwicHMiOiI0LiBcdWQ4M2NcdWRkZTlcdWQ4M2NcdWRkZWEgR2VybWFueSIsInNlY3VyaXR5IjoiYXV0byIsInNraXAtY2VydC12ZXJpZnkiOnRydWUsInNuaSI6IiIsInRscyI6InRscyIsInR5cGUiOiJhdXRvIiwidiI6IjIifQ
+trojan://AE62539071@52.195.10.183:443?sni=improved-anteater.rooster465.autos&fp=chrome&type=tcp&path=%2f#5. 🇸🇪 Sweden
+vmess://eyJhZGQiOiIxOTIuMjQ4LjE2My4xNDgiLCJhaWQiOjAsImlkIjoiNjQ3YzJkYzYtZmQ0OC00YTg0LTliNTktMTYzZGYxOWFkNmY5IiwibmV0Ijoid3MiLCJwYXRoIjoiLzY0N2MyZGM2LWZkNDgtNGE4NC05YjU5LTE2M2RmMTlhZDZmOSIsInBvcnQiOjUzMjI0LCJwcyI6IjguIPCfh6zwn4enIFVuaWVkIEtpbmdkb20iLCJzY3kiOiJhdXRvIiwic2tpcC1jZXJ0LXZlcmlmeSI6dHJ1ZSwidGxzIjoiIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9
+vless://77777777-8a3e-6666-b6d1-a9c5f0e8b3a2@172.64.147.104:2087?path=%2F&security=tls&encryption=none&insecure=0&host=faxf32gkfzoxqv.fx6hsv0.ccwu.cc&fp=chrome&type=ws&allowInsecure=0&sni=faxf32gkfzoxqv.fx6hsv0.ccwu.cc#9. 🇸🇪 Sweden
+trojan://AE62539071@185.14.47.238:443?security=tls&path=/#10. 🇸🇪 Sweden
+vless://b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb@savesafe.run:443?security=reality&encryption=none&pbk=wx4B5IBeGc_0h6XZW6714G7951zLUYILv6eNRSgPDl8&headerType=none&type=tcp&flow=xtls-rprx-vision&sni=savesafe.run&sid=e4f6a3446ac34a24&fp=ios#12. 🇺🇸 Unied Saes
+vmess://eyJhZGQiOiIyMDAxOmJjODozMmQ3OjFhOTo6MiIsImFpZCI6MCwiaG9zdCI6IjIwMDE6YmM4OjMyZDc6MWE5OjoyIiwiaWQiOiIzYTk2NmQyMC03YjlkLTQ4Y2MtYmEyYy04ZDM4MTYxYjZkM2EiLCJuZXQiOiJ3cyIsInBhdGgiOiIvZ2l0aHViLmNvbS9BbHZpbjk5OTktbmV3cGFjL2ZhbnFpYW5nIiwicG9ydCI6MjMzODgsInBzIjoiMTMuIFx1ZDgzY1x1ZGRlYlx1ZDgzY1x1ZGRmNyBGcmFuY2UiLCJzY3kiOiJhdXRvIiwic25pIjoiIiwidGxzIjpmYWxzZSwidHlwZSI6bnVsbCwidiI6Mn0
+vless://4b7a69d9-74cd-4ab2-bfb3-1d2093e8179f@0u1b-m23jqv.jumpnest.top:443?flow=xtls-rprx-vision&fp=chrome&pbk=rwR7H9XhX1w-LjcPCZiDnzV_sUUyJRSJvGYhIYHmS3E&security=reality&sid=28bf2d7deea465ff&sni=www.bing.com&type=tcp#14. 🇧🇪 Belgium
+trojan://AE62539071@unbiased-garfish.rooster465.autos:443?security=tls&insecure=0&allowInsecure=0&type=tcp&headerType=none#16. 🇮🇪 Ireland
+trojan://AE62539071@up-dinosaur.rooster465.autos:443?security=tls&insecure=0&headerType=&type=tcp&allowInsecure=0#17. 🇩🇪 Germany
+vless://77777777-8a3e-6666-b6d1-a9c5f0e8b3a2@172.64.52.30:2087?path=%2F&security=tls&encryption=none&insecure=0&fp=chrome&type=ws&allowInsecure=0&sni=faxf32gkfzoxqv.fx6hsv0.ccwu.cc#18. 🇷🇺 Russia
+vmess://eyJhZGQiOiIyMTYuMTI4LjE3Ni4xNjYiLCJhaWQiOiIwIiwiaG9zdCI6IiIsImlkIjoiZWJjYTU1OWMtYTRhMS00MDYyLTk0NTMtNjQxMmQ4ZmY1MjU1IiwibmV0Ijoid3MiLCJwYXRoIjoiL2ViY2E1NTljLWE0YTEtNDA2Mi05NDUzLTY0MTJkOGZmNTI1NSIsInBvcnQiOiIyODgwOSIsInBzIjoiMjAuIFx1ZDgzY1x1ZGRlOFx1ZDgzY1x1ZGRlNiBDYW5hZGEiLCJzY3kiOiJhdXRvIiwic25pIjoiIiwidGVzdF9uYW1lIjoiNDciLCJ0bHMiOiIiLCJ0eXBlIjoiIiwidiI6IjIifQ
+trojan://AE62539071@52.195.215.182:443?sni=premium-perch.rooster465.autos&type=tcp&path=/#21. 🇸🇪 Sweden
+trojan://BxceQaOe@16.162.103.28:53001?sni=t.me/ripaojiedian#22. 🇫🇮 Finland
+trojan://AE62539071@funny-hen.rooster465.autos:443?security=tls&insecure=0&allowInsecure=0&type=tcp&headerType=none#23. 🇮🇪 Ireland
+vless://03707fb7-0990-440f-88f6-b0e0f7242a38@104.16.75.46:443?type=ws&headerType=none&security=tls&encryption=none&sni=de-new.ariyuz.org&path=%2F&insecure=0#24. 🇩🇪 Germany
+trojan://AE62539071@43.202.55.63:443?sni=causal-ladybug.rooster465.autos&type=tcp&path=/#26. 🇩🇪 Germany
+vmess://eyJhZGQiOiI0Ny4yNDMuMzkuMjUxIiwiYWlkIjoiMCIsImFscG4iOiIiLCJmcCI6IiIsImhvc3QiOiIiLCJpZCI6IjQ3NTA2NzEzLTUwOGUtNDQxYS1iYjAyLTU2ZWI2NzliNGRjOSIsImluc2VjdXJlIjoiMCIsIm5ldCI6IndzIiwicGF0aCI6Ii8iLCJwb3J0IjoiMzI5MTMiLCJwcyI6IjI3LiBcdWQ4M2NcdWRkZWRcdWQ4M2NcdWRkZjAgSG9uZyBLb25nIiwic2N5IjoiYXV0byIsInNuaSI6IiIsInRscyI6IiIsInR5cGUiOiJub25lIiwidiI6IjIifQ
+trojan://AE62539071@43.207.166.211:443?sni=proper-mouse.rooster465.autos&allowInsecure=1&type=tcp#28. 🇸🇪 Sweden
+trojan://AE62539071@52.198.117.121:443?sni=relevant-cicada.rooster465.autos&type=tcp&path=/#29. 🇸🇪 Sweden
+trojan://8bS8vVC5CQ2GsckhMh8IT1jv@193.124.46.65:443?type=tcp&security=tls&sni=193.124.46.65&fp=chrome&alpn=http%2F1.1#31. 🇹🇷 urkey
+vless://3c04e891-dc32-40a3-bcd0-d5e8283a6a03@polished-firefly-3e2d.20-645.workers.dev:8880?security=none&type=ws#32. 🇭🇰 Hong Kong
+trojan://ND91608427@43.201.56.44:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=distinct-llama.rooster465.autos#33. 🇰🇷 Souh Korea
+trojan://FH72359861@champion-panther.rooster465.autos:443?security=tls&sni=champion-panther.rooster465.autos#34. 🇯🇵 Japan
+trojan://AE62539071@54.168.18.107:443?sni=game-thrush.rooster465.autos&allowInsecure=1&type=tcp#35. 🇸🇪 Sweden
+trojan://ND91608427@definite-malamute.rooster465.autos:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=definite-malamute.rooster465.autos#36. 🇰🇷 Souh Korea
+trojan://ND91608427@3.36.59.34:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=select-ferret.rooster465.autos#37. 🇰🇷 Souh Korea
+vmess://eyJhZGQiOiIxNjUuMTQwLjIxNi4xNDIiLCJhaWQiOiIwIiwiaWQiOiJiNjVhMmQ2OS01NjM0LTQyYTItZTRiZS01NGU4YTYxNzY5MDAiLCJuZXQiOiJ0Y3AiLCJwb3J0IjoiNDQzIiwicHMiOiIzOS4g8J+HuvCfh7ggVW5pZWQgU2FlcyIsInNjeSI6ImF1dG8iLCJza2lwLWNlcnQtdmVyaWZ5Ijp0cnVlLCJ0bHMiOiIiLCJ0eXBlIjoiIiwidiI6IjIifQ
+trojan://ND91608427@43.202.56.122:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=striking-maggot.rooster465.autos#40. 🇰🇷 Souh Korea
+vless://2c634977-584e-4e1f-b501-1b70c77a6743@78.159.250.33:18443?encryption=none&flow=xtls-rprx-vision&fp=chrome&security=tls&sni=disagreedebut.net&type=raw#42. 🇷🇺 Russia
+vless://2e3431ac-0b98-4471-9822-6b7ae94a9a11@anydesk.com:8880?&security=false&fp=chrome&type=ws&headerType=none&host=polished-hall-7427.463-5d2.workers.dev&path=%2Fpyip%3DProxyIP.SG.CMLiussss.net#43. 🇭🇰 Hong Kong
+trojan://8r%3C%5B9%27l6hAO%238ZQi@149.28.56.202:443/?type=tcp&security=tls&sni=Koma-YT.PAGeS.Dev#44. 🇺🇸 Unied Saes
+trojan://AE62539071@3.112.4.72:443?sni=definite-hen.rooster465.autos&fp=chrome&type=tcp&path=%2f#45. 🇸🇪 Sweden
+trojan://AE62539071@3.36.108.20:443?sni=sacred-hound.rooster465.autos&allowInsecure=1&type=tcp#46. 🇸🇪 Sweden
+vmess://eyJhZGQiOiJtMDFjN2IyejI2ZHRxZ2VlLnYuM2Rucy52aXAiLCJhaWQiOjAsImlkIjoiZjIzYmI0MjdjMWY5NDM3Mzg3NmMyZjQzZTlmNzkwZjMiLCJuZXQiOiJ3cyIsInBhdGgiOiIvd3Mtdm1lc3MiLCJwb3J0Ijo0NDMsInBzIjoiNDcuIFx1ZDgzY1x1ZGRlZFx1ZDgzY1x1ZGRmMCBIb25nIEtvbmciLCJzY3kiOiJhdXRvIiwic2tpcC1jZXJ0LXZlcmlmeSI6dHJ1ZSwidGxzIjoidGxzIiwidHlwZSI6Im5vbmUiLCJ2IjoiMiJ9
+trojan://AE62539071@54.238.196.238:443?sni=balanced-goat.rooster465.autos&type=tcp&path=%2f#48. 🇭🇰 Hong Kong
+vmess://eyJhZGQiOiJkcmJrZzE2ZWdmM2Z6bG0zLnYuM2Rucy52aXAiLCJhaWQiOjAsImlkIjoiZjIzYmI0MjdjMWY5NDM3Mzg3NmMyZjQzZTlmNzkwZjMiLCJuZXQiOiJ3cyIsInBhdGgiOiIvd3Mtdm1lc3MiLCJwb3J0Ijo0NDMsInBzIjoiNDkuIFx1ZDgzY1x1ZGRlZFx1ZDgzY1x1ZGRmMCBIb25nIEtvbmciLCJzZWN1cml0eSI6ImF1dG8iLCJ0bHMiOiJ0bHMifQ
+vless://b8cd08fd-a19a-4ad0-b8ae-b664b89791da@104.17.181.19:8880?encryption=none&type=ws&host=sweet-scene-bffd.312-860.workers.dev&path=%2Fpyip%3DProxyIP.KR.CMLiussss.net&security=none#50. 🇸🇪 Sweden
+vmess://eyJhZGQiOiIxMzIuMTQ1LjgwLjIzMCIsImFpZCI6MCwiaWQiOiI1MTU1ODYwZS1kMDdkLTQ2YzMtOTEyOC0zYWZiZDg0NjI2YzciLCJuZXQiOiJ3cyIsInBhdGgiOiIvY2N0djEzLm0zdTgiLCJwb3J0Ijo4MCwicHMiOiI1MS4g8J+HsPCfh7cgU291aCBLb3JlYSIsInNjeSI6ImF1dG8iLCJza2lwLWNlcnQtdmVyaWZ5Ijp0cnVlLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0
+trojan://ND91608427@internal-sunbird.rooster465.autos:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=internal-sunbird.rooster465.autos#52. 🇯🇵 Japan
+vmess://eyJhZGQiOiJ2MnAtdXMtZC55d2FuZHkudG9wIiwiYWlkIjowLCJob3N0IjoiIiwiaWQiOiJiODMxMzgxZC02MzI0LTRkNTMtYWQ0Zi04Y2RhNDhiMzA4MTEiLCJuZXQiOiJ3cyIsInBhdGgiOiIvYmxvZyIsInBvcnQiOiI5NDQ0IiwicHMiOiI1My4g8J+HuvCfh7ggVW5pZWQgU2FlcyIsInNuaSI6IiIsInRscyI6InRscyIsInR5cGUiOiJub25lIiwidiI6IjIifQ
+vless://77777777-8a3e-6666-b6d1-a9c5f0e8b3a2@172.64.52.97:2087?path=%2F&security=tls&encryption=none&insecure=0&host=faxf32gkfzoxqv.fx6hsv0.ccwu.cc&fp=chrome&type=ws&allowInsecure=0&sni=faxf32gkfzoxqv.fx6hsv0.ccwu.cc#55. 🇷🇺 Russia
+vless://58e78cf6-2b50-40fb-b6bf-ec7eae5b5000@hi.n2foriran.workers.dev:443?type=ws&security=tls&fp=chrome#56. 🇭🇰 Hong Kong
+vless://03707fb7-0990-440f-88f6-b0e0f7242a38@104.16.75.42:443?type=ws&headerType=none&security=tls&encryption=none&sni=de-new-1.ariyuz.org&path=%2F&insecure=0#57. 🇩🇪 Germany
+trojan://ND91608427@15.237.137.197:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=fancy-skink.rooster465.autos#59. 🇫🇷 France
+vmess://eyJhZGQiOiJjZi5sZXZpa29namdmZGQuaXIiLCJhaWQiOiIwIiwiYWxwbiI6IiIsImZwIjoiIiwiaG9zdCI6ImRlYXBwLmppc3V5dW4udG9wIiwiaWQiOiI5YTFhMDVkOS02OWJlLTQ1ZDMtZTMyNi1jNjYyMWVkZjdiMzEiLCJpbnNlY3VyZSI6IjAiLCJuZXQiOiJ3cyIsInBhdGgiOiIvZGV2bSIsInBvcnQiOiIyMDUzIiwicHMiOiI2MC4gXHVkODNjXHVkZGU5XHVkODNjXHVkZGVhIEdlcm1hbnkiLCJzY3kiOiJhdXRvIiwic25pIjoiIiwidGxzIjoidGxzIiwidHlwZSI6Ii0tLSIsInYiOiIyIn0
+vless://e6d8d743-a9bc-48c9-be99-8f3cc94d16e1@ako.pagate.top:443?flow=xtls-rprx-vision&fp=chrome&packetEncoding=xudp&security=tls&sni=ako.pagate.top&type=tcp#61. 🇰🇷 Souh Korea
+trojan://AE62539071@52.195.229.14:443?sni=superb-dory.rooster465.autos&type=tcp&path=%2f#62. 🇸🇪 Sweden
+trojan://AE62539071@54.64.255.224:443?sni=maximum-elk.rooster465.autos&fp=chrome&type=tcp&path=%2f#63. 🇭🇰 Hong Kong
+trojan://AE62539071@simple-rodent.rooster465.autos:443?security=tls&insecure=0&allowInsecure=0&type=tcp&headerType=none#64. 🇸🇬 Singapore
+trojan://AE62539071@52.192.243.203:443?sni=pet-antelope.rooster465.autos&allowInsecure=1&type=tcp#65. 🇸🇪 Sweden
+trojan://AE62539071@18.181.118.40:443?sni=definite-panda.rooster465.autos&type=tcp&path=/#66. 🇸🇪 Sweden
+vmess://eyJhZGQiOiIxNjguMTM4LjQzLjc1IiwiYWlkIjoiMCIsImFscG4iOm51bGwsImZwIjpudWxsLCJob3N0IjpudWxsLCJpZCI6IjExYzM2MjdmLTMxZTgtNDY5NS1kZmJkLTM0MDc2ZTJmMWY1ZCIsIm5ldCI6IndzIiwicGF0aCI6Ii9jY3R2MTMubTN1OCIsInBvcnQiOjgwLCJwcyI6IjY4LiBcdWQ4M2NcdWRkZWZcdWQ4M2NcdWRkZjUgSmFwYW4iLCJzY3kiOiJhdXRvIiwic25pIjpudWxsLCJ0bHMiOm51bGwsInR5cGUiOm51bGwsInYiOm51bGx9
+vless://b2744db0-1c64-4218-a93b-9eba0e5f811f@109.120.152.86:2053?encryption=none&type=tcp&security=reality&flow=xtls-rprx-vision&sni=fi-one.quiet-rogue.site&pbk=AKUQO-fKsD19FFBxNq5XTFCRXWDZfes4zJjRINY1KUI&sid=beff3ff061a64cfd&fp=firefox#69. 🇬🇧 Unied Kingdom
+trojan://AE62539071@54.244.169.225:443?type=tcp&security=tls&encryption=none&fp=chrome&sni=sharing-duck.rooster465.autos#71. 🇺🇸 Unied Saes
+vmess://eyJhZGQiOiI0Ny43Ni4xOTcuNzIiLCJhaWQiOiIwIiwiaG9zdCI6Ik0wMWM3QjJ6MjZEdFFHRWUudi4zZG5zLnZpcCIsImlkIjoiZjIzYmI0MjdjMWY5NDM3Mzg3NmMyZjQzZTlmNzkwZjMiLCJuZXQiOiJ3cyIsInBhdGgiOiIvd3Mtdm1lc3MiLCJwb3J0Ijo0NDMsInBzIjoiNzIuIFx1ZDgzY1x1ZGRlZFx1ZDgzY1x1ZGRmMCBIb25nIEtvbmciLCJza2lwLWNlcnQtdmVyaWZ5Ijp0cnVlLCJ0bHMiOiJ0bHMiLCJ0eXBlIjoibm9uZSIsInYiOiIyIn0
+trojan://8r%3C%5B9%27l6hAO%238ZQi@152.53.153.158:8443/?type=tcp&security=tls&sni=Koma-YT.PAGeS.Dev#76. 🇺🇸 Unied Saes
+trojan://FH72359861@flexible-pony.rooster465.autos:443?security=tls#77. 🇯🇵 Japan
+trojan://AE62539071@54.64.189.3:443?sni=ideal-phoenix.rooster465.autos&type=tcp&path=/#78. 🇷🇺 Russia
+trojan://BO7e2KO_KlAjuJY-HYoabQ@172.67.131.41:443/?type=tcp&security=tls&sni=n21-at.netzrun.com&allowInsecure=1#79. 🇭🇰 Hong Kong
+trojan://AE62539071@infinite-tuna.rooster465.autos:443?security=tls#81. 🇰🇷 Souh Korea
+trojan://7e70223b-f331-41d5-9313-02b8d2df2885@45.67.201.210:20001/?type=tcp&security=tls&sni=hk.catxstar.com&allowInsecure=1#82. 🇸🇪 Sweden
+trojan://ND91608427@43.203.244.203:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=grateful-owl.rooster465.autos#83. 🇰🇷 Souh Korea
+vmess://eyJhZGQiOiJydXNoLTZpdDZiLnRlZW9wcC5xdWVzdCIsImFpZCI6IjAiLCJob3N0IjoiIiwiaWQiOiIwM2ZjYzYxOC1iOTNkLTY3OTYtNmFlZC04YTM4Yzk3NWQ1ODEiLCJuYXRpb24iOiIiLCJuZXQiOiJ3cyIsInBhdGgiOiIvIiwicG9ydCI6IjQ0MyIsInBzIjoiODQuIPCfh7rwn4e4IFVuaWVkIFNhZXMiLCJzY3kiOiJhdXRvIiwic2VydmVyUG9ydCI6MCwic25pIjoicnVzaC02aXQ2Yi50ZWVvcHAucXVlc3QiLCJ0bHMiOiJ0bHMiLCJ0eXBlIjoiIiwidiI6IjIifQ
+trojan://Bw5Mz7QkVp@64.176.181.41:443/?type=tcp&security=tls&sni=z-v2-077925.kailib.com#86. 🇫🇮 Finland
+trojan://ND91608427@35.72.13.34:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=casual-bee.rooster465.autos#88. 🇯🇵 Japan
+trojan://ND91608427@18.178.132.111:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=devoted-heron.rooster465.autos#89. 🇯🇵 Japan
+vmess://eyJ2IjoiMiIsInBzIjoiOTEuIFx1ZDgzY1x1ZGRlZFx1ZDgzY1x1ZGRmMCBIb25nIEtvbmciLCJhZGQiOiJ2YWg0dXJkemwzamR4NXIyLnYuM2Rucy52aXAiLCJwb3J0IjoiNDQzIiwidHlwZSI6Im5vbmUiLCJpZCI6ImYyM2JiNDI3YzFmOTQzNzM4NzZjMmY0M2U5Zjc5MGYzIiwiYWlkIjoiMCIsIm5ldCI6IndzIiwicGF0aCI6Ii93cy12bWVzcyIsImhvc3QiOiJWQUg0VVJkWkwzakRYNXIyLnYuM2Rucy52aXAiLCJ0bHMiOiJ0bHMiLCJza2lwLWNlcnQtdmVyaWZ5Ijp0cnVlfQ
+trojan://AE62539071@3.113.21.187:443?sni=awaited-lark.rooster465.autos&allowInsecure=1&type=tcp&fp=chrome#92. 🇸🇪 Sweden
+vmess://eyJhZGQiOiJjaGF0Z3B0LmNvbSIsImFscG4iOiIiLCJmcCI6IiIsImhvc3QiOiIiLCJpZCI6IjYwNDQxNTQ4LWI2OGUtNDNiMi04MTkxLWUzYjg4NGJlNGIzYyIsIm5ldCI6IndzIiwicGF0aCI6Ii9sTW5zWlVONC8iLCJwb3J0IjoiODQ0MyIsInBzIjoiOTMuIPCfh7rwn4e4IFVuaWVkIFNhZXMiLCJzY3kiOiJhdXRvIiwic25pIjoidjJyYXkxLmRvemFwcC54eXoiLCJ0bHMiOiJ0bHMiLCJ2IjoiMiJ9
+trojan://Aimer@188.164.159.98:2083/?type=tcp&security=tls&sni=agepm.ambercc.filegear-sg.me#94. 🇳🇱 he Neherlands
+trojan://AE62539071@climbing-frog.rooster465.autos:443?security=tls#96. 🇯🇵 Japan
+trojan://ND91608427@3.112.223.141:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=internal-sunbird.rooster465.autos#97. 🇯🇵 Japan
+vless://160ca353-676d-4b7f-a041-0289e388b865@skk.moe:8880?type=ws&security=false&path=%2Fpyip%3DProxyIP.SG.CMLiussss.net&host=proud-cloud-7bdd.208-a52.workers.dev&sni=skk.moe&fp=chrome#99. 🇭🇰 Hong Kong
+vmess://eyJhZGQiOiJuMTc2MTI5Njg5Mi40dTltYS5pY3UiLCJhaWQiOjAsImhvc3QiOiJuMTc2MTI5Njg5Mi40dTltYS5pY3UiLCJpZCI6ImQ2ZGIxMjhmLTQyYjktNDBiMS1iOTc5LTVlMDA5NWZhNTkzYyIsIm5ldCI6IndzIiwicGF0aCI6Ii8iLCJwb3J0Ijo0NDMsInBzIjoiMTAyLiBcdWQ4M2NcdWRkZWRcdWQ4M2NcdWRkZjAgSG9uZyBLb25nIiwic2VjdXJpdHkiOiJhdXRvIiwic2tpcC1jZXJ0LXZlcmlmeSI6dHJ1ZSwic25pIjoiIiwidGxzIjoidGxzIiwidHlwZSI6ImF1dG8ifQ
+trojan://8r%3C%5B9%27l6hAO%238ZQi@159.242.242.253:443/?type=tcp&security=tls&sni=Koma-YT.PAGeS.Dev#103. 🇺🇸 Unied Saes
+trojan://Aimer@ignacio.ns.cloudflare.com:443/?type=tcp&security=tls&sni=epmf.ambercc.filegear-sg.me#105. 🇩🇪 Germany
+vless://fc60147e-76b8-4bc5-b691-90b2da79e3d2@104.17.3.81:443?path=%2F138.2.74.219-28616&security=tls&encryption=none&insecure=0&host=nautica-cff.kloningstrife002.workers.dev&fp=chrome&type=ws&allowInsecure=0&sni=nautica-cff.kloningstrife002.workers.dev#106. 🇸🇪 Sweden
+trojan://ND91608427@43.203.203.244:443?security=tls&insecure=0&headerType=none&fp=chrome&type=tcp&allowInsecure=0&sni=main-whippet.rooster465.autos#107. 🇰🇷 Souh Korea
+trojan://ND91608427@communal-sunbird.rooster465.autos:443?security=tls&insecure=0&headerType=none&type=tcp&allowInsecure=0&sni=communal-sunbird.rooster465.autos#109. 🇰🇷 Souh Korea
+trojan://FH72359861@43.202.61.210:443?security=tls&sni=loyal-molly.rooster465.autos#113. 🇰🇷 Souh Korea
 vless://ff1b0b50-70dc-4bae-866e-55cff86f4d6d@newlinkplease.su:443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=newlinkplease.su&fp=firefox&security=reality&pbk=lE6w45X8Bwb0HscO6Wa5wnN0qlw7wUuaCW8-iYL5HAQ&sid=bc609efa3b2d052f#Получите новые ссылки
 vless://47388561-cf0c-4cfc-91f8-fdfd9fa3d756@newlinkplease.su:8443/?type=tcp&encryption=none&flow=xtls-rprx-vision&sni=newlinkplease.su&fp=firefox&security=reality&pbk=B5F8h8tpeZ-1ydiT0uFgdc30jJyw8H89Y8e-p_VV6yw&sid=7b
 vless://507e8554-4941-4297-9196-af102455f6ed@186.246.6.189:443?encryption=none&pbk=unNROkbh95ZZNHzG2RIkgrFftOLldNH0ccmtW63CziE&security=reality&serviceName=ebl&sni=optim.tildacdn.pub&type=grpc&fp=edge##🇷🇺1 Россия 🚀
@@ -279,7 +345,6 @@ vless://1a17b19d-4896-4531-af79-6e91d8ef8228@18.143.154.28:8686?encryption=none&
 vless://1a17b19d-4896-4531-af79-6e91d8ef8228@54.180.26.164:8686?encryption=none&security=reality&type=tcp&sni=www.apple.com&pbk=A3NXnUIT-W0m1Y_leRnv5so2IeCvk9FCFgL31PulfTw&sid=628b3c90c98ead4f#🇰🇷 Республика Корея
 vless://b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb@savesafe.co:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&pbk=6z3YcVP0f2pK3iANKIkBUZOgNeErDjxY83mHZG5jrnI&security=reality&sid=f63805c3ecc7a483&sni=savesafe.co&type=tcp#🌐 Неизвестно
 vless://b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb@kz.savesafe.kz:443?encryption=none&flow=xtls-rprx-vision&fp=chrome&pbk=_-iZt_zsuSnYKNldfwXQlnH6SqbLJILP4qApHbaKax0&security=reality&sid=3e70d5cbb01bddfd&sni=savesafe.kz&type=tcp#🌐 Неизвестно
-vless://b5ca5ab3-8cbc-4ac3-89da-9cd360589ecb@savesafe.run:443?encryption=none&flow=xtls-rprx-vision&fp=firefox&pbk=wx4B5IBeGc_0h6XZW6714G7951zLUYILv6eNRSgPDl8&security=reality&sid=e4f6a3446ac34a24&sni=savesafe.run&type=tcp#🌐 Неизвестно
 vless://4c0b7280-76bb-495c-9c8b-f05712ebf805@www.5h.com:443?encryption=none&security=tls&sni=youxuanku.kdns.fr&fp=chrome&insecure=0&allowInsecure=0&type=ws&host=youxuanku.kdns.fr&path=%2F#🌐 Неизвестно
 vless://c739bb1d-5fc7-4f45-acec-534267a1f1e7@3696b38bsg.murphyweb.sbs:42576?encryption=none&flow=xtls-rprx-vision&security=reality&sni=www.yahoo.com&fp=chrome&pbk=z8A9zDSdi94sN7KskpYmCoVeuCJOGCA8EHPI8dBZWxE&sid=dfcfcb51&type=tcp&headerType=none#🌐 Неизвестно
 vless://c739bb1d-5fc7-4f45-acec-534267a1f1e7@3696b38bsg.murphyweb.sbs:23699?encryption=none&flow=xtls-rprx-vision&security=reality&sni=buylite.music.apple.com&fp=chrome&pbk=OdTELUjAUKO_qr-O-uihaAZJAhA8GyIWVI6CpozVCU4&sid=6c6c7c97&type=tcp&headerType=none#🌐 Неизвестно
