@@ -1,5 +1,5 @@
 // --- TG PROXY STATISTICS ---
-// Updated      : 2026-08-21 19:43:27
+// Updated      : 2026-08-21 20:41:28
 // Working (verified): 201
 tg://proxy?server=193.233.131.92&port=443&secret=eebbe04f8373290b0c5ae158d6eda805536f7a6f6e2e7275
 tg://proxy?server=chestno.servera-dlya-tg-zdes-net.abrdns.com&port=443&secret=eea65c7fc5a0d5669ba371a7ca88fc19496f7a6f6e2e7275
