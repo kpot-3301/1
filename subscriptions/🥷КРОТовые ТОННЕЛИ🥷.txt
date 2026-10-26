@@ -1,7 +1,7 @@
 #profile-title:🥷КРОТовые ТОННЕЛИ🥷
 #subscription-userinfo:upload=0; download=0; total=0; expire=0
 #profile-update-interval:1
-#announce:ТОННЕЛЕЙ: 214 | 📅 26-10-2026 05:04
+#announce:ТОННЕЛЕЙ: 119 | 📅 26-10-2026 10:58
 vless://00000000-0000-0000-0000-000000000000@127.0.0.1:443?security=tls&type=tcp#Подписка+недействительна.+Новая+ссылка+на+канале
 vless://122bbb97-7819-4e48-8b4f-164045b8419b@217.60.62.22:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=firefox&pbk=LlmeRLZaOVzOFU5YPLBxAHtHVjyrM0HdCXOrZxvbBBM&sid=c6&type=tcp&headerType=none#🇪🇺 ⚡️Европа | Game 🎮
 vless://122bbb97-7819-4e48-8b4f-164045b8419b@217.60.62.113:443?encryption=none&flow=xtls-rprx-vision&security=reality&sni=ads.x5.ru&fp=firefox&pbk=LlmeRLZaOVzOFU5YPLBxAHtHVjyrM0HdCXOrZxvbBBM&sid=c6&type=tcp&headerType=none#🇪🇺⚡️Европа | Game 🎮 №2
@@ -119,100 +119,5 @@ vless://c561e048-6274-4c28-ba93-66c1a2915070@158.160.224.149:8443?fp=chrome&type
 vless://cbb26a8d-bbc0-45aa-bca1-294ca8b89af8@84.201.177.246:3001?mode=auto&path=%2Fapi%2Fv2%2Fconfig%2Fsync&security=reality&encryption=none&extra=%7B%22host%22%3A%22%22%2C%22path%22%3A%22%22%2C%22mode%22%3A%22stream-one%22%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22xPaddingObfsMode%22%3Afalse%2C%22xPaddingKey%22%3A%22%22%2C%22xPaddingHeader%22%3A%22%22%2C%22xPaddingPlacement%22%3A%22%22%2C%22xPaddingMethod%22%3A%22%22%2C%22uplinkHTTPMethod%22%3A%22%22%2C%22sessionPlacement%22%3A%22%22%2C%22sessionKey%22%3A%22%22%2C%22seqPlacement%22%3A%22%22%2C%22seqKey%22%3A%22%22%2C%22uplinkDataPlacement%22%3A%22%22%2C%22uplinkDataKey%22%3A%22%22%2C%22uplinkChunkSize%22%3A0.0%2C%22noGRPCHeader%22%3Afalse%2C%22noSSEHeader%22%3Afalse%2C%22scMaxEachPostBytes%22%3A%220%22%2C%22scMinPostsIntervalMs%22%3A%220%22%2C%22scMaxBufferedPosts%22%3A0.0%2C%22scStreamUpServerSecs%22%3A%2220-40%22%2C%22xmux%22%3A%7B%22maxConcurrency%22%3A%2216-32%22%2C%22maxConnections%22%3A%220%22%2C%22cMaxReuseTimes%22%3A%2296-192%22%2C%22hMaxRequestTimes%22%3A%22400-600%22%2C%22hMaxReusableSecs%22%3A%221800-3000%22%2C%22hKeepAlivePeriod%22%3A0.0%7D%7D&pbk=XQR4nMq5aBnJ4h1RTCRRJdkdtO0Mtitt1cDtY0whkBI&fp=chrome&allowinsecure=0&type=xhttp&sni=cdnv-img.perekrestok.ru&sid=4290504c2519791b#🇫🇷+FR+(Для+белых+списков)
 vless://f27a811b-9509-4dc5-86b1-2019e8635efa@95.163.211.237:8181?security=reality&encryption=none&pbk=Z84J2IelR9ch3k8VtlVhhs5ycBUlXA7wHBWcBrjqnAw&headerType=none&fp=qq&allowinsecure=0&type=tcp&sni=ads.x5.ru&sid=7dbf7d3233971d5c#🇳🇱+NL+(Для+белых+списков)
 vless://c561e048-6274-4c28-ba93-66c1a2915070@158.160.224.52:40443?mode=gun&security=reality&encryption=none&authority=max.ru&pbk=qsqnCjigfD1_V7th-DKRtIrHuhyjN7kSnd85PBH5b2U&fp=chrome&spx=%2F&allowinsecure=0&type=grpc&serviceName=max-ru%2Fd0fda5e9&sni=max.ru&sid=22c70831c63f4abe#🇷🇺+RU+(Для+белых+списков)
-vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@163.245.42.48:443?flow=xtls-rprx-vision&security=reality&sni=mother-earth.fyi&fp=firefox&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc#🇫🇷 Франция
-vless://0af34045-3d5e-4abe-bc8a-16e356daa214@de.vmagnum.win:443?security=tls&sni=api-v3-0af34045.vmagnum.win&alpn=h2&fp=firefox&type=xhttp&path=%2F&mode=stream-one&extra=%7B%22xmux%22%3A%7B%22maxConnections%22%3A1%2C%22maxReuseTimes%22%3A0%7D%7D#🇩🇪 Германия
-vless://b9bfa54d-bc44-4592-a6d6-89a9665d286f@edge.bookmai.com:443?flow=xtls-rprx-vision&security=reality&sni=mother-earth.fyi&fp=firefox&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&packetEncoding=xudp#🇫🇷 Франция
-vless://0af34045-3d5e-4abe-bc8a-16e356daa214@50.7.28.211:443?security=tls&sni=api-v3-0af34045.vmagnum.win&fp=firefox&type=xhttp&path=%2F&mode=auto#🇩🇪 Германия
-vless://7d1a74fd-8a38-4a29-863f-5da53a9e557e@50.7.87.93:443?security=tls&sni=7d1a74fd.ferrin.uk&fp=firefox&type=xhttp&path=%2Fes&mode=auto#🇪🇸 Испания | 🔗 Каскад
-vless://7d1a74fd-8a38-4a29-863f-5da53a9e557e@50.7.216.174:443?security=tls&sni=7d1a74fd.ferrin.uk&alpn=h2&fp=firefox&type=xhttp&path=%2Fes&mode=stream-one&packetEncoding=xudp#🇪🇸 Испания | 🔗 Каскад
-vless://f259a2e5-fd8d-4db9-a3ac-6b26322cffa9@pl-cfe6b10b7f.shamanapp.online:34451?security=tls&sni=pl-cfe6b10b7f.shamanapp.online&alpn=h2%2Chttp%2F1.1&fp=firefox&type=xhttp&path=%2FShamanXHTTP2026&host=pl-cfe6b10b7f.shamanapp.online&mode=stream-up#🇵🇱 Польша
-vless://b3d079ff-b775-4ffe-bac9-41228b08b15b@143.246.211.163:443?flow=xtls-rprx-vision&security=reality&sni=fr.gorobsub.com&fp=firefox&pbk=_LNT4Kf7pPmeEBAnmJ7xsBu3y6Kih0Ew9AFVoDa3QSg#🇫🇷 Франция
-vless://680e92ac-1688-49e0-af96-7327fbc30ce8@103.91.147.221:443?flow=xtls-rprx-vision&security=reality&sni=abuse.ozon.ru&fp=firefox&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc#🇫🇷 Франция | 🔗 Каскад
-vless://680e92ac-1688-49e0-af96-7327fbc30ce8@193.223.104.113:443?flow=xtls-rprx-vision&security=reality&sni=gb.ozon.ru&fp=firefox&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc#🇬🇧 Великобритания | 🔗 Каскад
-vless://90ae81bc-cfa1-11f1-b03e-2ea5989f40a9@patriot6.timikillergames.online:443?flow=xtls-rprx-vision&security=reality&sni=patriot6.timikillergames.online&fp=firefox&pbk=jdI2QOHLEs3ilv7BHonO6sT0RuqfqcJD5Ol_DIEGxhM#🇳🇱 Нидерланды
-vless://90ae81bc-cfa1-11f1-b03e-2ea5989f40a9@patriot5.timikillergames.online:8443?security=reality&sni=patriot6.timikillergames.online&fp=firefox&pbk=ZYCjHvxGdkwCEkmH8i6VaEOa3GNexoTn0VS_7vt2S2I&type=grpc&serviceName=#🇳🇱 Нидерланды
-vless://90ae81bc-cfa1-11f1-b03e-2ea5989f40a9@patriot6.timikillergames.online:8443?security=reality&sni=patriot6.timikillergames.online&fp=firefox&pbk=ZYCjHvxGdkwCEkmH8i6VaEOa3GNexoTn0VS_7vt2S2I&type=grpc&serviceName=#🇳🇱 Нидерланды
-vless://90ae81bc-cfa1-11f1-b03e-2ea5989f40a9@patriot5.timikillergames.online:443?flow=xtls-rprx-vision&security=reality&sni=patriot5.timikillergames.online&fp=firefox&pbk=jdI2QOHLEs3ilv7BHonO6sT0RuqfqcJD5Ol_DIEGxhM#🇳🇱 Нидерланды
-vless://50a87e21-f0e2-4b53-a787-91adfe748f63@201.58.177.237:443?flow=xtls-rprx-vision&security=reality&sni=swedenafteraventura.space&fp=firefox&pbk=TyuIIquHoesD9YwMQJHda0YZ3Hy9Dh123dQ00iGK0QY#🇺🇸 США
-vless://30572b57-f5ab-4eb8-82d4-a24d399b99f6@196.247.163.10:443?flow=xtls-rprx-vision&security=reality&sni=britainmh.eosvpn.com&fp=firefox&pbk=5984Ah0pkfSVekU5xafQ1trZZN7MyNCJ-3KfCo-O6A4#🇬🇧 Великобритания
-vless://30572b57-f5ab-4eb8-82d4-a24d399b99f6@168.113.172.131:443?flow=xtls-rprx-vision&security=reality&sni=ad11.vkusnews.com&fp=firefox&pbk=Buy9pirx5Ih_LHwc6R3BCmvRL4g4Ljx6B3MEsZfIZhU#🇫🇮 Финляндия | 🔗 Каскад
-vless://1ef7d97f-3aa5-4fe6-8521-84cf4794bf7a@2.27.203.251:443?flow=xtls-rprx-vision&security=reality&sni=edge-fi2.lovely.my&fp=firefox&pbk=QYdQmsVvUj4jwo9gH20nJA5x015gaAL0nGipORe6ZmY#🇫🇮 Финляндия
-vless://680e92ac-1688-49e0-af96-7327fbc30ce8@103.91.147.209:443?flow=xtls-rprx-vision&security=reality&sni=gb.ozon.ru&fp=firefox&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc#🇬🇧 Великобритания | 🔗 Каскад
-vless://680e92ac-1688-49e0-af96-7327fbc30ce8@113.30.154.230:443?flow=xtls-rprx-vision&security=reality&sni=gb.ozon.ru&fp=firefox&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc#🇬🇧 Великобритания | 🔗 Каскад
-vless://32daf25d-9ffa-4f43-b6a3-2ebc21014681@163.245.52.230:443?flow=xtls-rprx-vision&security=reality&sni=www.tradingview.com&fp=firefox&pbk=MN2XIVlIusdWaGwyyrGZ7Ti3jzqjDlpMmc12WcrV1nU#🇪🇪 Эстония
-vless://32daf25d-9ffa-4f43-b6a3-2ebc21014681@201.58.179.103:443?flow=xtls-rprx-vision&security=reality&sni=www.tradingview.com&fp=firefox&pbk=MN2XIVlIusdWaGwyyrGZ7Ti3jzqjDlpMmc12WcrV1nU#🇺🇸 США
-vless://90ae81bc-cfa1-11f1-b03e-2ea5989f40a9@185.86.13.209:8443?security=reality&sni=patriot5.timikillergames.online&fp=firefox&pbk=ZYCjHvxGdkwCEkmH8i6VaEOa3GNexoTn0VS_7vt2S2I&type=grpc&serviceName=#🇳🇱 Нидерланды
-vless://90ae81bc-cfa1-11f1-b03e-2ea5989f40a9@185.86.13.209:443?flow=xtls-rprx-vision&security=reality&sni=patriot5.timikillergames.online&fp=firefox&pbk=jdI2QOHLEs3ilv7BHonO6sT0RuqfqcJD5Ol_DIEGxhM#🇳🇱 Нидерланды
-vless://90ae81bc-cfa1-11f1-b03e-2ea5989f40a9@185.86.13.5:443?flow=xtls-rprx-vision&security=reality&sni=patriot6.timikillergames.online&fp=firefox&pbk=jdI2QOHLEs3ilv7BHonO6sT0RuqfqcJD5Ol_DIEGxhM#🇳🇱 Нидерланды
-vless://d1641bc6-3757-43db-815a-9b3f4d9b0d7e@se13-node.rumedia-cdn.com:8443?flow=xtls-rprx-vision&security=reality&sni=www.wikipedia.org&fp=firefox&pbk=ndQzAcG4g-2OhvFb8EjFnZyxJ2lhawiulTLJOZrK8lY#🇸🇪 Швеция
-vless://680e92ac-1688-49e0-af96-7327fbc30ce8@147.45.46.154:443?flow=xtls-rprx-vision&security=reality&sni=ai.ozon.ru&fp=firefox&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc#🇩🇪 Германия | 🔗 Каскад
-vless://42c83523-9f96-41b2-82d6-2edb71a4ac19@80.66.84.114:443?flow=xtls-rprx-vision&security=reality&sni=pc3eu64nx1.static-nest.cyou&fp=firefox&pbk=fJnm6-PhJGSwHaAdJOzXkYOfCPPCWSlaZrtfm1XsqhA#🇹🇯 Таджикистан | 🔗 Каскад
-vless://680e92ac-1688-49e0-af96-7327fbc30ce8@37.235.249.5:443?flow=xtls-rprx-vision&security=reality&sni=gb.ozon.ru&fp=firefox&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc#🇬🇧 Великобритания | 🔗 Каскад
-vless://d1641bc6-3757-43db-815a-9b3f4d9b0d7e@se13-node.rumedia-cdn.com:2096?security=tls&sni=st5ff8a.rumedia-cdn.com&alpn=http%2F1.1&fp=firefox&type=ws&path=%2Fcdn%2Fv3%2Flive&host=st5ff8a.rumedia-cdn.com#🇸🇪 Швеция
-vless://d1641bc6-3757-43db-815a-9b3f4d9b0d7e@fi17-node.rumedia-cdn.com:8443?flow=xtls-rprx-vision&security=reality&sni=www.nokia.com&fp=firefox&pbk=14YyFG_j2yPEUu-gO_G9GqCqRiZ0DIUgzReV9CZvOAk#🇫🇮 Финляндия
-vless://42c83523-9f96-41b2-82d6-2edb71a4ac19@109.237.98.10:443?flow=xtls-rprx-vision&security=reality&sni=a2upe1lx.bitdepot.website&fp=firefox&pbk=fJnm6-PhJGSwHaAdJOzXkYOfCPPCWSlaZrtfm1XsqhA#🇫🇷 Франция | 🔗 Каскад
-vless://42c83523-9f96-41b2-82d6-2edb71a4ac19@109.237.98.225:443?flow=xtls-rprx-vision&security=reality&sni=sl3w6islj6c.pixelcache.cyou&fp=firefox&pbk=fJnm6-PhJGSwHaAdJOzXkYOfCPPCWSlaZrtfm1XsqhA#🇺🇸 США | 🔗 Каскад
-vless://680e92ac-1688-49e0-af96-7327fbc30ce8@147.45.46.152:443?flow=xtls-rprx-vision&security=reality&sni=gb.ozon.ru&fp=firefox&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc#🇬🇧 Великобритания | 🔗 Каскад
-vless://680e92ac-1688-49e0-af96-7327fbc30ce8@37.235.250.6:443?flow=xtls-rprx-vision&security=reality&sni=gb.ozon.ru&fp=firefox&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc#🇬🇧 Великобритания | 🔗 Каскад
-vless://d1641bc6-3757-43db-815a-9b3f4d9b0d7e@se14-node.rumedia-cdn.com:2096?security=tls&sni=st33614.rumedia-cdn.com&alpn=http%2F1.1&fp=firefox&type=ws&path=%2Fcdn%2Fv3%2Flive&host=st33614.rumedia-cdn.com#🇸🇪 Швеция
-vless://d1641bc6-3757-43db-815a-9b3f4d9b0d7e@pl4-node.rumedia-cdn.com:2096?security=tls&sni=stb6390.rumedia-cdn.com&alpn=http%2F1.1&fp=firefox&type=ws&path=%2Fcdn%2Fv3%2Flive&host=stb6390.rumedia-cdn.com#🇸🇪 Швеция
-vless://d1641bc6-3757-43db-815a-9b3f4d9b0d7e@2.27.13.152:2096?security=tls&sni=st4834a.rumedia-cdn.com&fp=firefox&type=ws&path=%2Fcdn%2Fv3%2Flive&host=st4834a.rumedia-cdn.com#🇫🇮 Финляндия
-vless://d1641bc6-3757-43db-815a-9b3f4d9b0d7e@2.27.13.152:8443?flow=xtls-rprx-vision&security=reality&sni=www.nokia.com&fp=firefox&pbk=14YyFG_j2yPEUu-gO_G9GqCqRiZ0DIUgzReV9CZvOAk#🇫🇮 Финляндия
-vless://d1641bc6-3757-43db-815a-9b3f4d9b0d7e@150.241.87.200:2096?security=tls&sni=stb6390.rumedia-cdn.com&fp=firefox&type=ws&path=%2Fcdn%2Fv3%2Flive&host=stb6390.rumedia-cdn.com#🇸🇪 Швеция
-vless://d1641bc6-3757-43db-815a-9b3f4d9b0d7e@191.44.114.179:8443?flow=xtls-rprx-vision&security=reality&sni=www.wikipedia.org&fp=firefox&pbk=WEHGKyXsOD5i2kNCJ3GrjeNZQBsrzH76OrPDJ7x2YwY#🇫🇮 Финляндия
-vless://d1641bc6-3757-43db-815a-9b3f4d9b0d7e@191.44.114.154:8443?flow=xtls-rprx-vision&security=reality&sni=www.wikipedia.org&fp=firefox&pbk=ndQzAcG4g-2OhvFb8EjFnZyxJ2lhawiulTLJOZrK8lY#🇸🇪 Швеция
-vless://d1641bc6-3757-43db-815a-9b3f4d9b0d7e@191.44.114.154:2096?security=tls&sni=st5ff8a.rumedia-cdn.com&fp=firefox&type=ws&path=%2Fcdn%2Fv3%2Flive&host=st5ff8a.rumedia-cdn.com#🇸🇪 Швеция
-vless://d1641bc6-3757-43db-815a-9b3f4d9b0d7e@191.44.114.179:2096?security=tls&sni=st33614.rumedia-cdn.com&fp=firefox&type=ws&path=%2Fcdn%2Fv3%2Flive&host=st33614.rumedia-cdn.com#🇫🇮 Финляндия
-vless://2c5e1028-528f-4017-8832-addcb6797ddf@ru.dostupnety.website:443?security=tls&sni=ru.dostupnety.website&fp=firefox&type=ws&path=%2Fws-hidden&host=ru.dostupnety.website#🇫🇮 Финляндия | 🔗 Каскад
-vless://e803ac83-49a8-45b9-bb72-98efbec8b59e@static.228.137.108.65.clients.your-server.de:443?security=tls&sni=static.230.137.108.65.clients.your-server.de&alpn=http%2F1.1&fp=firefox&type=ws&path=%2Fapi%2Fv1%2Fws&host=static.99.149.107.91.clients.your-server.de#🇫🇮 Финляндия
-vless://e803ac83-49a8-45b9-bb72-98efbec8b59e@178.63.249.50:443?security=tls&sni=static.213.56.69.159.clients.your-server.de&alpn=http%2F1.1&fp=firefox&type=ws&path=%2Fapi%2Fv1%2Fws&host=static.213.56.69.159.clients.your-server.de#🇩🇪 Германия
-vless://e803ac83-49a8-45b9-bb72-98efbec8b59e@135.181.245.209:443?security=tls&sni=static.50.44.217.95.clients.your-server.de&alpn=h2%2Chttp%2F1.1&fp=firefox&type=ws&path=%2Fapi%2Fv1%2Fws#🇫🇮 Финляндия
-vless://eeb96fef-4476-4ab0-915e-32e8f014c3b2@ns.90909.club:2096?security=reality&sni=id.vk.com&fp=firefox&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&type=grpc&serviceName=vless-grpc-reality#🇳🇱 Нидерланды | 🔗 Каскад
-vless://eeb96fef-4476-4ab0-915e-32e8f014c3b2@ss.90909.club:2096?security=reality&sni=id.vk.com&fp=firefox&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc&type=grpc&serviceName=vless-grpc-reality#🇫🇮 Финляндия | 🔗 Каскад
-vless://f7935f02-31c6-4417-acc4-ae8936697e8b@103.41.177.222:4443?security=tls&sni=usa-grpc.spacessupport.ru&type=grpc&serviceName=grpcfd90958517#🇺🇸 США
-vless://f7935f02-31c6-4417-acc4-ae8936697e8b@196.245.172.85:443?security=tls&sni=esp.spacessupport.com&type=xhttp&path=%2Fxh&host=esp.spacessupport.com&mode=auto#🇪🇸 Испания
-vless://e5b1421b-c710-4eae-a77e-b0ab5c11c6a7@104.167.24.169:443?flow=xtls-rprx-vision&security=reality&sni=avoro104.maxleshax.icu&fp=firefox&pbk=vZ22ThhkpXUd5-tY-v5TTrouLHjgYYmeQgqeLt7HRz0#🇩🇪 Германия
-vless://968c71ab-c205-409b-9b2d-3b44f758adf2@103.24.207.43:8443?flow=xtls-rprx-vision&security=reality&sni=edge-uk2.mystatic-cdn.ru&fp=firefox&pbk=65d6SIYIqiX-SN4vx_BnNiQJ8Lnr0HAgUKoT7WgWRgI#🇬🇧 Великобритания | 🔗 Каскад
-vless://d40fdcdb-8d6f-406d-a050-12e196fe8804@31.76.29.149:443?security=reality&sni=user.cdn-ui.info&fp=firefox&pbk=nwQzuNWtHZooD6W-T1OlQsEmalRRWOTmhXCdhF8ohTo&type=xhttp&path=%2Fapi%2Fv2%2Fupdates&mode=stream-one&extra=%7B%22xmux%22%3A%7B%22cMaxReuseTimes%22%3A0%2C%22maxConcurrency%22%3A%2216-32%22%2C%22maxConnections%22%3A0%2C%22hKeepAlivePeriod%22%3A0%2C%22hMaxRequestTimes%22%3A%22600-900%22%2C%22hMaxReusableSecs%22%3A%221800-3000%22%7D%2C%22headers%22%3A%7B%7D%2C%22noGRPCHeader%22%3Afalse%2C%22xPaddingBytes%22%3A%22100-1000%22%2C%22scMaxEachPostBytes%22%3A1000000%2C%22scMinPostsIntervalMs%22%3A30%2C%22scStreamUpServerSecs%22%3A%2220-80%22%7D#🇩🇪 Германия
-vless://d40fdcdb-8d6f-406d-a050-12e196fe8804@2.26.97.189:443?flow=xtls-rprx-vision&security=reality&sni=video.sream-video.shop&fp=firefox&pbk=JhutTb8LnJILjPU2SVKR45BQlu7iq1-snyEu06Cs9z4#🇫🇮 Финляндия
-vless://aaa9aa95-0251-4239-bad5-f5f4460e9914@185.126.67.8:1932?flow=xtls-rprx-vision&security=reality&sni=www.vk.com&fp=firefox&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc#🇩🇪 Германия
-vless://aaa9aa95-0251-4239-bad5-f5f4460e9914@185.126.67.6:443?flow=xtls-rprx-vision&security=reality&sni=www.vk.com&fp=firefox&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc#🇩🇪 Германия
-vless://42c83523-9f96-41b2-82d6-2edb71a4ac19@109.237.98.213:443?flow=xtls-rprx-vision&security=reality&sni=w7dfvyk6.xeltrona-host26.sbs&fp=firefox&pbk=fJnm6-PhJGSwHaAdJOzXkYOfCPPCWSlaZrtfm1XsqhA#🇹🇭 Таиланд | 🔗 Каскад
-vless://42c83523-9f96-41b2-82d6-2edb71a4ac19@45.151.182.120:443?flow=xtls-rprx-vision&security=reality&sni=x8t7xb13jg8v.fastnode.best&fp=firefox&pbk=fJnm6-PhJGSwHaAdJOzXkYOfCPPCWSlaZrtfm1XsqhA#🇦🇲 Армения | 🔗 Каскад
-vless://42c83523-9f96-41b2-82d6-2edb71a4ac19@109.237.98.230:443?flow=xtls-rprx-vision&security=reality&sni=pl8ksnn3q2mw.edgepop.lol&fp=firefox&pbk=fJnm6-PhJGSwHaAdJOzXkYOfCPPCWSlaZrtfm1XsqhA#🇨🇭 Швейцария | 🔗 Каскад
-vless://42c83523-9f96-41b2-82d6-2edb71a4ac19@109.237.98.217:443?flow=xtls-rprx-vision&security=reality&sni=p2hqq8phzwsa.filelattice.cfd&fp=firefox&pbk=lR8BTY8XJ6qt9th7wR3ZnfwCiqRs2yosrONK-SuSsDo#🇮🇳 Индия | 🔗 Каскад
-vless://42c83523-9f96-41b2-82d6-2edb71a4ac19@109.237.98.52:443?flow=xtls-rprx-vision&security=reality&sni=p5bl8qh8be.streamedge.best&fp=firefox&pbk=fJnm6-PhJGSwHaAdJOzXkYOfCPPCWSlaZrtfm1XsqhA#🇮🇹 Италия | 🔗 Каскад
-vless://42c83523-9f96-41b2-82d6-2edb71a4ac19@80.66.79.127:443?flow=xtls-rprx-vision&security=reality&sni=i2mjmbaykn.calveron-edge73.cyou&fp=firefox&pbk=xJZgy1PaEukFZ06H3VV64iLhA8nlAj2MYwC68BKA5Sc#🇬🇪 Грузия | 🔗 Каскад
-vless://42c83523-9f96-41b2-82d6-2edb71a4ac19@45.12.63.39:443?flow=xtls-rprx-vision&security=reality&sni=vx9nwlglt3j3.zorvanta-cloud63.cfd&fp=firefox&pbk=fJnm6-PhJGSwHaAdJOzXkYOfCPPCWSlaZrtfm1XsqhA#🇳🇴 Норвегия | 🔗 Каскад
-vless://28a4a8fc-15ab-418b-9aaf-655a84edf521@92.119.164.196:443?security=tls&sni=le.zadonat.net&fp=firefox&type=ws&path=%2Frealtime%2Fstock%2Fticker&host=92.119.164.196#🇳🇱 Нидерланды
-vless://16eac7af-fa39-40a4-82ab-774a2af071a9@germanyrif.zykosafe.ru:443?flow=xtls-rprx-vision&security=reality&sni=dzen.ru&fp=firefox&pbk=uCmDqvXbEQQ3ESSBwI7QG6HX-dwG8SNlExWDlC7XPlM#🇩🇪 Германия
-vless://42c83523-9f96-41b2-82d6-2edb71a4ac19@109.237.98.221:443?flow=xtls-rprx-vision&security=reality&sni=ozayyvyf9oa3.originhub.site&fp=firefox&pbk=waUvU_PYX9kshdI5kYhf25185HH9pkQzc39sP-KMynE#🇪🇸 Испания | 🔗 Каскад
-vless://42c83523-9f96-41b2-82d6-2edb71a4ac19@171.22.129.227:443?flow=xtls-rprx-vision&security=reality&sni=nujd35aknu.static-mirror.site&fp=firefox&pbk=fJnm6-PhJGSwHaAdJOzXkYOfCPPCWSlaZrtfm1XsqhA#🇵🇱 Польша | 🔗 Каскад
-vless://680e92ac-1688-49e0-af96-7327fbc30ce8@193.223.104.152:443?flow=xtls-rprx-vision&security=reality&sni=gb.ozon.ru&fp=firefox&pbk=SbVKOEMjK0sIlbwg4akyBg5mL5KZwwB-ed4eEE7YnRc#🇬🇧 Великобритания | 🔗 Каскад
-vless://90ae81bc-cfa1-11f1-b03e-2ea5989f40a9@185.86.13.5:8443?security=reality&sni=patriot6.timikillergames.online&fp=firefox&pbk=ZYCjHvxGdkwCEkmH8i6VaEOa3GNexoTn0VS_7vt2S2I&type=grpc&serviceName=#🇳🇱 Нидерланды
-vless://5d233135-d747-42cf-9d3a-64529b18549f@95.85.227.99:8443?security=tls&sni=pl3.superpuper.cfd&fp=firefox&type=ws&path=%2Fchunkycorp#🇵🇱 Польша
-vless://5d233135-d747-42cf-9d3a-64529b18549f@217.60.100.157:443?security=reality&sni=cdn.gamerpr.cfd&fp=firefox&pbk=fh6QMIo4B07ZGDBEfnzSznIQynzw8oFkM6j40B7US3M&type=grpc&serviceName=chunkycorp#🇪🇪 Эстония
-vmess://eyJ2IjoiMiIsInBzIjoiIiwiYWRkIjoiNDcuMjQzLjE5NC4xMjUiLCJwb3J0IjoiNDQzIiwiaWQiOiJmMjNiYjQyNy1jMWY5LTQzNzMtODc2Yy0yZjQzZTlmNzkwZjMiLCJhaWQiOiIwIiwic2N5IjoiYXV0byIsIm5ldCI6IndzIiwidHlwZSI6Im5vbmUiLCJob3N0IjoiTlljUWcxOXprd2FDUE0xQi52LjNkbnMudmlwIiwicGF0aCI6Ii93cy12bWVzcyIsInRscyI6InRscyIsInNuaSI6Im55Y3FnMTl6a3dhY3BtMWIudi4zZG5zLnZpcCIsImZwIjoiZmlyZWZveCJ9#🇭🇰 Гонконг
-trojan://Trojan%4082164024@155.138.138.2:443?security=tls&sni=ca.tronsg.com&fp=firefox#🇨🇦 Канада
-trojan://f0eb8c92ce8946aaba856569cff1a16b@216.106.186.33:443?security=tls&sni=resources.findlocaljobnetworkandbuildcommunityconnections.com#🇺🇸 США
-trojan://e2c626bcab2143cf@oge126.pacemakere.com:20029?security=tls&sni=oge126.pacemakere.com#🇩🇪 Германия
-trojan://ee844c5ef7504bcf@jus134.pacemakere.com:20017?security=tls&sni=jus134.pacemakere.com#🇺🇸 США
-trojan://NxYNjE7a5zyVX9to345Q-_EUZ9WRqoQ6@m1.mincreaft.com:5443?security=tls&sni=m1.mincreaft.com#🇩🇪 Германия
-trojan://NxYNjE7a5zyVX9to345Q-_EUZ9WRqoQ6@m2.mincreaft.com:5443?security=tls&sni=m2.mincreaft.com#🇩🇪 Германия
-trojan://NxYNjE7a5zyVX9to345Q-_EUZ9WRqoQ6@m6.mincreaft.com:5443?security=tls&sni=m6.mincreaft.com#🇩🇪 Германия
-trojan://NxYNjE7a5zyVX9to345Q-_EUZ9WRqoQ6@avoro18534.maxleshax.icu:5443?security=tls&sni=avoro18534.maxleshax.icu#🇩🇪 Германия
-trojan://e56e752c86a640cd@gu232.izzzzzi.com:20052?security=tls&sni=gu232.izzzzzi.com#🇹🇼 Тайвань
-hysteria2://M8LP9DztTr3znqCkmf-r08CQLBLLFK1r@206.1.96.108:7443?sni=me17.msjia8844.site&obfs=salamander&obfs-password=u3Soh9_Ui0UmcuY6vk0ug8Lq#🇹🇷 Турция
-hysteria2://M8LP9DztTr3znqCkmf-r08CQLBLLFK1r@me17.msjia8844.site:7443?sni=me17.msjia8844.site&obfs=salamander&obfs-password=u3Soh9_Ui0UmcuY6vk0ug8Lq#🇹🇷 Турция
-hysteria2://myptyun.Hu5bS3VYUd3iqmaU@193.26.157.226:8443?sni=1o2.690423.xyz&mport=8443%2C7044%2C20000-50000#🇩🇪 Германия
-hysteria2://94c2b91777f8de3a5bc12d2a91b732c2@promo3.betust.net:443?sni=promo3.betust.net&alpn=h3#🇺🇸 США
-hysteria2://94c2b91777f8de3a5bc12d2a91b732c2@84.32.129.182:443?sni=promo3.betust.net#🇺🇸 США
-hysteria2://9qFAF3s4R7wkGxcI0fonColtap41RUTsWdW@45.131.65.244:30396?sni=pisulka.jsbox.top&fp=firefox#🇩🇪 Германия
-hysteria2://XI5CJGoEWqxxkbmwRpLZrDflUgQAfghg@b-balance.avantage.7.s.cdnnow.xyz:443?sni=b-balance.avantage.7.s.cdnnow.xyz#🇵🇱 Польша
-hysteria2://e5ec2586-59b3-40fa-91b7-bb37a2f7744e@45.88.12.122:443?sni=crt.onecloudstream.com#🇩🇪 Германия
-hysteria2://e5ec2586-59b3-40fa-91b7-bb37a2f7744e@141.0.187.50:443?sni=crt.onecloudstream.com#🇳🇱 Нидерланды
-hysteria2://e5ec2586-59b3-40fa-91b7-bb37a2f7744e@45.88.12.26:443?sni=crt.onecloudstream.com#🇩🇪 Германия
-hysteria2://ca0542a4-a52e-4844-bd47-87ce315f6eab@germary.jpyh123.uk:43135?sni=germary.jpyh123.uk&obfs=salamander&obfs-password=zM9k7UCzzzKHpCLR#🇩🇪 Германия
-vless://36a1c787-fb9e-4fea-ba54-5cb33255d4de@45.145.43.151:9443?security=tls&sni=freetg.ghost-service.cc&fp=firefox&type=ws&path=%2Flive.stream.v1.Broadcast%2F&host=freetg.ghost-service.cc#🏴 Неизвестный
-vless://f8d52ece-fad4-478d-875d-df6eed3befa7@fl.golangwikito.cfd:61374?security=reality&sni=fl.golangwikito.cfd&fp=firefox&pbk=QrNs0ew7snHqLfpVXS9RAhlRzgAzzGZK9fXmDcx9xHI&type=xhttp&path=%2F&mode=auto#🏴 Неизвестный
-vless://42c83523-9f96-41b2-82d6-2edb71a4ac19@109.237.98.234:443?flow=xtls-rprx-vision&security=reality&sni=pmt3gyrtt.edge-pop.site&fp=firefox&pbk=fJnm6-PhJGSwHaAdJOzXkYOfCPPCWSlaZrtfm1XsqhA#🏴 Неизвестный
+vless://12345678-9012-3456-7890-123456789012@52.67.52.67:1488?encryption=none&type=tcp&path=%2Flive%2Fws2#⚠️Подписка не работает!
+vless://01234567-8901-2345-6789-012345678901@кибернасрал-иди-нахер.рф:1488?encryption=none&type=tcp&path=/#Новые подписки в @RKP_channel
